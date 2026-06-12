@@ -30,11 +30,4 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What image formats can I convert to a favicon?", "acceptedAnswer": {"@type": "Answer", "text": "PNG, JPG, SVG, and WebP are all supported."}}, {"@type": "Question", "name": "Which favicon sizes are generated?", "acceptedAnswer": {"@type": "Answer", "text": "All standard sizes are included: 16\u00d716, 32\u00d732, 48\u00d748, 64\u00d764, 128\u00d7128, and 256\u00d7256, all packed into a single .ico file."}}, {"@type": "Question", "name": "Is my image uploaded when generating a favicon?", "acceptedAnswer": {"@type": "Answer", "text": "No. All conversion happens in your browser. Your image never leaves your device."}}]}) }} />
-      <ImageToFaviconClient />
-    </>
-  );
-}
+export default function Page() { return <ImageToFaviconClient />; }

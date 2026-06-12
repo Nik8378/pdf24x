@@ -2,40 +2,42 @@ import type { Metadata } from "next";
 import JSONFormatterClient from "./JSONFormatterClient";
 
 export const metadata: Metadata = {
-  title: "JSON Formatter & Validator – Free Online",
+  title: "JSON Formatter & Validator – Free Online JSON Beautifier",
   description:
-    "Format, validate, and beautify JSON instantly in your browser. Minify JSON, fix syntax errors, and view as a tree. Free, no data sent to any server.",
-  keywords: ["json formatter", "json validator", "json beautifier", "format json online", "json pretty print", "json minifier"],
-  alternates: { canonical: "https://pdf24x.com/tools/json-formatter" },
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What does a JSON formatter do?",
-      acceptedAnswer: { "@type": "Answer", text: "A JSON formatter takes minified or poorly indented JSON text and reformats it with proper indentation and line breaks, making it easy to read and debug." },
-    },
-    {
-      "@type": "Question",
-      name: "Is this JSON formatter safe to use with sensitive data?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. All formatting happens in your browser. Your JSON is never sent to any server, making it safe for API responses, config files, and tokens." },
-    },
-    {
-      "@type": "Question",
-      name: "Can the JSON formatter fix syntax errors?",
-      acceptedAnswer: { "@type": "Answer", text: "It validates your JSON and highlights the line and character position of any syntax error so you can fix it quickly." },
-    },
+    "Format, beautify, minify and validate JSON online instantly. Free JSON formatter with syntax highlighting, error detection, tree view, and JSON path finder. No sign-up, no upload — works entirely in your browser.",
+  keywords: [
+    "json formatter",
+    "json validator",
+    "json beautifier",
+    "json pretty print",
+    "json minifier",
+    "format json online",
+    "validate json",
+    "json viewer",
+    "json editor online",
+    "json parser",
+    "json lint",
+    "online json formatter",
+    "json tree viewer",
+    "json to string",
+    "pretty print json",
+    "json checker",
+    "free json formatter",
   ],
+  alternates: { canonical: "https://pdf24x.com/tools/json-formatter" },
+  openGraph: {
+    title: "JSON Formatter & Validator – Free Online JSON Beautifier | PDF24x",
+    description:
+      "Instantly format, validate and minify JSON. Syntax highlighting, error detection, tree view. 100% free, no sign-up.",
+    url: "https://pdf24x.com/tools/json-formatter",
+    images: [{ url: "https://pdf24x.com/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "JSON Formatter & Validator – Free Online Tool | PDF24x",
+    description: "Format, validate and minify JSON instantly. Free, no sign-up required.",
+    images: ["https://pdf24x.com/og-image.png"],
+  },
 };
 
-export default function Page() {
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <JSONFormatterClient />
-    </>
-  );
-}
+export default function Page() { return <JSONFormatterClient />; }
