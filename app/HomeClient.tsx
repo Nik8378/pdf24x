@@ -101,7 +101,7 @@ function SearchBar() {
       <div className="flex w-full items-center rounded-xl bg-white p-1.5" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
         <Search size={18} className="ml-2 shrink-0" style={{ color: C.sub }} />
         <input ref={inputRef} value={query} onChange={e => { setQuery(e.target.value); setShow(true); }} onFocus={() => query && setShow(true)}
-          placeholder="Search any tool you need..." className="min-w-0 flex-1 bg-transparent px-2 py-2 text-sm outline-none" style={{ color: C.ink }} />
+          placeholder="Search any tool you need..." className="min-w-0 flex-1 bg-transparent px-2 py-2 text-sm" style={{ color: C.ink, outline: "none" }} />
         {query && <button type="button" onClick={() => { setQuery(""); setShow(false); inputRef.current?.focus(); }} className="shrink-0 p-1.5" style={{ color: C.sub }}><X size={16} /></button>}
         <button type="button" className="shrink-0 rounded-lg p-2.5 text-white" style={{ background: C.brand }} aria-label="Search"><Search size={18} /></button>
       </div>

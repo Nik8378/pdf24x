@@ -116,3 +116,5 @@ h1, h2, h3, h4 { font-family: 'Archivo', 'Inter', sans-serif; letter-spacing: -0
 .text-brand { color: #FF6B5E; }
 .bg-brand { background: #FF6B5E; }
 .bg-redsoft { background: #ffe7e3; }
+
+input:focus, textarea:focus, select:focus { outline: none; box-shadow: none; }
