@@ -104,7 +104,7 @@ export function Toast() {
 
   return (
     <div
-      className={`fixed bottom-5 right-5 flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-[13.5px] font-medium max-w-sm z-[200] toast-enter cursor-pointer ${colors[toast.type]}`}
+      className={`fixed bottom-20 right-4 lg:bottom-5 lg:right-5 flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-[13.5px] font-medium max-w-sm z-[200] toast-enter cursor-pointer ${colors[toast.type]}`}
       onClick={hideToast}
     >
       {icons[toast.type]}

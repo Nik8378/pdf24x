@@ -1,176 +1,100 @@
-import React from "react";
 import type { Metadata } from "next";
-import { Sidebar } from "@/components/layout/Sidebar";
+import Link from "next/link";
 import {
-  Image, Minimize2, Link2, Scissors, Layers, ImagePlay, Shield, Zap,
-  Lock, ImageIcon, BookOpen, Braces, Code2, Link as LinkIcon, Code,
-  Paintbrush, Regex, KeyRound, FileSpreadsheet, ArrowRight, Sparkles,
+  FileText, Image as ImageIcon, Minimize2, GitMerge, Split, FileImage,
+  RotateCw, Unlock, ShieldCheck, Droplets, Crop, Grid3x3, FileSpreadsheet,
+  Code, ImagePlay, Palette, BookOpen, Code2, Braces, Link as LinkIcon,
+  Paintbrush, Binary, KeyRound, Search, Mic, Globe,
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "All PDF, Image & Developer Tools – Free Online Tools",
-  description:
-    "Free online tools: image to PDF, compress PDF, merge PDF, split PDF, PDF to JPG, image to WebP, favicon generator, ISBN converter, JSON formatter, Base64 encoder, URL encoder, HTML formatter, CSS minifier, Regex tester, JWT decoder. All browser-based.",
+  title: "All Tools | PDF24X — Free Online PDF & Developer Tools",
+  description: "Browse all 200+ free online tools — PDF converter, image tools, developer utilities and more. No sign up, no installs.",
   alternates: { canonical: "https://pdf24x.com/tools" },
 };
 
-const pdfTools = [
-  { name: "Image to PDF",      desc: "Convert JPG, PNG, WEBP images to PDF",         icon: Image,           href: "/",                       color: "bg-orange-50 text-orange-500" },
-  { name: "Compress PDF",      desc: "Reduce PDF file size significantly",             icon: Minimize2,       href: "/tools/compress",          color: "bg-blue-50 text-blue-500" },
-  { name: "Merge PDF",         desc: "Combine multiple PDFs into one file",            icon: Link2,           href: "/tools/merge",             color: "bg-purple-50 text-purple-500" },
-  { name: "Split PDF",         desc: "Extract or split PDF pages easily",              icon: Scissors,        href: "/tools/split",             color: "bg-green-50 text-green-500" },
-  { name: "PDF to JPG",        desc: "Convert PDF pages to JPG images",                icon: Layers,          href: "/tools/pdf-to-jpg",        color: "bg-yellow-50 text-yellow-600" },
-  { name: "Excel to PDF",      desc: "Convert Excel spreadsheets to PDF",              icon: FileSpreadsheet, href: "/tools/excel-to-pdf",      color: "bg-emerald-50 text-emerald-500" },
-  { name: "PDF to Excel",      desc: "Extract tables from PDF to Excel",               icon: FileSpreadsheet, href: "/tools/pdf-to-excel",      color: "bg-teal-50 text-teal-500" },
+const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea" };
+const shadow = "3px 3px 0 0 #1c1c1c";
+const font = { fontFamily: "Archivo, Inter, sans-serif" };
+
+const TOOL_CATEGORIES = [
+  {
+    title: "PDF Tools",
+    emoji: "📄",
+    tools: [
+      { icon: ImageIcon, color: "#EE4B3C", tint: "#ffe7e3", name: "Image to PDF", desc: "Convert JPG, PNG, WEBP images to PDF", href: "/tools/excel-to-pdf" },
+      { icon: Minimize2, color: "#3B82F6", tint: "#E5EEFC", name: "Compress PDF", desc: "Reduce PDF file size significantly", href: "/tools/compress" },
+      { icon: GitMerge, color: "#F2994A", tint: "#FCEEDD", name: "Merge PDF", desc: "Combine multiple PDFs into one file", href: "/tools/merge" },
+      { icon: Split, color: "#7B61FF", tint: "#ECE7FF", name: "Split PDF", desc: "Extract or split PDF pages easily", href: "/tools/split" },
+      { icon: FileImage, color: "#EC4899", tint: "#FCE4EF", name: "PDF to JPG", desc: "Convert PDF pages to JPG images", href: "/tools/pdf-to-jpg" },
+      { icon: FileText, color: "#EE4B3C", tint: "#ffe7e3", name: "PDF to Word", desc: "Convert PDF to editable Word document", href: "/tools/pdf-to-word" },
+      { icon: FileSpreadsheet, color: "#27AE60", tint: "#E4F5EC", name: "Excel to PDF", desc: "Convert Excel spreadsheets to PDF", href: "/tools/excel-to-pdf" },
+      { icon: FileSpreadsheet, color: "#0EA5E9", tint: "#E0F2FE", name: "PDF to Excel", desc: "Extract tables from PDF to Excel", href: "/tools/pdf-to-excel" },
+      { icon: RotateCw, color: "#EE4B3C", tint: "#ffe7e3", name: "Rotate PDF", desc: "Rotate pages of your PDF file", href: "/tools" },
+      { icon: Unlock, color: "#3B82F6", tint: "#E5EEFC", name: "Unlock PDF", desc: "Remove password from secured PDF", href: "/tools" },
+      { icon: ShieldCheck, color: "#27AE60", tint: "#E4F5EC", name: "Protect PDF", desc: "Add password protection to PDF", href: "/tools" },
+      { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", name: "Watermark PDF", desc: "Add text or image watermark to PDF", href: "/tools" },
+    ],
+  },
+  {
+    title: "Image Tools",
+    emoji: "🖼️",
+    tools: [
+      { icon: ImagePlay, color: "#EC4899", tint: "#FCE4EF", name: "Image to WebP", desc: "Convert any image format to WebP", href: "/tools/image-to-webp" },
+      { icon: Palette, color: "#7B61FF", tint: "#ECE7FF", name: "Image to Favicon", desc: "Convert any image to favicon.ico", href: "/tools/image-to-favicon" },
+    ],
+  },
+  {
+    title: "Developer Tools",
+    emoji: "💻",
+    tools: [
+      { icon: Braces, color: "#F2994A", tint: "#FCEEDD", name: "JSON Formatter", desc: "Format and validate JSON data", href: "/tools/json-formatter" },
+      { icon: Binary, color: "#3B82F6", tint: "#E5EEFC", name: "Base64 Encoder", desc: "Encode and decode Base64 strings", href: "/tools/base64-encoder" },
+      { icon: LinkIcon, color: "#27AE60", tint: "#E4F5EC", name: "URL Encoder", desc: "Encode and decode URLs", href: "/tools/url-encoder" },
+      { icon: Code2, color: "#EE4B3C", tint: "#ffe7e3", name: "HTML Formatter", desc: "Format and beautify HTML code", href: "/tools/html-formatter" },
+      { icon: Paintbrush, color: "#7B61FF", tint: "#ECE7FF", name: "CSS Minifier", desc: "Minify CSS for production", href: "/tools/css-minifier" },
+      { icon: Search, color: "#EC4899", tint: "#FCE4EF", name: "Regex Tester", desc: "Test regular expressions", href: "/tools/regex-tester" },
+      { icon: KeyRound, color: "#F2994A", tint: "#FCEEDD", name: "JWT Decoder", desc: "Decode and inspect JWT tokens", href: "/tools/jwt-decoder" },
+    ],
+  },
+  {
+    title: "Publisher Tools",
+    emoji: "📚",
+    tools: [
+      { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Converter", desc: "Convert between ISBN-10 and ISBN-13", href: "/tools/isbn-converter" },
+    ],
+  },
 ];
-
-const imageTools = [
-  { name: "Image to WebP",     desc: "Convert any image format to WebP",              icon: ImagePlay,       href: "/tools/image-to-webp",     color: "bg-pink-50 text-pink-500" },
-  { name: "Image to Favicon",  desc: "Convert any image to favicon.ico",              icon: ImageIcon,       href: "/tools/image-to-favicon",  color: "bg-indigo-50 text-indigo-500" },
-];
-
-const bookTools = [
-  { name: "ISBN Converter",    desc: "Convert ISBN-10 to ISBN-13 and vice versa",     icon: BookOpen,        href: "/tools/isbn-converter",    color: "bg-amber-50 text-amber-600" },
-];
-
-const devTools = [
-  { name: "JSON Formatter",    desc: "Format, validate and minify JSON",               icon: Braces,          href: "/tools/json-formatter",    color: "bg-blue-50 text-blue-600" },
-  { name: "Base64 Encoder",    desc: "Encode or decode Base64 text and images",        icon: Code2,           href: "/tools/base64-encoder",    color: "bg-violet-50 text-violet-500" },
-  { name: "URL Encoder",       desc: "Encode or decode URLs and query strings",        icon: LinkIcon,        href: "/tools/url-encoder",       color: "bg-cyan-50 text-cyan-600" },
-  { name: "HTML Formatter",    desc: "Beautify or minify HTML code",                   icon: Code,            href: "/tools/html-formatter",    color: "bg-orange-50 text-orange-500" },
-  { name: "CSS Minifier",      desc: "Minify or format CSS files",                     icon: Paintbrush,      href: "/tools/css-minifier",      color: "bg-pink-50 text-pink-500" },
-  { name: "Regex Tester",      desc: "Test regex with live match highlighting",        icon: Regex,           href: "/tools/regex-tester",      color: "bg-green-50 text-green-600" },
-  { name: "JWT Decoder",       desc: "Decode and inspect JSON Web Tokens",             icon: KeyRound,        href: "/tools/jwt-decoder",       color: "bg-red-50 text-red-500" },
-];
-
-function ToolCard({ tool }: { tool: typeof pdfTools[0] }) {
-  return (
-    <a href={tool.href}
-      className="group bg-white border border-[#1a1917]/8 rounded-2xl p-4 sm:p-5 hover:border-accent/30 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 block relative overflow-hidden">
-      {/* Subtle gradient on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-2xl" />
-      <div className="relative">
-        <div className={`w-10 h-10 ${tool.color} rounded-xl flex items-center justify-center mb-3 transition-transform duration-200 group-hover:scale-110`}>
-          <tool.icon size={18} strokeWidth={1.8} />
-        </div>
-        <h3 className="text-[13.5px] font-bold text-[#1a1917] mb-1 group-hover:text-accent transition-colors">{tool.name}</h3>
-        <p className="text-[12px] text-[#7a7875] leading-relaxed">{tool.desc}</p>
-        <div className="flex items-center gap-1 mt-3 opacity-0 group-hover:opacity-100 transition-all duration-200 -translate-x-1 group-hover:translate-x-0">
-          <span className="text-[11.5px] font-semibold text-accent">Use tool</span>
-          <ArrowRight size={11} className="text-accent" />
-        </div>
-      </div>
-    </a>
-  );
-}
-
-function SectionHeader({ title, count }: { title: string; count: number }) {
-  return (
-    <div className="flex items-center gap-3 mb-4">
-      <div className="flex items-center gap-2">
-        <h2 className="text-[15px] font-bold text-[#1a1917]">{title}</h2>
-        <span className="text-[11px] font-bold text-accent bg-accent-bg border border-accent/20 rounded-full px-2 py-0.5">{count}</span>
-      </div>
-      <div className="flex-1 h-px bg-[#e5e3de]" />
-    </div>
-  );
-}
 
 export default function ToolsPage() {
   return (
-    <div className="w-full flex gap-0 items-start">
-      <Sidebar />
-      <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-6 pb-24 lg:pb-10">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8" style={{ background: C.cream }}>
+      <div className="mb-10 text-center">
+        <h1 className="text-3xl font-extrabold sm:text-4xl" style={{ color: C.ink, ...font }}>All Tools</h1>
+        <p className="mt-3 text-base" style={{ color: C.sub }}>200+ free tools for PDF, images, and developers. No sign up, no installs.</p>
+      </div>
 
-        {/* ── Hero Section ──────────────────────────── */}
-        <div className="relative bg-[#1a1917] rounded-2xl px-6 py-8 mb-6 overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
-
-          <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <Sparkles size={14} className="text-accent" />
-                <span className="text-[11px] font-bold text-accent uppercase tracking-widest">All Tools</span>
-              </div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                Free Online Tools
-              </h1>
-              <p className="text-[13px] text-white/60 max-w-md">
-                17 powerful browser-based tools. No uploads, no sign-ups, no watermarks — ever.
-              </p>
+      <div className="space-y-12">
+        {TOOL_CATEGORIES.map(cat => (
+          <section key={cat.title}>
+            <div className="mb-6 flex items-center gap-2">
+              <span className="text-xl">{cat.emoji}</span>
+              <h2 className="text-xl font-extrabold sm:text-2xl" style={{ color: C.ink, ...font }}>{cat.title}</h2>
             </div>
-            <div className="flex flex-col gap-2 shrink-0">
-              {[
-                { icon: Lock, text: "Files stay on device" },
-                { icon: Shield, text: "No sign-up required" },
-                { icon: Zap, text: "100% Free" },
-              ].map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-2">
-                  <Icon size={12} className="text-green-400" />
-                  <span className="text-[12px] text-white/70">{text}</span>
-                </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {cat.tools.map(tool => (
+                <Link key={tool.name} href={tool.href} className="group rounded-2xl bg-white p-5 transition-all hover:-translate-y-1" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl" style={{ background: tool.tint }}>
+                    <tool.icon size={21} style={{ color: tool.color }} />
+                  </span>
+                  <h3 className="mt-4 text-base font-bold" style={{ color: C.ink }}>{tool.name}</h3>
+                  <p className="mt-1.5 text-sm leading-snug" style={{ color: C.sub }}>{tool.desc}</p>
+                </Link>
               ))}
             </div>
-          </div>
-        </div>
-
-
-        {/* ── PDF Tools ─────────────────────────────── */}
-        <SectionHeader title="PDF Tools" count={pdfTools.length} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mb-8">
-          {pdfTools.map(tool => <ToolCard key={tool.name} tool={tool} />)}
-        </div>
-
-        <div className="mb-8" />
-
-        {/* ── Image Tools ───────────────────────────── */}
-        <SectionHeader title="Image Tools" count={imageTools.length} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mb-8">
-          {imageTools.map(tool => <ToolCard key={tool.name} tool={tool} />)}
-        </div>
-
-        {/* ── Book & ISBN ───────────────────────────── */}
-        <SectionHeader title="Book & ISBN" count={bookTools.length} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mb-8">
-          {bookTools.map(tool => <ToolCard key={tool.name} tool={tool} />)}
-        </div>
-
-        <div className="mb-8" />
-
-        {/* ── Developer Tools ───────────────────────── */}
-        <SectionHeader title="Developer Tools" count={devTools.length} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mb-8">
-          {devTools.map(tool => <ToolCard key={tool.name} tool={tool} />)}
-        </div>
-
-        {/* ── Privacy Banner ────────────────────────── */}
-        <div className="bg-gradient-to-r from-[#1a1917] to-[#2d2c29] rounded-2xl px-6 py-5 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <p className="text-[14px] font-bold text-white mb-1">100% Private by Design</p>
-            <p className="text-[12.5px] text-white/60">All processing happens in your browser. Your files never touch our servers.</p>
-          </div>
-          <div className="flex items-center gap-1.5 bg-green-500/20 border border-green-500/30 rounded-full px-4 py-2 shrink-0">
-            <Shield size={13} className="text-green-400" />
-            <span className="text-[12.5px] text-green-300 font-semibold">Privacy First</span>
-          </div>
-        </div>
-
-
-        {/* ── Coming Soon ───────────────────────────── */}
-        <div className="bg-accent-bg border border-accent/20 rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div>
-            <p className="text-[14px] font-bold text-accent mb-0.5">More tools coming soon</p>
-            <p className="text-[12.5px] text-[#7a7875]">Word Counter, Image Compressor, Unit Converter and more are under development.</p>
-          </div>
-          <div className="flex items-center gap-1.5 shrink-0">
-            <Zap size={13} className="text-accent" />
-            <span className="text-[12px] text-accent font-semibold">Stay tuned</span>
-          </div>
-        </div>
-
-      </main>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }

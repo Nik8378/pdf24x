@@ -1,91 +1,65 @@
 import type { Metadata } from "next";
-import { Sidebar } from "@/components/layout/Sidebar";
-import { Shield, Zap, Lock, Globe, Code2, FileText } from "lucide-react";
+import Link from "next/link";
+import { Heart, ShieldCheck, Zap, Globe, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About PDF24x – Free Browser-Based PDF & Developer Tools",
-  description: "Learn about PDF24x — a free, privacy-first platform offering PDF tools, image converters, and developer utilities. All processing happens in your browser. No uploads, no sign-up.",
+  title: "About Us | PDF24X",
+  description: "Learn why PDF24X exists — free, fast, privacy-first PDF and file tools, with no sign-ups or hidden fees.",
   alternates: { canonical: "https://pdf24x.com/about" },
-  robots: { index: true, follow: true },
 };
+
+const VALUES = [
+  { icon: Heart, color: "#EE4B3C", tint: "#ffe7e3", title: "Built for everyone", desc: "No sign-ups, no paywalls — every tool stays free and open to use." },
+  { icon: ShieldCheck, color: "#27AE60", tint: "#E4F5EC", title: "Privacy first", desc: "Files are processed and then deleted. We don't keep what isn't ours." },
+  { icon: Zap, color: "#3B82F6", tint: "#E5EEFC", title: "Fast by default", desc: "We optimize every tool so you get results in seconds, not minutes." },
+  { icon: Globe, color: "#7B61FF", tint: "#ECE7FF", title: "Works anywhere", desc: "No installs. Any device, any browser, any time." },
+];
+
+const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea" };
+const shadow = "3px 3px 0 0 #1c1c1c";
+const font = { fontFamily: "Archivo, Inter, sans-serif" };
 
 export default function AboutPage() {
   return (
-    <div className="w-full flex gap-0 items-start">
-      <Sidebar />
-      <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-8 pb-24 lg:pb-12 max-w-4xl">
-
-        <h1 className="text-2xl sm:text-3xl font-bold text-[#1a1917] mb-3">About PDF24x</h1>
-        <p className="text-[15px] text-[#7a7875] mb-8 leading-relaxed">
-          PDF24x is a free, privacy-first platform offering powerful PDF tools, image converters, and developer utilities — all running entirely in your browser.
+    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+      <header className="text-center">
+        <span className="mx-auto mb-3 inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-bold" style={{ border: `1px solid ${C.line}`, color: C.brand, boxShadow: shadow }}>
+          About PDF24X
+        </span>
+        <h1 className="text-3xl font-extrabold sm:text-4xl" style={{ color: C.ink, ...font }}>
+          Tools that get out of your way
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed" style={{ color: C.sub }}>
+          PDF24X exists to make everyday file tasks — merging, converting, compressing, organizing — fast, free, and frustration-free. We believe useful tools shouldn't come with sign-up walls, hidden fees, or your data as the price of admission.
         </p>
+      </header>
 
-        {/* Mission */}
-        <div className="bg-[#1a1917] rounded-2xl p-6 mb-8">
-          <h2 className="text-[18px] font-bold text-white mb-3">Our Mission</h2>
-          <p className="text-[14px] text-white/80 leading-relaxed">
-            We believe powerful productivity tools should be free, fast, and private. PDF24x was built to give everyone access to professional-grade document and developer tools without subscriptions, without watermarks, and without compromising your privacy.
-          </p>
+      <section className="mt-14 rounded-2xl bg-white p-7 sm:p-10" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+        <h2 className="text-xl font-extrabold sm:text-2xl" style={{ color: C.ink, ...font }}>Why we built this</h2>
+        <div className="mt-4 space-y-4 text-sm leading-relaxed sm:text-base" style={{ color: C.sub }}>
+          <p>We kept running into the same problem: needing to merge a couple of PDFs, or shrink one down to email it, and ending up on a site cluttered with ads, asking us to create an account just to download a file we already had the rights to.</p>
+          <p>So we started building the tool we actually wanted to use — no clutter, no accounts, no catch. PDF24X is the result: a growing collection of simple, fast tools for PDFs, images, and more, built one tool at a time.</p>
+          <p>Every tool on PDF24X is free to use, works without sign-up, and doesn't store your files after processing. That's not a marketing claim — it's how we built the backend from the start.</p>
         </div>
+      </section>
 
-        {/* Core Values */}
-        <h2 className="text-[18px] font-bold text-[#1a1917] mb-4">Why PDF24x?</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-          {[
-            { icon: Lock, title: "100% Private", desc: "All files are processed locally in your browser. Nothing is ever uploaded to our servers." },
-            { icon: Zap, title: "Instant & Fast", desc: "No waiting for uploads or server processing. Everything happens instantly in your browser." },
-            { icon: Shield, title: "No Sign-Up", desc: "Use all tools without creating an account or providing any personal information." },
-            { icon: Globe, title: "Always Free", desc: "All tools are completely free to use. No hidden fees, no premium tiers, no watermarks." },
-            { icon: Code2, title: "Developer Friendly", desc: "Built by developers for developers — with JSON formatter, JWT decoder, Regex tester and more." },
-            { icon: FileText, title: "No Watermarks", desc: "Your converted files are clean and professional — no PDF24x branding added." },
-          ].map(item => (
-            <div key={item.title} className="bg-white border border-[#1a1917]/10 rounded-2xl p-5">
-              <item.icon size={20} className="text-accent mb-3" />
-              <h3 className="text-[14px] font-bold text-[#1a1917] mb-1">{item.title}</h3>
-              <p className="text-[12.5px] text-[#7a7875] leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Tools */}
-        <h2 className="text-[18px] font-bold text-[#1a1917] mb-4">Our Tools</h2>
-        <div className="bg-white border border-[#1a1917]/10 rounded-2xl overflow-hidden mb-8">
-          {[
-            { category: "PDF Tools", tools: "Image to PDF, Compress PDF, Merge PDF, Split PDF, PDF to JPG, Excel to PDF, PDF to Excel" },
-            { category: "Image Tools", tools: "Image to WebP, Image to Favicon" },
-            { category: "Book & ISBN", tools: "ISBN Converter (ISBN-10 ↔ ISBN-13)" },
-            { category: "Developer Tools", tools: "JSON Formatter, Base64 Encoder/Decoder, URL Encoder/Decoder, HTML Formatter, CSS Minifier, Regex Tester, JWT Decoder" },
-          ].map((item, i) => (
-            <div key={item.category} className={`flex items-start gap-4 px-5 py-4 ${i % 2 === 0 ? "bg-white" : "bg-[#f9f9f9]"} border-b border-[#e5e3de] last:border-0`}>
-              <div className="w-32 shrink-0">
-                <span className="text-[12px] font-bold text-accent">{item.category}</span>
-              </div>
-              <p className="text-[13px] text-[#4a4845]">{item.tools}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Tech */}
-        <h2 className="text-[18px] font-bold text-[#1a1917] mb-4">Built With</h2>
-        <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5 mb-8">
-          <div className="flex flex-wrap gap-2">
-            {["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "pdf-lib", "pdfjs-dist", "SheetJS", "Zustand", "Lucide React"].map(tech => (
-              <span key={tech} className="text-[12px] font-medium text-[#4a4845] bg-[#f4f3f0] border border-[#e5e3de] rounded-full px-3 py-1">{tech}</span>
-            ))}
+      <section className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {VALUES.map(({ icon: Icon, color, tint, title, desc }) => (
+          <div key={title} className="rounded-2xl bg-white p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl" style={{ background: tint }}>
+              <Icon size={22} style={{ color }} />
+            </span>
+            <h3 className="mt-4 text-base font-bold" style={{ color: C.ink }}>{title}</h3>
+            <p className="mt-1.5 text-sm leading-relaxed" style={{ color: C.sub }}>{desc}</p>
           </div>
-          <p className="text-[12.5px] text-[#7a7875] mt-4">PDF24x is built using modern web technologies and runs entirely client-side — no backend servers process your files.</p>
-        </div>
+        ))}
+      </section>
 
-        {/* Contact */}
-        <div className="bg-accent-bg border border-accent/20 rounded-2xl p-6">
-          <h2 className="text-[16px] font-bold text-accent mb-2">Get in Touch</h2>
-          <p className="text-[13px] text-[#4a4845] mb-3">Have feedback, suggestions, or found a bug? We&apos;d love to hear from you.</p>
-          <a href="/contact" className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold text-[13px] px-5 py-2.5 rounded-full transition-all">
-            Contact Us →
-          </a>
-        </div>
-
-      </main>
+      <div className="mt-10 text-center">
+        <Link href="/tools" className="inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold text-white transition-transform hover:-translate-y-0.5" style={{ background: C.brand, borderColor: C.line, boxShadow: shadow }}>
+          Explore All Tools <ArrowRight size={16} />
+        </Link>
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -151,6 +152,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <MobileNav />
         <div className="pb-16 lg:pb-0" />
+        <Footer />
 
         {/*
           Google AdSense — auto ads enabled.
