@@ -75,8 +75,8 @@ export default function ToolsPage() {
         <p className="mt-3 text-base" style={{ color: C.sub }}>200+ free tools for PDF, images, and developers. No sign up, no installs.</p>
       </div>
 
-      <div className="mb-6">
-        <AdUnit slot="3405712324" format="horizontal" className="min-h-[90px]" />
+      <div>
+        <AdUnit slot="3405712324" format="auto" />
       </div>
       <div className="space-y-8">
         {TOOL_CATEGORIES.map(cat => (

@@ -165,11 +165,6 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ── Ad slot ── */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-        <AdUnit slot="3405712324" format="horizontal" className="min-h-[90px] bg-[#f4f1ea]" />
-      </div>
-
       {/* ── Categories ── */}
       <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6 lg:py-8 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-center gap-2">
@@ -218,11 +213,6 @@ export default function HomeClient() {
           ))}
         </div>
       </section>
-
-      {/* ── Ad slot ── */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-        <AdUnit slot="3405712324" format="horizontal" className="min-h-[90px] bg-[#f4f1ea]" />
-      </div>
 
       {/* ── More Tools ── */}
       <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6 lg:py-8 sm:px-6 lg:px-8">
