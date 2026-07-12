@@ -307,7 +307,27 @@ export default function SplitClient() {
               </div>
             </div>
           </div>
-        </main>
+        
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 mb-6 space-y-4">
+        <div className="rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
+          <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>How It Works</h2>
+          <ol className="space-y-3">
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>1</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Upload your PDF</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Drop your PDF file into the upload area.</p></div></li>
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>2</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Select split method</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Choose to split by page range, extract specific pages, or split every N pages.</p></div></li>
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>3</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Download split files</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Download individual pages or a ZIP file containing all split documents.</p></div></li>
+          </ol>
+        </div>
+        <div className="rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
+          <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Can I extract specific pages?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>Yes. Select individual pages visually or enter custom page ranges like 1-3,5,8-10.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>What split modes are available?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>You can split by custom ranges, select specific pages visually, or split into equal chunks of N pages each.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Will the output be one file or multiple?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>Depends on your split — a single range produces one PDF, multiple ranges produce a ZIP with multiple PDFs.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Is the original PDF affected?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>No. The original file is never modified. Split files are new documents.</p></div>
+          </div>
+        </div>
+      </div>
+      </main>
       </div>
       {toast && <div className={`fixed bottom-20 lg:bottom-5 right-4 flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-[13.5px] font-medium z-[200] toast-enter ${toast.type === "success" ? "bg-green-700 text-white" : "bg-red-600 text-white"}`}>{toast.msg}</div>}
     </>

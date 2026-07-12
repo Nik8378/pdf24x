@@ -217,7 +217,27 @@ export default function MergeClient() {
               </div>
             </div>
           </div>
-        </main>
+        
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 mb-6 space-y-4">
+        <div className="rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
+          <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>How It Works</h2>
+          <ol className="space-y-3">
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>1</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Upload your PDFs</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Add two or more PDF files. Drag to reorder them as needed.</p></div></li>
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>2</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Arrange the order</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Drag and drop files into the sequence you want in the final PDF.</p></div></li>
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>3</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Download merged PDF</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Click Merge and download your combined PDF file instantly.</p></div></li>
+          </ol>
+        </div>
+        <div className="rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
+          <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>How many PDFs can I merge?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>You can merge as many PDFs as you need in a single operation.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Does merging preserve formatting?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>Yes. Merging combines PDF pages without altering any content, fonts, images, or formatting.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Can I reorder pages before merging?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>Yes. Drag the files into the order you want before clicking Merge.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Is there a file size limit?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>Individual files can be up to 100MB each.</p></div>
+          </div>
+        </div>
+      </div>
+      </main>
       </div>
       {toast && <div className={`fixed bottom-20 lg:bottom-5 right-4 flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-[13.5px] font-medium z-[200] toast-enter ${toast.type === "success" ? "bg-green-700 text-white" : "bg-red-600 text-white"}`}>{toast.msg}</div>}
     </>

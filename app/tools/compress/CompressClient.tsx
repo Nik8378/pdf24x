@@ -18,6 +18,51 @@ const LEVEL_CONFIG: Record<Level, { label: string; badge: string; badgeColor: st
   medium:  { label: "Medium Compression",  badge: "",             badgeColor: "", desc: "Good quality with moderate size reduction. Ideal for documents.", quality: 0.82 },
 };
 
+
+
+function HowItWorks() {
+  return (
+    <section className="mt-8 rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
+      <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>How to Compress a PDF</h2>
+      <ol className="space-y-3">
+        {[
+          ["Upload your PDF", "Drag and drop your PDF file or click to browse. Files up to 100MB are supported."],
+          ["Choose compression level", "Select Extreme for maximum size reduction, Strong for a good balance, or Medium for minimal quality loss."],
+          ["Download compressed file", "Click Compress and download your smaller PDF instantly. Your original file is never stored."],
+        ].map(([title, desc], i) => (
+          <li key={i} className="flex gap-3">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>{i + 1}</span>
+            <div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>{title}</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>{desc}</p></div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+function FAQ() {
+  const faqs = [
+    ["Does compressing a PDF reduce quality?", "It depends on the compression level. Medium compression has minimal visible impact. Strong compression may slightly reduce image sharpness. Extreme compression produces the smallest file but with noticeable quality reduction in images."],
+    ["What is the maximum file size?", "PDF24X supports PDF files up to 100MB for compression."],
+    ["Is my PDF uploaded to a server?", "For compression, the file is processed on our secure server and automatically deleted within 15 minutes. No one else can access your file."],
+    ["Why is my compressed PDF larger than the original?", "This can happen if the original PDF was already highly optimised. In this case, the tool automatically returns the original file."],
+    ["Can I compress multiple PDFs at once?", "Currently, you can compress one PDF at a time. For multiple files, compress each one separately."],
+  ];
+  return (
+    <section className="mt-4 rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
+      <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>Frequently Asked Questions</h2>
+      <div className="space-y-4">
+        {faqs.map(([q, a], i) => (
+          <div key={i} className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}>
+            <p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>{q}</p>
+            <p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>{a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function CompressClient() {
   const [pdf, setPdf] = useState<PDFFile | null>(null);
   const [level, setLevel] = useState<Level>("strong");
@@ -268,7 +313,27 @@ export default function CompressClient() {
               </div>
             </div>
           </div>
-        </main>
+        
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 mb-6 space-y-4">
+        <div className="rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
+          <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>How It Works</h2>
+          <ol className="space-y-3">
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>1</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Upload your PDF</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Drag and drop or click to browse. Files up to 100MB supported.</p></div></li>
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>2</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Choose compression level</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Select Extreme, Strong, or Medium based on your needs.</p></div></li>
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>3</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Download</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Click Compress and download your smaller PDF instantly.</p></div></li>
+          </ol>
+        </div>
+        <div className="rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
+          <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Does compression reduce quality?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>Medium compression has minimal impact. Strong may slightly reduce image sharpness. Extreme produces the smallest file with more noticeable reduction.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Is my file uploaded to a server?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>Yes, for processing only. Files are automatically deleted within 15 minutes and never shared.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Why is my compressed PDF larger?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>If the original was already optimised, compression cannot reduce it further. The tool returns the original in this case.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>What is the maximum file size?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>PDF24X supports files up to 100MB for compression.</p></div>
+          </div>
+        </div>
+      </div>
+      </main>
       </div>
       {toast && (
         <div className={`fixed bottom-20 lg:bottom-5 right-4 flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-[13.5px] font-medium max-w-sm z-[200] toast-enter ${toast.type === "success" ? "bg-green-700 text-white" : "bg-red-600 text-white"}`}>
