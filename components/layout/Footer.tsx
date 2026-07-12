@@ -25,8 +25,8 @@ const FOOTER_COLS = [
     items: [
       { label: "PDF to Word", path: "/tools/pdf-to-word" },
       { label: "Compress PDF", path: "/tools/compress" },
-      { label: "Image to PDF", path: "/tools/excel-to-pdf" },
-      { label: "YouTube to MP3", path: "/tools" },
+      { label: "Merge PDF", path: "/tools/merge" },
+      { label: "Image to PDF", path: "/tools/image-to-pdf" },
     ],
   },
 ];
@@ -34,32 +34,56 @@ const FOOTER_COLS = [
 export function Footer() {
   return (
     <footer style={{ borderTop: "1px solid #1c1c1c", background: "#f4f1ea" }}>
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Brand column */}
           <div>
             <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
-              <Image src="/logo.png" alt="PDF24X" width={120} height={34} style={{ objectFit: "contain" }} />
+              <Image src="/logo.png" alt="PDF24X" width={110} height={30} style={{ objectFit: "contain" }} />
             </Link>
-            <p className="mt-4 max-w-xs text-sm" style={{ color: "#6b6760" }}>
-              Your all-in-one platform for PDF, Image, Video and Developer tools.
+            <p className="mt-3 max-w-xs text-sm" style={{ color: "#6b6760" }}>
+              Your all-in-one platform for PDF, Image, and Developer tools.
             </p>
           </div>
+
+          {/* Link columns - use details/summary for mobile accordion */}
           {FOOTER_COLS.map((col) => (
             <div key={col.head}>
-              <h3 className="text-sm font-bold" style={{ color: "#1a1a1a" }}>{col.head}</h3>
-              <ul className="mt-4 space-y-2.5">
-                {col.items.map((it) => (
-                  <li key={it.label}>
-                    <Link href={it.path} className="text-sm transition-colors hover:text-[#FF6B5E]" style={{ color: "#6b6760" }}>
-                      {it.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {/* Mobile: collapsible */}
+              <details className="group sm:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between border-b py-3 text-sm font-bold" style={{ borderColor: "#1c1c1c", color: "#1a1a1a" }}>
+                  {col.head}
+                  <span className="transition-transform group-open:rotate-180">▾</span>
+                </summary>
+                <ul className="space-y-2.5 pb-2 pt-3">
+                  {col.items.map((it) => (
+                    <li key={it.label}>
+                      <Link href={it.path} className="text-sm transition-colors hover:text-[#FF6B5E]" style={{ color: "#6b6760" }}>
+                        {it.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+
+              {/* Desktop: always visible */}
+              <div className="hidden sm:block">
+                <h3 className="text-sm font-bold" style={{ color: "#1a1a1a" }}>{col.head}</h3>
+                <ul className="mt-4 space-y-2.5">
+                  {col.items.map((it) => (
+                    <li key={it.label}>
+                      <Link href={it.path} className="text-sm transition-colors hover:text-[#FF6B5E]" style={{ color: "#6b6760" }}>
+                        {it.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>
-        <div className="mt-10 pt-6 text-center text-xs" style={{ borderTop: "1px solid #1c1c1c", color: "#6b6760" }}>
+
+        <div className="mt-8 pt-5 text-center text-xs" style={{ borderTop: "1px solid #1c1c1c", color: "#6b6760" }}>
           © {new Date().getFullYear()} <span className="font-semibold" style={{ color: "#1a1a1a" }}>PDF24X</span>. All rights reserved.
         </div>
       </div>

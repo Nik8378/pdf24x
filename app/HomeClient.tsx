@@ -131,7 +131,7 @@ export default function HomeClient() {
     <div style={{ background: C.cream }}>
       {/* ── Hero ── */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-8 pb-8 pt-10 sm:pt-14 md:grid-cols-2 md:gap-10">
+        <div className="grid grid-cols-1 items-center gap-6 pb-6 pt-8 sm:pt-12 md:grid-cols-2 md:gap-10">
           <div>
             <div className="mb-5 flex flex-wrap gap-2">
               {HERO_BADGES.map(b => (
@@ -171,7 +171,7 @@ export default function HomeClient() {
       </div>
 
       {/* ── Categories ── */}
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-center gap-2">
           <span className="text-xl">📂</span>
           <h2 className="text-2xl font-extrabold sm:text-3xl" style={{ color: C.ink, ...font() }}>Browse by Category</h2>
@@ -192,7 +192,7 @@ export default function HomeClient() {
       </section>
 
       {/* ── Highly Used ── */}
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xl">⭐</span>
@@ -225,7 +225,7 @@ export default function HomeClient() {
       </div>
 
       {/* ── More Tools ── */}
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-center gap-2">
           <span className="text-xl">🧰</span>
           <h2 className="text-2xl font-extrabold sm:text-3xl" style={{ color: C.ink, ...font() }}>More Tools to Explore</h2>
@@ -247,7 +247,7 @@ export default function HomeClient() {
       </section>
 
       {/* ── What Is + Newsletter ── */}
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* What Is */}
           <div className="rounded-2xl bg-white p-6 sm:p-8" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
@@ -292,8 +292,8 @@ export default function HomeClient() {
       </section>
 
       {/* ── CTA Banner ── */}
-      <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
-        <div className="relative mb-12 mt-10 overflow-hidden rounded-2xl px-6 py-10 text-center sm:px-10 sm:py-14" style={{ background: C.banner, border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
+      <section className="mx-auto max-w-7xl px-4 pb-6 sm:pb-10 lg:pb-12 sm:px-6 lg:px-8">
+        <div className="relative mb-6 mt-6 overflow-hidden rounded-2xl px-5 py-8 text-center sm:px-10 sm:py-12" style={{ background: C.banner, border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
           <div className="pointer-events-none absolute -left-6 -top-6 h-28 w-28 rotate-12 rounded-2xl bg-black/10" />
           <div className="pointer-events-none absolute -bottom-8 -right-6 h-32 w-44 -rotate-6 rounded-2xl bg-black/5" />
           <div className="relative">
