@@ -179,9 +179,16 @@ export default function WatermarkPdfClient() {
               </div>
 
               <div>
-                <label className="mb-1.5 block text-xs font-semibold" style={{ color: C.ink }}>Rotation: {rotation}°</label>
-                <input type="range" min="-90" max="90" value={rotation} onChange={(e) => setRotation(+e.target.value)} className="w-full" />
-                <div className="flex justify-between text-xs mt-1" style={{ color: C.sub }}><span>-90°</span><span>0°</span><span>90°</span></div>
+                <label className="mb-2 block text-xs font-semibold" style={{ color: C.ink }}>Rotation</label>
+                <div className="flex gap-2">
+                  {[0, 45, 90, 270, 315].map(r => (
+                    <button key={r} onClick={() => setRotation(r)}
+                      className="flex-1 rounded-lg py-2 text-xs font-semibold transition-all"
+                      style={{ border: `1px solid ${C.line}`, background: rotation === r ? "#EC4899" : C.cream, color: rotation === r ? "#fff" : C.ink }}>
+                      {r}°
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <div>

@@ -68,14 +68,31 @@ async def watermark_pdf(
             else:
                 x, y = w / 2, h / 2
 
-            page.insert_text(
-                fitz.Point(x, y),
+            # PyMuPDF insert_text only supports 0/90/180/270 rotation
+            # Use insert_textbox with a rotated rect for arbitrary angles
+            # Snap rotation to nearest supported value
+            snap = min([0, 90, 180, 270], key=lambda v: abs(v - (rotation % 360)))
+            
+            # Calculate text width estimate
+            text_width = len(text) * font_size * 0.6
+            text_height = font_size * 1.2
+            
+            # Create rect centered at position
+            x1 = max(0, x - text_width / 2)
+            y1 = max(0, y - text_height / 2)
+            x2 = min(w, x + text_width / 2)
+            y2 = min(h, y + text_height / 2)
+            
+            rect_obj = fitz.Rect(x1, y1, x2, y2)
+            
+            page.insert_textbox(
+                rect_obj,
                 text,
                 fontsize=font_size,
                 color=rgb,
-                rotate=rotation,
+                rotate=snap,
                 fill_opacity=opacity,
-                render_mode=0,
+                align=fitz.TEXT_ALIGN_CENTER,
             )
 
         doc.save(str(output_path))
