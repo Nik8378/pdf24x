@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 const FOOTER_COLS = [
   {
@@ -53,7 +55,7 @@ export function Footer() {
               <details className="group sm:hidden">
                 <summary className="flex cursor-pointer list-none items-center justify-between border-b py-3 text-sm font-bold" style={{ borderColor: "#1c1c1c", color: "#1a1a1a" }}>
                   {col.head}
-                  <span className="transition-transform group-open:rotate-180">▾</span>
+                  <ChevronDown size={15} className="transition-transform duration-200 group-open:rotate-180 shrink-0" style={{ color: "#6b6760", strokeWidth: 1.5 }} />
                 </summary>
                 <ul className="space-y-2.5 pb-2 pt-3">
                   {col.items.map((it) => (

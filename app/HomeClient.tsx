@@ -171,7 +171,7 @@ export default function HomeClient() {
       </div>
 
       {/* ── Categories ── */}
-      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6 lg:py-8 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-center gap-2">
           <span className="text-xl">📂</span>
           <h2 className="text-2xl font-extrabold sm:text-3xl" style={{ color: C.ink, ...font() }}>Browse by Category</h2>
@@ -192,7 +192,7 @@ export default function HomeClient() {
       </section>
 
       {/* ── Highly Used ── */}
-      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6 lg:py-8 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xl">⭐</span>
@@ -225,7 +225,7 @@ export default function HomeClient() {
       </div>
 
       {/* ── More Tools ── */}
-      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6 lg:py-8 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-center gap-2">
           <span className="text-xl">🧰</span>
           <h2 className="text-2xl font-extrabold sm:text-3xl" style={{ color: C.ink, ...font() }}>More Tools to Explore</h2>
@@ -247,7 +247,7 @@ export default function HomeClient() {
       </section>
 
       {/* ── What Is + Newsletter ── */}
-      <section className="mx-auto max-w-7xl px-4 py-6 sm:py-10 lg:py-12 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6 lg:py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* What Is */}
           <div className="rounded-2xl bg-white p-6 sm:p-8" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
