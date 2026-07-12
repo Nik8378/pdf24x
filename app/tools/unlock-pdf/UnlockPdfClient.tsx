@@ -118,7 +118,7 @@ export default function UnlockPdfClient() {
 
           <div>
             <label className="mb-2 block text-sm font-bold" style={{ color: C.ink }}>PDF Password</label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
+            <input type="password" autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleUnlock()}
               placeholder="Enter the current PDF password"
               className="w-full max-w-md rounded-xl px-4 py-2.5 text-sm"
