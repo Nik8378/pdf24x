@@ -48,10 +48,10 @@ const HIGHLY_USED = [
 ];
 
 const MORE_TOOLS = [
-  { icon: RotateCw, color: "#EE4B3C", tint: "#ffe7e3", title: "Rotate PDF", desc: "Rotate pages of your PDF file.", path: "/tools" },
-  { icon: Unlock, color: "#3B82F6", tint: "#E5EEFC", title: "Unlock PDF", desc: "Remove password from secured PDF.", path: "/tools" },
+  { icon: RotateCw, color: "#EE4B3C", tint: "#ffe7e3", title: "Rotate PDF", desc: "Rotate pages of your PDF file.", path: "/tools/rotate-pdf" },
+  { icon: Unlock, color: "#3B82F6", tint: "#E5EEFC", title: "Unlock PDF", desc: "Remove password from secured PDF.", path: "/tools/unlock-pdf" },
   { icon: ShieldCheck, color: "#27AE60", tint: "#E4F5EC", title: "Protect PDF", desc: "Add password protection to PDF file.", path: "/tools" },
-  { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", title: "Watermark PDF", desc: "Add text or image watermark to PDF.", path: "/tools" },
+  { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", title: "Watermark PDF", desc: "Add text or image watermark to PDF.", path: "/tools/watermark-pdf" },
   { icon: Crop, color: "#F2994A", tint: "#FCEEDD", title: "Crop PDF", desc: "Crop pages of your PDF file.", path: "/tools" },
   { icon: Grid3x3, color: "#7B61FF", tint: "#ECE7FF", title: "Organize PDF", desc: "Reorder, add or remove pages in PDF.", path: "/tools" },
   { icon: FileSpreadsheet, color: "#27AE60", tint: "#E4F5EC", title: "PDF to Excel", desc: "Extract tables from PDF to Excel.", path: "/tools/pdf-to-excel" },
