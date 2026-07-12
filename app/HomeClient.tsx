@@ -39,7 +39,7 @@ const CATEGORIES = [
 
 const HIGHLY_USED = [
   { icon: FileText, color: "#EE4B3C", tint: "#ffe7e3", title: "PDF to Word", desc: "Turn PDFs into fully editable Word documents.", path: "/tools/pdf-to-word", badge: "#1 Pick" },
-  { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image to PDF", desc: "Combine JPG, PNG or HEIC images into one PDF.", path: "/tools/excel-to-pdf", badge: "Trending" },
+  { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image to PDF", desc: "Combine JPG, PNG or HEIC images into one PDF.", path: "/tools/image-to-pdf", badge: "Trending" },
   { icon: Minimize2, color: "#3B82F6", tint: "#E5EEFC", title: "Compress PDF", desc: "Shrink file size without losing quality.", path: "/tools/compress", badge: "Most Popular" },
   { icon: GitMerge, color: "#F2994A", tint: "#FCEEDD", title: "Merge PDF", desc: "Combine multiple PDFs into a single file.", path: "/tools/merge", badge: "Editor's Pick" },
   { icon: Split, color: "#7B61FF", tint: "#ECE7FF", title: "Split PDF", desc: "Pull specific pages out into new PDFs.", path: "/tools/split", badge: "Trending" },

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const HIGHLY_USED = [
   { icon: FileText, color: "#EE4B3C", tint: "#FDE9E6", title: "PDF to Word", path: "/tools/pdf-to-word" },
-  { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image to PDF", path: "/tools/excel-to-pdf" },
+  { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image to PDF", path: "/tools/image-to-pdf" },
   { icon: Minimize2, color: "#3B82F6", tint: "#E5EEFC", title: "Compress PDF", path: "/tools/compress" },
   { icon: GitMerge, color: "#F2994A", tint: "#FCEEDD", title: "Merge PDF", path: "/tools/merge" },
   { icon: Split, color: "#7B61FF", tint: "#ECE7FF", title: "Split PDF", path: "/tools/split" },
