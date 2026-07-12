@@ -115,6 +115,7 @@ export const blogPosts: BlogPost[] = ([
     content: `
       <p>You've finished a report, scanned some documents, or received a PDF that's 50 MB when it should be 2 MB. Email won't accept it. The upload form rejects it. Sharing it is a nightmare. PDF compression is one of those problems everyone runs into, and most people don't know how easy it is to fix.</p>
 
+      <img src="/blog-image06.png" alt="How to compress a PDF without losing quality" style="width:100%;border-radius:12px;margin:16px 0;" />
       <h2>Why PDFs Get So Large</h2>
       <p>PDFs can bloat for several reasons:</p>
       <ul>
