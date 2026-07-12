@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 const pdfLinks = [
-  { name: "Image to PDF",   href: "/",                      icon: Image },
+  { name: "Image to PDF",   href: "/tools/image-to-pdf",    icon: Image },
   { name: "Compress PDF",   href: "/tools/compress",         icon: Minimize2 },
   { name: "Merge PDF",      href: "/tools/merge",            icon: Link2 },
   { name: "Split PDF",      href: "/tools/split",            icon: Scissors },
