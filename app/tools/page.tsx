@@ -76,7 +76,7 @@ export default function ToolsPage() {
 
       <div className="space-y-12">
         {TOOL_CATEGORIES.map(cat => (
-          <section key={cat.title}>
+          <section key={cat.title} id={cat.title.toLowerCase().replace(/ /g, "-")}>
             <div className="mb-6 flex items-center gap-2">
               <span className="text-xl">{cat.emoji}</span>
               <h2 className="text-xl font-extrabold sm:text-2xl" style={{ color: C.ink, ...font }}>{cat.title}</h2>

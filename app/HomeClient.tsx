@@ -27,13 +27,13 @@ const FEATURE_CHIPS = [
 ];
 
 const CATEGORIES = [
-  { icon: FileText, color: "#EE4B3C", tint: "#ffe7e3", title: "PDF Converter", desc: "Convert PDF to Word, Excel, JPG and more.", path: "/tools" },
-  { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image Converter", desc: "Convert images to and from different formats.", path: "/tools" },
-  { icon: Code2, color: "#7B61FF", tint: "#ECE7FF", title: "Developer Tools", desc: "Format, encode, decode and minify code.", path: "/tools" },
-  { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", title: "Publisher Tools", desc: "Tools for writers and content creators.", path: "/tools" },
-  { icon: Music, color: "#EC4899", tint: "#FCE4EF", title: "YouTube to MP3", desc: "Convert YouTube videos to MP3.", path: "/tools" },
-  { icon: Video, color: "#3B82F6", tint: "#E5EEFC", title: "Video Downloader", desc: "Download videos from YouTube and more.", path: "/tools" },
-  { icon: Download, color: "#E60023", tint: "#FDE6E9", title: "Pinterest Downloader", desc: "Download Pinterest videos and images.", path: "/tools" },
+  { icon: FileText, color: "#EE4B3C", tint: "#ffe7e3", title: "PDF Converter", desc: "Convert PDF to Word, Excel, JPG and more.", path: "/tools#pdf-tools" },
+  { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image Converter", desc: "Convert images to and from different formats.", path: "/tools#image-tools" },
+  { icon: Code2, color: "#7B61FF", tint: "#ECE7FF", title: "Developer Tools", desc: "Format, encode, decode and minify code.", path: "/tools#developer-tools" },
+  { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", title: "Publisher Tools", desc: "Tools for writers and content creators.", path: "/tools#publisher-tools" },
+  { icon: Music, color: "#EC4899", tint: "#FCE4EF", title: "YouTube to MP3", desc: "Convert YouTube videos to MP3.", path: "/tools#publisher-tools" },
+  { icon: Video, color: "#3B82F6", tint: "#E5EEFC", title: "Video Downloader", desc: "Download videos from YouTube and more.", path: "/tools#publisher-tools" },
+  { icon: Download, color: "#E60023", tint: "#FDE6E9", title: "Pinterest Downloader", desc: "Download Pinterest videos and images.", path: "/tools#publisher-tools" },
   { icon: LayoutGrid, color: "#F2C94C", tint: "#FCF4DA", title: "All Tools", desc: "Browse all 200+ free tools.", path: "/tools" },
 ];
 
