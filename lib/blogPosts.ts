@@ -105,7 +105,7 @@ export const blogPosts: BlogPost[] = ([
     slug: "how-to-compress-pdf-without-losing-quality",
     tag: "PDF Guides",
     tagColor: "text-amber-600",
-    image: "/image2.webp",
+    image: "/blog-image07.png",
     title: "How to Compress a PDF Without Losing Quality",
     excerpt: "Large PDFs are a constant headache for email attachments and uploads. Here's how to shrink them significantly while keeping text and images sharp.",
     read: "6 min read",
