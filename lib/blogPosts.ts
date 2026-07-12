@@ -12,7 +12,7 @@ export interface BlogPost {
   content: string;
 }
 
-export const blogPosts: BlogPost[] = [
+export const blogPosts: BlogPost[] = ([
   {
     slug: "how-to-convert-jpg-png-to-pdf-free",
     tag: "PDF Guides",
@@ -489,8 +489,163 @@ export const blogPosts: BlogPost[] = [
       <p>PDF management doesn't have to be expensive or complicated. For the tasks most students, freelancers, and small businesses actually need — converting, compressing, merging, and splitting — free browser-based tools cover everything. The time saved by having a reliable, quick workflow for these tasks adds up substantially over the course of a working year.</p>
     `,
   },
-];
-
+  {
+    slug: "how-to-protect-pdf-with-password",
+    tag: "PDF Guides",
+    tagColor: "text-amber-600",
+    image: "/image3.webp",
+    title: "How to Password Protect a PDF File (Free & Secure)",
+    excerpt: "Sending sensitive documents? Learn how to add password protection to any PDF in seconds — no software needed.",
+    read: "4 min read",
+    date: "July 1, 2026",
+    dateISO: "2026-07-01",
+    author: "PDF24x Team",
+    content: `
+      <p>Whether you're sharing a contract, a financial report, or a private document, password protecting your PDF ensures only the intended recipient can open it. Here's everything you need to know about protecting PDF files — for free.</p>
+      <h2>Why Password Protect a PDF?</h2>
+      <p>PDF files are easy to share but equally easy to forward, copy, or misuse. Adding a password means that even if the file ends up in the wrong hands, the content stays protected. Common use cases include:</p>
+      <ul>
+        <li>Sharing contracts or legal documents</li>
+        <li>Sending payslips or financial statements</li>
+        <li>Protecting personal identification documents</li>
+        <li>Securing confidential business reports</li>
+      </ul>
+      <h2>Two Types of PDF Passwords</h2>
+      <p>Most PDF protection tools offer two types of passwords:</p>
+      <p><strong>User Password (Open Password):</strong> Required to open and view the PDF. Anyone without this password sees nothing.</p>
+      <p><strong>Owner Password (Permissions Password):</strong> Controls what the recipient can do with the file — print it, copy text from it, or edit it. You can allow viewing but block printing, for example.</p>
+      <h2>How to Protect a PDF for Free</h2>
+      <p>Using PDF24x, you can protect any PDF in three steps:</p>
+      <ol>
+        <li>Go to the <a href="https://pdf24x.com/tools/protect-pdf">Protect PDF tool</a></li>
+        <li>Upload your PDF file</li>
+        <li>Set your password and choose permissions, then download the protected file</li>
+      </ol>
+      <p>The entire process happens server-side with enterprise-grade AES-256 encryption. Your file is automatically deleted after processing.</p>
+      <h2>Choosing a Strong Password</h2>
+      <p>A strong PDF password should be at least 12 characters long and include a mix of uppercase letters, lowercase letters, numbers, and symbols. Avoid using names, dates, or common words that can be guessed.</p>
+      <h2>What Permissions Should You Set?</h2>
+      <p>For most sensitive documents, the recommended settings are: allow printing (so the recipient can print a physical copy if needed), but block copying and editing. This prevents recipients from extracting text or modifying the document while still being able to read and print it.</p>
+      <h2>Important: Remember Your Password</h2>
+      <p>PDF encryption is strong — if you forget the password, there is no recovery option. Always store your password in a secure password manager.</p>
+    `,
+  },
+  {
+    slug: "pdf-vs-word-which-format-to-use",
+    tag: "PDF Guides",
+    tagColor: "text-amber-600",
+    image: "/image4.webp",
+    title: "PDF vs Word: Which File Format Should You Use?",
+    excerpt: "PDF and DOCX serve different purposes. Here's how to choose the right format for every situation.",
+    read: "5 min read",
+    date: "July 3, 2026",
+    dateISO: "2026-07-03",
+    author: "PDF24x Team",
+    content: `
+      <p>PDF and Microsoft Word (DOCX) are the two most common document formats in the world. But they serve very different purposes — and choosing the wrong one can cause real problems. Here's a practical guide to when to use each.</p>
+      <h2>What is a PDF?</h2>
+      <p>PDF stands for Portable Document Format. It was created by Adobe in 1993 with one goal: make documents look identical on every device, regardless of operating system, screen size, or installed fonts. A PDF is essentially a snapshot of a document — what you see is exactly what anyone else will see.</p>
+      <h2>What is a Word Document (DOCX)?</h2>
+      <p>DOCX is Microsoft Word's native format. Unlike PDFs, Word documents are designed to be edited. The formatting can reflow based on the reader's software, fonts, and settings. This makes them flexible for collaboration but unpredictable for final delivery.</p>
+      <h2>Use PDF When:</h2>
+      <ul>
+        <li><strong>Sharing final documents</strong> — resumes, invoices, contracts, reports</li>
+        <li><strong>Printing</strong> — PDFs print exactly as designed</li>
+        <li><strong>Archiving</strong> — PDFs are a standard for long-term document storage</li>
+        <li><strong>Security matters</strong> — PDFs support password protection and permissions</li>
+        <li><strong>Cross-platform sharing</strong> — PDFs look the same on Windows, Mac, iOS, and Android</li>
+      </ul>
+      <h2>Use Word (DOCX) When:</h2>
+      <ul>
+        <li><strong>Collaborating</strong> — colleagues need to add comments or track changes</li>
+        <li><strong>Still editing</strong> — the document is a work in progress</li>
+        <li><strong>Template-based work</strong> — you're filling in a form or using a template</li>
+        <li><strong>Mail merges</strong> — generating personalised documents from a data source</li>
+      </ul>
+      <h2>Converting Between Formats</h2>
+      <p>Sometimes you receive a PDF but need to edit it, or you have a Word document that needs to be sent as a PDF. Both conversions are straightforward:</p>
+      <p><strong>PDF to Word:</strong> Use the <a href="https://pdf24x.com/tools/pdf-to-word">PDF to Word converter</a> to turn any PDF into an editable DOCX file. Results are best on text-based PDFs — scanned documents may need manual cleanup.</p>
+      <p><strong>Word to PDF:</strong> In Microsoft Word, go to File → Save As → PDF. Alternatively, use an online converter for quick one-off conversions.</p>
+      <h2>The Bottom Line</h2>
+      <p>Use Word for documents you're still working on. Switch to PDF the moment a document is ready to be shared, signed, printed, or archived. When in doubt, PDF is the safer choice for anything leaving your hands.</p>
+    `,
+  },
+  {
+    slug: "how-to-reduce-pdf-file-size-email",
+    tag: "Productivity",
+    tagColor: "text-green-600",
+    image: "/image5.webp",
+    title: "How to Reduce PDF File Size for Email Attachments",
+    excerpt: "Email attachment limits causing problems? Here are practical ways to shrink your PDF without losing quality.",
+    read: "4 min read",
+    date: "July 5, 2026",
+    dateISO: "2026-07-05",
+    author: "PDF24x Team",
+    content: `
+      <p>Most email providers limit attachments to between 10MB and 25MB. If you've ever tried to email a PDF scan, a brochure, or a presentation and hit that limit, you know how frustrating it can be. Here are the most effective ways to reduce PDF file size.</p>
+      <h2>Why Are Some PDFs So Large?</h2>
+      <p>PDF file size depends on what's inside. The main culprits are:</p>
+      <ul>
+        <li><strong>High-resolution images</strong> — photos embedded at print quality (300 DPI) are much larger than needed for screen viewing</li>
+        <li><strong>Scanned pages</strong> — scanning creates large image files for each page</li>
+        <li><strong>Embedded fonts</strong> — some PDFs embed complete font files</li>
+        <li><strong>Unnecessary metadata</strong> — comments, revision history, and hidden layers add bloat</li>
+      </ul>
+      <h2>Method 1: Use a PDF Compressor</h2>
+      <p>The fastest approach is an online PDF compressor. <a href="https://pdf24x.com/tools/compress">PDF24x's compression tool</a> reduces file size by optimising images and removing unnecessary data. Upload your PDF, choose a compression level, and download the smaller version.</p>
+      <p>For most documents, Medium compression reduces file size by 40-60% with no visible quality loss. For image-heavy files, Strong compression can achieve 70-80% reduction.</p>
+      <h2>Method 2: Reduce Image Resolution Before Creating the PDF</h2>
+      <p>If you're creating a PDF from images, resize them to 150 DPI before converting. Screen resolution is 72-96 DPI, so 150 DPI is more than enough for digital documents and significantly smaller than 300 DPI print quality.</p>
+      <h2>Method 3: Split the PDF</h2>
+      <p>If the document is long and you only need to send certain pages, use a <a href="https://pdf24x.com/tools/split">PDF splitter</a> to extract just the relevant pages. A 50-page report becomes much smaller when you only send the 5 pages the recipient actually needs.</p>
+      <h2>Method 4: Use a Cloud Link Instead</h2>
+      <p>For very large files, upload the PDF to Google Drive, Dropbox, or OneDrive and share a link instead of attaching the file. This bypasses email size limits entirely and the recipient can preview it in their browser without downloading.</p>
+      <h2>What Compression Level Should You Choose?</h2>
+      <ul>
+        <li><strong>Low compression</strong> — minimal quality loss, 20-30% size reduction. Good for important documents where quality matters.</li>
+        <li><strong>Medium compression</strong> — balanced quality and size. Best for most emails.</li>
+        <li><strong>High compression</strong> — significant size reduction, some quality loss. Fine for draft documents or internal use.</li>
+      </ul>
+    `,
+  },
+  {
+    slug: "free-tools-for-working-from-home",
+    tag: "Productivity",
+    tagColor: "text-green-600",
+    image: "/image6.webp",
+    title: "10 Free Online Tools Every Remote Worker Needs in 2026",
+    excerpt: "Working from home is easier with the right tools. Here are 10 free browser-based utilities that will save you time every day.",
+    read: "6 min read",
+    date: "July 8, 2026",
+    dateISO: "2026-07-08",
+    author: "PDF24x Team",
+    content: `
+      <p>Remote work has made digital tools more important than ever. Whether you're handling documents, collaborating with colleagues, or managing files, having the right browser-based tools can save hours every week. Here are 10 free tools every remote worker should bookmark.</p>
+      <h2>1. PDF Compressor</h2>
+      <p>Large PDFs slow down emails and eat storage. A good PDF compressor reduces file sizes by up to 80% without visible quality loss. <a href="https://pdf24x.com/tools/compress">PDF24x Compress</a> handles this in seconds, right in your browser.</p>
+      <h2>2. PDF Merger</h2>
+      <p>Stop sending multiple attachments. <a href="https://pdf24x.com/tools/merge">Merge PDFs</a> into a single file before sending — clients and colleagues will thank you. Drag to reorder pages before merging.</p>
+      <h2>3. Image to PDF Converter</h2>
+      <p>Photographed a receipt, whiteboard, or handwritten note? Convert it to PDF instantly with <a href="https://pdf24x.com/tools/image-to-pdf">Image to PDF</a>. Works with JPG, PNG, and WebP.</p>
+      <h2>4. JSON Formatter</h2>
+      <p>Developers and analysts working with APIs will use this constantly. Paste messy JSON and get back clean, indented, readable output instantly.</p>
+      <h2>5. Base64 Encoder/Decoder</h2>
+      <p>Essential for web developers dealing with encoded data, authentication tokens, or embedded images in CSS and HTML.</p>
+      <h2>6. PDF Splitter</h2>
+      <p>Extract specific pages from a large PDF without downloading any software. Perfect for pulling out a single contract from a batch scan or extracting relevant sections from a report.</p>
+      <h2>7. URL Encoder</h2>
+      <p>Need to pass a URL as a parameter? URL encoding handles special characters properly. This tool encodes and decodes URLs instantly.</p>
+      <h2>8. PDF to JPG Converter</h2>
+      <p>Need to share a PDF as an image — for a presentation slide, a social post, or a thumbnail? <a href="https://pdf24x.com/tools/pdf-to-jpg">Convert PDF pages to JPG</a> at high quality with one click.</p>
+      <h2>9. JWT Decoder</h2>
+      <p>If you work with APIs or authentication systems, being able to quickly inspect a JWT token without copy-pasting into multiple tools is invaluable.</p>
+      <h2>10. Regex Tester</h2>
+      <p>Writing a validation rule or data extraction pattern? Test your regular expressions in real time with highlighted matches. Saves enormous time compared to running code just to test a pattern.</p>
+      <h2>Why Browser-Based Tools?</h2>
+      <p>All the tools above run in your browser with no installation required. This means they work on any device — your work laptop, personal computer, or even a tablet. Your files stay on your device and are never uploaded to a third-party server, which matters when working with confidential business documents.</p>
+    `,
+  },
+] as BlogPost[]);
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((p) => p.slug === slug);
 }
