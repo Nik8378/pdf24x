@@ -1,7 +1,8 @@
 """
-Watermark PDF — adds text watermark using PyMuPDF with proper transparency.
+Watermark PDF — draws text watermark directly on PDF canvas using PyMuPDF.
 """
 import fitz
+import math
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException, BackgroundTasks
 from fastapi.responses import FileResponse
 from core.file_handling import save_upload_to_temp, new_temp_output_path, cleanup_paths
@@ -38,7 +39,6 @@ async def watermark_pdf(
         rgb = hex_to_rgb(color)
         doc = fitz.open(str(input_path))
 
-        # Page selection
         if pages == "all":
             page_indices = list(range(len(doc)))
         elif pages == "odd":
@@ -52,47 +52,50 @@ async def watermark_pdf(
             page = doc[i]
             w, h = page.rect.width, page.rect.height
 
-            # Create a new overlay page for the watermark
-            # Use insert_textbox with a full-page rect for center
-            # or positioned rect for corners
-            
+            # Get text width
+            tw = fitz.get_text_length(text.strip(), fontname="helv", fontsize=font_size)
+
+            # Position mapping
             if position == "center":
-                # Full page rect, centered
-                rect = fitz.Rect(0, 0, w, h)
-                align = fitz.TEXT_ALIGN_CENTER
-                # Adjust y for vertical centering
-                rect = fitz.Rect(0, (h - font_size * 1.5) / 2, w, (h + font_size * 1.5) / 2)
+                cx, cy = w / 2, h / 2
             elif position == "top-left":
-                rect = fitz.Rect(20, h - font_size * 2, w * 0.6, h - 10)
-                align = fitz.TEXT_ALIGN_LEFT
+                cx, cy = w * 0.2, h * 0.85
             elif position == "top-right":
-                rect = fitz.Rect(w * 0.4, h - font_size * 2, w - 20, h - 10)
-                align = fitz.TEXT_ALIGN_RIGHT
+                cx, cy = w * 0.8, h * 0.85
             elif position == "bottom-left":
-                rect = fitz.Rect(20, 10, w * 0.6, font_size * 2)
-                align = fitz.TEXT_ALIGN_LEFT
+                cx, cy = w * 0.2, h * 0.15
             elif position == "bottom-right":
-                rect = fitz.Rect(w * 0.4, 10, w - 20, font_size * 2)
-                align = fitz.TEXT_ALIGN_RIGHT
+                cx, cy = w * 0.8, h * 0.15
             else:
-                rect = fitz.Rect(0, (h - font_size * 1.5) / 2, w, (h + font_size * 1.5) / 2)
-                align = fitz.TEXT_ALIGN_CENTER
+                cx, cy = w / 2, h / 2
 
-            # Valid rotations for insert_textbox: 0, 90, 180, 270
-            valid_rotations = {0: 0, 45: 0, 90: 90, 180: 180, 270: 270, 315: 270, -45: 0, -90: 270}
-            safe_rotation = valid_rotations.get(rotation, 0)
-
-            page.insert_textbox(
-                rect,
+            # Draw text using shape for better control
+            angle_rad = math.radians(rotation)
+            
+            # Insert text at position
+            page.insert_text(
+                fitz.Point(cx - tw / 2, cy + font_size / 3),
                 text.strip(),
-                fontsize=font_size,
                 fontname="helv",
+                fontsize=font_size,
                 color=rgb,
-                rotate=safe_rotation,
-                align=align if safe_rotation == 0 else fitz.TEXT_ALIGN_CENTER,
-                fill_opacity=opacity,
-                overlay=True,
+                rotate=rotation,
+                render_mode=3,  # invisible (stroke only) - try 0 for fill
             )
+            
+            # Actually use a Shape to draw with proper opacity
+            shape = page.new_shape()
+            shape.insert_text(
+                fitz.Point(cx - tw / 2, cy + font_size / 3),
+                text.strip(),
+                fontname="helv",
+                fontsize=font_size,
+                color=rgb,
+                rotate=rotation,
+                render_mode=0,
+            )
+            shape.finish(fill=rgb, color=rgb, fill_opacity=opacity, stroke_opacity=opacity)
+            shape.commit()
 
         doc.save(str(output_path), garbage=4, deflate=True)
         doc.close()
