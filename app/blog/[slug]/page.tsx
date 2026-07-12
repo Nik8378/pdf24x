@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Clock, ArrowLeft, ArrowRight, Share2 } from "lucide-react";
 import { blogPosts, getPostBySlug } from "@/lib/blogPosts";
+import { AdUnit } from "@/components/ads/AdUnit";
 
 interface Props { params: Promise<{ slug: string }>; }
 
@@ -137,7 +138,13 @@ export default async function BlogPostPage({ params }: Props) {
 
             {/* Article body */}
             <article className="flex-1 min-w-0 max-w-3xl">
+              <div className="mb-6">
+                <AdUnit slot="3405712324" format="horizontal" className="min-h-[90px]" />
+              </div>
               <div className="prose-content" dangerouslySetInnerHTML={{ __html: post.content }} />
+              <div className="mt-6">
+                <AdUnit slot="3405712324" format="horizontal" className="min-h-[90px]" />
+              </div>
 
               {/* Share */}
               <div className="mt-8 pt-6 border-t border-[#e5e3de] flex items-center justify-between flex-wrap gap-3">

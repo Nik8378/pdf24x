@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Clock, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/lib/blogPosts";
+import { AdUnit } from "@/components/ads/AdUnit";
 
 export const metadata: Metadata = {
   title: "PDF Tools Blog – Guides, Tips & Free Tool Reviews",
@@ -114,6 +115,9 @@ export default function BlogPage() {
               </div>
             </Link>
           ))}
+        </div>
+        <div className="mt-8">
+          <AdUnit slot="3405712324" format="auto" className="min-h-[250px]" />
         </div>
       </main>
     </div>
