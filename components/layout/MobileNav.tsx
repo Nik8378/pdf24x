@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { Image, Minimize2, Link2, Scissors, ImagePlay } from "lucide-react";
 
 const links = [
-  { name: "Img→PDF",  href: "/",                    icon: Image },
+  { name: "Img→PDF",  href: "/tools/image-to-pdf",  icon: Image },
   { name: "→WebP",    href: "/tools/image-to-webp",  icon: ImagePlay },
   { name: "Compress", href: "/tools/compress",        icon: Minimize2 },
   { name: "Merge",    href: "/tools/merge",           icon: Link2 },
