@@ -1,5 +1,5 @@
 """
-Watermark PDF — draws text watermark directly on PDF canvas using PyMuPDF.
+Watermark PDF — draws text watermark using PyMuPDF shapes with opacity.
 """
 import fitz
 import math
@@ -11,10 +11,7 @@ router = APIRouter()
 
 def hex_to_rgb(hex_color: str):
     hex_color = hex_color.lstrip("#")
-    r = int(hex_color[0:2], 16) / 255.0
-    g = int(hex_color[2:4], 16) / 255.0
-    b = int(hex_color[4:6], 16) / 255.0
-    return (r, g, b)
+    return tuple(int(hex_color[i:i+2], 16) / 255.0 for i in (0, 2, 4))
 
 @router.post("/watermark")
 async def watermark_pdf(
@@ -24,7 +21,7 @@ async def watermark_pdf(
     font_size: int = Form(48),
     opacity: float = Form(0.3),
     color: str = Form("#FF0000"),
-    rotation: int = Form(0),
+    rotation: int = Form(45),
     position: str = Form("center"),
     pages: str = Form("all"),
 ):
@@ -52,49 +49,50 @@ async def watermark_pdf(
             page = doc[i]
             w, h = page.rect.width, page.rect.height
 
-            # Get text width
+            # Get text metrics
             tw = fitz.get_text_length(text.strip(), fontname="helv", fontsize=font_size)
 
-            # Position mapping
+            # Position
             if position == "center":
                 cx, cy = w / 2, h / 2
             elif position == "top-left":
-                cx, cy = w * 0.2, h * 0.85
+                cx, cy = w * 0.2, h * 0.82
             elif position == "top-right":
-                cx, cy = w * 0.8, h * 0.85
+                cx, cy = w * 0.75, h * 0.82
             elif position == "bottom-left":
-                cx, cy = w * 0.2, h * 0.15
+                cx, cy = w * 0.2, h * 0.18
             elif position == "bottom-right":
-                cx, cy = w * 0.8, h * 0.15
+                cx, cy = w * 0.75, h * 0.18
             else:
                 cx, cy = w / 2, h / 2
 
-            # Draw text using shape for better control
-            angle_rad = math.radians(rotation)
-            
-            # Insert text at position
-            page.insert_text(
-                fitz.Point(cx - tw / 2, cy + font_size / 3),
-                text.strip(),
-                fontname="helv",
-                fontsize=font_size,
-                color=rgb,
-                rotate=rotation,
-                render_mode=3,  # invisible (stroke only) - try 0 for fill
-            )
-            
-            # Actually use a Shape to draw with proper opacity
+            # Use morphing matrix for arbitrary rotation
+            angle = math.radians(rotation)
+            cos_a = math.cos(angle)
+            sin_a = math.sin(angle)
+
+            # Starting point offset by text width/2 to center it
+            ox = cx - (tw / 2) * cos_a + (font_size / 2) * sin_a
+            oy = cy + (tw / 2) * sin_a + (font_size / 2) * cos_a
+
+            morph = (fitz.Point(cx, cy), fitz.Matrix(cos_a, -sin_a, sin_a, cos_a, 0, 0))
+
             shape = page.new_shape()
             shape.insert_text(
-                fitz.Point(cx - tw / 2, cy + font_size / 3),
+                fitz.Point(cx - tw / 2, cy + font_size / 4),
                 text.strip(),
                 fontname="helv",
                 fontsize=font_size,
                 color=rgb,
-                rotate=rotation,
+                morph=morph,
                 render_mode=0,
             )
-            shape.finish(fill=rgb, color=rgb, fill_opacity=opacity, stroke_opacity=opacity)
+            shape.finish(
+                fill=rgb,
+                color=rgb,
+                fill_opacity=opacity,
+                stroke_opacity=opacity,
+            )
             shape.commit()
 
         doc.save(str(output_path), garbage=4, deflate=True)
