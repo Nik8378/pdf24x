@@ -1,23 +1,137 @@
 "use client";
-import Link from "next/link";
-import { Clock } from "lucide-react";
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff" };
+import { useState, useCallback } from "react";
+import { Unlock, Upload, Download, RefreshCcw, X, Loader2, Info } from "lucide-react";
+
+const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
 const shadow = "3px 3px 0 0 #1c1c1c";
-export default function Client() {
+const API = process.env.NEXT_PUBLIC_API_URL || "";
+
+function formatBytes(b: number) {
+  if (b < 1024) return b + " B";
+  if (b < 1024 * 1024) return (b / 1024).toFixed(1) + " KB";
+  return (b / (1024 * 1024)).toFixed(2) + " MB";
+}
+
+export default function UnlockPdfClient() {
+  const [file, setFile] = useState<File | null>(null);
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [resultUrl, setResultUrl] = useState<string | null>(null);
+  const [error, setError] = useState("");
+  const [dragging, setDragging] = useState(false);
+
+  const handleFile = useCallback((f: File) => {
+    if (f.type !== "application/pdf") return;
+    setFile(f); setResultUrl(null); setError("");
+  }, []);
+
+  const reset = () => { setFile(null); setResultUrl(null); setError(""); setPassword(""); };
+
+  const handleUnlock = async () => {
+    if (!file) return;
+    setLoading(true); setError("");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("password", password);
+      const res = await fetch(`${API}/api/pdf/unlock`, { method: "POST", body: formData });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.detail || "Failed to unlock PDF.");
+      }
+      const blob = await res.blob();
+      setResultUrl(URL.createObjectURL(blob));
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
-      <span className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl" style={{ background: "#E5EEFC", border: `1px solid ${C.line}`, boxShadow: shadow }}>
-        <Clock size={28} style={{ color: "#3B82F6" }} />
-      </span>
-      <h1 className="text-3xl font-extrabold sm:text-4xl" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Unlock PDF</h1>
-      <p className="mx-auto mt-4 max-w-md text-sm sm:text-base" style={{ color: C.sub }}>Removing PDF password protection requires server-side processing to safely decrypt the file. This tool is coming soon.</p>
-      <div className="mx-auto mt-8 max-w-sm rounded-2xl bg-white p-8" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
-        <p className="text-sm font-bold" style={{ color: C.ink }}>Coming Soon</p>
-        <p className="mt-2 text-xs" style={{ color: C.sub }}>This feature requires server-side processing and will be available soon.</p>
-        <Link href="/tools" className="mt-6 inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-bold text-white" style={{ background: C.brand, border: `1px solid ${C.line}`, boxShadow: shadow }}>
-          Explore All Tools
-        </Link>
+    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+      <div className="mb-8 flex items-start gap-4">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl" style={{ background: "#E5EEFC", border: `1px solid ${C.line}`, boxShadow: shadow }}>
+          <Unlock size={26} style={{ color: "#3B82F6" }} />
+        </span>
+        <div>
+          <h1 className="text-2xl font-extrabold sm:text-3xl" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Unlock PDF</h1>
+          <p className="mt-1 text-sm sm:text-base" style={{ color: C.sub }}>Remove password protection from your PDF file.</p>
+        </div>
       </div>
+
+      <div className="mb-5 flex items-start gap-3 rounded-xl p-4 text-sm" style={{ background: C.cream, border: `1px solid ${C.line}` }}>
+        <Info size={16} className="mt-0.5 shrink-0" style={{ color: C.brand }} />
+        <p style={{ color: C.sub }}>You must know the current password to unlock the PDF. Once unlocked, the file can be opened without a password.</p>
+      </div>
+
+      {!file ? (
+        <div onDragOver={(e) => { e.preventDefault(); setDragging(true); }} onDragLeave={() => setDragging(false)}
+          onDrop={(e) => { e.preventDefault(); setDragging(false); const f = e.dataTransfer.files[0]; if (f) handleFile(f); }}
+          onClick={() => document.getElementById("unlock-input")?.click()}
+          className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed p-12 text-center transition-all"
+          style={{ borderColor: dragging ? C.brand : C.line, background: dragging ? C.redsoft : C.surface }}>
+          <input id="unlock-input" type="file" accept="application/pdf" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
+          <span className="flex h-14 w-14 items-center justify-center rounded-2xl" style={{ background: "#E5EEFC" }}>
+            <Upload size={28} style={{ color: "#3B82F6" }} />
+          </span>
+          <p className="mt-4 text-base font-semibold" style={{ color: C.ink }}>Drop your PDF file here</p>
+          <p className="mt-1 text-sm" style={{ color: C.sub }}>or click to browse</p>
+        </div>
+      ) : (
+        <div className="space-y-5">
+          <div className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ border: `1px solid ${C.line}`, background: C.surface, boxShadow: shadow }}>
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg" style={{ background: "#E5EEFC" }}>
+              <Unlock size={16} style={{ color: "#3B82F6" }} />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-semibold" style={{ color: C.ink }}>{file.name}</p>
+              <p className="text-xs" style={{ color: C.sub }}>{formatBytes(file.size)}</p>
+            </div>
+            <button onClick={reset} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style={{ border: `1px solid ${C.line}`, background: C.cream }}>
+              <X size={15} style={{ color: C.sub }} />
+            </button>
+          </div>
+
+          <div>
+            <label className="mb-2 block text-sm font-bold" style={{ color: C.ink }}>PDF Password</label>
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleUnlock()}
+              placeholder="Enter the PDF password"
+              className="w-full max-w-md rounded-xl px-4 py-2.5 text-sm"
+              style={{ border: `1px solid ${C.line}`, background: C.surface, color: C.ink, outline: "none" }} />
+          </div>
+
+          {error && <p className="rounded-xl px-4 py-3 text-sm" style={{ border: `1px solid ${C.line}`, background: C.redsoft, color: C.ink }}>{error}</p>}
+
+          {resultUrl ? (
+            <div className="flex flex-col items-center gap-4 rounded-2xl p-8 text-center" style={{ border: `1px solid ${C.line}`, background: C.surface, boxShadow: shadow }}>
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl" style={{ background: "#E4F5EC" }}>
+                <Unlock size={26} style={{ color: "#27AE60" }} />
+              </span>
+              <p className="text-base font-bold" style={{ color: C.ink }}>PDF unlocked successfully!</p>
+              <p className="text-sm" style={{ color: C.sub }}>Your PDF can now be opened without a password.</p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                <a href={resultUrl} download="unlocked.pdf"
+                  className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold text-white"
+                  style={{ background: "#3B82F6", border: `1px solid ${C.line}`, boxShadow: shadow }}>
+                  <Download size={16} />Download Unlocked PDF
+                </a>
+                <button onClick={reset} className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold"
+                  style={{ border: `1px solid ${C.line}`, background: C.cream, color: C.ink, boxShadow: shadow }}>
+                  <RefreshCcw size={15} />Unlock another
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button onClick={handleUnlock} disabled={loading}
+              className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-bold text-white disabled:opacity-50"
+              style={{ background: "#3B82F6", border: `1px solid ${C.line}`, boxShadow: shadow }}>
+              {loading ? <><Loader2 size={16} className="animate-spin" />Unlocking…</> : <><Unlock size={16} />Unlock PDF</>}
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }
