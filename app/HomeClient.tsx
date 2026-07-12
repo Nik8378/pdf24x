@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { AdUnit } from "@/components/ads/AdUnit";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -164,6 +165,11 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* ── Ad slot ── */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <AdUnit slot="YOUR_AD_SLOT_1" format="horizontal" className="min-h-[90px] bg-[#f4f1ea]" />
+      </div>
+
       {/* ── Categories ── */}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-6 flex items-center gap-2">
@@ -212,6 +218,11 @@ export default function HomeClient() {
           ))}
         </div>
       </section>
+
+      {/* ── Ad slot ── */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <AdUnit slot="YOUR_AD_SLOT_2" format="horizontal" className="min-h-[90px] bg-[#f4f1ea]" />
+      </div>
 
       {/* ── More Tools ── */}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">

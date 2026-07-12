@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdUnit } from "@/components/ads/AdUnit";
 import {
   FileText, Image as ImageIcon, Minimize2, GitMerge, Split, FileImage,
   RotateCw, Unlock, ShieldCheck, Droplets, Crop, Grid3x3, FileSpreadsheet,
@@ -74,6 +75,9 @@ export default function ToolsPage() {
         <p className="mt-3 text-base" style={{ color: C.sub }}>200+ free tools for PDF, images, and developers. No sign up, no installs.</p>
       </div>
 
+      <div className="mb-6">
+        <AdUnit slot="YOUR_AD_SLOT_3" format="horizontal" className="min-h-[90px]" />
+      </div>
       <div className="space-y-12">
         {TOOL_CATEGORIES.map(cat => (
           <section key={cat.title} id={cat.title.toLowerCase().replace(/ /g, "-")}>
