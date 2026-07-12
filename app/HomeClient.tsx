@@ -188,7 +188,7 @@ export default function HomeClient() {
 
       {/* ── Highly Used ── */}
       <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6 lg:py-8 sm:px-6 lg:px-8">
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-6 flex items-end justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xl">⭐</span>
             <h2 className="text-2xl font-extrabold sm:text-3xl" style={{ color: C.ink, ...font() }}>Highly Used Tools</h2>
