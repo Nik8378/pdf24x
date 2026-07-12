@@ -7,6 +7,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base,                                    lastModified: now, changeFrequency: "daily",  priority: 1.0 },
     { url: `${base}/tools`,                         lastModified: now, changeFrequency: "weekly", priority: 0.95 },
 
+    // New tools
+    { url: `${base}/tools/pdf-to-word`,             lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/image-to-pdf`,            lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/rotate-pdf`,              lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/unlock-pdf`,              lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/protect-pdf`,             lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/watermark-pdf`,           lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     // PDF Tools
     { url: `${base}/tools/compress`,                lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/tools/merge`,                   lastModified: now, changeFrequency: "weekly", priority: 0.9 },
@@ -44,5 +51,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog/best-free-pdf-tools-2025`,                               lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/blog/why-your-files-should-never-leave-your-browser`,         lastModified: now, changeFrequency: "monthly", priority: 0.65 },
     { url: `${base}/blog/pdf-tools-for-students-freelancers-small-business`,      lastModified: now, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${base}/blog/how-to-protect-pdf-with-password`,                          lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/blog/pdf-vs-word-which-format-to-use`,                           lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/blog/how-to-reduce-pdf-file-size-email`,                         lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/blog/free-tools-for-working-from-home`,                          lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ];
 }
