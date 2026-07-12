@@ -69,8 +69,8 @@ const TOOL_CATEGORIES = [
 
 export default function ToolsPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8" style={{ background: C.cream }}>
-      <div className="mb-10 text-center">
+    <div className="mx-auto max-w-7xl px-4 py-4 sm:py-6 sm:px-6 lg:px-8" style={{ background: C.cream }}>
+      <div className="mb-4 text-center">
         <h1 className="text-3xl font-extrabold sm:text-4xl" style={{ color: C.ink, ...font }}>All Tools</h1>
         <p className="mt-3 text-base" style={{ color: C.sub }}>200+ free tools for PDF, images, and developers. No sign up, no installs.</p>
       </div>
@@ -78,10 +78,10 @@ export default function ToolsPage() {
       <div className="mb-6">
         <AdUnit slot="3405712324" format="horizontal" className="min-h-[90px]" />
       </div>
-      <div className="space-y-12">
+      <div className="space-y-8">
         {TOOL_CATEGORIES.map(cat => (
           <section key={cat.title} id={cat.title.toLowerCase().replace(/ /g, "-")}>
-            <div className="mb-6 flex items-center gap-2">
+            <div className="mb-4 flex items-center gap-2">
               <span className="text-xl">{cat.emoji}</span>
               <h2 className="text-xl font-extrabold sm:text-2xl" style={{ color: C.ink, ...font }}>{cat.title}</h2>
             </div>
