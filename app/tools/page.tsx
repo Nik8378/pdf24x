@@ -22,7 +22,7 @@ const TOOL_CATEGORIES = [
     title: "PDF Tools",
     emoji: "📄",
     tools: [
-      { icon: ImageIcon, color: "#EE4B3C", tint: "#ffe7e3", name: "Image to PDF", desc: "Convert JPG, PNG, WEBP images to PDF", href: "/tools/excel-to-pdf" },
+      { icon: ImageIcon, color: "#EE4B3C", tint: "#ffe7e3", name: "Image to PDF", desc: "Convert JPG, PNG, WEBP images to PDF", href: "/tools/image-to-pdf" },
       { icon: Minimize2, color: "#3B82F6", tint: "#E5EEFC", name: "Compress PDF", desc: "Reduce PDF file size significantly", href: "/tools/compress" },
       { icon: GitMerge, color: "#F2994A", tint: "#FCEEDD", name: "Merge PDF", desc: "Combine multiple PDFs into one file", href: "/tools/merge" },
       { icon: Split, color: "#7B61FF", tint: "#ECE7FF", name: "Split PDF", desc: "Extract or split PDF pages easily", href: "/tools/split" },
