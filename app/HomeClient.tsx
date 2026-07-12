@@ -167,7 +167,7 @@ export default function HomeClient() {
 
       {/* ── Ad slot ── */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-        <AdUnit slot="YOUR_AD_SLOT_1" format="horizontal" className="min-h-[90px] bg-[#f4f1ea]" />
+        <AdUnit slot="3405712324" format="horizontal" className="min-h-[90px] bg-[#f4f1ea]" />
       </div>
 
       {/* ── Categories ── */}
@@ -221,7 +221,7 @@ export default function HomeClient() {
 
       {/* ── Ad slot ── */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-        <AdUnit slot="YOUR_AD_SLOT_2" format="horizontal" className="min-h-[90px] bg-[#f4f1ea]" />
+        <AdUnit slot="3405712324" format="horizontal" className="min-h-[90px] bg-[#f4f1ea]" />
       </div>
 
       {/* ── More Tools ── */}

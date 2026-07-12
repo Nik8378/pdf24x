@@ -76,7 +76,7 @@ export default function ToolsPage() {
       </div>
 
       <div className="mb-6">
-        <AdUnit slot="YOUR_AD_SLOT_3" format="horizontal" className="min-h-[90px]" />
+        <AdUnit slot="3405712324" format="horizontal" className="min-h-[90px]" />
       </div>
       <div className="space-y-12">
         {TOOL_CATEGORIES.map(cat => (
