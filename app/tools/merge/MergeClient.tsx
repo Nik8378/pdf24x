@@ -1,4 +1,5 @@
 "use client";
+import ToolPageSections from "@/components/tool/ToolPageSections";
 
 import { useState, useRef, useCallback } from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
@@ -236,6 +237,16 @@ export default function MergeClient() {
             <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Is there a file size limit?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>Individual files can be up to 100MB each.</p></div>
           </div>
         </div>
+      </div>
+
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-4">
+        <ToolPageSections
+          breadcrumb={[]}
+          relatedTools={["split", "compress", "rotate-pdf"]}
+          relatedBlogs={[
+            { title: "How to Merge and Split PDFs for Free", href: "/blog/how-to-merge-split-pdf-free" },
+          ]}
+        />
       </div>
       </main>
       </div>

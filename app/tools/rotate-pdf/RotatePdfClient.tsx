@@ -1,5 +1,6 @@
 "use client";
 import { useState, useCallback } from "react";
+import ToolPageSections, { Breadcrumb } from "@/components/tool/ToolPageSections";
 import { RotateCw, Upload, Download, RefreshCcw, X, Loader2 } from "lucide-react";
 
 const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
@@ -56,6 +57,7 @@ export default function RotatePdfClient() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "PDF Tools", href: "/tools" }, { label: "Rotate PDF" }]} />
       <div className="mb-8 flex items-start gap-4">
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl" style={{ background: C.redsoft, border: `1px solid ${C.line}`, boxShadow: shadow }}>
           <RotateCw size={26} style={{ color: C.brand }} />
@@ -151,6 +153,31 @@ export default function RotatePdfClient() {
           )}
         </div>
       )}
+      <ToolPageSections
+        breadcrumb={[]}
+        processingMode="browser"
+        howToSteps={[
+          { title: "Upload your PDF", desc: "Drop your PDF file or click to browse." },
+          { title: "Choose rotation angle", desc: "Select 90°, 180°, or 270° rotation." },
+          { title: "Select pages to rotate", desc: "Rotate all pages, only odd, or only even pages." },
+          { title: "Download rotated PDF", desc: "Click Rotate PDF and download the result instantly." },
+        ]}
+        useCases={[
+          "Fix upside-down scanned documents",
+          "Correct orientation of photographed pages",
+          "Rotate specific pages in a report",
+          "Prepare documents for printing",
+          "Fix sideways pages before sharing",
+        ]}
+        relatedTools={["merge", "split", "watermark-pdf"]}
+        faqs={[
+          { q: "Can I rotate only specific pages?", a: "Yes. You can rotate all pages, only odd-numbered pages, or only even-numbered pages. Select the option before rotating." },
+          { q: "What rotation angles are supported?", a: "You can rotate pages by 90°, 180°, or 270° clockwise." },
+          { q: "Does rotating a PDF reduce quality?", a: "No. Rotating a PDF only changes the page orientation metadata. No image re-encoding or quality loss occurs." },
+          { q: "Is my file uploaded to a server?", a: "No. Rotate PDF processes your file entirely in your browser. Your file is never sent to any server." },
+          { q: "Do I need to create an account?", a: "No account or sign-up is required. The tool is free to use." },
+        ]}
+      />
     </div>
   );
 }

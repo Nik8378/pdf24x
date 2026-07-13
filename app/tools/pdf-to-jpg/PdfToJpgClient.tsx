@@ -1,4 +1,5 @@
 "use client";
+import ToolPageSections from "@/components/tool/ToolPageSections";
 import { useState, useRef, useCallback } from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Layers, UploadCloud, Trash2, FileText, Info, Download } from "lucide-react";
@@ -314,7 +315,17 @@ export default function PdfToJpgClient() {
               </div>
             </div>
           </div>
-        </main>
+  
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-4">
+        <ToolPageSections
+          breadcrumb={[]}
+          relatedTools={["image-to-pdf", "compress", "split"]}
+          relatedBlogs={[
+            { title: "How to Convert JPG and PNG Images to PDF", href: "/blog/how-to-convert-jpg-png-to-pdf-free" },
+          ]}
+        />
+      </div>
+      </main>
       </div>
       {toast && (
         <div className={`fixed bottom-20 lg:bottom-5 right-4 flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-[13.5px] font-medium z-[200] toast-enter ${toast.type === "success" ? "bg-green-700 text-white" : "bg-red-600 text-white"}`}>

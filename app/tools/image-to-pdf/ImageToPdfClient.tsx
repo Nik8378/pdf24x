@@ -1,4 +1,5 @@
 "use client";
+import ToolPageSections from "@/components/tool/ToolPageSections";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { UploadZone } from "@/components/tool/UploadZone";
 import { ImageList } from "@/components/tool/ImageList";
@@ -91,7 +92,17 @@ export default function ImageToPdfClient() {
           <TrustBadges />
           <HowItWorks />
           <FAQ />
-        </main>
+  
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-4">
+        <ToolPageSections
+          breadcrumb={[]}
+          relatedTools={["pdf-to-jpg", "merge", "compress"]}
+          relatedBlogs={[
+            { title: "How to Convert JPG and PNG Images to PDF", href: "/blog/how-to-convert-jpg-png-to-pdf-free" },
+          ]}
+        />
+      </div>
+      </main>
       </div>
       <ProgressOverlay />
       <Toast />

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useCallback } from "react";
+import ToolPageSections, { Breadcrumb } from "@/components/tool/ToolPageSections";
 import { Droplets, Upload, Download, RefreshCcw, X, Loader2, Maximize2 } from "lucide-react";
 
 const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
@@ -80,6 +81,7 @@ export default function WatermarkPdfClient() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "PDF Tools", href: "/tools" }, { label: "Watermark PDF" }]} />
       <div className="mb-8 flex items-start gap-4">
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl" style={{ background: "#FCE4EF", border: `1px solid ${C.line}`, boxShadow: shadow }}>
           <Droplets size={26} style={{ color: "#EC4899" }} />
@@ -304,6 +306,32 @@ export default function WatermarkPdfClient() {
           <iframe src={resultUrl} className="flex-1 w-full bg-white" />
         </div>
       )}
+      <ToolPageSections
+        breadcrumb={[]}
+        processingMode="server"
+        howToSteps={[
+          { title: "Upload your PDF", desc: "Drop your PDF or click to browse." },
+          { title: "Set watermark text", desc: "Choose from presets like CONFIDENTIAL or enter custom text." },
+          { title: "Customise appearance", desc: "Set color, font size, opacity, position, and rotation." },
+          { title: "Select pages", desc: "Apply to all pages, odd pages, or even pages." },
+          { title: "Download watermarked PDF", desc: "Click Add Watermark and download the result." },
+        ]}
+        useCases={[
+          "Mark documents as CONFIDENTIAL or DRAFT",
+          "Brand PDFs with a company name",
+          "Indicate document status before sharing",
+          "Protect documents from unauthorised redistribution",
+          "Add review status to report drafts",
+        ]}
+        relatedTools={["rotate-pdf", "compress", "merge"]}
+        faqs={[
+          { q: "What text can I use as a watermark?", a: "You can use any text including CONFIDENTIAL, DRAFT, COPY, APPROVED, your company name, or any custom text." },
+          { q: "Can I control watermark position?", a: "Yes. You can place the watermark at the center, top-left, top-right, bottom-left, or bottom-right of each page." },
+          { q: "Can I control opacity?", a: "Yes. The opacity slider lets you control how visible or subtle the watermark appears." },
+          { q: "Does watermarking affect PDF quality?", a: "No. The watermark is added as a text overlay. The underlying PDF content is not re-encoded or compressed." },
+          { q: "Do I need to create an account?", a: "No. The tool is free to use without registration." },
+        ]}
+      />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useCallback } from "react";
+import ToolPageSections, { Breadcrumb } from "@/components/tool/ToolPageSections";
 import { Unlock, Upload, Download, RefreshCcw, X, Loader2, Info, CheckCircle2, Maximize2 } from "lucide-react";
 
 const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
@@ -59,6 +60,7 @@ export default function UnlockPdfClient() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       {/* Header */}
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "PDF Tools", href: "/tools" }, { label: "Unlock PDF" }]} />
       <div className="mb-8 flex items-start gap-4">
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl" style={{ background: "#E5EEFC", border: `1px solid ${C.line}`, boxShadow: shadow }}>
           <Unlock size={26} style={{ color: "#3B82F6" }} />
@@ -194,6 +196,31 @@ export default function UnlockPdfClient() {
           <iframe src={resultUrl} className="flex-1 w-full bg-white" />
         </div>
       )}
+      <ToolPageSections
+        breadcrumb={[]}
+        processingMode="server"
+        howToSteps={[
+          { title: "Upload your protected PDF", desc: "Drop a password-protected PDF or click to browse." },
+          { title: "Enter the current password", desc: "You must know the existing password to remove it." },
+          { title: "Remove password protection", desc: "Click Unlock PDF to process the file." },
+          { title: "Download the unlocked PDF", desc: "Download your PDF — it can now be opened without a password." },
+        ]}
+        useCases={[
+          "Open a PDF without typing the password every time",
+          "Share a document without sharing the password",
+          "Use a locked PDF with other tools",
+          "Print a password-protected PDF",
+          "Remove restrictions from a PDF you own",
+        ]}
+        relatedTools={["compress", "merge", "split"]}
+        faqs={[
+          { q: "Do I need to know the password to use this tool?", a: "Yes. This tool removes password protection from PDFs where you already know the password. It cannot crack or guess unknown passwords." },
+          { q: "What happens to my file after processing?", a: "Your file is processed on a secure server and deleted after processing. It is not stored or shared." },
+          { q: "Is this tool legal to use?", a: "You should only unlock PDFs that you own or have permission to modify. Removing protection from documents you do not own may be restricted by law." },
+          { q: "Can it remove edit and print restrictions?", a: "Yes. If the PDF has restrictions on printing, copying, or editing, unlocking it removes those restrictions along with the password." },
+          { q: "Do I need to create an account?", a: "No. The tool is free to use without registration." },
+        ]}
+      />
     </div>
   );
 }

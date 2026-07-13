@@ -39,7 +39,6 @@ const CATEGORIES = [
 ];
 
 const HIGHLY_USED = [
-  { icon: FileText, color: "#EE4B3C", tint: "#ffe7e3", title: "PDF to Word", desc: "Turn PDFs into fully editable Word documents.", path: "/tools/pdf-to-word", badge: "#1 Pick" },
   { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image to PDF", desc: "Combine JPG, PNG or HEIC images into one PDF.", path: "/tools/image-to-pdf", badge: "Trending" },
   { icon: Minimize2, color: "#3B82F6", tint: "#E5EEFC", title: "Compress PDF", desc: "Shrink file size without losing quality.", path: "/tools/compress", badge: "Most Popular" },
   { icon: GitMerge, color: "#F2994A", tint: "#FCEEDD", title: "Merge PDF", desc: "Combine multiple PDFs into a single file.", path: "/tools/merge", badge: "Editor's Pick" },
@@ -51,7 +50,7 @@ const MORE_TOOLS = [
   { icon: RotateCw, color: "#EE4B3C", tint: "#ffe7e3", title: "Rotate PDF", desc: "Rotate pages of your PDF file.", path: "/tools/rotate-pdf" },
   { icon: Unlock, color: "#3B82F6", tint: "#E5EEFC", title: "Unlock PDF", desc: "Remove password from secured PDF.", path: "/tools/unlock-pdf" },
   { icon: ShieldCheck, color: "#27AE60", tint: "#E4F5EC", title: "Protect PDF", desc: "Add password protection to PDF file.", path: "/tools" },
-  { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", title: "Watermark PDF", desc: "Add text or image watermark to PDF.", path: "/tools/watermark-pdf" },
+  { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", title: "Watermark PDF", desc: "Add a custom text watermark to PDF pages.", path: "/tools/watermark-pdf" },
   { icon: Crop, color: "#F2994A", tint: "#FCEEDD", title: "Crop PDF", desc: "Crop pages of your PDF file.", path: "/tools" },
   { icon: Grid3x3, color: "#7B61FF", tint: "#ECE7FF", title: "Organize PDF", desc: "Reorder, add or remove pages in PDF.", path: "/tools" },
   { icon: FileSpreadsheet, color: "#27AE60", tint: "#E4F5EC", title: "PDF to Excel", desc: "Extract tables from PDF to Excel.", path: "/tools/pdf-to-excel" },

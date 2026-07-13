@@ -1,4 +1,5 @@
 "use client";
+import ToolPageSections from "@/components/tool/ToolPageSections";
 import { useState, useRef, useCallback } from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Minimize2, UploadCloud, Trash2, FileText, Info } from "lucide-react";
@@ -332,6 +333,17 @@ export default function CompressClient() {
             <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>What is the maximum file size?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>PDF24X supports files up to 100MB for compression.</p></div>
           </div>
         </div>
+      </div>
+
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-4">
+        <ToolPageSections
+          breadcrumb={[]}
+          relatedTools={["merge", "split", "pdf-to-jpg"]}
+          relatedBlogs={[
+            { title: "How to Compress a PDF Without Losing Quality", href: "/blog/how-to-compress-pdf-without-losing-quality" },
+            { title: "How to Reduce PDF File Size for Email", href: "/blog/how-to-reduce-pdf-file-size-email" },
+          ]}
+        />
       </div>
       </main>
       </div>

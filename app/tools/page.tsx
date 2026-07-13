@@ -34,7 +34,7 @@ const TOOL_CATEGORIES = [
       { icon: RotateCw, color: "#EE4B3C", tint: "#ffe7e3", name: "Rotate PDF", desc: "Rotate pages of your PDF file", href: "/tools/rotate-pdf" },
       { icon: Unlock, color: "#3B82F6", tint: "#E5EEFC", name: "Unlock PDF", desc: "Remove password from secured PDF", href: "/tools/unlock-pdf" },
       { icon: ShieldCheck, color: "#27AE60", tint: "#E4F5EC", name: "Protect PDF", desc: "Add password protection to PDF", href: "/tools/protect-pdf" },
-      { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", name: "Watermark PDF", desc: "Add text or image watermark to PDF", href: "/tools/watermark-pdf" },
+      { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", name: "Watermark PDF", desc: "Add text watermark to PDF", href: "/tools/watermark-pdf" },
     ],
   },
   {

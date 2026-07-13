@@ -1,4 +1,5 @@
 "use client";
+import ToolPageSections from "@/components/tool/ToolPageSections";
 
 import { useState, useRef, useCallback } from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
@@ -326,6 +327,16 @@ export default function SplitClient() {
             <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Is the original PDF affected?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>No. The original file is never modified. Split files are new documents.</p></div>
           </div>
         </div>
+      </div>
+
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-4">
+        <ToolPageSections
+          breadcrumb={[]}
+          relatedTools={["merge", "compress", "rotate-pdf"]}
+          relatedBlogs={[
+            { title: "How to Merge and Split PDFs for Free", href: "/blog/how-to-merge-split-pdf-free" },
+          ]}
+        />
       </div>
       </main>
       </div>
