@@ -230,7 +230,7 @@ export default function HomeClient() {
 
       {/* ── What Is + Newsletter ── */}
       <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6 lg:py-8 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div>
           {/* What Is */}
           <div className="rounded-2xl bg-white p-6 sm:p-8" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
             <div className="flex flex-col gap-5 sm:flex-row">
@@ -253,21 +253,7 @@ export default function HomeClient() {
               </div>
             </div>
           </div>
-          {/* Newsletter */}
-          <div className="rounded-2xl bg-white p-6 sm:p-8" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
-            <div className="flex items-start gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl" style={{ background: C.redsoft }}>
-                <Mail size={20} style={{ color: C.brand }} />
-              </span>
-              <div>
-                <h3 className="text-lg font-extrabold" style={{ color: C.ink, ...font() }}>Stay Updated</h3>
-                <p className="mt-1 text-sm" style={{ color: C.sub }}>Get tips, tool updates and helpful content straight to your inbox.</p>
-              </div>
-            </div>
-            <div className="mt-5 rounded-xl px-4 py-3 text-sm" style={{ border: `1px solid ${C.line}`, background: C.cream, color: C.sub }}>
-              Newsletter coming soon — check back shortly.
-            </div>
-          </div>
+
         </div>
       </section>
 

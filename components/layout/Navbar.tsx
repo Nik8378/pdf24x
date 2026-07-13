@@ -28,6 +28,7 @@ export function Navbar() {
     <header
       className="sticky top-0 z-50 border-b border-[#1c1c1c] bg-[#f4f1ea]/90 backdrop-blur"
       onMouseLeave={() => setMegaOpen(false)}
+      onKeyDown={(e) => e.key === "Escape" && setMegaOpen(false)}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
@@ -40,7 +41,10 @@ export function Navbar() {
           <nav className="hidden items-center gap-6 lg:flex">
             {/* Highly Used Tools with dropdown */}
             <div className="relative" onMouseEnter={() => setMegaOpen(true)}>
-              <button className="flex items-center gap-1 text-sm font-medium text-[#1a1a1a] transition-colors hover:text-[#FF6B5E]">
+              <button className="flex items-center gap-1 text-sm font-medium text-[#1a1a1a] transition-colors hover:text-[#FF6B5E]"
+                aria-expanded={megaOpen}
+                aria-haspopup="true"
+                onKeyDown={(e) => e.key === "Escape" && setMegaOpen(false)}>
                 Highly Used Tools
                 <ChevronDown size={14} className={`transition-transform duration-200 ${megaOpen ? "rotate-180" : ""}`} />
               </button>
@@ -68,7 +72,8 @@ export function Navbar() {
             </Link>
             <button
               onClick={() => setOpen((o) => !o)}
-              aria-label="Menu"
+              aria-label="Toggle navigation menu"
+              aria-expanded={open}
               className="rounded-lg border border-[#1c1c1c] p-2 text-[#1a1a1a] lg:hidden"
             >
               {open ? <X size={20} /> : <Menu size={20} />}
@@ -87,6 +92,7 @@ export function Navbar() {
                     key={tool.title}
                     href={tool.path}
                     onClick={() => setMegaOpen(false)}
+                    onKeyDown={(e) => e.key === "Enter" && setMegaOpen(false)}
                     className="flex flex-col items-center gap-2 rounded-xl border border-[#1c1c1c] bg-[#ffffff] p-4 text-center transition-all hover:-translate-y-0.5 hover:shadow-md"
                   >
                     <span className="flex h-10 w-10 items-center justify-center rounded-lg" style={{ background: tool.tint }}>
@@ -103,7 +109,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="space-y-1 border-t border-[#1c1c1c] px-4 pb-4 pt-1 lg:hidden">
+        <div role="navigation" aria-label="Mobile navigation" className="space-y-1 border-t border-[#1c1c1c] px-4 pb-4 pt-1 lg:hidden">
           <Link href="/tools" onClick={() => setOpen(false)} className="flex w-full items-center justify-between py-2.5 text-sm font-medium text-[#1a1a1a]">
             Highly Used Tools <ChevronDown size={15} />
           </Link>

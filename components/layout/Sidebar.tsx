@@ -54,6 +54,7 @@ export function Sidebar() {
     const active = pathname === href;
     return (
       <Link href={href}
+        aria-current={active ? "page" : undefined}
         className={`flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-[12.5px] transition-all group ${
           active ? "bg-[#1a1917] text-white font-semibold" : "text-[#4a4845] hover:bg-[#f4f3f0] hover:text-[#1a1917]"
         }`}>

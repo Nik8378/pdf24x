@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ToolSearch from "./ToolSearch";
 import Link from "next/link";
 import { AdUnit } from "@/components/ads/AdUnit";
 import {
@@ -75,6 +76,7 @@ export default function ToolsPage() {
         <p className="mt-3 text-base" style={{ color: C.sub }}>Free tools for PDF, images, and developers. No sign up, no installs.</p>
       </div>
 
+      <ToolSearch />
       <div className="space-y-8">
         {TOOL_CATEGORIES.map(cat => (
           <section key={cat.title} id={cat.title.toLowerCase().replace(/ /g, "-")}>
