@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Image, Minimize2, Link2, Scissors, Layers, FileText, Shield, Zap, Star } from "lucide-react";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: false },
   title: "PDF24x – Free PDF Tools Online",
   description: "All the PDF tools you need. Free, private, no uploads.",
 };
