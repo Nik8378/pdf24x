@@ -18,47 +18,41 @@ const C = {
   shadow: "3px 3px 0 0 #1c1c1c", shadowLift: "6px 6px 0 0 #1c1c1c",
 };
 
-const HERO_WORDS = ["PDF", "Image", "Developers", "Publishers", "Creators"];
-const HERO_BADGES = ["100% Free", "No Sign Up", "Secure & Private"];
+const HERO_WORDS = ["PDF", "Image", "Developers"];
+const HERO_BADGES = ["100% Free", "No Sign-Up Required", "Fast & Easy"];
 const FEATURE_CHIPS = [
   { label: "Easy to Use", icon: Heart },
   { label: "No Installation", icon: ShieldCheck },
   { label: "Unlimited Access", icon: Sparkles },
-  { label: "100% Secure", icon: Shield },
+  { label: "No Sign-Up Required", icon: Shield },
 ];
 
 const CATEGORIES = [
   { icon: FileText, color: "#EE4B3C", tint: "#ffe7e3", title: "PDF Converter", desc: "Convert PDF to Word, Excel, JPG and more.", path: "/tools#pdf-tools" },
   { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image Converter", desc: "Convert images to and from different formats.", path: "/tools#image-tools" },
   { icon: Code2, color: "#7B61FF", tint: "#ECE7FF", title: "Developer Tools", desc: "Format, encode, decode and minify code.", path: "/tools#developer-tools" },
-  { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", title: "Publisher Tools", desc: "Tools for writers and content creators.", path: "/tools#publisher-tools" },
-  { icon: Music, color: "#EC4899", tint: "#FCE4EF", title: "YouTube to MP3", desc: "Convert YouTube videos to MP3.", path: "/tools#publisher-tools" },
-  { icon: Video, color: "#3B82F6", tint: "#E5EEFC", title: "Video Downloader", desc: "Download videos from YouTube and more.", path: "/tools#publisher-tools" },
-  { icon: Download, color: "#E60023", tint: "#FDE6E9", title: "Pinterest Downloader", desc: "Download Pinterest videos and images.", path: "/tools#publisher-tools" },
-  { icon: LayoutGrid, color: "#F2C94C", tint: "#FCF4DA", title: "All Tools", desc: "Browse all 200+ free tools.", path: "/tools" },
+  { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", title: "Publisher Tools", desc: "ISBN converter and book-related utilities.", path: "/tools#publisher-tools" },
+  { icon: LayoutGrid, color: "#F2C94C", tint: "#FCF4DA", title: "All Tools", desc: "Browse all free PDF and developer tools.", path: "/tools" },
 ];
 
 const HIGHLY_USED = [
-  { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image to PDF", desc: "Combine JPG, PNG or HEIC images into one PDF.", path: "/tools/image-to-pdf", badge: "Trending" },
-  { icon: Minimize2, color: "#3B82F6", tint: "#E5EEFC", title: "Compress PDF", desc: "Shrink file size without losing quality.", path: "/tools/compress", badge: "Most Popular" },
-  { icon: GitMerge, color: "#F2994A", tint: "#FCEEDD", title: "Merge PDF", desc: "Combine multiple PDFs into a single file.", path: "/tools/merge", badge: "Editor's Pick" },
-  { icon: Split, color: "#7B61FF", tint: "#ECE7FF", title: "Split PDF", desc: "Pull specific pages out into new PDFs.", path: "/tools/split", badge: "Trending" },
-  { icon: FileImage, color: "#EC4899", tint: "#FCE4EF", title: "PDF to JPG", desc: "Export every page as a high-quality image.", path: "/tools/pdf-to-jpg", badge: "Most Popular" },
+  { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image to PDF", desc: "Combine JPG, PNG or HEIC images into one PDF.", path: "/tools/image-to-pdf" },
+  { icon: Minimize2, color: "#3B82F6", tint: "#E5EEFC", title: "Compress PDF", desc: "Shrink file size without losing quality.", path: "/tools/compress" },
+  { icon: GitMerge, color: "#F2994A", tint: "#FCEEDD", title: "Merge PDF", desc: "Combine multiple PDFs into a single file.", path: "/tools/merge" },
+  { icon: Split, color: "#7B61FF", tint: "#ECE7FF", title: "Split PDF", desc: "Pull specific pages out into new PDFs.", path: "/tools/split" },
+  { icon: FileImage, color: "#EC4899", tint: "#FCE4EF", title: "PDF to JPG", desc: "Export every page as a high-quality image.", path: "/tools/pdf-to-jpg" },
 ];
 
 const MORE_TOOLS = [
   { icon: RotateCw, color: "#EE4B3C", tint: "#ffe7e3", title: "Rotate PDF", desc: "Rotate pages of your PDF file.", path: "/tools/rotate-pdf" },
   { icon: Unlock, color: "#3B82F6", tint: "#E5EEFC", title: "Unlock PDF", desc: "Remove password from secured PDF.", path: "/tools/unlock-pdf" },
-  { icon: ShieldCheck, color: "#27AE60", tint: "#E4F5EC", title: "Protect PDF", desc: "Add password protection to PDF file.", path: "/tools" },
   { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", title: "Watermark PDF", desc: "Add a custom text watermark to PDF pages.", path: "/tools/watermark-pdf" },
-  { icon: Crop, color: "#F2994A", tint: "#FCEEDD", title: "Crop PDF", desc: "Crop pages of your PDF file.", path: "/tools" },
-  { icon: Grid3x3, color: "#7B61FF", tint: "#ECE7FF", title: "Organize PDF", desc: "Reorder, add or remove pages in PDF.", path: "/tools" },
   { icon: FileSpreadsheet, color: "#27AE60", tint: "#E4F5EC", title: "PDF to Excel", desc: "Extract tables from PDF to Excel.", path: "/tools/pdf-to-excel" },
   { icon: Code, color: "#EE4B3C", tint: "#ffe7e3", title: "HTML to PDF", desc: "Convert web pages to PDF.", path: "/tools" },
 ];
 
 const WHAT_CHECKS = [
-  "200+ Tools for PDF, Image, Video & More",
+  "Free tools for PDF, images, and developers",
   "No sign up or installation required",
   "Files are automatically deleted after processing",
   "Regularly updated with new tools",
@@ -190,7 +184,7 @@ export default function HomeClient() {
         <div className="mb-6 flex items-end justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xl">⭐</span>
-            <h2 className="text-2xl font-extrabold sm:text-3xl" style={{ color: C.ink, ...font() }}>Highly Used Tools</h2>
+            <h2 className="text-2xl font-extrabold sm:text-3xl" style={{ color: C.ink, ...font() }}>Featured Tools</h2>
           </div>
           <Link href="/tools" className="text-sm font-semibold" style={{ color: C.brand }}>View all →</Link>
         </div>
@@ -203,7 +197,6 @@ export default function HomeClient() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <p className="text-sm font-bold" style={{ color: C.ink }}>{tool.title}</p>
-                  <span className="rounded-full px-2 py-0.5 text-[10px] font-bold" style={{ background: C.redsoft, color: C.brand }}>{tool.badge}</span>
                 </div>
                 <p className="mt-1 text-xs" style={{ color: C.sub }}>{tool.desc}</p>
               </div>
@@ -271,11 +264,9 @@ export default function HomeClient() {
                 <p className="mt-1 text-sm" style={{ color: C.sub }}>Get tips, tool updates and helpful content straight to your inbox.</p>
               </div>
             </div>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-              <input placeholder="Enter your email address" className="flex-1 rounded-lg px-4 py-2.5 text-sm outline-none" style={{ border: `1px solid ${C.line}`, background: C.cream, color: C.ink }} />
-              <button className="rounded-lg px-5 py-2.5 text-sm font-semibold text-white" style={{ background: C.brand }}>Subscribe</button>
+            <div className="mt-5 rounded-xl px-4 py-3 text-sm" style={{ border: `1px solid ${C.line}`, background: C.cream, color: C.sub }}>
+              Newsletter coming soon — check back shortly.
             </div>
-            <p className="mt-3 text-xs" style={{ color: C.sub }}>No spam, unsubscribe anytime.</p>
           </div>
         </div>
       </section>

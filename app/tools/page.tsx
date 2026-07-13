@@ -10,7 +10,7 @@ import {
 
 export const metadata: Metadata = {
   title: "All Tools | PDF24X — Free Online PDF & Developer Tools",
-  description: "Browse all 200+ free online tools — PDF converter, image tools, developer utilities and more. No sign up, no installs.",
+  description: "Free online tools for PDF, images, and developers. No sign up, no installs.",
   alternates: { canonical: "https://pdf24x.com/tools" },
 };
 
@@ -72,7 +72,7 @@ export default function ToolsPage() {
     <div className="mx-auto max-w-7xl px-4 pt-4 pb-8 sm:pt-6 sm:px-6 lg:px-8" style={{ background: C.cream }}>
       <div className="mb-3 text-center">
         <h1 className="text-3xl font-extrabold sm:text-4xl" style={{ color: C.ink, ...font }}>All Tools</h1>
-        <p className="mt-3 text-base" style={{ color: C.sub }}>200+ free tools for PDF, images, and developers. No sign up, no installs.</p>
+        <p className="mt-3 text-base" style={{ color: C.sub }}>Free tools for PDF, images, and developers. No sign up, no installs.</p>
       </div>
 
       <div className="space-y-8">
