@@ -1,3 +1,8 @@
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
 export interface BlogPost {
   slug: string;
   tag: string;
@@ -7,9 +12,11 @@ export interface BlogPost {
   read: string;
   date: string;
   dateISO: string;
+  dateModified?: string;
   author: string;
   image: string;
   content: string;
+  faqs?: FAQ[];
 }
 
 export const blogPosts: BlogPost[] = ([
@@ -331,6 +338,7 @@ export const blogPosts: BlogPost[] = ([
 
       <h2>Summary</h2>
       <p>For most people's PDF needs — converting images, compressing, merging, splitting — a combination of browser-based tools like PDF24x and built-in OS tools covers everything for free. Be cautious of sites that upload your files and hide subscription walls behind seemingly free interfaces.</p>
+      <p>Read more: <a href="https://pdf24x.com/blog/how-to-compress-pdf-without-losing-quality">How to compress a PDF without losing quality</a> · <a href="https://pdf24x.com/blog/how-to-merge-split-pdf-free">How to merge and split PDFs</a></p>
     `,
   },
   {
@@ -412,6 +420,7 @@ export const blogPosts: BlogPost[] = ([
 
       <h2>Summary</h2>
       <p>The browser-based document processing model isn't a compromise. It's faster for most tasks, completely private, and increasingly capable. For tools where it is technically possible, browser-based processing is the right architecture for sensitive files. PDF24X uses browser-based processing for tools like Compress PDF, Merge PDF, Split PDF, and Image to PDF. Some advanced operations — such as removing PDF passwords — require server-side processing. In those cases, files are processed and not stored beyond what is needed to return the result. Always choose tools that are transparent about how your files are handled.</p>
+      <p>Related guides: <a href="https://pdf24x.com/blog/how-to-compress-pdf-without-losing-quality">How to compress a PDF without losing quality</a> · <a href="https://pdf24x.com/blog/how-to-merge-split-pdf-free">How to merge and split PDFs</a></p>
     `,
   },
   {
@@ -495,6 +504,7 @@ export const blogPosts: BlogPost[] = ([
 
       <h2>Summary</h2>
       <p>PDF management doesn't have to be expensive or complicated. For the tasks most students, freelancers, and small businesses actually need — converting, compressing, merging, and splitting — free browser-based tools cover everything. The time saved by having a reliable, quick workflow for these tasks adds up substantially over the course of a working year.</p>
+      <p>Related guides: <a href="https://pdf24x.com/blog/how-to-compress-pdf-without-losing-quality">How to compress a PDF without losing quality</a> · <a href="https://pdf24x.com/blog/how-to-reduce-pdf-file-size-email">How to reduce PDF file size for email</a> · <a href="https://pdf24x.com/blog/how-to-merge-split-pdf-free">How to merge and split PDFs</a></p>
     `,
   },
   {
@@ -524,14 +534,15 @@ export const blogPosts: BlogPost[] = ([
       <p><strong>User Password (Open Password):</strong> Required to open and view the PDF. Anyone without this password sees nothing.</p>
       <p><strong>Owner Password (Permissions Password):</strong> Controls what the recipient can do with the file — print it, copy text from it, or edit it. You can allow viewing but block printing, for example.</p>
       <h2>How to Password Protect a PDF</h2>
-      <p>Most desktop PDF applications include built-in password protection. In Adobe Acrobat, go to File → Properties → Security and set a Document Open Password. In macOS Preview, export the PDF and enable the password option. For free browser-based options, search for an online PDF protection tool — most support AES encryption and allow you to set both open and permissions passwords.</p>
-      <p>When choosing a tool, verify that it uses strong encryption (AES-128 or AES-256) and that your file is handled securely. PDF24X is adding a Protect PDF tool — check back soon for a free browser-accessible option.</p>
+      <p>Most desktop PDF applications include built-in password protection. In Adobe Acrobat, go to File → Properties → Security and set a Document Open Password. In macOS Preview, export the PDF and enable the password option. Free online options also exist — when choosing one, check that your file is handled securely and that the tool explains how it processes uploaded documents.</p>
+      <p>PDF24X is adding a Protect PDF tool. When available, it will let you set an open password and configure document permissions directly in your browser.</p>
       <h2>Choosing a Strong Password</h2>
       <p>A strong PDF password should be at least 12 characters long and include a mix of uppercase letters, lowercase letters, numbers, and symbols. Avoid using names, dates, or common words that can be guessed.</p>
       <h2>What Permissions Should You Set?</h2>
       <p>For most sensitive documents, the recommended settings are: allow printing (so the recipient can print a physical copy if needed), but block copying and editing. This prevents recipients from extracting text or modifying the document while still being able to read and print it.</p>
       <h2>Important: Remember Your Password</h2>
       <p>PDF encryption is strong — if you forget the password, there is no recovery option. Always store your password in a secure password manager.</p>
+      <p>Related: <a href="https://pdf24x.com/blog/why-your-files-should-never-leave-your-browser">Understanding browser-based vs server-side PDF processing</a></p>
     `,
   },
   {
@@ -651,6 +662,7 @@ export const blogPosts: BlogPost[] = ([
       <p>Writing a validation rule or data extraction pattern? Test your regular expressions in real time with highlighted matches. Saves enormous time compared to running code just to test a pattern.</p>
       <h2>Why Browser-Based Tools?</h2>
       <p>All the tools above run in your browser with no installation required. This means they work on any device — your work laptop, personal computer, or even a tablet. Your files stay on your device and are never uploaded to a third-party server, which matters when working with confidential business documents.</p>
+      <p>Related guides: <a href="https://pdf24x.com/blog/how-to-compress-pdf-without-losing-quality">How to compress a PDF without losing quality</a> · <a href="https://pdf24x.com/blog/how-to-merge-split-pdf-free">How to merge and split PDFs</a></p>
     `,
   },
 ] as BlogPost[]);
