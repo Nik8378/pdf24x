@@ -23,6 +23,7 @@ export const blogPosts: BlogPost[] = ([
     read: "5 min read",
     date: "June 5, 2025",
     dateISO: "2025-06-05",
+    dateModified: "2026-07-13",
     author: "PDF24x Team",
     content: `
       <p>Whether you're sending a scanned document to your employer, compiling photos into a single file, or converting screenshots into a shareable report, turning images into a PDF is one of the most common digital tasks people face.</p>
@@ -99,6 +100,7 @@ export const blogPosts: BlogPost[] = ([
 
       <h2>Summary</h2>
       <p>Converting JPG, PNG, or WEBP images to PDF takes under a minute with the right tool. Use a browser-based converter to keep your files private, choose the right page size for your use case, and keep quality on Original for documents. <a href="https://pdf24x.com">PDF24x</a> handles all of it for free, with no uploads and no account required.</p>
+      <p>Related guides: <a href="https://pdf24x.com/blog/how-to-compress-pdf-without-losing-quality">How to compress a PDF without losing quality</a> · <a href="https://pdf24x.com/blog/how-to-merge-split-pdf-free">How to merge and split PDFs</a></p>
     `,
   },
   {
@@ -111,6 +113,7 @@ export const blogPosts: BlogPost[] = ([
     read: "6 min read",
     date: "May 28, 2025",
     dateISO: "2025-05-28",
+    dateModified: "2026-07-13",
     author: "PDF24x Team",
     content: `
       <p>You've finished a report, scanned some documents, or received a PDF that's 50 MB when it should be 2 MB. Email won't accept it. The upload form rejects it. Sharing it is a nightmare. PDF compression is one of those problems everyone runs into, and most people don't know how easy it is to fix.</p>
@@ -166,6 +169,7 @@ export const blogPosts: BlogPost[] = ([
 
       <h2>Summary</h2>
       <p>PDF compression is nearly always an image compression problem in disguise. Medium compression is invisible to the eye and cuts most PDFs by 50% or more. Use browser-based tools for privacy-sensitive documents. For text-heavy PDFs that resist compression, regenerate from the original application instead.</p>
+      <p>Related guides: <a href="https://pdf24x.com/blog/how-to-reduce-pdf-file-size-email">How to reduce PDF file size for email</a> · <a href="https://pdf24x.com/blog/how-to-merge-split-pdf-free">How to merge and split PDFs</a></p>
     `,
   },
   {
@@ -178,6 +182,7 @@ export const blogPosts: BlogPost[] = ([
     read: "5 min read",
     date: "May 20, 2025",
     dateISO: "2025-05-20",
+    dateModified: "2026-07-13",
     author: "PDF24x Team",
     content: `
       <p>Two of the most common PDF tasks — merging several files into one and extracting pages from a PDF — are surprisingly easy to do for free in a browser, without installing any software.</p>
@@ -240,6 +245,7 @@ export const blogPosts: BlogPost[] = ([
 
       <h2>Summary</h2>
       <p>Merging and splitting PDFs requires no software, no subscriptions, and takes under a minute. Use a browser-based tool for privacy, understand that order matters when merging, and remember you can always extract a single page by entering a single-page range like "4-4".</p>
+      <p>Related guides: <a href="https://pdf24x.com/blog/how-to-compress-pdf-without-losing-quality">How to compress a PDF without losing quality</a> · <a href="https://pdf24x.com/blog/how-to-reduce-pdf-file-size-email">How to reduce PDF file size for email</a></p>
     `,
   },
   {
@@ -337,6 +343,7 @@ export const blogPosts: BlogPost[] = ([
     read: "6 min read",
     date: "May 4, 2025",
     dateISO: "2025-05-04",
+    dateModified: "2026-07-13",
     author: "PDF24x Team",
     content: `
       <p>The internet is full of free document conversion tools. You upload a PDF, you get back a Word document. You upload an image, you get back a PDF. It seems simple and harmless. But every upload is a data transfer to a server you know nothing about — and that has real implications for privacy and security.</p>
@@ -404,7 +411,7 @@ export const blogPosts: BlogPost[] = ([
       <p>For non-sensitive documents — a recipe you're converting to PDF, a public press release you're compressing — server-based tools are generally fine.</p>
 
       <h2>Summary</h2>
-      <p>The browser-based document processing model isn't a compromise. It's faster for most tasks, completely private, and increasingly capable. The architecture PDF24x is built on — no uploads, no servers, everything runs in your browser — isn't just a privacy feature. It's simply the right way to build tools that handle sensitive files.</p>
+      <p>The browser-based document processing model isn't a compromise. It's faster for most tasks, completely private, and increasingly capable. For tools where it is technically possible, browser-based processing is the right architecture for sensitive files. PDF24X uses browser-based processing for tools like Compress PDF, Merge PDF, Split PDF, and Image to PDF. Some advanced operations — such as removing PDF passwords — require server-side processing. In those cases, files are processed and not stored beyond what is needed to return the result. Always choose tools that are transparent about how your files are handled.</p>
     `,
   },
   {
@@ -500,6 +507,7 @@ export const blogPosts: BlogPost[] = ([
     read: "4 min read",
     date: "July 1, 2026",
     dateISO: "2026-07-01",
+    dateModified: "2026-07-13",
     author: "PDF24x Team",
     content: `
       <p>Whether you're sharing a contract, a financial report, or a private document, password protecting your PDF ensures only the intended recipient can open it. Here's everything you need to know about protecting PDF files — for free.</p>
@@ -515,14 +523,9 @@ export const blogPosts: BlogPost[] = ([
       <p>Most PDF protection tools offer two types of passwords:</p>
       <p><strong>User Password (Open Password):</strong> Required to open and view the PDF. Anyone without this password sees nothing.</p>
       <p><strong>Owner Password (Permissions Password):</strong> Controls what the recipient can do with the file — print it, copy text from it, or edit it. You can allow viewing but block printing, for example.</p>
-      <h2>How to Protect a PDF for Free</h2>
-      <p>Using PDF24x, you can protect any PDF in three steps:</p>
-      <ol>
-        <li>Go to the <a href="https://pdf24x.com/tools/protect-pdf">Protect PDF tool</a></li>
-        <li>Upload your PDF file</li>
-        <li>Set your password and choose permissions, then download the protected file</li>
-      </ol>
-      <p>The entire process happens server-side with enterprise-grade AES-256 encryption. Your file is automatically deleted after processing.</p>
+      <h2>How to Password Protect a PDF</h2>
+      <p>Most desktop PDF applications include built-in password protection. In Adobe Acrobat, go to File → Properties → Security and set a Document Open Password. In macOS Preview, export the PDF and enable the password option. For free browser-based options, search for an online PDF protection tool — most support AES encryption and allow you to set both open and permissions passwords.</p>
+      <p>When choosing a tool, verify that it uses strong encryption (AES-128 or AES-256) and that your file is handled securely. PDF24X is adding a Protect PDF tool — check back soon for a free browser-accessible option.</p>
       <h2>Choosing a Strong Password</h2>
       <p>A strong PDF password should be at least 12 characters long and include a mix of uppercase letters, lowercase letters, numbers, and symbols. Avoid using names, dates, or common words that can be guessed.</p>
       <h2>What Permissions Should You Set?</h2>
@@ -541,6 +544,7 @@ export const blogPosts: BlogPost[] = ([
     read: "5 min read",
     date: "July 3, 2026",
     dateISO: "2026-07-03",
+    dateModified: "2026-07-13",
     author: "PDF24x Team",
     content: `
       <p>PDF and Microsoft Word (DOCX) are the two most common document formats in the world. But they serve very different purposes — and choosing the wrong one can cause real problems. Here's a practical guide to when to use each.</p>
@@ -565,10 +569,11 @@ export const blogPosts: BlogPost[] = ([
       </ul>
       <h2>Converting Between Formats</h2>
       <p>Sometimes you receive a PDF but need to edit it, or you have a Word document that needs to be sent as a PDF. Both conversions are straightforward:</p>
-      <p><strong>PDF to Word:</strong> Use the <a href="https://pdf24x.com/tools/pdf-to-word">PDF to Word converter</a> to turn any PDF into an editable DOCX file. Results are best on text-based PDFs — scanned documents may need manual cleanup.</p>
+      <p><strong>PDF to Word:</strong> To convert a PDF into an editable DOCX file, use a PDF to Word converter. Results are best on text-based PDFs — scanned documents may need some manual cleanup afterward. PDF24X is adding this feature — check back soon.</p>
       <p><strong>Word to PDF:</strong> In Microsoft Word, go to File → Save As → PDF. Alternatively, use an online converter for quick one-off conversions.</p>
       <h2>The Bottom Line</h2>
       <p>Use Word for documents you're still working on. Switch to PDF the moment a document is ready to be shared, signed, printed, or archived. When in doubt, PDF is the safer choice for anything leaving your hands.</p>
+      <p>If you have a PDF that needs editing, you can <a href="https://pdf24x.com/tools/compress">compress it</a>, <a href="https://pdf24x.com/tools/split">extract specific pages</a>, or <a href="https://pdf24x.com/tools/merge">combine multiple PDFs</a> using PDF24X — all free, no sign-up required.</p>
     `,
   },
   {
@@ -581,6 +586,7 @@ export const blogPosts: BlogPost[] = ([
     read: "4 min read",
     date: "July 5, 2026",
     dateISO: "2026-07-05",
+    dateModified: "2026-07-13",
     author: "PDF24x Team",
     content: `
       <p>Most email providers limit attachments to between 10MB and 25MB. If you've ever tried to email a PDF scan, a brochure, or a presentation and hit that limit, you know how frustrating it can be. Here are the most effective ways to reduce PDF file size.</p>
@@ -607,6 +613,7 @@ export const blogPosts: BlogPost[] = ([
         <li><strong>Medium compression</strong> — balanced quality and size. Best for most emails.</li>
         <li><strong>High compression</strong> — significant size reduction, some quality loss. Fine for draft documents or internal use.</li>
       </ul>
+      <p>Ready to compress your PDF? <a href="https://pdf24x.com/tools/compress">Use the PDF24X compressor</a> — free, no sign-up. Also see: <a href="https://pdf24x.com/blog/how-to-compress-pdf-without-losing-quality">How to compress a PDF without losing quality</a>.</p>
     `,
   },
   {
