@@ -95,7 +95,6 @@ export default function ImageToPdfClient() {
   
       <div className="mx-4 sm:mx-6 lg:mx-8 mt-4">
         <ToolPageSections
-          breadcrumb={[]}
           relatedTools={["pdf-to-jpg", "merge", "compress"]}
           relatedBlogs={[
             { title: "How to Convert JPG and PNG Images to PDF", href: "/blog/how-to-convert-jpg-png-to-pdf-free" },

@@ -331,7 +331,6 @@ export default function SplitClient() {
 
       <div className="mx-4 sm:mx-6 lg:mx-8 mt-4">
         <ToolPageSections
-          breadcrumb={[]}
           relatedTools={["merge", "compress", "rotate-pdf"]}
           relatedBlogs={[
             { title: "How to Merge and Split PDFs for Free", href: "/blog/how-to-merge-split-pdf-free" },

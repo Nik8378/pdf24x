@@ -307,7 +307,6 @@ export default function WatermarkPdfClient() {
         </div>
       )}
       <ToolPageSections
-        breadcrumb={[]}
         processingMode="server"
         howToSteps={[
           { title: "Upload your PDF", desc: "Drop your PDF or click to browse." },

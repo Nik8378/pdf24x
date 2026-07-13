@@ -337,7 +337,6 @@ export default function CompressClient() {
 
       <div className="mx-4 sm:mx-6 lg:mx-8 mt-4">
         <ToolPageSections
-          breadcrumb={[]}
           relatedTools={["merge", "split", "pdf-to-jpg"]}
           relatedBlogs={[
             { title: "How to Compress a PDF Without Losing Quality", href: "/blog/how-to-compress-pdf-without-losing-quality" },

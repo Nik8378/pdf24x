@@ -11,7 +11,7 @@ const TOOL_META: Record<string, { icon: any; color: string; tint: string; label:
   merge: { icon: GitMerge, color: "#F2994A", tint: "#FCEEDD", label: "Merge PDF", href: "/tools/merge" },
   split: { icon: Split, color: "#7B61FF", tint: "#ECE7FF", label: "Split PDF", href: "/tools/split" },
   "pdf-to-jpg": { icon: FileImage, color: "#EC4899", tint: "#FCE4EF", label: "PDF to JPG", href: "/tools/pdf-to-jpg" },
-  "image-to-pdf": { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", label: "Image to PDF", href: "/tools/excel-to-pdf" },
+  "image-to-pdf": { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", label: "Image to PDF", href: "/tools/image-to-pdf" },
   "rotate-pdf": { icon: RotateCw, color: "#EE4B3C", tint: "#ffe7e3", label: "Rotate PDF", href: "/tools/rotate-pdf" },
   "watermark-pdf": { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", label: "Watermark PDF", href: "/tools/watermark-pdf" },
   "unlock-pdf": { icon: Unlock, color: "#3B82F6", tint: "#E5EEFC", label: "Unlock PDF", href: "/tools/unlock-pdf" },
@@ -22,7 +22,6 @@ interface FAQItem { q: string; a: string; }
 interface RelatedBlog { title: string; href: string; }
 
 interface ToolPageSectionsProps {
-  breadcrumb: { label: string; href?: string }[];
   processingMode?: "browser" | "server";
   howToSteps?: HowToStep[];
   capabilities?: string[];
@@ -58,7 +57,7 @@ function ProcessingBadge({ mode }: { mode: "browser" | "server" }) {
       <span className="h-1.5 w-1.5 rounded-full" style={{ background: mode === "browser" ? "#27AE60" : "#3B82F6" }} />
       {mode === "browser"
         ? "Processed in your browser — your file is not sent to any server"
-        : "Processed on a secure server — files are deleted after processing"}
+        : "Processed using the PDF24X server"}
     </div>
   );
 }
@@ -164,7 +163,7 @@ function RelatedBlogsSection({ blogs }: { blogs: RelatedBlog[] }) {
 }
 
 export default function ToolPageSections({
-  breadcrumb, processingMode, howToSteps, useCases, relatedTools, faqs, relatedBlogs
+  processingMode, howToSteps, useCases, relatedTools, faqs, relatedBlogs
 }: ToolPageSectionsProps) {
   return (
     <div className="mt-2 pb-8">

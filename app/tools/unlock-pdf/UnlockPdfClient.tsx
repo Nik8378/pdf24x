@@ -197,7 +197,6 @@ export default function UnlockPdfClient() {
         </div>
       )}
       <ToolPageSections
-        breadcrumb={[]}
         processingMode="server"
         howToSteps={[
           { title: "Upload your protected PDF", desc: "Drop a password-protected PDF or click to browse." },
@@ -217,7 +216,7 @@ export default function UnlockPdfClient() {
           { q: "Do I need to know the password to use this tool?", a: "Yes. This tool removes password protection from PDFs where you already know the password. It cannot crack or guess unknown passwords." },
           { q: "What happens to my file after processing?", a: "Your file is processed on a secure server and deleted after processing. It is not stored or shared." },
           { q: "Is this tool legal to use?", a: "You should only unlock PDFs that you own or have permission to modify. Removing protection from documents you do not own may be restricted by law." },
-          { q: "Can it remove edit and print restrictions?", a: "Yes. If the PDF has restrictions on printing, copying, or editing, unlocking it removes those restrictions along with the password." },
+          { q: "Can it remove edit and print restrictions?", a: "When a PDF is unlocked with the correct password and saved without encryption, access restrictions are typically removed. Results may vary depending on how the original PDF was protected." },
           { q: "Do I need to create an account?", a: "No. The tool is free to use without registration." },
         ]}
       />

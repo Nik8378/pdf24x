@@ -154,7 +154,6 @@ export default function RotatePdfClient() {
         </div>
       )}
       <ToolPageSections
-        breadcrumb={[]}
         processingMode="browser"
         howToSteps={[
           { title: "Upload your PDF", desc: "Drop your PDF file or click to browse." },
