@@ -34,7 +34,7 @@ export default function UnlockPdfClient() {
     setFile(f); setResultUrl(null); setError("");
   }, []);
 
-  const reset = () => { setFile(null); setResultUrl(null); setError(""); setPassword(""); };
+  const reset = () => { if (resultUrl) URL.revokeObjectURL(resultUrl); setFile(null); setResultUrl(null); setError(""); setPassword(""); };
 
   const handleUnlock = async () => {
     if (!file) return;

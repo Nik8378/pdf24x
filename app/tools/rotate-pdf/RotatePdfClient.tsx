@@ -25,7 +25,7 @@ export default function RotatePdfClient() {
     setFile(f); setResultUrl(null);
   }, []);
 
-  const reset = () => { setFile(null); setResultUrl(null); };
+  const reset = () => { if (resultUrl) URL.revokeObjectURL(resultUrl); setFile(null); setResultUrl(null); };
 
   const handleRotate = async () => {
     if (!file) return;
