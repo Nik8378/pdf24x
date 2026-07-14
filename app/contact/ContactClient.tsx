@@ -1,134 +1,166 @@
 "use client";
 import { useState } from "react";
-import { Sidebar } from "@/components/layout/Sidebar";
-import { Mail, MessageSquare, Bug, Lightbulb, CheckCircle } from "lucide-react";
+import { Mail, Send, CheckCircle, AlertCircle } from "lucide-react";
 
-export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", subject: "general", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
+const shadow = "3px 3px 0 0 #1c1c1c";
 
-  const handleSubmit = (e: React.FormEvent) => {
+export default function ContactClient() {
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "", website: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const update = (field: string, value: string) => setForm(prev => ({ ...prev, [field]: value }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailto = `mailto:contact@pdf24x.com?subject=${encodeURIComponent(form.subject + " - " + form.name)}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)}`;
-    window.location.href = mailto;
-    setSubmitted(true);
+    setStatus("sending");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setErrorMsg(data.error || "Something went wrong. Please try again.");
+        setStatus("error");
+      } else {
+        setStatus("success");
+      }
+    } catch {
+      setErrorMsg("Network error. Please try again.");
+      setStatus("error");
+    }
   };
 
+  if (status === "success") {
+    return (
+      <div className="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6 lg:px-8">
+        <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+          <CheckCircle size={32} style={{ color: "#27AE60" }} />
+        </span>
+        <h1 className="text-2xl font-extrabold" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Message received!</h1>
+        <p className="mt-3 text-sm" style={{ color: C.sub }}>Thank you for reaching out. We will get back to you shortly.</p>
+        <button onClick={() => { setForm({ name: "", email: "", subject: "", message: "", website: "" }); setStatus("idle"); }}
+          className="mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white"
+          style={{ background: C.brand, border: `1px solid ${C.line}`, boxShadow: shadow }}>
+          Send another message
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full flex gap-0 items-start">
-      <Sidebar />
-      <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-8 pb-24 lg:pb-12 max-w-4xl">
+    <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mb-8 flex items-start gap-4">
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+          <Mail size={26} style={{ color: C.brand }} />
+        </span>
+        <div>
+          <h1 className="text-2xl font-extrabold sm:text-3xl" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Contact Us</h1>
+          <p className="mt-1 text-sm" style={{ color: C.sub }}>Questions, feedback, or found a bug? We read every message.</p>
+        </div>
+      </div>
 
-        <h1 className="text-2xl sm:text-3xl font-bold text-[#1a1917] mb-2">Contact Us</h1>
-        <p className="text-[14px] text-[#7a7875] mb-8">Have a question, found a bug, or want to suggest a feature? We&apos;d love to hear from you.</p>
+      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+        {/* Honeypot — hidden from real users */}
+        <input
+          type="text"
+          name="website"
+          value={form.website}
+          onChange={e => update("website", e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          style={{ display: "none" }}
+        />
 
-        <div className="flex flex-col lg:flex-row gap-6">
-
-          {/* Left — Contact info */}
-          <div className="w-full lg:w-[260px] shrink-0 space-y-4">
-            <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5">
-              <h2 className="text-[13px] font-bold text-[#1a1917] uppercase tracking-widest mb-4">Get in Touch</h2>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Mail size={16} className="text-accent shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-[12px] font-bold text-[#1a1917]">Email</p>
-                    <a href="mailto:contact@pdf24x.com" className="text-[12.5px] text-accent hover:underline">contact@pdf24x.com</a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MessageSquare size={16} className="text-accent shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-[12px] font-bold text-[#1a1917]">Response Time</p>
-                    <p className="text-[12.5px] text-[#7a7875]">Within 24-48 hours</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5">
-              <h2 className="text-[13px] font-bold text-[#1a1917] uppercase tracking-widest mb-3">Common Topics</h2>
-              <div className="space-y-2">
-                {[
-                  { icon: Bug, label: "Report a Bug", color: "text-red-500" },
-                  { icon: Lightbulb, label: "Feature Request", color: "text-yellow-500" },
-                  { icon: MessageSquare, label: "General Inquiry", color: "text-blue-500" },
-                  { icon: Mail, label: "Business / Partnership", color: "text-green-500" },
-                ].map(item => (
-                  <button key={item.label} onClick={() => setForm(p => ({ ...p, subject: item.label.toLowerCase().replace(/ /g, "-") }))}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12.5px] text-left transition-all border ${form.subject === item.label.toLowerCase().replace(/ /g, "-") ? "border-accent bg-accent-bg" : "border-[#e5e3de] hover:border-accent/40"}`}>
-                    <item.icon size={14} className={item.color} />
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-[#f4f3f0] border border-[#e5e3de] rounded-2xl p-4">
-              <p className="text-[12px] font-bold text-[#1a1917] mb-1">Privacy Note</p>
-              <p className="text-[11.5px] text-[#7a7875] leading-relaxed">Your message is sent directly via email. We never share your contact information with third parties.</p>
-            </div>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <label className="mb-1.5 block text-sm font-semibold" style={{ color: C.ink }}>
+              Name <span style={{ color: C.brand }}>*</span>
+            </label>
+            <input
+              type="text"
+              value={form.name}
+              onChange={e => update("name", e.target.value)}
+              placeholder="Your name"
+              required
+              maxLength={100}
+              className="w-full rounded-xl px-4 py-2.5 text-sm"
+              style={{ border: `1px solid ${C.line}`, background: C.cream, color: C.ink, outline: "none" }}
+            />
           </div>
-
-          {/* Right — Form */}
-          <div className="flex-1 min-w-0">
-            {submitted ? (
-              <div className="bg-green-50 border border-green-100 rounded-2xl p-8 text-center">
-                <CheckCircle size={40} className="text-green-500 mx-auto mb-4" />
-                <h2 className="text-[16px] font-bold text-[#1a1917] mb-2">Message Sent!</h2>
-                <p className="text-[13px] text-[#7a7875]">Your email client should have opened. We&apos;ll get back to you within 24-48 hours.</p>
-                <button onClick={() => setSubmitted(false)} className="mt-4 text-[13px] text-accent hover:underline">Send another message</button>
-              </div>
-            ) : (
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-6">
-                <h2 className="text-[15px] font-bold text-[#1a1917] mb-5">Send a Message</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-[10.5px] font-bold text-[#7a7875] uppercase tracking-widest mb-1 block">Your Name *</label>
-                      <input required value={form.name} onChange={e => setForm(p => ({ ...p, name: e.target.value }))}
-                        placeholder="John Smith"
-                        className="w-full bg-[#f4f3f0] border border-[#e5e3de] rounded-xl px-4 py-2.5 text-[13px] text-[#1a1917] focus:outline-none focus:border-accent transition-all" />
-                    </div>
-                    <div>
-                      <label className="text-[10.5px] font-bold text-[#7a7875] uppercase tracking-widest mb-1 block">Email Address *</label>
-                      <input required type="email" value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                        placeholder="john@example.com"
-                        className="w-full bg-[#f4f3f0] border border-[#e5e3de] rounded-xl px-4 py-2.5 text-[13px] text-[#1a1917] focus:outline-none focus:border-accent transition-all" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-[10.5px] font-bold text-[#7a7875] uppercase tracking-widest mb-1 block">Subject *</label>
-                    <select required value={form.subject} onChange={e => setForm(p => ({ ...p, subject: e.target.value }))}
-                      className="w-full bg-[#f4f3f0] border border-[#e5e3de] rounded-xl px-4 py-2.5 text-[13px] text-[#1a1917] focus:outline-none focus:border-accent transition-all">
-                      <option value="general">General Inquiry</option>
-                      <option value="bug-report">Bug Report</option>
-                      <option value="feature-request">Feature Request</option>
-                      <option value="business-partnership">Business / Partnership</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="text-[10.5px] font-bold text-[#7a7875] uppercase tracking-widest mb-1 block">Message *</label>
-                    <textarea required value={form.message} onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
-                      placeholder="Describe your question, issue, or suggestion in detail..."
-                      rows={6}
-                      className="w-full bg-[#f4f3f0] border border-[#e5e3de] rounded-xl px-4 py-2.5 text-[13px] text-[#1a1917] focus:outline-none focus:border-accent transition-all resize-none" />
-                  </div>
-
-                  <button type="submit"
-                    className="w-full flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold text-[14px] py-3.5 rounded-full shadow-md hover:shadow-lg transition-all">
-                    <Mail size={16} /> Send Message
-                  </button>
-                  <p className="text-[11.5px] text-[#7a7875] text-center">This will open your email client to send the message.</p>
-                </form>
-              </div>
-            )}
+          <div>
+            <label className="mb-1.5 block text-sm font-semibold" style={{ color: C.ink }}>
+              Email <span style={{ color: C.brand }}>*</span>
+            </label>
+            <input
+              type="email"
+              value={form.email}
+              onChange={e => update("email", e.target.value)}
+              placeholder="your@email.com"
+              required
+              className="w-full rounded-xl px-4 py-2.5 text-sm"
+              style={{ border: `1px solid ${C.line}`, background: C.cream, color: C.ink, outline: "none" }}
+            />
           </div>
         </div>
-      </main>
+
+        <div>
+          <label className="mb-1.5 block text-sm font-semibold" style={{ color: C.ink }}>
+            Subject <span style={{ color: C.brand }}>*</span>
+          </label>
+          <input
+            type="text"
+            value={form.subject}
+            onChange={e => update("subject", e.target.value)}
+            placeholder="What is your message about?"
+            required
+            maxLength={200}
+            className="w-full rounded-xl px-4 py-2.5 text-sm"
+            style={{ border: `1px solid ${C.line}`, background: C.cream, color: C.ink, outline: "none" }}
+          />
+        </div>
+
+        <div>
+          <label className="mb-1.5 block text-sm font-semibold" style={{ color: C.ink }}>
+            Message <span style={{ color: C.brand }}>*</span>
+          </label>
+          <textarea
+            value={form.message}
+            onChange={e => update("message", e.target.value)}
+            placeholder="Tell us how we can help..."
+            required
+            minLength={10}
+            maxLength={5000}
+            rows={6}
+            className="w-full rounded-xl px-4 py-2.5 text-sm resize-y"
+            style={{ border: `1px solid ${C.line}`, background: C.cream, color: C.ink, outline: "none" }}
+          />
+          <p className="mt-1 text-xs text-right" style={{ color: C.sub }}>{form.message.length}/5000</p>
+        </div>
+
+        {status === "error" && (
+          <div className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm" style={{ background: C.redsoft, border: `1px solid ${C.line}` }}>
+            <AlertCircle size={16} style={{ color: C.brand }} />
+            <span style={{ color: C.ink }}>{errorMsg}</span>
+          </div>
+        )}
+
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-bold text-white disabled:opacity-50 transition-all hover:-translate-y-0.5"
+          style={{ background: C.brand, border: `1px solid ${C.line}`, boxShadow: shadow }}
+        >
+          <Send size={16} />
+          {status === "sending" ? "Sending…" : "Send Message"}
+        </button>
+      </form>
     </div>
   );
 }

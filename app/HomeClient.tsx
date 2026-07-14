@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { searchTools } from "@/lib/tools";
 import { AdUnit } from "@/components/ads/AdUnit";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
@@ -84,7 +85,7 @@ function SearchBar() {
   const [show, setShow] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const matches = query.trim().length > 0 ? ALL_SEARCH_TOOLS.filter(t => t.title.toLowerCase().includes(query.trim().toLowerCase())) : [];
+  const matches = searchTools(query).map(t => ({ ...t, title: t.name, path: t.href, color: "#FF6B5E" }));
   useEffect(() => {
     const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setShow(false); };
     document.addEventListener("mousedown", h);
@@ -103,8 +104,8 @@ function SearchBar() {
         <ul className="absolute left-0 top-full z-30 mt-2 w-full overflow-hidden rounded-xl bg-white" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
           {matches.slice(0, 6).map(tool => (
             <li key={tool.title}>
-              <Link href={tool.path} className="flex w-full items-center gap-3 px-4 py-2.5 text-sm hover:bg-[#f4f1ea]" style={{ color: C.ink }}>
-                <tool.icon size={16} style={{ color: tool.color }} />{tool.title}
+              <Link href={tool.href || tool.path} className="flex w-full items-center gap-3 px-4 py-2.5 text-sm hover:bg-[#f4f1ea]" style={{ color: C.ink }}>
+                <span className="text-xs font-bold">{(tool.name || tool.title)?.[0]}</span>{tool.name || tool.title}
               </Link>
             </li>
           ))}
@@ -112,7 +113,7 @@ function SearchBar() {
       )}
       {show && query.trim() && matches.length === 0 && (
         <div className="absolute left-0 top-full z-30 mt-2 w-full rounded-xl bg-white px-4 py-3 text-sm" style={{ color: C.sub, border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
-          No matching tools found for "{query}"
+          No tools found for "{query}"
         </div>
       )}
     </div>
