@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Clock, ArrowLeft, ArrowRight, Share2 } from "lucide-react";
-import { blogPosts, getPostBySlug } from "@/lib/blogPosts";
+import { blogPosts, getPostBySlug, type FAQ } from "@/lib/blogPosts";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { InArticleAd } from "@/components/ads/InArticleAd";
 
@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.excerpt,
     image: `https://pdf24x.com${post.image}`,
     datePublished: post.dateISO,
-    dateModified: post.dateISO,
+    dateModified: post.dateModified || post.dateISO,
     author: { "@type": "Organization", name: post.author, url: "https://pdf24x.com" },
     publisher: {
       "@type": "Organization",
@@ -74,6 +74,17 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {post.faqs && post.faqs.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": post.faqs.map((faq: FAQ) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+          }))
+        }) }} />
+      )}
     <div className="w-full flex gap-0 items-start">
       <Sidebar />
       <main className="flex-1 min-w-0 pb-24 lg:pb-8">
@@ -143,6 +154,25 @@ export default async function BlogPostPage({ params }: Props) {
               <div className="prose-content" dangerouslySetInnerHTML={{ __html: post.content }} />
               <InArticleAd />
 
+              {/* FAQs */}
+              {post.faqs && post.faqs.length > 0 && (
+                <div className="mt-8 pt-6 border-t border-[#e5e3de]">
+                  <h2 className="text-lg font-bold text-[#1a1917] mb-4">Frequently Asked Questions</h2>
+                  <div className="space-y-4">
+                    {post.faqs.map((faq: FAQ, i: number) => (
+                      <details key={i} className="group rounded-xl border border-[#1a1917]/10 bg-white overflow-hidden">
+                        <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-[13.5px] font-semibold text-[#1a1917] list-none">
+                          {faq.question}
+                          <span className="ml-2 shrink-0 text-[#7a7875] transition-transform group-open:rotate-90">›</span>
+                        </summary>
+                        <div className="px-4 pb-4 text-[13px] text-[#4a4845] leading-relaxed">
+                          {faq.answer}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              )}
               {/* Share */}
               <div className="mt-8 pt-6 border-t border-[#e5e3de] flex items-center justify-between flex-wrap gap-3">
                 <p className="text-[13px] font-semibold text-[#1a1917]">Found this helpful?</p>

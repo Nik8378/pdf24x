@@ -108,7 +108,13 @@ export const blogPosts: BlogPost[] = ([
       <h2>Summary</h2>
       <p>Converting JPG, PNG, or WEBP images to PDF takes under a minute with the right tool. Use a browser-based converter to keep your files private, choose the right page size for your use case, and keep quality on Original for documents. <a href="https://pdf24x.com">PDF24x</a> handles all of it for free, with no uploads and no account required.</p>
       <p>Related guides: <a href="https://pdf24x.com/blog/how-to-compress-pdf-without-losing-quality">How to compress a PDF without losing quality</a> · <a href="https://pdf24x.com/blog/how-to-merge-split-pdf-free">How to merge and split PDFs</a></p>
-    `,
+    ,
+    faqs: [
+      { question: "Which image formats can be converted to PDF?", answer: "JPG, JPEG, PNG, and WebP are the most commonly supported formats. BMP and GIF are also supported by many tools. HEIC photos from iPhones can be converted by first changing the camera setting to produce JPEG output." },
+      { question: "Will image quality be reduced when converting to PDF?", answer: "The image itself is embedded into the PDF at its original resolution. Quality is only reduced if the conversion tool applies compression to the embedded images. A tool that preserves original image data will produce a PDF at full original quality." },
+      { question: "Can I combine multiple images into one PDF?", answer: "Yes. Most image-to-PDF tools let you add multiple images and convert them into a single PDF with one image per page. The page order typically matches the order you add the images, which you can usually adjust before converting." },
+      { question: "Why is my PDF so much larger than the original image?", answer: "PDF is a container format that adds structure around your image data. A PDF containing a single image will typically be slightly larger than the raw image file. If you are adding many high-resolution images, the PDF size grows accordingly." },
+    ]`,
   },
   {
     slug: "how-to-compress-pdf-without-losing-quality",
@@ -177,7 +183,14 @@ export const blogPosts: BlogPost[] = ([
       <h2>Summary</h2>
       <p>PDF compression is nearly always an image compression problem in disguise. Medium compression is invisible to the eye and cuts most PDFs by 50% or more. Use browser-based tools for privacy-sensitive documents. For text-heavy PDFs that resist compression, regenerate from the original application instead.</p>
       <p>Related guides: <a href="https://pdf24x.com/blog/how-to-reduce-pdf-file-size-email">How to reduce PDF file size for email</a> · <a href="https://pdf24x.com/blog/how-to-merge-split-pdf-free">How to merge and split PDFs</a></p>
-    `,
+    ,
+    faqs: [
+      { question: "Does compressing a PDF reduce quality?", answer: "It depends on the compression level. For text-heavy PDFs, compression rarely affects readability. For image-heavy PDFs, higher compression levels reduce image quality noticeably. Medium compression is typically invisible to the eye." },
+      { question: "Why is my PDF so large?", answer: "Large PDFs are usually caused by high-resolution embedded images, scanned pages, or embedded fonts. A PDF containing scanned document pages is essentially a collection of images, which explains why scan-based PDFs are often much larger than text-based ones." },
+      { question: "Why is my compressed PDF still large?", answer: "If the PDF contains very few or no images, there is little for compression to act on. Text, vector graphics, and already-compressed image data cannot be significantly reduced. In these cases, regenerating the PDF from the original source application at lower quality settings is more effective." },
+      { question: "How small should a PDF be for email?", answer: "Most email providers allow attachments up to 10–25MB. For reliable delivery across all services, aim for under 10MB. For widely-distributed documents, under 5MB is a practical target." },
+      { question: "Does PDF compression change the content?", answer: "No. Compression only affects how data is stored. Text, layout, and structure remain unchanged. Image quality may reduce at higher compression levels, but content is not removed or altered." },
+    ]`,
   },
   {
     slug: "how-to-merge-split-pdf-free",
@@ -253,7 +266,14 @@ export const blogPosts: BlogPost[] = ([
       <h2>Summary</h2>
       <p>Merging and splitting PDFs requires no software, no subscriptions, and takes under a minute. Use a browser-based tool for privacy, understand that order matters when merging, and remember you can always extract a single page by entering a single-page range like "4-4".</p>
       <p>Related guides: <a href="https://pdf24x.com/blog/how-to-compress-pdf-without-losing-quality">How to compress a PDF without losing quality</a> · <a href="https://pdf24x.com/blog/how-to-reduce-pdf-file-size-email">How to reduce PDF file size for email</a></p>
-    `,
+    ,
+    faqs: [
+      { question: "Does merging PDFs change the original files?", answer: "No. Merging creates a new combined file. Your original PDF files are not modified." },
+      { question: "Can I control the page order when merging?", answer: "Yes. Most merge tools let you reorder the files before combining them. The merged PDF follows the order you specify." },
+      { question: "Can I extract just one page from a PDF?", answer: "Yes. Use a split or page-extraction tool. Specify the page number you want, and the tool produces a new single-page PDF. The original file is not changed." },
+      { question: "What is the difference between merging and splitting a PDF?", answer: "Merging combines multiple PDFs into one file. Splitting takes one PDF and divides it into multiple files, either by page ranges, individual pages, or equal chunks." },
+      { question: "Will splitting a PDF reduce quality?", answer: "No. Splitting a PDF only divides pages between output files. No re-encoding occurs, so text, images, and formatting are preserved exactly as in the original." },
+    ]`,
   },
   {
     slug: "best-free-pdf-tools-2025",
