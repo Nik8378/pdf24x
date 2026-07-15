@@ -236,7 +236,7 @@ export default function HomeClient() {
           <div className="rounded-2xl bg-white p-6 sm:p-8" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
             <div className="flex flex-col gap-5 sm:flex-row">
               <div className="w-full shrink-0 sm:w-32">
-                <Image src="/what-is.png" alt="What is PDF24X" width={128} height={170} className="w-full rounded-xl object-contain" />
+                <Image src="/what-is.webp" alt="What is PDF24X" width={128} height={170} className="w-full rounded-xl object-contain" />
               </div>
               <div>
                 <h2 className="text-xl font-extrabold" style={{ color: C.ink, ...font() }}>What is PDF24X?</h2>
