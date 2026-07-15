@@ -1,5 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { createClient } from "@supabase/supabase-js";
+
+function getAdminClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) throw new Error("Supabase not configured");
+  return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
+}
 
 const NAME_MAX = 100;
 const SUBJECT_MAX = 200;
@@ -53,7 +60,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Message must be between 10 and 5000 characters." }, { status: 400 });
     }
 
-    const { error } = await supabaseAdmin
+    const { error } = await getAdminClient()
       .from("contact_submissions")
       .insert({ name, email, subject, message, status: "new" });
 
