@@ -6,8 +6,7 @@ import {
   FileText, Image as ImageIcon, Minimize2, GitMerge, Split, FileImage,
   RotateCw, Unlock, ShieldCheck, Droplets, Crop, Grid3x3, FileSpreadsheet,
   Code, ImagePlay, Palette, BookOpen, Code2, Braces, Link as LinkIcon,
-  Paintbrush, Binary, KeyRound, Search, Mic, Globe,
-} from "lucide-react";
+  Paintbrush, Binary, KeyRound, Search, Mic, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "All Tools | PDF24X — Free Online PDF & Developer Tools",
