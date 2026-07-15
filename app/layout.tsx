@@ -1,6 +1,7 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import Script from "next/script";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { Inter, Archivo } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-inter", display: "swap" });
@@ -155,6 +156,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <ThemeProvider>
         <Navbar />
         {children}
         <MobileNav />
@@ -175,6 +177,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           data-overlays-management="allow_all"
         />
               <GoogleAnalytics gaId="G-0FB86D5DSY" />
+              </ThemeProvider>
       </body>
     </html>
   );

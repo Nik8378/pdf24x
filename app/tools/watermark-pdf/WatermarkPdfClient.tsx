@@ -3,8 +3,8 @@ import { useState, useCallback } from "react";
 import ToolPageSections, { Breadcrumb } from "@/components/tool/ToolPageSections";
 import { Droplets, Upload, Download, RefreshCcw, X, Loader2, Maximize2 } from "lucide-react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)", redsoft: "#ffe7e3" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 const API = process.env.NEXT_PUBLIC_API_URL || "";
 
 function formatBytes(b: number) {
@@ -224,7 +224,7 @@ export default function WatermarkPdfClient() {
           {/* Preview text */}
           <div className="rounded-xl p-4 text-center" style={{ border: `1px solid ${C.line}`, background: C.cream }}>
             <p className="text-xs font-semibold mb-2" style={{ color: C.sub }}>PREVIEW</p>
-            <div className="relative inline-block bg-white rounded-lg px-8 py-6 w-full max-w-sm overflow-hidden" style={{ border: `1px solid ${C.line}` }}>
+            <div className="relative inline-block bg-[var(--surface)] rounded-lg px-8 py-6 w-full max-w-sm overflow-hidden" style={{ border: `1px solid ${C.line}` }}>
               <div className="text-xs text-gray-300 text-left space-y-1 mb-2">
                 <div className="h-2 bg-gray-200 rounded w-3/4" />
                 <div className="h-2 bg-gray-200 rounded w-full" />
@@ -262,7 +262,7 @@ export default function WatermarkPdfClient() {
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
           <div className="flex flex-col items-center justify-center gap-4 rounded-2xl p-8 text-center" style={{ border: `1px solid ${C.line}`, background: C.surface, boxShadow: shadow }}>
             <span className="flex h-14 w-14 items-center justify-center rounded-2xl" style={{ background: "#E4F5EC" }}>
-              <Droplets size={26} style={{ color: "#27AE60" }} />
+              <Droplets size={26} style={{ color: "var(--ok)" }} />
             </span>
             <p className="text-base font-bold" style={{ color: C.ink }}>Watermark added!</p>
             <p className="text-sm" style={{ color: C.sub }}>Your PDF has been watermarked with &quot;{text}&quot;</p>
@@ -303,7 +303,7 @@ export default function WatermarkPdfClient() {
               <X size={16} style={{ color: C.sub }} />
             </button>
           </div>
-          <iframe src={resultUrl} className="flex-1 w-full bg-white" />
+          <iframe src={resultUrl} className="flex-1 w-full bg-[var(--surface)]" />
         </div>
       )}
       <ToolPageSections

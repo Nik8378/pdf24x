@@ -86,7 +86,7 @@ export function UploadZone({ compact = false, fillHeight: _fillHeight = false }:
     return (
       <button
         onClick={onClick}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#e5e3de] text-[13px] text-[#4a4845] hover:bg-[#f4f3f0] hover:text-[#1a1917] transition-all"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--line)] text-[13px] text-[var(--txt-2)] hover:bg-[var(--hover-soft)] hover:text-[var(--txt)] transition-all"
       >
         <Plus size={14} strokeWidth={2} />
         Add More
@@ -111,7 +111,7 @@ export function UploadZone({ compact = false, fillHeight: _fillHeight = false }:
       className={`relative border-2 border-dashed rounded-2xl p-5 sm:p-6 text-center cursor-pointer transition-all duration-200 group shadow-sm flex flex-col items-center justify-center min-h-[220px] ${
         dragging
           ? "border-accent bg-accent-light scale-[1.01]"
-          : "border-[#1a1917]/15 bg-white hover:border-accent hover:bg-accent-light"
+          : "border-[var(--line-mid)] bg-[var(--surface)] hover:border-accent hover:bg-accent-light"
       }`}
     >
       <input
@@ -126,7 +126,7 @@ export function UploadZone({ compact = false, fillHeight: _fillHeight = false }:
       {/* Icon */}
       <div
         className={`w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center transition-all duration-200 ${
-          dragging ? "bg-accent-bg" : "bg-[#f4f3f0] group-hover:bg-accent-bg"
+          dragging ? "bg-accent-bg" : "bg-[var(--hover-soft)] group-hover:bg-accent-bg"
         }`}
       >
         {loading ? (
@@ -136,16 +136,16 @@ export function UploadZone({ compact = false, fillHeight: _fillHeight = false }:
             size={20}
             strokeWidth={1.8}
             className={`transition-colors ${
-              dragging ? "text-accent" : "text-[#7a7875] group-hover:text-accent"
+              dragging ? "text-accent" : "text-[var(--txt-2)] group-hover:text-accent"
             }`}
           />
         )}
       </div>
 
-      <h2 className="text-[14px] font-semibold text-[#1a1917] mb-1">
+      <h2 className="text-[14px] font-semibold text-[var(--txt)] mb-1">
         {dragging ? "Drop your images here" : "Drag & drop images here"}
       </h2>
-      <p className="text-[12.5px] text-[#7a7875] mb-3">
+      <p className="text-[12.5px] text-[var(--txt-2)] mb-3">
         or click to browse · you can also paste from clipboard
       </p>
 
@@ -154,7 +154,7 @@ export function UploadZone({ compact = false, fillHeight: _fillHeight = false }:
         {FORMATS.map((f) => (
           <span
             key={f}
-            className="text-[11px] font-medium text-[#7a7875] bg-[#f4f3f0] border border-[#e5e3de] rounded px-2 py-0.5"
+            className="text-[11px] font-medium text-[var(--txt-2)] bg-[var(--hover-soft)] border border-[var(--line)] rounded px-2 py-0.5"
           >
             {f}
           </span>
@@ -169,7 +169,7 @@ export function UploadZone({ compact = false, fillHeight: _fillHeight = false }:
         Choose Files
       </button>
 
-      <p className="mt-3 text-[11.5px] text-[#7a7875]">
+      <p className="mt-3 text-[11.5px] text-[var(--txt-2)]">
         No file size limit · Multiple files supported
       </p>
     </div>

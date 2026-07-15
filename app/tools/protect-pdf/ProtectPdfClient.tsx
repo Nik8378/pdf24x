@@ -2,8 +2,8 @@
 import { useState, useCallback } from "react";
 import { ShieldCheck, Upload, Download, RefreshCcw, X, Loader2, Eye, EyeOff, CheckCircle2, Info } from "lucide-react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)", redsoft: "#ffe7e3" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 const API = process.env.NEXT_PUBLIC_API_URL || "";
 
 function formatBytes(b: number) {
@@ -21,7 +21,7 @@ const PERMISSION_OPTIONS = [
 const STRENGTH_LEVELS = [
   { value: 4, label: "Weak", color: "#EF4444", desc: "4+ characters" },
   { value: 8, label: "Medium", color: "#F59E0B", desc: "8+ characters" },
-  { value: 12, label: "Strong", color: "#27AE60", desc: "12+ characters with mixed chars" },
+  { value: 12, label: "Strong", color: "var(--ok)", desc: "12+ characters with mixed chars" },
 ];
 
 function getStrength(pwd: string) {
@@ -87,7 +87,7 @@ export default function ProtectPdfClient() {
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-8 flex items-start gap-4">
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl" style={{ background: "#E4F5EC", border: `1px solid ${C.line}`, boxShadow: shadow }}>
-          <ShieldCheck size={26} style={{ color: "#27AE60" }} />
+          <ShieldCheck size={26} style={{ color: "var(--ok)" }} />
         </span>
         <div>
           <h1 className="text-2xl font-extrabold sm:text-3xl" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Protect PDF</h1>
@@ -103,7 +103,7 @@ export default function ProtectPdfClient() {
           style={{ borderColor: dragging ? "#27AE60" : C.line, background: dragging ? "#E4F5EC" : C.surface }}>
           <input id="protect-input" type="file" accept="application/pdf" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
           <span className="flex h-14 w-14 items-center justify-center rounded-2xl" style={{ background: "#E4F5EC" }}>
-            <Upload size={28} style={{ color: "#27AE60" }} />
+            <Upload size={28} style={{ color: "var(--ok)" }} />
           </span>
           <p className="mt-4 text-base font-semibold" style={{ color: C.ink }}>Drop your PDF file here</p>
           <p className="mt-1 text-sm" style={{ color: C.sub }}>or click to browse</p>
@@ -113,7 +113,7 @@ export default function ProtectPdfClient() {
           {/* File row */}
           <div className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ border: `1px solid ${C.line}`, background: C.surface, boxShadow: shadow }}>
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg" style={{ background: "#E4F5EC" }}>
-              <ShieldCheck size={16} style={{ color: "#27AE60" }} />
+              <ShieldCheck size={16} style={{ color: "var(--ok)" }} />
             </span>
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-semibold" style={{ color: C.ink }}>{file.name}</p>
@@ -197,7 +197,7 @@ export default function ProtectPdfClient() {
                   </div>
                   <div className="flex h-6 w-11 items-center rounded-full transition-all shrink-0"
                     style={{ background: permissions[opt.key] ? "#27AE60" : "#d1d5db", justifyContent: permissions[opt.key] ? "flex-end" : "flex-start", padding: "2px" }}>
-                    <div className="h-5 w-5 rounded-full bg-white shadow" />
+                    <div className="h-5 w-5 rounded-full bg-[var(--surface)] shadow" />
                   </div>
                 </div>
               ))}
@@ -221,14 +221,14 @@ export default function ProtectPdfClient() {
       ) : (
         <div className="flex flex-col items-center gap-4 rounded-2xl p-10 text-center" style={{ border: `1px solid ${C.line}`, background: C.surface, boxShadow: shadow }}>
           <span className="flex h-14 w-14 items-center justify-center rounded-2xl" style={{ background: "#E4F5EC" }}>
-            <ShieldCheck size={26} style={{ color: "#27AE60" }} />
+            <ShieldCheck size={26} style={{ color: "var(--ok)" }} />
           </span>
           <p className="text-base font-bold" style={{ color: C.ink }}>PDF protected successfully!</p>
           <div className="space-y-1.5 text-sm" style={{ color: C.sub }}>
-            <div className="flex items-center gap-2 justify-center"><CheckCircle2 size={15} style={{ color: "#27AE60" }} />Password protection applied</div>
-            <div className="flex items-center gap-2 justify-center"><CheckCircle2 size={15} style={{ color: "#27AE60" }} />Printing: {permissions.allow_printing ? "Allowed" : "Blocked"}</div>
-            <div className="flex items-center gap-2 justify-center"><CheckCircle2 size={15} style={{ color: "#27AE60" }} />Copying: {permissions.allow_copying ? "Allowed" : "Blocked"}</div>
-            <div className="flex items-center gap-2 justify-center"><CheckCircle2 size={15} style={{ color: "#27AE60" }} />Editing: {permissions.allow_editing ? "Allowed" : "Blocked"}</div>
+            <div className="flex items-center gap-2 justify-center"><CheckCircle2 size={15} style={{ color: "var(--ok)" }} />Password protection applied</div>
+            <div className="flex items-center gap-2 justify-center"><CheckCircle2 size={15} style={{ color: "var(--ok)" }} />Printing: {permissions.allow_printing ? "Allowed" : "Blocked"}</div>
+            <div className="flex items-center gap-2 justify-center"><CheckCircle2 size={15} style={{ color: "var(--ok)" }} />Copying: {permissions.allow_copying ? "Allowed" : "Blocked"}</div>
+            <div className="flex items-center gap-2 justify-center"><CheckCircle2 size={15} style={{ color: "var(--ok)" }} />Editing: {permissions.allow_editing ? "Allowed" : "Blocked"}</div>
           </div>
           <div className="flex flex-wrap gap-3 justify-center mt-2">
             <a href={resultUrl} download="protected.pdf"

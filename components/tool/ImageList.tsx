@@ -32,27 +32,27 @@ function PreviewModal({ img, onClose }: { img: ImageFile; onClose: () => void })
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-2xl shadow-2xl border border-[#1a1917]/10 max-w-2xl w-full max-h-[85vh] overflow-hidden"
+        className="bg-[var(--surface)] rounded-2xl shadow-2xl border border-[var(--line)] max-w-2xl w-full max-h-[85vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between p-4 border-b border-[#e5e3de]">
-          <p className="text-[13.5px] font-medium text-[#1a1917] truncate pr-4">{img.name}</p>
+        <div className="flex items-center justify-between p-4 border-b border-[var(--line)]">
+          <p className="text-[13.5px] font-medium text-[var(--txt)] truncate pr-4">{img.name}</p>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#7a7875] hover:bg-[#f4f3f0] hover:text-[#1a1917] transition-colors"
+            className="p-1.5 rounded-lg text-[var(--txt-2)] hover:bg-[var(--hover-soft)] hover:text-[var(--txt)] transition-colors"
           >
             <X size={16} />
           </button>
         </div>
-        <div className="p-4 flex items-center justify-center bg-[#f4f3f0] min-h-[300px]">
+        <div className="p-4 flex items-center justify-center bg-[var(--hover-soft)] min-h-[300px]">
           <img
             src={img.dataUrl}
             alt={img.name}
-            className="max-w-full max-h-[65vh] object-contain rounded-lg border border-[#e5e3de] shadow-card"
+            className="max-w-full max-h-[65vh] object-contain rounded-lg border border-[var(--line)] shadow-card"
             style={{ transform: `rotate(${img.rotation}deg)` }}
           />
         </div>
-        <div className="px-4 py-3 border-t border-[#e5e3de] flex gap-4 text-[12px] text-[#7a7875]">
+        <div className="px-4 py-3 border-t border-[var(--line)] flex gap-4 text-[12px] text-[var(--txt-2)]">
           <span>{formatBytes(img.size)}</span>
           {img.width && img.height && (
             <span>{img.width} × {img.height}px</span>
@@ -86,24 +86,24 @@ function SortableItem({ img, index }: { img: ImageFile; index: number }) {
       <div
         ref={setNodeRef}
         style={style}
-        className="flex items-center gap-2.5 sm:gap-3 bg-white border border-[#1a1917]/10 rounded-xl px-3 py-2.5 hover:border-[#1a1917]/20 hover:shadow-md transition-all group"
+        className="flex items-center gap-2.5 sm:gap-3 bg-[var(--surface)] border border-[var(--line)] rounded-xl px-3 py-2.5 hover:border-[var(--line-mid)] hover:shadow-md transition-all group"
       >
         {/* Drag handle */}
         <div
           {...attributes}
           {...listeners}
-          className="text-[#7a7875] hover:text-[#4a4845] cursor-grab active:cursor-grabbing touch-none shrink-0 p-0.5"
+          className="text-[var(--txt-2)] hover:text-[var(--txt-2)] cursor-grab active:cursor-grabbing touch-none shrink-0 p-0.5"
         >
           <GripVertical size={15} strokeWidth={1.8} />
         </div>
 
         {/* Page number */}
-        <span className="text-[11.5px] font-medium text-[#7a7875] w-5 text-center shrink-0 select-none">
+        <span className="text-[11.5px] font-medium text-[var(--txt-2)] w-5 text-center shrink-0 select-none">
           {index + 1}
         </span>
 
         {/* Thumbnail */}
-        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden border border-[#e5e3de] bg-[#f4f3f0] shrink-0">
+        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden border border-[var(--line)] bg-[var(--hover-soft)] shrink-0">
           <img
             src={img.dataUrl}
             alt={img.name}
@@ -114,8 +114,8 @@ function SortableItem({ img, index }: { img: ImageFile; index: number }) {
 
         {/* Info */}
         <div className="flex-1 min-w-0">
-          <p className="text-[13px] font-medium text-[#1a1917] truncate">{img.name}</p>
-          <p className="text-[11.5px] text-[#7a7875] flex items-center gap-2 flex-wrap">
+          <p className="text-[13px] font-medium text-[var(--txt)] truncate">{img.name}</p>
+          <p className="text-[11.5px] text-[var(--txt-2)] flex items-center gap-2 flex-wrap">
             <span>{formatBytes(img.size)}</span>
             {img.width && img.height && (
               <span className="hidden sm:inline">{img.width}×{img.height}px</span>
@@ -130,28 +130,28 @@ function SortableItem({ img, index }: { img: ImageFile; index: number }) {
         <div className="flex items-center gap-0.5 shrink-0">
           <button
             onClick={() => setPreview(true)}
-            className="p-2 rounded-lg text-[#7a7875] hover:text-[#4a4845] hover:bg-[#f4f3f0] transition-colors"
+            className="p-2 rounded-lg text-[var(--txt-2)] hover:text-[var(--txt-2)] hover:bg-[var(--hover-soft)] transition-colors"
             title="Preview"
           >
             <Eye size={14} strokeWidth={1.8} />
           </button>
           <button
             onClick={() => rotateImage(img.id, "ccw")}
-            className="p-2 rounded-lg text-[#7a7875] hover:text-[#4a4845] hover:bg-[#f4f3f0] transition-colors"
+            className="p-2 rounded-lg text-[var(--txt-2)] hover:text-[var(--txt-2)] hover:bg-[var(--hover-soft)] transition-colors"
             title="Rotate left"
           >
             <RotateCcw size={14} strokeWidth={1.8} />
           </button>
           <button
             onClick={() => rotateImage(img.id, "cw")}
-            className="p-2 rounded-lg text-[#7a7875] hover:text-[#4a4845] hover:bg-[#f4f3f0] transition-colors"
+            className="p-2 rounded-lg text-[var(--txt-2)] hover:text-[var(--txt-2)] hover:bg-[var(--hover-soft)] transition-colors"
             title="Rotate right"
           >
             <RotateCw size={14} strokeWidth={1.8} />
           </button>
           <button
             onClick={() => removeImage(img.id)}
-            className="p-2 rounded-lg text-[#7a7875] hover:text-red-500 hover:bg-red-50 transition-colors"
+            className="p-2 rounded-lg text-[var(--txt-2)] hover:text-red-500 hover:bg-red-50 transition-colors"
             title="Remove"
           >
             <Trash2 size={14} strokeWidth={1.8} />
@@ -187,16 +187,16 @@ export function ImageList() {
     <div className="mt-4">
       {/* Header */}
       <div className="flex items-center gap-2 mb-3 flex-wrap">
-        <h3 className="text-[13.5px] font-semibold text-[#1a1917]">
+        <h3 className="text-[13.5px] font-semibold text-[var(--txt)]">
           {images.length} Image{images.length !== 1 ? "s" : ""}
-          <span className="ml-1 text-[#7a7875] font-normal">
+          <span className="ml-1 text-[var(--txt-2)] font-normal">
             · drag to reorder
           </span>
         </h3>
         <div className="flex-1" />
         <button
           onClick={clearImages}
-          className="flex items-center gap-1.5 text-[12.5px] text-[#7a7875] hover:text-red-500 bg-white border border-[#e5e3de] hover:border-red-200 hover:bg-red-50 rounded-lg px-3 py-1.5 transition-all"
+          className="flex items-center gap-1.5 text-[12.5px] text-[var(--txt-2)] hover:text-red-500 bg-[var(--surface)] border border-[var(--line)] hover:border-red-200 hover:bg-red-50 rounded-lg px-3 py-1.5 transition-all"
         >
           <Trash2 size={12} strokeWidth={2} />
           Clear All

@@ -35,7 +35,7 @@ const FOOTER_COLS = [
 
 export function Footer() {
   return (
-    <footer style={{ borderTop: "1px solid #1c1c1c", background: "#f4f1ea" }}>
+    <footer style={{ borderTop: "1px solid var(--line-strong)", background: "var(--cream)" }}>
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand column */}
@@ -43,7 +43,7 @@ export function Footer() {
             <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
               <Image src="/logo.png" alt="PDF24X" width={110} height={30} style={{ objectFit: "contain" }} />
             </Link>
-            <p className="mt-3 max-w-xs text-sm" style={{ color: "#6b6760" }}>
+            <p className="mt-3 max-w-xs text-sm" style={{ color: "var(--txt-2)" }}>
               Your all-in-one platform for PDF, Image, and Developer tools.
             </p>
           </div>
@@ -53,14 +53,14 @@ export function Footer() {
             <div key={col.head}>
               {/* Mobile: collapsible */}
               <details className="group sm:hidden">
-                <summary className="flex cursor-pointer list-none items-center justify-between border-b py-3 text-sm font-bold" style={{ borderColor: "#1c1c1c", color: "#1a1a1a" }}>
+                <summary className="flex cursor-pointer list-none items-center justify-between border-b py-3 text-sm font-bold" style={{ borderColor: "#1c1c1c", color: "var(--txt)" }}>
                   {col.head}
-                  <ChevronDown size={15} className="transition-transform duration-200 group-open:rotate-180 shrink-0" style={{ color: "#6b6760", strokeWidth: 1.5 }} />
+                  <ChevronDown size={15} className="transition-transform duration-200 group-open:rotate-180 shrink-0" style={{ color: "var(--txt-2)", strokeWidth: 1.5 }} />
                 </summary>
                 <ul className="space-y-2.5 pb-2 pt-3">
                   {col.items.map((it) => (
                     <li key={it.label}>
-                      <Link href={it.path} className="text-sm transition-colors hover:text-[#FF6B5E]" style={{ color: "#6b6760" }}>
+                      <Link href={it.path} className="text-sm transition-colors hover:text-[#FF6B5E]" style={{ color: "var(--txt-2)" }}>
                         {it.label}
                       </Link>
                     </li>
@@ -70,11 +70,11 @@ export function Footer() {
 
               {/* Desktop: always visible */}
               <div className="hidden sm:block">
-                <h3 className="text-sm font-bold" style={{ color: "#1a1a1a" }}>{col.head}</h3>
+                <h3 className="text-sm font-bold" style={{ color: "var(--txt)" }}>{col.head}</h3>
                 <ul className="mt-4 space-y-2.5">
                   {col.items.map((it) => (
                     <li key={it.label}>
-                      <Link href={it.path} className="text-sm transition-colors hover:text-[#FF6B5E]" style={{ color: "#6b6760" }}>
+                      <Link href={it.path} className="text-sm transition-colors hover:text-[#FF6B5E]" style={{ color: "var(--txt-2)" }}>
                         {it.label}
                       </Link>
                     </li>
@@ -85,8 +85,8 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-8 pt-5 text-center text-xs" style={{ borderTop: "1px solid #1c1c1c", color: "#6b6760" }}>
-          © {new Date().getFullYear()} <span className="font-semibold" style={{ color: "#1a1a1a" }}>PDF24X</span>. All rights reserved.
+        <div className="mt-8 pt-5 text-center text-xs" style={{ borderTop: "1px solid var(--line-strong)", color: "var(--txt-2)" }}>
+          © {new Date().getFullYear()} <span className="font-semibold" style={{ color: "var(--txt)" }}>PDF24X</span>. All rights reserved.
         </div>
       </div>
     </footer>

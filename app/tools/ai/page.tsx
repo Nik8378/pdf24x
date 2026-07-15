@@ -19,11 +19,11 @@ export default function Page() {
               <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2"/><path d="M12 8v4l3 3"/>
             </svg>
           </div>
-          <h1 className="text-xl font-bold text-[#1a1917] mb-2">AI PDF Assistant – Coming Soon</h1>
-          <p className="text-[13.5px] text-[#7a7875] mb-6 leading-relaxed">
+          <h1 className="text-xl font-bold text-[var(--txt)] mb-2">AI PDF Assistant – Coming Soon</h1>
+          <p className="text-[13.5px] text-[var(--txt-2)] mb-6 leading-relaxed">
             Chat with your PDFs, ask questions, extract data, and summarize documents with AI. Under active development.
           </p>
-          <Link href="/tools" className="inline-flex items-center gap-2 bg-[#1a1917] text-white text-[13.5px] font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity">
+          <Link href="/tools" className="inline-flex items-center gap-2 bg-[var(--inv-bg)] text-[var(--inv-txt)] text-[13.5px] font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity">
             ← See all tools
           </Link>
         </div>

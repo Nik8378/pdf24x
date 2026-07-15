@@ -24,7 +24,7 @@ function TreeNode({ data, keyName, depth = 0, defaultOpen = true }: TreeNodeProp
     if (typeof data === "boolean") return "text-purple-600";
     if (typeof data === "number") return "text-blue-600";
     if (typeof data === "string") return "text-green-700";
-    return "text-[#1a1917]";
+    return "text-[var(--txt)]";
   };
 
   const bracket = isArr ? ["[", "]"] : ["{", "}"];
@@ -33,24 +33,24 @@ function TreeNode({ data, keyName, depth = 0, defaultOpen = true }: TreeNodeProp
 
   return (
     <div style={{ marginLeft: depth === 0 ? 0 : indent }}>
-      <div className="flex items-start gap-1 group min-h-[22px] hover:bg-[#f4f3f0] rounded px-1 cursor-pointer" onClick={() => isCollapsible && setOpen(!open)}>
+      <div className="flex items-start gap-1 group min-h-[22px] hover:bg-[var(--hover-soft)] rounded px-1 cursor-pointer" onClick={() => isCollapsible && setOpen(!open)}>
         {isCollapsible ? (
-          <span className="text-[#7a7875] mt-0.5 shrink-0 w-4">
+          <span className="text-[var(--txt-2)] mt-0.5 shrink-0 w-4">
             {open ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
           </span>
         ) : <span className="w-4 shrink-0" />}
 
         {keyName !== undefined && (
-          <span className="text-[#C0392B] font-medium text-[12.5px] shrink-0">
-            &quot;{keyName}&quot;<span className="text-[#7a7875]">:</span>&nbsp;
+          <span className="text-[var(--err)] font-medium text-[12.5px] shrink-0">
+            &quot;{keyName}&quot;<span className="text-[var(--txt-2)]">:</span>&nbsp;
           </span>
         )}
 
         {isCollapsible ? (
-          <span className="text-[12.5px] text-[#1a1917]">
+          <span className="text-[12.5px] text-[var(--txt)]">
             <span className="font-bold">{bracket[0]}</span>
             {!open && (
-              <span className="text-[#7a7875] text-[11px]"> {count} {isArr ? "items" : "keys"} </span>
+              <span className="text-[var(--txt-2)] text-[11px]"> {count} {isArr ? "items" : "keys"} </span>
             )}
             {!open && <span className="font-bold">{bracket[1]}</span>}
           </span>
@@ -62,7 +62,7 @@ function TreeNode({ data, keyName, depth = 0, defaultOpen = true }: TreeNodeProp
       </div>
 
       {isCollapsible && open && (
-        <div className="border-l border-[#e5e3de] ml-2">
+        <div className="border-l border-[var(--line)] ml-2">
           {children.map(([k, v], i) => (
             <TreeNode key={k} data={v} keyName={isArr ? undefined : k} depth={depth + 1} defaultOpen={depth < 1} />
           ))}
@@ -70,7 +70,7 @@ function TreeNode({ data, keyName, depth = 0, defaultOpen = true }: TreeNodeProp
       )}
 
       {isCollapsible && open && (
-        <div style={{ marginLeft: depth === 0 ? 0 : indent }} className="text-[12.5px] font-bold text-[#1a1917] px-1">
+        <div style={{ marginLeft: depth === 0 ? 0 : indent }} className="text-[12.5px] font-bold text-[var(--txt)] px-1">
           {bracket[1]}
         </div>
       )}
@@ -243,8 +243,8 @@ export default function JSONFormatterClient() {
 
           {/* Header */}
           <div className="mb-4">
-            <h1 className="text-xl sm:text-2xl font-bold text-[#1a1917] mb-1">JSON Formatter & Validator</h1>
-            <p className="text-[13px] text-[#7a7875]">
+            <h1 className="text-xl sm:text-2xl font-bold text-[var(--txt)] mb-1">JSON Formatter & Validator</h1>
+            <p className="text-[13px] text-[var(--txt-2)]">
               Format, beautify, validate and minify JSON instantly. Syntax highlighting, tree view, error detection — all in your browser.
             </p>
           </div>
@@ -252,7 +252,7 @@ export default function JSONFormatterClient() {
           {/* SEO keyword pills */}
           <div className="flex flex-wrap gap-2 mb-4">
             {["JSON Beautifier", "JSON Validator", "JSON Minifier", "JSON Viewer", "JSON Lint", "JSON Tree", "Free"].map(tag => (
-              <span key={tag} className="text-[11px] font-medium text-[#7a7875] bg-[#f4f3f0] border border-[#e5e3de] rounded-full px-3 py-1">{tag}</span>
+              <span key={tag} className="text-[11px] font-medium text-[var(--txt-2)] bg-[var(--hover-soft)] border border-[var(--line)] rounded-full px-3 py-1">{tag}</span>
             ))}
           </div>
 
@@ -263,22 +263,22 @@ export default function JSONFormatterClient() {
               <Maximize2 size={14} /> Format / Beautify
             </button>
             <button onClick={handleMinify} disabled={!parsed}
-              className="flex items-center gap-1.5 bg-[#f4f3f0] hover:bg-[#e5e3de] text-[#4a4845] font-medium text-[13px] px-4 py-2 rounded-full transition-all disabled:opacity-40">
+              className="flex items-center gap-1.5 bg-[var(--hover-soft)] hover:bg-[var(--hover-soft)] text-[var(--txt-2)] font-medium text-[13px] px-4 py-2 rounded-full transition-all disabled:opacity-40">
               <Minimize2 size={14} /> Minify
             </button>
             <button onClick={() => { setInput(SAMPLE); process(SAMPLE); }}
-              className="flex items-center gap-1.5 bg-[#f4f3f0] hover:bg-[#e5e3de] text-[#4a4845] font-medium text-[13px] px-4 py-2 rounded-full transition-all">
+              className="flex items-center gap-1.5 bg-[var(--hover-soft)] hover:bg-[var(--hover-soft)] text-[var(--txt-2)] font-medium text-[13px] px-4 py-2 rounded-full transition-all">
               Sample JSON
             </button>
             <button onClick={() => fileRef.current?.click()}
-              className="flex items-center gap-1.5 bg-[#f4f3f0] hover:bg-[#e5e3de] text-[#4a4845] font-medium text-[13px] px-4 py-2 rounded-full transition-all">
+              className="flex items-center gap-1.5 bg-[var(--hover-soft)] hover:bg-[var(--hover-soft)] text-[var(--txt-2)] font-medium text-[13px] px-4 py-2 rounded-full transition-all">
               <Upload size={14} /> Upload File
             </button>
             <input ref={fileRef} type="file" accept=".json,application/json,text/plain" className="hidden"
               onChange={e => e.target.files?.[0] && handleFile(e.target.files[0])} />
             {output && (
               <button onClick={handleDownload}
-                className="flex items-center gap-1.5 bg-[#f4f3f0] hover:bg-[#e5e3de] text-[#4a4845] font-medium text-[13px] px-4 py-2 rounded-full transition-all">
+                className="flex items-center gap-1.5 bg-[var(--hover-soft)] hover:bg-[var(--hover-soft)] text-[var(--txt-2)] font-medium text-[13px] px-4 py-2 rounded-full transition-all">
                 <Download size={14} /> Download
               </button>
             )}
@@ -289,10 +289,10 @@ export default function JSONFormatterClient() {
 
             {/* Indent selector */}
             <div className="flex items-center gap-2 ml-auto">
-              <span className="text-[12px] text-[#7a7875]">Indent:</span>
+              <span className="text-[12px] text-[var(--txt-2)]">Indent:</span>
               {[2, 4].map(n => (
                 <button key={n} onClick={() => { setIndent(n); if (parsed) setOutput(JSON.stringify(parsed, null, n)); }}
-                  className={`w-8 h-8 rounded-lg text-[12px] font-bold transition-all ${indent === n ? "bg-accent text-white" : "bg-[#f4f3f0] text-[#4a4845] hover:bg-[#e5e3de]"}`}>
+                  className={`w-8 h-8 rounded-lg text-[12px] font-bold transition-all ${indent === n ? "bg-accent text-white" : "bg-[var(--hover-soft)] text-[var(--txt-2)] hover:bg-[var(--hover-soft)]"}`}>
                   {n}
                 </button>
               ))}
@@ -307,9 +307,9 @@ export default function JSONFormatterClient() {
                 : <><AlertCircle size={16} className="text-red-500 shrink-0" /><span className="text-[12.5px] text-red-600 font-medium">{error}</span></>}
               {stats && valid && (
                 <div className="ml-auto flex items-center gap-4">
-                  <span className="text-[11.5px] text-[#7a7875]">Keys: <strong className="text-[#1a1917]">{stats.keys}</strong></span>
-                  <span className="text-[11.5px] text-[#7a7875]">Size: <strong className="text-[#1a1917]">{stats.size}</strong></span>
-                  <span className="text-[11.5px] text-[#7a7875]">Depth: <strong className="text-[#1a1917]">{stats.depth}</strong></span>
+                  <span className="text-[11.5px] text-[var(--txt-2)]">Keys: <strong className="text-[var(--txt)]">{stats.keys}</strong></span>
+                  <span className="text-[11.5px] text-[var(--txt-2)]">Size: <strong className="text-[var(--txt)]">{stats.size}</strong></span>
+                  <span className="text-[11.5px] text-[var(--txt-2)]">Depth: <strong className="text-[var(--txt)]">{stats.depth}</strong></span>
                 </div>
               )}
             </div>
@@ -321,39 +321,39 @@ export default function JSONFormatterClient() {
             {/* Input */}
             <div className="flex flex-col">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[12px] font-bold text-[#1a1917] uppercase tracking-widest">Input</span>
-                <span className="text-[11px] text-[#7a7875]">{input.length} chars</span>
+                <span className="text-[12px] font-bold text-[var(--txt)] uppercase tracking-widest">Input</span>
+                <span className="text-[11px] text-[var(--txt-2)]">{input.length} chars</span>
               </div>
               <textarea
                 value={input}
                 onChange={e => handleInput(e.target.value)}
                 placeholder='Paste your JSON here... e.g. {"key": "value"}'
                 spellCheck={false}
-                className="flex-1 min-h-[500px] w-full bg-[#1a1917] text-[#f4f3f0] font-mono text-[13px] rounded-2xl p-4 border border-[#1a1917]/20 focus:outline-none focus:ring-2 focus:ring-accent resize-none leading-relaxed"
+                className="flex-1 min-h-[500px] w-full bg-[var(--inv-bg)] text-[var(--inv-txt)] font-mono text-[13px] rounded-2xl p-4 border border-[var(--line-mid)] focus:outline-none focus:ring-2 focus:ring-accent resize-none leading-relaxed"
               />
             </div>
 
             {/* Output */}
             <div className="flex flex-col">
               <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-1 bg-[#f4f3f0] rounded-lg p-0.5">
+                <div className="flex items-center gap-1 bg-[var(--hover-soft)] rounded-lg p-0.5">
                   {(["formatted", "tree", "minified"] as ViewMode[]).map(m => (
                     <button key={m} onClick={() => setView(m)}
-                      className={`px-3 py-1 rounded-md text-[12px] font-medium capitalize transition-all ${view === m ? "bg-white shadow text-accent" : "text-[#7a7875] hover:text-[#1a1917]"}`}>
+                      className={`px-3 py-1 rounded-md text-[12px] font-medium capitalize transition-all ${view === m ? "bg-[var(--surface)] shadow text-accent" : "text-[var(--txt-2)] hover:text-[var(--txt)]"}`}>
                       {m}
                     </button>
                   ))}
                 </div>
                 <button onClick={handleCopy} disabled={!output}
-                  className="flex items-center gap-1.5 text-[12px] text-[#7a7875] hover:text-accent transition-colors disabled:opacity-40">
+                  className="flex items-center gap-1.5 text-[12px] text-[var(--txt-2)] hover:text-accent transition-colors disabled:opacity-40">
                   {copied ? <CheckCircle size={14} className="text-green-500" /> : <Copy size={14} />}
                   {copied ? "Copied!" : "Copy"}
                 </button>
               </div>
 
-              <div className="flex-1 min-h-[500px] bg-white border border-[#1a1917]/10 rounded-2xl overflow-auto">
+              <div className="flex-1 min-h-[500px] bg-[var(--surface)] border border-[var(--line)] rounded-2xl overflow-auto">
                 {!output && !error && (
-                  <div className="flex items-center justify-center h-full text-[#7a7875] text-[13px]">
+                  <div className="flex items-center justify-center h-full text-[var(--txt-2)] text-[13px]">
                     Output will appear here
                   </div>
                 )}
@@ -392,16 +392,16 @@ export default function JSONFormatterClient() {
               { title: "JSON Formatting", body: "Formatting or beautifying JSON adds proper indentation and line breaks to make it easy to read and debug. Our formatter supports 2 and 4 space indentation." },
               { title: "JSON Validation", body: "JSON validation checks if your JSON is syntactically correct. Our validator instantly detects errors and highlights exactly where the problem is." },
             ].map(card => (
-              <div key={card.title} className="bg-white border border-[#1a1917]/10 rounded-2xl p-4">
-                <h2 className="text-[13px] font-bold text-[#1a1917] mb-2">{card.title}</h2>
-                <p className="text-[12.5px] text-[#7a7875] leading-relaxed">{card.body}</p>
+              <div key={card.title} className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4">
+                <h2 className="text-[13px] font-bold text-[var(--txt)] mb-2">{card.title}</h2>
+                <p className="text-[12.5px] text-[var(--txt-2)] leading-relaxed">{card.body}</p>
               </div>
             ))}
           </div>
 
           {/* FAQ for SEO */}
-          <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5">
-            <h2 className="text-[14px] font-bold text-[#1a1917] mb-4">Frequently Asked Questions</h2>
+          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5">
+            <h2 className="text-[14px] font-bold text-[var(--txt)] mb-4">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {[
                 { q: "How do I format JSON online?", a: "Paste your JSON into the input box and click 'Format / Beautify'. The tool will instantly format your JSON with proper indentation." },
@@ -410,9 +410,9 @@ export default function JSONFormatterClient() {
                 { q: "What is JSON minification?", a: "Minification removes all whitespace and line breaks from JSON to reduce file size. Click 'Minify' to compress your JSON." },
                 { q: "Can I upload a JSON file?", a: "Yes — click 'Upload File' to load any .json file directly into the formatter." },
               ].map(faq => (
-                <div key={faq.q} className="border-b border-[#f4f3f0] pb-4 last:border-0 last:pb-0">
-                  <h3 className="text-[13px] font-semibold text-[#1a1917] mb-1">{faq.q}</h3>
-                  <p className="text-[12.5px] text-[#7a7875]">{faq.a}</p>
+                <div key={faq.q} className="border-b border-[var(--line)] pb-4 last:border-0 last:pb-0">
+                  <h3 className="text-[13px] font-semibold text-[var(--txt)] mb-1">{faq.q}</h3>
+                  <p className="text-[12.5px] text-[var(--txt-2)]">{faq.a}</p>
                 </div>
               ))}
             </div>

@@ -10,20 +10,20 @@ export const metadata: Metadata = {
 
 const VALUES = [
   { icon: Heart, color: "#EE4B3C", tint: "#ffe7e3", title: "Built for everyone", desc: "No sign-ups, no paywalls — every tool stays free and open to use." },
-  { icon: ShieldCheck, color: "#27AE60", tint: "#E4F5EC", title: "Privacy first", desc: "Files are processed and then deleted. We don't keep what isn't ours." },
+  { icon: ShieldCheck, color: "var(--ok)", tint: "#E4F5EC", title: "Privacy first", desc: "Files are processed and then deleted. We don't keep what isn't ours." },
   { icon: Zap, color: "#3B82F6", tint: "#E5EEFC", title: "Fast by default", desc: "We optimize every tool so you get results in seconds, not minutes." },
   { icon: Globe, color: "#7B61FF", tint: "#ECE7FF", title: "Works anywhere", desc: "No installs. Any device, any browser, any time." },
 ];
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 const font = { fontFamily: "Archivo, Inter, sans-serif" };
 
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
       <header className="text-center">
-        <span className="mx-auto mb-3 inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-bold" style={{ border: `1px solid ${C.line}`, color: C.brand, boxShadow: shadow }}>
+        <span className="mx-auto mb-3 inline-flex items-center rounded-full bg-[var(--surface)] px-3 py-1 text-xs font-bold" style={{ border: `1px solid ${C.line}`, color: C.brand, boxShadow: shadow }}>
           About PDF24X
         </span>
         <h1 className="text-3xl font-extrabold sm:text-4xl" style={{ color: C.ink, ...font }}>
@@ -34,7 +34,7 @@ export default function AboutPage() {
         </p>
       </header>
 
-      <section className="mt-14 rounded-2xl bg-white p-7 sm:p-10" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+      <section className="mt-14 rounded-2xl bg-[var(--surface)] p-7 sm:p-10" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
         <h2 className="text-xl font-extrabold sm:text-2xl" style={{ color: C.ink, ...font }}>Why we built this</h2>
         <div className="mt-4 space-y-4 text-sm leading-relaxed sm:text-base" style={{ color: C.sub }}>
           <p>We kept running into the same problem: needing to merge a couple of PDFs, or shrink one down to email it, and ending up on a site cluttered with ads, asking us to create an account just to download a file we already had the rights to.</p>
@@ -45,7 +45,7 @@ export default function AboutPage() {
 
       <section className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {VALUES.map(({ icon: Icon, color, tint, title, desc }) => (
-          <div key={title} className="rounded-2xl bg-white p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+          <div key={title} className="rounded-2xl bg-[var(--surface)] p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
             <span className="flex h-11 w-11 items-center justify-center rounded-xl" style={{ background: tint }}>
               <Icon size={22} style={{ color }} />
             </span>

@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import { Search, X } from "lucide-react";
 import { LIVE_TOOLS, searchTools, type Tool } from "@/lib/tools";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 
 export default function ToolSearch() {
   const [query, setQuery] = useState("");
@@ -39,7 +39,7 @@ export default function ToolSearch() {
     <div className="mb-6">
       <div className="relative max-w-xl">
         <label htmlFor="tool-search" className="sr-only">Search tools</label>
-        <div className="flex items-center rounded-xl bg-white" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+        <div className="flex items-center rounded-xl bg-[var(--surface)]" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
           <Search size={17} className="ml-3 shrink-0" style={{ color: C.sub }} aria-hidden="true" />
           <input
             ref={inputRef}
@@ -70,7 +70,7 @@ export default function ToolSearch() {
             id="tool-search-results"
             ref={listRef}
             role="listbox"
-            className="absolute left-0 top-full z-30 mt-2 w-full overflow-y-auto rounded-xl bg-white"
+            className="absolute left-0 top-full z-30 mt-2 w-full overflow-y-auto rounded-xl bg-[var(--surface)]"
             style={{ border: `1px solid ${C.line}`, boxShadow: shadow, maxHeight: "320px" }}
           >
             {results.length > 0 ? results.map((tool, i) => (

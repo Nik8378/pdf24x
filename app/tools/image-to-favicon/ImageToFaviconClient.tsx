@@ -161,8 +161,8 @@ export default function ImageToFaviconClient() {
 
           {/* Header */}
           <div className="mb-5">
-            <h1 className="text-xl sm:text-2xl font-bold text-[#1a1917] mb-1">Image to Favicon Converter</h1>
-            <p className="text-[13px] text-[#7a7875]">
+            <h1 className="text-xl sm:text-2xl font-bold text-[var(--txt)] mb-1">Image to Favicon Converter</h1>
+            <p className="text-[13px] text-[var(--txt-2)]">
               Convert any image to favicon.ico — supports PNG, JPG, SVG, WEBP. All sizes included. Free & private.
             </p>
           </div>
@@ -170,7 +170,7 @@ export default function ImageToFaviconClient() {
           {/* SEO keywords as feature pills */}
           <div className="flex flex-wrap gap-2 mb-5">
             {["PNG to ICO", "JPG to Favicon", "SVG to ICO", "Favicon Generator", "Free ICO Maker", "No Upload"].map(tag => (
-              <span key={tag} className="text-[11px] font-medium text-[#7a7875] bg-[#f4f3f0] border border-[#e5e3de] rounded-full px-3 py-1">{tag}</span>
+              <span key={tag} className="text-[11px] font-medium text-[var(--txt-2)] bg-[var(--hover-soft)] border border-[var(--line)] rounded-full px-3 py-1">{tag}</span>
             ))}
           </div>
 
@@ -186,24 +186,24 @@ export default function ImageToFaviconClient() {
                   onDragLeave={() => setDragging(false)}
                   onDrop={onDrop}
                   onClick={() => inputRef.current?.click()}
-                  className={`border-2 border-dashed rounded-2xl p-7 text-center cursor-pointer transition-all shadow-sm flex flex-col items-center justify-center min-h-[220px] ${dragging ? "border-accent bg-accent-light scale-[1.01]" : "border-[#1a1917]/15 bg-white hover:border-accent hover:bg-accent-light"}`}
+                  className={`border-2 border-dashed rounded-2xl p-7 text-center cursor-pointer transition-all shadow-sm flex flex-col items-center justify-center min-h-[220px] ${dragging ? "border-accent bg-accent-light scale-[1.01]" : "border-[var(--line-mid)] bg-[var(--surface)] hover:border-accent hover:bg-accent-light"}`}
                 >
                   <input ref={inputRef} type="file" accept={ACCEPT_STR} className="hidden" onChange={e => e.target.files?.[0] && handleFile(e.target.files[0])} />
-                  <div className="w-14 h-14 rounded-full bg-[#f4f3f0] flex items-center justify-center mb-4">
-                    <UploadCloud size={22} className="text-[#7a7875]" />
+                  <div className="w-14 h-14 rounded-full bg-[var(--hover-soft)] flex items-center justify-center mb-4">
+                    <UploadCloud size={22} className="text-[var(--txt-2)]" />
                   </div>
-                  <h2 className="text-[14px] font-semibold text-[#1a1917] mb-1">Drag & drop your image here</h2>
-                  <p className="text-[12.5px] text-[#7a7875] mb-4">PNG, JPG, SVG, WEBP, GIF, BMP supported</p>
+                  <h2 className="text-[14px] font-semibold text-[var(--txt)] mb-1">Drag & drop your image here</h2>
+                  <p className="text-[12.5px] text-[var(--txt-2)] mb-4">PNG, JPG, SVG, WEBP, GIF, BMP supported</p>
                   <button onClick={e => { e.stopPropagation(); inputRef.current?.click(); }}
                     className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold text-[13.5px] px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all">
                     <UploadCloud size={15} /> Choose Image
                   </button>
-                  <p className="mt-3 text-[11.5px] text-[#7a7875]">Files never leave your device</p>
+                  <p className="mt-3 text-[11.5px] text-[var(--txt-2)]">Files never leave your device</p>
                 </div>
               ) : (
-                <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5">
+                <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5">
                   <div className="flex items-center justify-between mb-4">
-                    <p className="text-[13.5px] font-semibold text-[#1a1917]">Your Image</p>
+                    <p className="text-[13.5px] font-semibold text-[var(--txt)]">Your Image</p>
                     <button onClick={() => { setImage(null); setDone(false); }}
                       className="text-[12px] text-red-500 hover:text-red-600 flex items-center gap-1">
                       <Trash2 size={13} /> Remove
@@ -214,30 +214,30 @@ export default function ImageToFaviconClient() {
                   <div className="flex flex-wrap items-end gap-4 mb-4">
                     {/* Original */}
                     <div className="text-center">
-                      <div className="w-32 h-32 rounded-xl border border-[#e5e3de] overflow-hidden bg-[#f4f3f0] flex items-center justify-center">
+                      <div className="w-32 h-32 rounded-xl border border-[var(--line)] overflow-hidden bg-[var(--hover-soft)] flex items-center justify-center">
                         <img src={image.previewUrl} alt="original" className="w-full h-full object-contain" />
                       </div>
-                      <p className="text-[11px] text-[#7a7875] mt-1">Original</p>
-                      <p className="text-[10.5px] text-[#7a7875]">{fmtBytes(image.size)}</p>
+                      <p className="text-[11px] text-[var(--txt-2)] mt-1">Original</p>
+                      <p className="text-[10.5px] text-[var(--txt-2)]">{fmtBytes(image.size)}</p>
                     </div>
 
                     {/* Size previews */}
                     {[64, 32, 16].map(size => (
                       <div key={size} className="text-center">
-                        <div className="rounded border border-[#e5e3de] overflow-hidden bg-[#f4f3f0] flex items-center justify-center"
+                        <div className="rounded border border-[var(--line)] overflow-hidden bg-[var(--hover-soft)] flex items-center justify-center"
                           style={{ width: Math.max(size, 24), height: Math.max(size, 24) }}>
                           <img src={image.previewUrl} alt={`${size}x${size}`} style={{ width: size, height: size, objectFit: "contain" }} />
                         </div>
-                        <p className="text-[10.5px] text-[#7a7875] mt-1">{size}×{size}</p>
+                        <p className="text-[10.5px] text-[var(--txt-2)] mt-1">{size}×{size}</p>
                       </div>
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-3 p-3 bg-[#f4f3f0] rounded-xl">
-                    <ImageIcon size={15} className="text-[#7a7875] shrink-0" />
+                  <div className="flex items-center gap-3 p-3 bg-[var(--hover-soft)] rounded-xl">
+                    <ImageIcon size={15} className="text-[var(--txt-2)] shrink-0" />
                     <div className="flex-1 min-w-0">
-                      <p className="text-[12.5px] font-medium text-[#1a1917] truncate">{image.name}</p>
-                      <p className="text-[11px] text-[#7a7875]">{fmtBytes(image.size)}</p>
+                      <p className="text-[12.5px] font-medium text-[var(--txt)] truncate">{image.name}</p>
+                      <p className="text-[11px] text-[var(--txt-2)]">{fmtBytes(image.size)}</p>
                     </div>
                     {done && <CheckCircle size={16} className="text-green-500 shrink-0" />}
                   </div>
@@ -245,8 +245,8 @@ export default function ImageToFaviconClient() {
               )}
 
               {/* How it works */}
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5">
-                <h2 className="text-[13px] font-bold text-[#1a1917] mb-3">How to create a favicon</h2>
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5">
+                <h2 className="text-[13px] font-bold text-[var(--txt)] mb-3">How to create a favicon</h2>
                 <ol className="space-y-2">
                   {[
                     "Upload any image — PNG, JPG, SVG, WEBP, GIF or BMP",
@@ -254,7 +254,7 @@ export default function ImageToFaviconClient() {
                     "Click Convert & Download to get your favicon.ico",
                     "Place favicon.ico in your website's root folder",
                   ].map((step, i) => (
-                    <li key={i} className="flex items-start gap-2.5 text-[12.5px] text-[#4a4845]">
+                    <li key={i} className="flex items-start gap-2.5 text-[12.5px] text-[var(--txt-2)]">
                       <span className="w-5 h-5 rounded-full bg-accent-bg text-accent text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5">{i + 1}</span>
                       {step}
                     </li>
@@ -265,20 +265,20 @@ export default function ImageToFaviconClient() {
 
             {/* Right — Settings Panel */}
             <div className="w-full xl:w-[260px] shrink-0 xl:sticky xl:top-14">
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-4 shadow-sm">
-                <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-[#1a1917]/8">
-                  <ImageIcon size={14} className="text-[#7a7875]" />
-                  <h3 className="text-[13px] font-bold text-[#1a1917]">Favicon Sizes</h3>
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 shadow-sm">
+                <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-[var(--line)]">
+                  <ImageIcon size={14} className="text-[var(--txt-2)]" />
+                  <h3 className="text-[13px] font-bold text-[var(--txt)]">Favicon Sizes</h3>
                 </div>
 
-                <p className="text-[11.5px] text-[#7a7875] mb-3">Select which sizes to include in your favicon.ico</p>
+                <p className="text-[11.5px] text-[var(--txt-2)] mb-3">Select which sizes to include in your favicon.ico</p>
 
                 <div className="space-y-2 mb-4">
                   {SIZES.map(size => (
                     <label key={size} className="flex items-center gap-2.5 cursor-pointer group">
                       <div
                         onClick={() => toggleSize(size)}
-                        className={`w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 transition-all ${selectedSizes.includes(size) ? "bg-accent border-accent" : "border-[#d4d2cb] group-hover:border-accent"}`}
+                        className={`w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 transition-all ${selectedSizes.includes(size) ? "bg-accent border-accent" : "border-[var(--line-mid)] group-hover:border-accent"}`}
                       >
                         {selectedSizes.includes(size) && (
                           <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
@@ -286,8 +286,8 @@ export default function ImageToFaviconClient() {
                           </svg>
                         )}
                       </div>
-                      <span className="text-[12.5px] text-[#1a1917] flex-1">{size}×{size}px</span>
-                      <span className="text-[10.5px] text-[#7a7875]">
+                      <span className="text-[12.5px] text-[var(--txt)] flex-1">{size}×{size}px</span>
+                      <span className="text-[10.5px] text-[var(--txt-2)]">
                         {size === 16 ? "Browser tab" : size === 32 ? "Taskbar" : size === 48 ? "Desktop" : size === 64 ? "High-DPI" : size === 128 ? "Chrome Web Store" : "Windows"}
                       </span>
                     </label>
@@ -301,11 +301,11 @@ export default function ImageToFaviconClient() {
                   Select all sizes
                 </button>
 
-                <div className="border-t border-[#1a1917]/8 pt-3">
+                <div className="border-t border-[var(--line)] pt-3">
                   <button
                     onClick={handleConvert}
                     disabled={!image || converting || selectedSizes.length === 0}
-                    className={`w-full flex items-center justify-center gap-2 font-semibold text-[14px] py-3 rounded-full transition-all ${!image || converting || selectedSizes.length === 0 ? "bg-[#f4f3f0] text-[#7a7875] cursor-not-allowed" : "bg-accent hover:bg-accent-dark text-white shadow-md hover:shadow-lg"}`}
+                    className={`w-full flex items-center justify-center gap-2 font-semibold text-[14px] py-3 rounded-full transition-all ${!image || converting || selectedSizes.length === 0 ? "bg-[var(--hover-soft)] text-[var(--txt-2)] cursor-not-allowed" : "bg-accent hover:bg-accent-dark text-white shadow-md hover:shadow-lg"}`}
                   >
                     {converting ? (
                       <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -314,7 +314,7 @@ export default function ImageToFaviconClient() {
                     )}
                     {converting ? "Converting…" : done ? "Download Again" : "Convert & Download"}
                   </button>
-                  <p className="text-center text-[11px] text-[#7a7875] mt-2">
+                  <p className="text-center text-[11px] text-[var(--txt-2)] mt-2">
                     Files processed locally · Never uploaded
                   </p>
                 </div>

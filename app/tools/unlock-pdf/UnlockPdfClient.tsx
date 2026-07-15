@@ -3,8 +3,8 @@ import { useState, useCallback } from "react";
 import ToolPageSections, { Breadcrumb } from "@/components/tool/ToolPageSections";
 import { Unlock, Upload, Download, RefreshCcw, X, Loader2, Info, CheckCircle2, Maximize2 } from "lucide-react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)", redsoft: "#ffe7e3" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 const API = process.env.NEXT_PUBLIC_API_URL || "";
 
 function formatBytes(b: number) {
@@ -148,7 +148,7 @@ export default function UnlockPdfClient() {
           {/* Left: actions */}
           <div className="flex flex-col items-center justify-center gap-4 rounded-2xl p-8 text-center" style={{ border: `1px solid ${C.line}`, background: C.surface, boxShadow: shadow }}>
             <span className="flex h-14 w-14 items-center justify-center rounded-2xl" style={{ background: "#E4F5EC" }}>
-              <Unlock size={26} style={{ color: "#27AE60" }} />
+              <Unlock size={26} style={{ color: "var(--ok)" }} />
             </span>
             <p className="text-base font-bold" style={{ color: C.ink }}>PDF unlocked successfully!</p>
             <p className="text-sm max-w-xs" style={{ color: C.sub }}>Password protection has been permanently removed. The file can now be opened by anyone.</p>
@@ -193,7 +193,7 @@ export default function UnlockPdfClient() {
               <X size={16} style={{ color: C.sub }} />
             </button>
           </div>
-          <iframe src={resultUrl} className="flex-1 w-full bg-white" />
+          <iframe src={resultUrl} className="flex-1 w-full bg-[var(--surface)]" />
         </div>
       )}
       <ToolPageSections

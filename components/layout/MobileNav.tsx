@@ -14,13 +14,13 @@ const links = [
 export function MobileNav() {
   const pathname = usePathname();
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#1a1917]/10 safe-area-bottom">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[var(--surface)] border-t border-[var(--line)] safe-area-bottom">
       <div className="flex items-stretch h-14">
         {links.map((l) => {
           const active = pathname === l.href;
           return (
             <Link key={l.href} href={l.href}
-              className={`flex flex-col items-center justify-center flex-1 gap-0.5 text-[10px] font-medium transition-colors ${active ? "text-accent" : "text-[#7a7875]"}`}>
+              className={`flex flex-col items-center justify-center flex-1 gap-0.5 text-[10px] font-medium transition-colors ${active ? "text-accent" : "text-[var(--txt-2)]"}`}>
               <l.icon size={18} strokeWidth={active ? 2.2 : 1.8} />
               <span>{l.name}</span>
             </Link>

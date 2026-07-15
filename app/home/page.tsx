@@ -26,15 +26,15 @@ const features = [
 export default function HomePage() {
   return (
     <div className="w-full">
-      <div className="bg-white border-b border-[#1a1917]/10">
+      <div className="bg-[var(--surface)] border-b border-[var(--line)]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-20 text-center">
           <div className="inline-flex items-center gap-2 bg-accent-bg text-accent text-[12px] font-semibold px-3 py-1 rounded-full mb-4 border border-accent/20">
             <span className="w-1.5 h-1.5 bg-accent rounded-full" />Free · Private · No Sign-up
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold text-[#1a1917] mb-4 leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold text-[var(--txt)] mb-4 leading-tight">
             Every PDF Tool You Need.<br className="hidden sm:block" /> All in One Place.
           </h1>
-          <p className="text-[#7a7875] text-[15px] sm:text-[17px] max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-[var(--txt-2)] text-[15px] sm:text-[17px] max-w-xl mx-auto mb-8 leading-relaxed">
             Convert, compress, merge, split your PDFs — free, private, in your browser.
           </p>
           <Link href="#tools" className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold text-[15px] px-7 py-3 rounded-full transition-all shadow-md hover:shadow-lg">
@@ -43,23 +43,23 @@ export default function HomePage() {
         </div>
       </div>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12" id="tools">
-        <h2 className="text-[13px] font-bold uppercase tracking-widest text-[#7a7875] mb-6 text-center">PDF Tools</h2>
+        <h2 className="text-[13px] font-bold uppercase tracking-widest text-[var(--txt-2)] mb-6 text-center">PDF Tools</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
           {tools.map((tool) => (
             <Link key={tool.href} href={tool.href}
-              className="group bg-white border border-[#1a1917]/10 rounded-2xl p-4 sm:p-5 hover:border-accent/40 hover:shadow-lg transition-all hover:-translate-y-0.5 flex flex-col items-center text-center gap-3">
+              className="group bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 sm:p-5 hover:border-accent/40 hover:shadow-lg transition-all hover:-translate-y-0.5 flex flex-col items-center text-center gap-3">
               <div className={`w-12 h-12 rounded-xl ${tool.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
                 <tool.icon size={22} strokeWidth={1.8} className={tool.iconColor} />
               </div>
               <div>
-                <p className="text-[13px] font-bold text-[#1a1917] leading-snug mb-1">{tool.name}</p>
-                <p className="text-[11.5px] text-[#7a7875] leading-snug hidden sm:block">{tool.desc}</p>
+                <p className="text-[13px] font-bold text-[var(--txt)] leading-snug mb-1">{tool.name}</p>
+                <p className="text-[11.5px] text-[var(--txt-2)] leading-snug hidden sm:block">{tool.desc}</p>
               </div>
             </Link>
           ))}
         </div>
       </div>
-      <div className="bg-white border-y border-[#1a1917]/10 py-12">
+      <div className="bg-[var(--surface)] border-y border-[var(--line)] py-12">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             {features.map((f) => (
@@ -67,8 +67,8 @@ export default function HomePage() {
                 <div className="w-10 h-10 bg-accent-bg rounded-xl flex items-center justify-center mx-auto mb-3">
                   <f.icon size={18} strokeWidth={1.8} className="text-accent" />
                 </div>
-                <p className="text-[13px] font-bold text-[#1a1917] mb-1">{f.title}</p>
-                <p className="text-[12px] text-[#7a7875] leading-snug">{f.desc}</p>
+                <p className="text-[13px] font-bold text-[var(--txt)] mb-1">{f.title}</p>
+                <p className="text-[12px] text-[var(--txt-2)] leading-snug">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -79,12 +79,12 @@ export default function HomePage() {
           <div className="w-6 h-6 bg-accent rounded flex items-center justify-center">
             <FileText size={12} color="white" strokeWidth={2.2} />
           </div>
-          <span className="text-[13px] font-semibold text-[#1a1917]">PDF24x</span>
-          <span className="text-[12px] text-[#7a7875]">© 2025</span>
+          <span className="text-[13px] font-semibold text-[var(--txt)]">PDF24x</span>
+          <span className="text-[12px] text-[var(--txt-2)]">© 2025</span>
         </div>
-        <div className="flex gap-4 text-[12.5px] text-[#7a7875]">
-          <Link href="/tools" className="hover:text-[#1a1917]">All Tools</Link>
-          <Link href="/blog" className="hover:text-[#1a1917]">Blog</Link>
+        <div className="flex gap-4 text-[12.5px] text-[var(--txt-2)]">
+          <Link href="/tools" className="hover:text-[var(--txt)]">All Tools</Link>
+          <Link href="/blog" className="hover:text-[var(--txt)]">Blog</Link>
         </div>
       </footer>
     </div>

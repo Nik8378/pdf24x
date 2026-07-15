@@ -150,8 +150,8 @@ export default function ISBNConverterClient() {
 
           {/* Header */}
           <div className="mb-5">
-            <h1 className="text-xl sm:text-2xl font-bold text-[#1a1917] mb-1">ISBN Converter</h1>
-            <p className="text-[13px] text-[#7a7875]">
+            <h1 className="text-xl sm:text-2xl font-bold text-[var(--txt)] mb-1">ISBN Converter</h1>
+            <p className="text-[13px] text-[var(--txt-2)]">
               Auto-detect and convert between ISBN-10 and ISBN-13. Validates check digits instantly.
             </p>
           </div>
@@ -159,7 +159,7 @@ export default function ISBNConverterClient() {
           {/* SEO pills */}
           <div className="flex flex-wrap gap-2 mb-5">
             {["ISBN-10 to ISBN-13", "ISBN-13 to ISBN-10", "Auto Detect", "Validate ISBN", "Bulk Convert", "Free"].map(tag => (
-              <span key={tag} className="text-[11px] font-medium text-[#7a7875] bg-[#f4f3f0] border border-[#e5e3de] rounded-full px-3 py-1">{tag}</span>
+              <span key={tag} className="text-[11px] font-medium text-[var(--txt-2)] bg-[var(--hover-soft)] border border-[var(--line)] rounded-full px-3 py-1">{tag}</span>
             ))}
           </div>
 
@@ -169,10 +169,10 @@ export default function ISBNConverterClient() {
             <div className="flex-1 min-w-0 w-full space-y-4">
 
               {/* Single converter with live preview */}
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5">
-                <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#1a1917]/8">
-                  <ArrowLeftRight size={14} className="text-[#7a7875]" />
-                  <h2 className="text-[13px] font-bold text-[#1a1917]">Quick Convert</h2>
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5">
+                <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[var(--line)]">
+                  <ArrowLeftRight size={14} className="text-[var(--txt-2)]" />
+                  <h2 className="text-[13px] font-bold text-[var(--txt)]">Quick Convert</h2>
                   {liveResult && liveResult.inputType !== "invalid" && (
                     <span className="ml-auto text-[11px] font-bold px-2 py-0.5 rounded-full bg-accent-bg text-accent">
                       {liveResult.inputType} detected
@@ -183,15 +183,15 @@ export default function ISBNConverterClient() {
                 <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 items-center">
                   {/* Input */}
                   <div>
-                    <label className="text-[10.5px] font-bold text-[#7a7875] uppercase tracking-widest mb-1.5 block">Input ISBN</label>
+                    <label className="text-[10.5px] font-bold text-[var(--txt-2)] uppercase tracking-widest mb-1.5 block">Input ISBN</label>
                     <input
                       value={inputs[0]}
                       onChange={e => updateRow(0, e.target.value)}
                       placeholder="e.g. 0-306-40615-2 or 978-3-16-148410-0"
-                      className="w-full bg-[#f4f3f0] border border-[#1a1917]/12 rounded-xl px-4 py-3 text-[14px] text-[#1a1917] font-mono focus:outline-none focus:border-accent focus:bg-white transition-all"
+                      className="w-full bg-[var(--hover-soft)] border border-[var(--line)] rounded-xl px-4 py-3 text-[14px] text-[var(--txt)] font-mono focus:outline-none focus:border-accent focus:bg-[var(--surface)] transition-all"
                     />
                     {liveResult && inputs[0] && (
-                      <p className={`text-[11.5px] mt-1.5 ${liveResult.isValid ? "text-green-600" : liveResult.inputType === "invalid" ? "text-[#7a7875]" : "text-red-500"}`}>
+                      <p className={`text-[11.5px] mt-1.5 ${liveResult.isValid ? "text-green-600" : liveResult.inputType === "invalid" ? "text-[var(--txt-2)]" : "text-red-500"}`}>
                         {liveResult.inputType === "invalid" ? "Enter a valid 10 or 13 digit ISBN" : liveResult.isValid ? `✓ Valid ${liveResult.inputType}` : `✗ ${liveResult.error}`}
                       </p>
                     )}
@@ -199,14 +199,14 @@ export default function ISBNConverterClient() {
 
                   {/* Arrow */}
                   <div className="flex items-center justify-center pt-5">
-                    <div className="w-8 h-8 rounded-full bg-[#f4f3f0] flex items-center justify-center">
-                      <ArrowLeftRight size={14} className="text-[#7a7875]" />
+                    <div className="w-8 h-8 rounded-full bg-[var(--hover-soft)] flex items-center justify-center">
+                      <ArrowLeftRight size={14} className="text-[var(--txt-2)]" />
                     </div>
                   </div>
 
                   {/* Output */}
                   <div>
-                    <label className="text-[10.5px] font-bold text-[#7a7875] uppercase tracking-widest mb-1.5 block">
+                    <label className="text-[10.5px] font-bold text-[var(--txt-2)] uppercase tracking-widest mb-1.5 block">
                       {liveResult?.outputType ?? "Output ISBN"}
                     </label>
                     <div className="relative">
@@ -214,28 +214,28 @@ export default function ISBNConverterClient() {
                         readOnly
                         value={liveResult?.output ?? ""}
                         placeholder="Result appears here"
-                        className="w-full bg-[#f4f3f0] border border-[#1a1917]/12 rounded-xl px-4 py-3 pr-10 text-[14px] text-[#1a1917] font-mono focus:outline-none cursor-default"
+                        className="w-full bg-[var(--hover-soft)] border border-[var(--line)] rounded-xl px-4 py-3 pr-10 text-[14px] text-[var(--txt)] font-mono focus:outline-none cursor-default"
                       />
                       {liveResult?.output && (
                         <button onClick={() => handleCopy(liveResult.output!)}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 text-[#7a7875] hover:text-accent transition-colors">
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--txt-2)] hover:text-accent transition-colors">
                           {copied === liveResult.output ? <CheckCircle size={15} className="text-green-500" /> : <Copy size={15} />}
                         </button>
                       )}
                     </div>
                     {liveResult?.outputFormatted && (
-                      <p className="text-[11.5px] text-[#7a7875] mt-1.5 font-mono">{liveResult.outputFormatted}</p>
+                      <p className="text-[11.5px] text-[var(--txt-2)] mt-1.5 font-mono">{liveResult.outputFormatted}</p>
                     )}
                   </div>
                 </div>
               </div>
 
               {/* Bulk converter */}
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5">
-                <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#1a1917]/8">
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5">
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-[var(--line)]">
                   <div className="flex items-center gap-2">
-                    <BookOpen size={14} className="text-[#7a7875]" />
-                    <h2 className="text-[13px] font-bold text-[#1a1917]">Bulk Convert</h2>
+                    <BookOpen size={14} className="text-[var(--txt-2)]" />
+                    <h2 className="text-[13px] font-bold text-[var(--txt)]">Bulk Convert</h2>
                   </div>
                   <button onClick={addRow}
                     className="flex items-center gap-1.5 text-[12px] text-accent hover:text-accent-dark font-medium transition-colors">
@@ -246,15 +246,15 @@ export default function ISBNConverterClient() {
                 <div className="space-y-2 mb-4">
                   {inputs.map((val, i) => (
                     <div key={i} className="flex items-center gap-2">
-                      <span className="text-[11px] text-[#7a7875] w-5 text-right shrink-0">{i + 1}</span>
+                      <span className="text-[11px] text-[var(--txt-2)] w-5 text-right shrink-0">{i + 1}</span>
                       <input
                         value={val}
                         onChange={e => updateRow(i, e.target.value)}
                         placeholder={`ISBN ${i + 1}`}
-                        className="flex-1 bg-[#f4f3f0] border border-[#1a1917]/12 rounded-lg px-3 py-2 text-[13px] text-[#1a1917] font-mono focus:outline-none focus:border-accent focus:bg-white transition-all"
+                        className="flex-1 bg-[var(--hover-soft)] border border-[var(--line)] rounded-lg px-3 py-2 text-[13px] text-[var(--txt)] font-mono focus:outline-none focus:border-accent focus:bg-[var(--surface)] transition-all"
                       />
                       {inputs.length > 1 && (
-                        <button onClick={() => removeRow(i)} className="text-[#7a7875] hover:text-red-500 transition-colors p-1">
+                        <button onClick={() => removeRow(i)} className="text-[var(--txt-2)] hover:text-red-500 transition-colors p-1">
                           <Trash2 size={14} />
                         </button>
                       )}
@@ -271,9 +271,9 @@ export default function ISBNConverterClient() {
 
               {/* Results */}
               {converted && results.length > 0 && (
-                <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5">
-                  <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#1a1917]/8">
-                    <h2 className="text-[13px] font-bold text-[#1a1917]">
+                <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5">
+                  <div className="flex items-center justify-between mb-4 pb-3 border-b border-[var(--line)]">
+                    <h2 className="text-[13px] font-bold text-[var(--txt)]">
                       Results ({results.filter(r => r.isValid).length}/{results.length} converted)
                     </h2>
                     {results.some(r => r.output) && (
@@ -295,19 +295,19 @@ export default function ISBNConverterClient() {
                               </span>
                               {r.outputType && (
                                 <>
-                                  <ArrowLeftRight size={10} className="text-[#7a7875]" />
+                                  <ArrowLeftRight size={10} className="text-[var(--txt-2)]" />
                                   <span className="text-[10.5px] font-bold px-2 py-0.5 rounded-full bg-accent-bg text-accent">
                                     {r.outputType}
                                   </span>
                                 </>
                               )}
                             </div>
-                            <p className="text-[12px] font-mono text-[#7a7875]">{r.input}</p>
+                            <p className="text-[12px] font-mono text-[var(--txt-2)]">{r.input}</p>
                             {r.output && (
-                              <p className="text-[13px] font-mono font-semibold text-[#1a1917] mt-0.5">{r.output}</p>
+                              <p className="text-[13px] font-mono font-semibold text-[var(--txt)] mt-0.5">{r.output}</p>
                             )}
                             {r.outputFormatted && (
-                              <p className="text-[11px] font-mono text-[#7a7875]">{r.outputFormatted}</p>
+                              <p className="text-[11px] font-mono text-[var(--txt-2)]">{r.outputFormatted}</p>
                             )}
                             {r.error && (
                               <p className="text-[11.5px] text-red-500 mt-0.5">{r.error}</p>
@@ -315,7 +315,7 @@ export default function ISBNConverterClient() {
                           </div>
                           {r.output && (
                             <button onClick={() => handleCopy(r.output!)}
-                              className="shrink-0 text-[#7a7875] hover:text-accent transition-colors p-1">
+                              className="shrink-0 text-[var(--txt-2)] hover:text-accent transition-colors p-1">
                               {copied === r.output ? <CheckCircle size={15} className="text-green-500" /> : <Copy size={15} />}
                             </button>
                           )}
@@ -327,38 +327,38 @@ export default function ISBNConverterClient() {
               )}
 
               {/* Info section for SEO */}
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5">
-                <h2 className="text-[13px] font-bold text-[#1a1917] mb-3">About ISBN Conversion</h2>
-                <div className="space-y-3 text-[12.5px] text-[#4a4845] leading-relaxed">
-                  <p><strong className="text-[#1a1917]">ISBN-10</strong> — used for books published before 2007. 10 digits, last digit can be X (representing 10).</p>
-                  <p><strong className="text-[#1a1917]">ISBN-13</strong> — current standard since 2007. 13 digits, always starts with 978 or 979.</p>
-                  <p><strong className="text-[#1a1917]">Converting ISBN-10 to ISBN-13</strong> — add "978" prefix, recalculate the check digit.</p>
-                  <p><strong className="text-[#1a1917]">Converting ISBN-13 to ISBN-10</strong> — only possible for ISBNs starting with "978". Remove prefix, recalculate check digit.</p>
-                  <p><strong className="text-[#1a1917]">979 prefix ISBNs</strong> — cannot be converted to ISBN-10 as there is no equivalent format.</p>
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5">
+                <h2 className="text-[13px] font-bold text-[var(--txt)] mb-3">About ISBN Conversion</h2>
+                <div className="space-y-3 text-[12.5px] text-[var(--txt-2)] leading-relaxed">
+                  <p><strong className="text-[var(--txt)]">ISBN-10</strong> — used for books published before 2007. 10 digits, last digit can be X (representing 10).</p>
+                  <p><strong className="text-[var(--txt)]">ISBN-13</strong> — current standard since 2007. 13 digits, always starts with 978 or 979.</p>
+                  <p><strong className="text-[var(--txt)]">Converting ISBN-10 to ISBN-13</strong> — add "978" prefix, recalculate the check digit.</p>
+                  <p><strong className="text-[var(--txt)]">Converting ISBN-13 to ISBN-10</strong> — only possible for ISBNs starting with "978". Remove prefix, recalculate check digit.</p>
+                  <p><strong className="text-[var(--txt)]">979 prefix ISBNs</strong> — cannot be converted to ISBN-10 as there is no equivalent format.</p>
                 </div>
               </div>
             </div>
 
             {/* Right — Info panel */}
             <div className="w-full xl:w-[240px] shrink-0 xl:sticky xl:top-14 space-y-3">
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-4 shadow-sm">
-                <h3 className="text-[13px] font-bold text-[#1a1917] mb-3">Format Guide</h3>
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 shadow-sm">
+                <h3 className="text-[13px] font-bold text-[var(--txt)] mb-3">Format Guide</h3>
                 <div className="space-y-3">
                   <div>
-                    <p className="text-[10.5px] font-bold text-[#7a7875] uppercase tracking-widest mb-1">ISBN-10</p>
-                    <p className="text-[12px] font-mono text-[#1a1917]">0-306-40615-2</p>
-                    <p className="text-[11px] text-[#7a7875]">10 digits, last can be X</p>
+                    <p className="text-[10.5px] font-bold text-[var(--txt-2)] uppercase tracking-widest mb-1">ISBN-10</p>
+                    <p className="text-[12px] font-mono text-[var(--txt)]">0-306-40615-2</p>
+                    <p className="text-[11px] text-[var(--txt-2)]">10 digits, last can be X</p>
                   </div>
-                  <div className="border-t border-[#e5e3de] pt-3">
-                    <p className="text-[10.5px] font-bold text-[#7a7875] uppercase tracking-widest mb-1">ISBN-13</p>
-                    <p className="text-[12px] font-mono text-[#1a1917]">978-0-306-40615-7</p>
-                    <p className="text-[11px] text-[#7a7875]">13 digits, starts with 978/979</p>
+                  <div className="border-t border-[var(--line)] pt-3">
+                    <p className="text-[10.5px] font-bold text-[var(--txt-2)] uppercase tracking-widest mb-1">ISBN-13</p>
+                    <p className="text-[12px] font-mono text-[var(--txt)]">978-0-306-40615-7</p>
+                    <p className="text-[11px] text-[var(--txt-2)]">13 digits, starts with 978/979</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-4 shadow-sm">
-                <h3 className="text-[13px] font-bold text-[#1a1917] mb-3">Accepted Formats</h3>
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 shadow-sm">
+                <h3 className="text-[13px] font-bold text-[var(--txt)] mb-3">Accepted Formats</h3>
                 <div className="space-y-1.5">
                   {[
                     "0306406152",
@@ -368,17 +368,17 @@ export default function ISBNConverterClient() {
                     "978-0-306-40615-7",
                   ].map(f => (
                     <button key={f} onClick={() => { updateRow(0, f); setConverted(false); }}
-                      className="w-full text-left text-[11.5px] font-mono text-[#4a4845] hover:text-accent hover:bg-accent-bg rounded-lg px-2 py-1 transition-all">
+                      className="w-full text-left text-[11.5px] font-mono text-[var(--txt-2)] hover:text-accent hover:bg-accent-bg rounded-lg px-2 py-1 transition-all">
                       {f}
                     </button>
                   ))}
                 </div>
-                <p className="text-[10.5px] text-[#7a7875] mt-2">Click to try an example</p>
+                <p className="text-[10.5px] text-[var(--txt-2)] mt-2">Click to try an example</p>
               </div>
 
-              <div className="bg-[#f4f3f0] border border-[#e5e3de] rounded-2xl p-4">
-                <p className="text-[11px] font-bold text-[#1a1917] mb-1">100% Private</p>
-                <p className="text-[11px] text-[#7a7875] leading-snug">All conversion happens in your browser. No data is sent to any server.</p>
+              <div className="bg-[var(--hover-soft)] border border-[var(--line)] rounded-2xl p-4">
+                <p className="text-[11px] font-bold text-[var(--txt)] mb-1">100% Private</p>
+                <p className="text-[11px] text-[var(--txt-2)] leading-snug">All conversion happens in your browser. No data is sent to any server.</p>
               </div>
             </div>
           </div>

@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { Lock, Loader2 } from "lucide-react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", cream: "#f4f1ea", redsoft: "#ffe7e3" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", cream: "var(--cream)", redsoft: "#ffe7e3" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
@@ -36,7 +36,7 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4" style={{ background: C.cream }}>
-      <div className="w-full max-w-sm rounded-2xl bg-white p-8" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+      <div className="w-full max-w-sm rounded-2xl bg-[var(--surface)] p-8" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
         <div className="mb-6 flex items-center gap-3">
           <Lock size={20} style={{ color: C.brand }} />
           <h1 className="text-lg font-extrabold" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Admin Login</h1>

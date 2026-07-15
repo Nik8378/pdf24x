@@ -2,8 +2,8 @@
 import { useState, useCallback } from "react";
 import { FileText, Loader2, Download, RefreshCcw, X, Info } from "lucide-react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)", redsoft: "#ffe7e3" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 
 // TODO: Replace with your deployed FastAPI backend URL when available
 // e.g. "https://api.pdf24x.com"
@@ -164,7 +164,7 @@ export default function PdfToWordClient() {
       {status === "done" && resultUrl && (
         <div className="flex flex-col items-center gap-4 rounded-2xl p-10 text-center" style={{ border: `1px solid ${C.line}`, background: C.surface, boxShadow: shadow }}>
           <span className="flex h-14 w-14 items-center justify-center rounded-2xl" style={{ background: "#E4F5EC" }}>
-            <FileText size={26} style={{ color: "#27AE60" }} />
+            <FileText size={26} style={{ color: "var(--ok)" }} />
           </span>
           <p className="text-base font-bold" style={{ color: C.ink }}>Your Word document is ready!</p>
           <p className="max-w-sm text-sm" style={{ color: C.sub }}>

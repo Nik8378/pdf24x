@@ -13,10 +13,10 @@ import {
 } from "lucide-react";
 
 const C = {
-  cream: "#f4f1ea", surface: "#ffffff", line: "#1c1c1c",
-  ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E",
+  cream: "var(--cream)", surface: "var(--surface)", line: "var(--line-strong)",
+  ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E",
   redsoft: "#ffe7e3", banner: "#F5C84B",
-  shadow: "3px 3px 0 0 #1c1c1c", shadowLift: "6px 6px 0 0 #1c1c1c",
+  shadow: "3px 3px 0 0 var(--line-strong)", shadowLift: "6px 6px 0 0 #1c1c1c",
 };
 
 const HERO_WORDS = ["PDF", "Image", "Developers"];
@@ -30,14 +30,14 @@ const FEATURE_CHIPS = [
 
 const CATEGORIES = [
   { icon: FileText, color: "#EE4B3C", tint: "#ffe7e3", title: "PDF Converter", desc: "Convert PDF to Word, Excel, JPG and more.", path: "/tools#pdf-tools" },
-  { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image Converter", desc: "Convert images to and from different formats.", path: "/tools#image-tools" },
+  { icon: ImageIcon, color: "var(--ok)", tint: "#E4F5EC", title: "Image Converter", desc: "Convert images to and from different formats.", path: "/tools#image-tools" },
   { icon: Code2, color: "#7B61FF", tint: "#ECE7FF", title: "Developer Tools", desc: "Format, encode, decode and minify code.", path: "/tools#developer-tools" },
   { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", title: "Publisher Tools", desc: "ISBN converter and book-related utilities.", path: "/tools#publisher-tools" },
   { icon: LayoutGrid, color: "#F2C94C", tint: "#FCF4DA", title: "All Tools", desc: "Browse all free PDF and developer tools.", path: "/tools" },
 ];
 
 const HIGHLY_USED = [
-  { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", title: "Image to PDF", desc: "Combine JPG, PNG or HEIC images into one PDF.", path: "/tools/image-to-pdf" },
+  { icon: ImageIcon, color: "var(--ok)", tint: "#E4F5EC", title: "Image to PDF", desc: "Combine JPG, PNG or HEIC images into one PDF.", path: "/tools/image-to-pdf" },
   { icon: Minimize2, color: "#3B82F6", tint: "#E5EEFC", title: "Compress PDF", desc: "Shrink file size without losing quality.", path: "/tools/compress" },
   { icon: GitMerge, color: "#F2994A", tint: "#FCEEDD", title: "Merge PDF", desc: "Combine multiple PDFs into a single file.", path: "/tools/merge" },
   { icon: Split, color: "#7B61FF", tint: "#ECE7FF", title: "Split PDF", desc: "Pull specific pages out into new PDFs.", path: "/tools/split" },
@@ -48,7 +48,7 @@ const MORE_TOOLS = [
   { icon: RotateCw, color: "#EE4B3C", tint: "#ffe7e3", title: "Rotate PDF", desc: "Rotate pages of your PDF file.", path: "/tools/rotate-pdf" },
   { icon: Unlock, color: "#3B82F6", tint: "#E5EEFC", title: "Unlock PDF", desc: "Remove password from secured PDF.", path: "/tools/unlock-pdf" },
   { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", title: "Watermark PDF", desc: "Add a custom text watermark to PDF pages.", path: "/tools/watermark-pdf" },
-  { icon: FileSpreadsheet, color: "#27AE60", tint: "#E4F5EC", title: "PDF to Excel", desc: "Extract tables from PDF to Excel.", path: "/tools/pdf-to-excel" },
+  { icon: FileSpreadsheet, color: "var(--ok)", tint: "#E4F5EC", title: "PDF to Excel", desc: "Extract tables from PDF to Excel.", path: "/tools/pdf-to-excel" },
   { icon: Code, color: "#EE4B3C", tint: "#ffe7e3", title: "HTML to PDF", desc: "Convert web pages to PDF.", path: "/tools" },
 ];
 
@@ -93,7 +93,7 @@ function SearchBar() {
   }, []);
   return (
     <div ref={ref} className="relative mt-6 w-full max-w-lg">
-      <div className="flex w-full items-center rounded-xl bg-white p-1.5" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
+      <div className="flex w-full items-center rounded-xl bg-[var(--surface)] p-1.5" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
         <Search size={18} className="ml-2 shrink-0" style={{ color: C.sub }} />
         <input ref={inputRef} value={query} onChange={e => { setQuery(e.target.value); setShow(true); }} onFocus={() => query && setShow(true)}
           placeholder="Search any tool you need..." className="min-w-0 flex-1 bg-transparent px-2 py-2 text-sm" style={{ color: C.ink, outline: "none" }} />
@@ -101,10 +101,10 @@ function SearchBar() {
         <button type="button" className="shrink-0 rounded-lg p-2.5 text-white" style={{ background: C.brand }} aria-label="Search"><Search size={18} /></button>
       </div>
       {show && matches.length > 0 && (
-        <ul className="absolute left-0 top-full z-30 mt-2 w-full overflow-hidden rounded-xl bg-white" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
+        <ul className="absolute left-0 top-full z-30 mt-2 w-full overflow-hidden rounded-xl bg-[var(--surface)]" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
           {matches.slice(0, 6).map(tool => (
             <li key={tool.title}>
-              <Link href={tool.href || tool.path} className="flex w-full items-center gap-3 px-4 py-2.5 text-sm hover:bg-[#f4f1ea]" style={{ color: C.ink }}>
+              <Link href={tool.href || tool.path} className="flex w-full items-center gap-3 px-4 py-2.5 text-sm hover:bg-[var(--cream)]" style={{ color: C.ink }}>
                 <span className="text-xs font-bold">{(tool.name || tool.title)?.[0]}</span>{tool.name || tool.title}
               </Link>
             </li>
@@ -112,7 +112,7 @@ function SearchBar() {
         </ul>
       )}
       {show && query.trim() && matches.length === 0 && (
-        <div className="absolute left-0 top-full z-30 mt-2 w-full rounded-xl bg-white px-4 py-3 text-sm" style={{ color: C.sub, border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
+        <div className="absolute left-0 top-full z-30 mt-2 w-full rounded-xl bg-[var(--surface)] px-4 py-3 text-sm" style={{ color: C.sub, border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
           No tools found for "{query}"
         </div>
       )}
@@ -129,7 +129,7 @@ export default function HomeClient() {
           <div>
             <div className="mb-5 flex flex-wrap gap-2">
               {HERO_BADGES.map(b => (
-                <span key={b} className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-medium" style={{ border: `1px solid ${C.line}`, color: C.sub }}>
+                <span key={b} className="inline-flex items-center gap-1.5 rounded-full bg-[var(--surface)] px-3 py-1 text-xs font-medium" style={{ border: `1px solid ${C.line}`, color: C.sub }}>
                   <span className="h-1.5 w-1.5 rounded-full" style={{ background: C.brand }} />{b}
                 </span>
               ))}
@@ -145,13 +145,13 @@ export default function HomeClient() {
             <SearchBar />
             <div className="mt-5 flex flex-wrap gap-2">
               {FEATURE_CHIPS.map(({ label, icon: Icon }) => (
-                <span key={label} className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-medium" style={{ border: `1px solid ${C.line}`, color: C.sub }}>
+                <span key={label} className="inline-flex items-center gap-1.5 rounded-lg bg-[var(--surface)] px-3 py-1.5 text-xs font-medium" style={{ border: `1px solid ${C.line}`, color: C.sub }}>
                   <Icon size={13} style={{ color: C.brand }} />{label}
                 </span>
               ))}
             </div>
           </div>
-          <div className="rounded-2xl bg-white p-6 sm:p-8" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
+          <div className="rounded-2xl bg-[var(--surface)] p-6 sm:p-8" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
             <Image src="/hero.webp" alt="PDF24X tools illustration" width={600} height={400} className="w-full rounded-xl object-contain" priority />
             <h3 className="mt-6 text-lg font-bold" style={{ color: C.ink, ...font() }}>Powerful Tools. Simple Interface.</h3>
             <p className="mt-1 text-sm" style={{ color: C.sub }}>All tools you need in one place. 100% free forever.</p>
@@ -167,7 +167,7 @@ export default function HomeClient() {
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {CATEGORIES.map(cat => (
-            <Link key={cat.title} href={cat.path} className="group flex flex-col gap-3 rounded-2xl bg-white p-5 transition-all hover:-translate-y-1" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
+            <Link key={cat.title} href={cat.path} className="group flex flex-col gap-3 rounded-2xl bg-[var(--surface)] p-5 transition-all hover:-translate-y-1" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
               <span className="flex h-11 w-11 items-center justify-center rounded-xl" style={{ background: cat.tint }}>
                 <cat.icon size={22} style={{ color: cat.color }} />
               </span>
@@ -191,7 +191,7 @@ export default function HomeClient() {
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {HIGHLY_USED.map(tool => (
-            <Link key={tool.title} href={tool.path} className="group flex items-start gap-4 rounded-2xl bg-white p-5 transition-all hover:-translate-y-1" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
+            <Link key={tool.title} href={tool.path} className="group flex items-start gap-4 rounded-2xl bg-[var(--surface)] p-5 transition-all hover:-translate-y-1" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl" style={{ background: tool.tint }}>
                 <tool.icon size={22} style={{ color: tool.color }} />
               </span>
@@ -215,7 +215,7 @@ export default function HomeClient() {
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {MORE_TOOLS.map(tool => (
-            <Link key={tool.title} href={tool.path} className="group rounded-2xl bg-white p-5 transition-all hover:-translate-y-1" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
+            <Link key={tool.title} href={tool.path} className="group rounded-2xl bg-[var(--surface)] p-5 transition-all hover:-translate-y-1" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
               <span className="flex h-11 w-11 items-center justify-center rounded-xl" style={{ background: tool.tint }}>
                 <tool.icon size={21} style={{ color: tool.color }} />
               </span>
@@ -233,7 +233,7 @@ export default function HomeClient() {
       <section className="mx-auto max-w-7xl px-4 py-4 sm:py-6 lg:py-8 sm:px-6 lg:px-8">
         <div>
           {/* What Is */}
-          <div className="rounded-2xl bg-white p-6 sm:p-8" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
+          <div className="rounded-2xl bg-[var(--surface)] p-6 sm:p-8" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
             <div className="flex flex-col gap-5 sm:flex-row">
               <div className="w-full shrink-0 sm:w-32">
                 <Image src="/what-is.webp" alt="What is PDF24X" width={128} height={170} className="w-full rounded-xl object-contain" />
@@ -246,7 +246,7 @@ export default function HomeClient() {
                 <ul className="mt-4 space-y-2.5">
                   {WHAT_CHECKS.map(c => (
                     <li key={c} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 size={17} className="mt-0.5 shrink-0" style={{ color: "#27AE60" }} />
+                      <CheckCircle2 size={17} className="mt-0.5 shrink-0" style={{ color: "var(--ok)" }} />
                       <span style={{ color: C.ink }}>{c}</span>
                     </li>
                   ))}

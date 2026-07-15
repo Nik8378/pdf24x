@@ -5,8 +5,8 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { ArrowLeft, Save } from "lucide-react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)", redsoft: "#ffe7e3" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 
 const field = (label: string, required = false) => (
   <label className="block text-xs font-semibold mb-1" style={{ color: C.ink }}>
@@ -50,7 +50,7 @@ export default function NewBlogPost() {
           <Link href="/admin/blogs" style={{ color: C.sub }}><ArrowLeft size={16} /></Link>
           <h1 className="text-xl font-extrabold" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>New Blog Post</h1>
         </div>
-        <div className="space-y-4 rounded-2xl bg-white p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+        <div className="space-y-4 rounded-2xl bg-[var(--surface)] p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>{field("Slug", true)}<input value={form.slug} onChange={e => update("slug", e.target.value)} placeholder="how-to-compress-pdf" className={input} style={inputStyle} /></div>
             <div>{field("Author")}<input value={form.author} onChange={e => update("author", e.target.value)} className={input} style={inputStyle} /></div>

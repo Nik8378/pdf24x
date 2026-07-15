@@ -23,8 +23,8 @@ const LEVEL_CONFIG: Record<Level, { label: string; badge: string; badgeColor: st
 
 function HowItWorks() {
   return (
-    <section className="mt-8 rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
-      <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>How to Compress a PDF</h2>
+    <section className="mt-8 rounded-2xl border border-[var(--line-strong)] bg-[var(--surface)] p-6" style={{ boxShadow: "3px 3px 0 0 var(--line-strong)" }}>
+      <h2 className="text-lg font-extrabold mb-4" style={{ color: "var(--txt)", fontFamily: "Archivo, Inter, sans-serif" }}>How to Compress a PDF</h2>
       <ol className="space-y-3">
         {[
           ["Upload your PDF", "Drag and drop your PDF file or click to browse. Files up to 100MB are supported."],
@@ -33,7 +33,7 @@ function HowItWorks() {
         ].map(([title, desc], i) => (
           <li key={i} className="flex gap-3">
             <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>{i + 1}</span>
-            <div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>{title}</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>{desc}</p></div>
+            <div><p className="text-sm font-semibold" style={{ color: "var(--txt)" }}>{title}</p><p className="text-xs mt-0.5" style={{ color: "var(--txt-2)" }}>{desc}</p></div>
           </li>
         ))}
       </ol>
@@ -50,13 +50,13 @@ function FAQ() {
     ["Can I compress multiple PDFs at once?", "Currently, you can compress one PDF at a time. For multiple files, compress each one separately."],
   ];
   return (
-    <section className="mt-4 rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
-      <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>Frequently Asked Questions</h2>
+    <section className="mt-4 rounded-2xl border border-[var(--line-strong)] bg-[var(--surface)] p-6" style={{ boxShadow: "3px 3px 0 0 var(--line-strong)" }}>
+      <h2 className="text-lg font-extrabold mb-4" style={{ color: "var(--txt)", fontFamily: "Archivo, Inter, sans-serif" }}>Frequently Asked Questions</h2>
       <div className="space-y-4">
         {faqs.map(([q, a], i) => (
           <div key={i} className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}>
-            <p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>{q}</p>
-            <p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>{a}</p>
+            <p className="text-sm font-semibold" style={{ color: "var(--txt)" }}>{q}</p>
+            <p className="text-xs mt-1.5 leading-relaxed" style={{ color: "var(--txt-2)" }}>{a}</p>
           </div>
         ))}
       </div>
@@ -165,8 +165,8 @@ export default function CompressClient() {
         <Sidebar />
         <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-5">
           <div className="mb-4">
-            <h1 className="text-xl sm:text-2xl font-bold text-[#1a1917]">Compress PDF</h1>
-            <p className="text-[13px] text-[#7a7875]">Reduce PDF file size while maintaining the best possible quality.</p>
+            <h1 className="text-xl sm:text-2xl font-bold text-[var(--txt)]">Compress PDF</h1>
+            <p className="text-[13px] text-[var(--txt-2)]">Reduce PDF file size while maintaining the best possible quality.</p>
           </div>
 
           <div className="flex flex-col xl:flex-row gap-4 items-start">
@@ -177,34 +177,34 @@ export default function CompressClient() {
                 onDragLeave={() => setDragging(false)}
                 onDrop={onDrop}
                 onClick={() => inputRef.current?.click()}
-                className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all shadow-sm flex flex-col items-center justify-center min-h-[220px] ${dragging ? "border-accent bg-accent-light" : "border-[#1a1917]/15 bg-white hover:border-accent hover:bg-accent-light"}`}
+                className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all shadow-sm flex flex-col items-center justify-center min-h-[220px] ${dragging ? "border-accent bg-accent-light" : "border-[var(--line-mid)] bg-[var(--surface)] hover:border-accent hover:bg-accent-light"}`}
               >
                 <input ref={inputRef} type="file" accept=".pdf,application/pdf" className="hidden"
                   onChange={(e) => { const f = e.target.files?.[0]; if (f) handleFile(f); }} />
-                <div className="w-11 h-11 rounded-full bg-[#f4f3f0] flex items-center justify-center mb-3">
-                  <UploadCloud size={20} className="text-[#7a7875]" />
+                <div className="w-11 h-11 rounded-full bg-[var(--hover-soft)] flex items-center justify-center mb-3">
+                  <UploadCloud size={20} className="text-[var(--txt-2)]" />
                 </div>
-                <p className="text-[14px] font-semibold text-[#1a1917] mb-1">Drag & drop your PDF here</p>
-                <p className="text-[12.5px] text-[#7a7875] mb-4">or click to browse files</p>
+                <p className="text-[14px] font-semibold text-[var(--txt)] mb-1">Drag & drop your PDF here</p>
+                <p className="text-[12.5px] text-[var(--txt-2)] mb-4">or click to browse files</p>
                 <button onClick={(e) => { e.stopPropagation(); inputRef.current?.click(); }}
                   className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold text-[13.5px] px-6 py-2.5 rounded-full transition-all shadow-md">
                   <UploadCloud size={15} /> Choose PDF File
                 </button>
-                <p className="mt-3 text-[11.5px] text-[#7a7875]">Max file size: 100MB</p>
+                <p className="mt-3 text-[11.5px] text-[var(--txt-2)]">Max file size: 100MB</p>
               </div>
 
               {/* File info */}
               {pdf && (
-                <div className="bg-white border border-[#1a1917]/10 rounded-xl px-4 py-3 flex items-center gap-3 shadow-sm">
+                <div className="bg-[var(--surface)] border border-[var(--line)] rounded-xl px-4 py-3 flex items-center gap-3 shadow-sm">
                   <div className="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center shrink-0">
                     <FileText size={18} className="text-red-500" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[13px] font-semibold text-[#1a1917] truncate">{pdf.name}</p>
-                    <p className="text-[11.5px] text-[#7a7875]">{fmtBytes(pdf.size)}</p>
+                    <p className="text-[13px] font-semibold text-[var(--txt)] truncate">{pdf.name}</p>
+                    <p className="text-[11.5px] text-[var(--txt-2)]">{fmtBytes(pdf.size)}</p>
                   </div>
                   <button onClick={() => { setPdf(null); setResult(null); }}
-                    className="p-2 rounded-lg text-[#7a7875] hover:text-red-500 hover:bg-red-50 transition-all">
+                    className="p-2 rounded-lg text-[var(--txt-2)] hover:text-red-500 hover:bg-red-50 transition-all">
                     <Trash2 size={15} />
                   </button>
                 </div>
@@ -212,26 +212,26 @@ export default function CompressClient() {
 
               {/* Progress */}
               {loading && (
-                <div className="bg-white border border-[#1a1917]/10 rounded-xl p-4 shadow-sm">
+                <div className="bg-[var(--surface)] border border-[var(--line)] rounded-xl p-4 shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <p className="text-[13px] font-semibold text-[#1a1917]">Compressing PDF…</p>
+                    <p className="text-[13px] font-semibold text-[var(--txt)]">Compressing PDF…</p>
                     <p className="text-[13px] text-accent font-bold">{progress}%</p>
                   </div>
-                  <div className="h-1.5 bg-[#f4f3f0] rounded-full overflow-hidden">
+                  <div className="h-1.5 bg-[var(--hover-soft)] rounded-full overflow-hidden">
                     <div className="h-full bg-accent rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
                   </div>
-                  <p className="text-[11.5px] text-[#7a7875] mt-2">Re-encoding images at reduced quality…</p>
+                  <p className="text-[11.5px] text-[var(--txt-2)] mt-2">Re-encoding images at reduced quality…</p>
                 </div>
               )}
 
               {/* Result */}
               {result && (
-                <div className="bg-white border border-green-200 rounded-xl p-4 shadow-sm">
-                  <p className="text-[13px] font-bold text-[#1a1917] mb-3">Compression Result</p>
+                <div className="bg-[var(--surface)] border border-green-200 rounded-xl p-4 shadow-sm">
+                  <p className="text-[13px] font-bold text-[var(--txt)] mb-3">Compression Result</p>
                   <div className="flex items-center justify-between mb-3">
                     <div>
-                      <p className="text-[11px] text-[#7a7875]">Original</p>
-                      <p className="text-[18px] font-bold text-[#1a1917]">{fmtBytes(result.original)}</p>
+                      <p className="text-[11px] text-[var(--txt-2)]">Original</p>
+                      <p className="text-[18px] font-bold text-[var(--txt)]">{fmtBytes(result.original)}</p>
                     </div>
                     <div className="text-center">
                       <span className="text-[12px] font-bold bg-green-100 text-green-700 px-3 py-1 rounded-full">
@@ -239,14 +239,14 @@ export default function CompressClient() {
                       </span>
                     </div>
                     <div className="text-right">
-                      <p className="text-[11px] text-[#7a7875]">Compressed</p>
+                      <p className="text-[11px] text-[var(--txt-2)]">Compressed</p>
                       <p className="text-[18px] font-bold text-accent">{fmtBytes(result.compressed)}</p>
                     </div>
                   </div>
-                  <div className="h-2 bg-[#f4f3f0] rounded-full overflow-hidden">
+                  <div className="h-2 bg-[var(--hover-soft)] rounded-full overflow-hidden">
                     <div className="h-full bg-green-500 rounded-full" style={{ width: `${100 - savings}%` }} />
                   </div>
-                  <div className="flex items-start gap-1.5 mt-3 text-[11.5px] text-[#7a7875] bg-green-50 border border-green-100 rounded-lg px-3 py-2">
+                  <div className="flex items-start gap-1.5 mt-3 text-[11.5px] text-[var(--txt-2)] bg-green-50 border border-green-100 rounded-lg px-3 py-2">
                     <Info size={12} className="text-green-600 shrink-0 mt-0.5" />
                     Your compressed PDF was downloaded automatically.
                   </div>
@@ -259,9 +259,9 @@ export default function CompressClient() {
                   ["Real Compression", "Re-encodes images at target quality"],
                   ["No Watermarks", "Clean output, no branding added"],
                   ["All Browsers", "Works on desktop and mobile"]].map(([t, d]) => (
-                  <div key={t} className="bg-white border border-[#1a1917]/10 rounded-xl p-3 shadow-sm">
-                    <p className="text-[12px] font-bold text-[#1a1917] mb-0.5">{t}</p>
-                    <p className="text-[11px] text-[#7a7875]">{d}</p>
+                  <div key={t} className="bg-[var(--surface)] border border-[var(--line)] rounded-xl p-3 shadow-sm">
+                    <p className="text-[12px] font-bold text-[var(--txt)] mb-0.5">{t}</p>
+                    <p className="text-[11px] text-[var(--txt-2)]">{d}</p>
                   </div>
                 ))}
               </div>
@@ -269,23 +269,23 @@ export default function CompressClient() {
 
             {/* Settings */}
             <div className="w-full xl:w-[280px] shrink-0 xl:sticky xl:top-14">
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-4 shadow-sm">
-                <div className="flex items-center gap-2 mb-4 pb-2.5 border-b border-[#1a1917]/8">
-                  <Minimize2 size={14} className="text-[#7a7875]" />
-                  <h3 className="text-[13px] font-bold text-[#1a1917]">Compression Settings</h3>
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 shadow-sm">
+                <div className="flex items-center gap-2 mb-4 pb-2.5 border-b border-[var(--line)]">
+                  <Minimize2 size={14} className="text-[var(--txt-2)]" />
+                  <h3 className="text-[13px] font-bold text-[var(--txt)]">Compression Settings</h3>
                 </div>
 
-                <p className="text-[10.5px] font-bold text-[#1a1917] uppercase tracking-widest opacity-50 mb-2">Level</p>
+                <p className="text-[10.5px] font-bold text-[var(--txt)] uppercase tracking-widest opacity-50 mb-2">Level</p>
                 <div className="space-y-2 mb-4">
                   {(Object.keys(LEVEL_CONFIG) as Level[]).map((l) => (
                     <button key={l} onClick={() => setLevel(l)}
-                      className={`w-full text-left px-3 py-2.5 rounded-xl border transition-all ${level === l ? "border-accent bg-gradient-to-r from-accent-light to-amber-50/60" : "border-[#1a1917]/10 hover:bg-[#f4f3f0]"}`}>
+                      className={`w-full text-left px-3 py-2.5 rounded-xl border transition-all ${level === l ? "border-accent bg-gradient-to-r from-accent-light to-amber-50/60" : "border-[var(--line)] hover:bg-[var(--hover-soft)]"}`}>
                       <div className="flex items-center justify-between mb-0.5">
                         <div className="flex items-center gap-2">
-                          <div className={`w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center ${level === l ? "border-accent bg-accent" : "border-[#d4d2cb]"}`}>
-                            {level === l && <div className="w-1 h-1 rounded-full bg-white" />}
+                          <div className={`w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center ${level === l ? "border-accent bg-accent" : "border-[var(--line-mid)]"}`}>
+                            {level === l && <div className="w-1 h-1 rounded-full bg-[var(--surface)]" />}
                           </div>
-                          <span className="text-[13px] font-bold text-[#1a1917]">{LEVEL_CONFIG[l].label}</span>
+                          <span className="text-[13px] font-bold text-[var(--txt)]">{LEVEL_CONFIG[l].label}</span>
                         </div>
                         {LEVEL_CONFIG[l].badge && (
                           <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${LEVEL_CONFIG[l].badgeColor}`}>
@@ -293,44 +293,44 @@ export default function CompressClient() {
                           </span>
                         )}
                       </div>
-                      <p className="text-[11px] text-[#7a7875] ml-5">{LEVEL_CONFIG[l].desc}</p>
+                      <p className="text-[11px] text-[var(--txt-2)] ml-5">{LEVEL_CONFIG[l].desc}</p>
                     </button>
                   ))}
                 </div>
 
-                <div className="flex items-start gap-1.5 text-[11.5px] text-[#7a7875] bg-blue-50 border border-blue-100 rounded-lg px-3 py-2 mb-4">
+                <div className="flex items-start gap-1.5 text-[11.5px] text-[var(--txt-2)] bg-blue-50 border border-blue-100 rounded-lg px-3 py-2 mb-4">
                   <Info size={12} className="text-blue-500 shrink-0 mt-0.5" />
                   Compression works by re-rendering pages as JPEG images at reduced quality.
                 </div>
 
-                <div className="border-t border-[#1a1917]/8 pt-3">
+                <div className="border-t border-[var(--line)] pt-3">
                   <button onClick={handleCompress} disabled={!pdf || loading}
-                    className={`w-full flex items-center justify-center gap-2 font-semibold text-[14px] py-3 rounded-full transition-all ${!pdf || loading ? "bg-[#f4f3f0] text-[#7a7875] cursor-not-allowed" : "bg-accent hover:bg-accent-dark text-white shadow-md hover:shadow-lg"}`}>
+                    className={`w-full flex items-center justify-center gap-2 font-semibold text-[14px] py-3 rounded-full transition-all ${!pdf || loading ? "bg-[var(--hover-soft)] text-[var(--txt-2)] cursor-not-allowed" : "bg-accent hover:bg-accent-dark text-white shadow-md hover:shadow-lg"}`}>
                     {loading ? <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full spin" /> : <Minimize2 size={16} />}
                     {loading ? `Compressing… ${progress}%` : "Compress PDF →"}
                   </button>
-                  <p className="text-center text-[11px] text-[#7a7875] mt-2">Your file is processed locally and never stored.</p>
+                  <p className="text-center text-[11px] text-[var(--txt-2)] mt-2">Your file is processed locally and never stored.</p>
                 </div>
               </div>
             </div>
           </div>
         
       <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 mb-6 space-y-4">
-        <div className="rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
-          <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>How It Works</h2>
+        <div className="rounded-2xl border border-[var(--line-strong)] bg-[var(--surface)] p-6" style={{ boxShadow: "3px 3px 0 0 var(--line-strong)" }}>
+          <h2 className="text-lg font-extrabold mb-4" style={{ color: "var(--txt)", fontFamily: "Archivo, Inter, sans-serif" }}>How It Works</h2>
           <ol className="space-y-3">
-            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>1</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Upload your PDF</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Drag and drop or click to browse. Files up to 100MB supported.</p></div></li>
-            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>2</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Choose compression level</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Select Extreme, Strong, or Medium based on your needs.</p></div></li>
-            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>3</span><div><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Download</p><p className="text-xs mt-0.5" style={{ color: "#6b6760" }}>Click Compress and download your smaller PDF instantly.</p></div></li>
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>1</span><div><p className="text-sm font-semibold" style={{ color: "var(--txt)" }}>Upload your PDF</p><p className="text-xs mt-0.5" style={{ color: "var(--txt-2)" }}>Drag and drop or click to browse. Files up to 100MB supported.</p></div></li>
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>2</span><div><p className="text-sm font-semibold" style={{ color: "var(--txt)" }}>Choose compression level</p><p className="text-xs mt-0.5" style={{ color: "var(--txt-2)" }}>Select Extreme, Strong, or Medium based on your needs.</p></div></li>
+            <li className="flex gap-3"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white" style={{ background: "#FF6B5E" }}>3</span><div><p className="text-sm font-semibold" style={{ color: "var(--txt)" }}>Download</p><p className="text-xs mt-0.5" style={{ color: "var(--txt-2)" }}>Click Compress and download your smaller PDF instantly.</p></div></li>
           </ol>
         </div>
-        <div className="rounded-2xl border border-[#1c1c1c] bg-white p-6" style={{ boxShadow: "3px 3px 0 0 #1c1c1c" }}>
-          <h2 className="text-lg font-extrabold mb-4" style={{ color: "#1a1a1a", fontFamily: "Archivo, Inter, sans-serif" }}>Frequently Asked Questions</h2>
+        <div className="rounded-2xl border border-[var(--line-strong)] bg-[var(--surface)] p-6" style={{ boxShadow: "3px 3px 0 0 var(--line-strong)" }}>
+          <h2 className="text-lg font-extrabold mb-4" style={{ color: "var(--txt)", fontFamily: "Archivo, Inter, sans-serif" }}>Frequently Asked Questions</h2>
           <div className="space-y-4">
-            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Does compression reduce quality?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>Medium compression has minimal impact. Strong may slightly reduce image sharpness. Extreme produces the smallest file with more noticeable reduction.</p></div>
-            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Is my file uploaded to a server?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>Yes, for processing only. Files are automatically deleted within 15 minutes and never shared.</p></div>
-            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>Why is my compressed PDF larger?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>If the original was already optimised, compression cannot reduce it further. The tool returns the original in this case.</p></div>
-            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "#1a1a1a" }}>What is the maximum file size?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#6b6760" }}>PDF24X supports files up to 100MB for compression.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "var(--txt)" }}>Does compression reduce quality?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "var(--txt-2)" }}>Medium compression has minimal impact. Strong may slightly reduce image sharpness. Extreme produces the smallest file with more noticeable reduction.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "var(--txt)" }}>Is my file uploaded to a server?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "var(--txt-2)" }}>Yes, for processing only. Files are automatically deleted within 15 minutes and never shared.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "var(--txt)" }}>Why is my compressed PDF larger?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "var(--txt-2)" }}>If the original was already optimised, compression cannot reduce it further. The tool returns the original in this case.</p></div>
+            <div className="border-b pb-4 last:border-0 last:pb-0" style={{ borderColor: "#e5e7eb" }}><p className="text-sm font-semibold" style={{ color: "var(--txt)" }}>What is the maximum file size?</p><p className="text-xs mt-1.5 leading-relaxed" style={{ color: "var(--txt-2)" }}>PDF24X supports files up to 100MB for compression.</p></div>
           </div>
         </div>
       </div>

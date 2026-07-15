@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // New tools
     { url: `${base}/tools/image-to-pdf`,            lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/diff-checker`,                  lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/diff-checker/text`,             lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/tools/rotate-pdf`,              lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/tools/unlock-pdf`,              lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/tools/watermark-pdf`,           lastModified: stable, changeFrequency: "weekly", priority: 0.85 },

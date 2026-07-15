@@ -5,8 +5,8 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { PlusCircle, Edit, Eye, EyeOff, ArrowLeft } from "lucide-react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 
 export default function AdminBlogs() {
   const [posts, setPosts] = useState<any[]>([]);
@@ -47,7 +47,7 @@ export default function AdminBlogs() {
         {loading ? <p style={{ color: C.sub }}>Loading…</p> : (
           <div className="space-y-3">
             {posts.map(post => (
-              <div key={post.id} className="flex items-center justify-between rounded-xl bg-white px-4 py-3"
+              <div key={post.id} className="flex items-center justify-between rounded-xl bg-[var(--surface)] px-4 py-3"
                 style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-semibold" style={{ color: C.ink }}>{post.title}</p>

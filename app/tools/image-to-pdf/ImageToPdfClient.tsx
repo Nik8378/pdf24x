@@ -18,8 +18,8 @@ function HowItWorks() {
     { n: "3", title: "Download PDF", desc: "Click Convert — your PDF downloads instantly" },
   ];
   return (
-    <section className="bg-white border border-[#1a1917]/10 rounded-2xl p-5 mt-4 shadow-sm">
-      <h2 className="text-[13px] font-bold text-[#1a1917] uppercase tracking-widest mb-4 opacity-40">How It Works</h2>
+    <section className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 mt-4 shadow-sm">
+      <h2 className="text-[13px] font-bold text-[var(--txt)] uppercase tracking-widest mb-4 opacity-40">How It Works</h2>
       <div className="flex flex-col sm:flex-row gap-4">
         {steps.map((s) => (
           <div key={s.n} className="flex sm:flex-col items-start gap-3 sm:gap-2 flex-1">
@@ -27,8 +27,8 @@ function HowItWorks() {
               <span className="text-[12px] font-bold text-accent">{s.n}</span>
             </div>
             <div>
-              <p className="text-[13px] font-bold text-[#1a1917]">{s.title}</p>
-              <p className="text-[12px] text-[#7a7875] mt-0.5">{s.desc}</p>
+              <p className="text-[13px] font-bold text-[var(--txt)]">{s.title}</p>
+              <p className="text-[12px] text-[var(--txt-2)] mt-0.5">{s.desc}</p>
             </div>
           </div>
         ))}
@@ -46,15 +46,15 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <section className="mt-4">
-      <h2 className="text-[13px] font-bold text-[#1a1917] uppercase tracking-widest mb-3 opacity-40">FAQ</h2>
+      <h2 className="text-[13px] font-bold text-[var(--txt)] uppercase tracking-widest mb-3 opacity-40">FAQ</h2>
       <div className="space-y-2">
         {faqs.map((f, i) => (
-          <div key={i} className="bg-white border border-[#1a1917]/10 rounded-xl overflow-hidden">
+          <div key={i} className="bg-[var(--surface)] border border-[var(--line)] rounded-xl overflow-hidden">
             <button onClick={() => setOpen(open === i ? null : i)} className="w-full flex items-center justify-between px-4 py-3 text-left">
-              <span className="text-[13px] font-medium text-[#1a1917]">{f.q}</span>
-              <ChevronDown size={15} className={`text-[#7a7875] transition-transform ${open === i ? "rotate-180" : ""}`} />
+              <span className="text-[13px] font-medium text-[var(--txt)]">{f.q}</span>
+              <ChevronDown size={15} className={`text-[var(--txt-2)] transition-transform ${open === i ? "rotate-180" : ""}`} />
             </button>
-            {open === i && <p className="px-4 pb-3 text-[12.5px] text-[#7a7875] leading-relaxed">{f.a}</p>}
+            {open === i && <p className="px-4 pb-3 text-[12.5px] text-[var(--txt-2)] leading-relaxed">{f.a}</p>}
           </div>
         ))}
       </div>
@@ -74,9 +74,9 @@ export default function ImageToPdfClient() {
             <div className="w-8 h-8 bg-orange-50 border border-orange-200 rounded-lg flex items-center justify-center shrink-0">
               <FileText size={15} className="text-orange-500" />
             </div>
-            <h1 className="text-[17px] font-bold text-[#1a1917]">Image to PDF</h1>
+            <h1 className="text-[17px] font-bold text-[var(--txt)]">Image to PDF</h1>
           </div>
-          <p className="text-[12.5px] text-[#7a7875] mb-4 ml-10">
+          <p className="text-[12.5px] text-[var(--txt-2)] mb-4 ml-10">
             Convert JPG, PNG, WebP and other images to PDF. Add multiple images, reorder them, and download as one PDF file.
           </p>
           <UploadZone />

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   description: "Read PDF24X Disclaimer — limitations of liability and important notices.",
   alternates: { canonical: "https://pdf24x.com/disclaimer" },
 };
-const C = { ink: "#1a1a1a", sub: "#6b6760" };
+const C = { ink: "var(--txt)", sub: "var(--txt-2)" };
 const sections = [
   ["General disclaimer", "The information and tools provided by PDF24X are for general use only. We make no representations or warranties about the completeness, accuracy, reliability, or availability of the Service."],
   ["File processing", "PDF24X processes your files on a best-effort basis. Results may vary depending on the complexity and format of files you upload. Always keep backup copies of important files before processing them."],

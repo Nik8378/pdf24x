@@ -5,8 +5,8 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { FileText, Mail, LogOut, PlusCircle } from "lucide-react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 
 export default function AdminDashboard() {
   const [checking, setChecking] = useState(true);
@@ -43,7 +43,7 @@ export default function AdminDashboard() {
           </button>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Link href="/admin/blogs" className="flex items-center gap-4 rounded-2xl bg-white p-6 transition-all hover:-translate-y-0.5"
+          <Link href="/admin/blogs" className="flex items-center gap-4 rounded-2xl bg-[var(--surface)] p-6 transition-all hover:-translate-y-0.5"
             style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
             <span className="flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: "#ffe7e3" }}>
               <FileText size={22} style={{ color: C.brand }} />
@@ -53,7 +53,7 @@ export default function AdminDashboard() {
               <p className="text-sm" style={{ color: C.sub }}>Manage articles</p>
             </div>
           </Link>
-          <Link href="/admin/contacts" className="flex items-center gap-4 rounded-2xl bg-white p-6 transition-all hover:-translate-y-0.5"
+          <Link href="/admin/contacts" className="flex items-center gap-4 rounded-2xl bg-[var(--surface)] p-6 transition-all hover:-translate-y-0.5"
             style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
             <span className="flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: "#E5EEFC" }}>
               <Mail size={22} style={{ color: "#3B82F6" }} />

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   description: "Read PDF24X\'s Privacy Policy — how we handle uploaded files, data collection, cookies, and your rights.",
   alternates: { canonical: "https://pdf24x.com/privacy-policy" },
 };
-const C = { ink: "#1a1a1a", sub: "#6b6760" };
+const C = { ink: "var(--txt)", sub: "var(--txt-2)" };
 export default function PrivacyPolicyPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">

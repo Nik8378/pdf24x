@@ -83,28 +83,28 @@ export default function RegexTesterClient() {
         <Sidebar />
         <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-5 pb-24 lg:pb-8">
           <div className="mb-4">
-            <h1 className="text-xl sm:text-2xl font-bold text-[#1a1917] mb-1">Regex Tester</h1>
-            <p className="text-[13px] text-[#7a7875]">Test regular expressions with live match highlighting. See all matches, groups, and indexes instantly.</p>
+            <h1 className="text-xl sm:text-2xl font-bold text-[var(--txt)] mb-1">Regex Tester</h1>
+            <p className="text-[13px] text-[var(--txt-2)]">Test regular expressions with live match highlighting. See all matches, groups, and indexes instantly.</p>
           </div>
 
           {/* Regex input */}
-          <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-4 mb-4">
+          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 mb-4">
             <div className="flex flex-wrap items-center gap-3 mb-3">
-              <div className="flex-1 min-w-0 flex items-center gap-2 bg-[#f4f3f0] rounded-xl px-4 py-2.5 border border-[#e5e3de] focus-within:border-accent transition-colors">
-                <span className="text-[18px] text-[#7a7875] font-mono shrink-0">/</span>
+              <div className="flex-1 min-w-0 flex items-center gap-2 bg-[var(--hover-soft)] rounded-xl px-4 py-2.5 border border-[var(--line)] focus-within:border-accent transition-colors">
+                <span className="text-[18px] text-[var(--txt-2)] font-mono shrink-0">/</span>
                 <input value={pattern} onChange={e => setPattern(e.target.value)} placeholder="Enter your regex pattern..."
-                  className="flex-1 bg-transparent font-mono text-[14px] text-[#1a1917] focus:outline-none" />
-                <span className="text-[18px] text-[#7a7875] font-mono shrink-0">/{flags}</span>
+                  className="flex-1 bg-transparent font-mono text-[14px] text-[var(--txt)] focus:outline-none" />
+                <span className="text-[18px] text-[var(--txt-2)] font-mono shrink-0">/{flags}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 {FLAG_OPTIONS.map(({ f, label, title }) => (
                   <button key={f} onClick={() => toggleFlag(f)} title={title}
-                    className={`w-8 h-8 rounded-lg text-[13px] font-mono font-bold transition-all border ${flags.includes(f) ? "bg-accent text-white border-accent" : "bg-[#f4f3f0] text-[#7a7875] border-[#e5e3de] hover:border-accent"}`}>
+                    className={`w-8 h-8 rounded-lg text-[13px] font-mono font-bold transition-all border ${flags.includes(f) ? "bg-accent text-white border-accent" : "bg-[var(--hover-soft)] text-[var(--txt-2)] border-[var(--line)] hover:border-accent"}`}>
                     {label}
                   </button>
                 ))}
               </div>
-              <button onClick={handleCopy} disabled={!pattern} className="flex items-center gap-1.5 text-[12px] text-[#7a7875] hover:text-accent disabled:opacity-40 transition-colors">
+              <button onClick={handleCopy} disabled={!pattern} className="flex items-center gap-1.5 text-[12px] text-[var(--txt-2)] hover:text-accent disabled:opacity-40 transition-colors">
                 {copied ? <CheckCircle size={14} className="text-green-500" /> : <Copy size={14} />}{copied ? "Copied!" : "Copy"}
               </button>
             </div>
@@ -116,18 +116,18 @@ export default function RegexTesterClient() {
                 : <div className="flex items-center gap-3 px-3 py-2 bg-green-50 border border-green-100 rounded-lg">
                   <CheckCircle size={14} className="text-green-600 shrink-0" />
                   <span className="text-[12.5px] text-green-700 font-medium">{result.count} match{result.count !== 1 ? "es" : ""} found</span>
-                  {result.count > 0 && <span className="text-[11.5px] text-[#7a7875] ml-auto font-mono">/{pattern}/{flags}</span>}
+                  {result.count > 0 && <span className="text-[11.5px] text-[var(--txt-2)] ml-auto font-mono">/{pattern}/{flags}</span>}
                 </div>
             )}
           </div>
 
           {/* Common patterns */}
-          <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-4 mb-4">
-            <p className="text-[11px] font-bold text-[#7a7875] uppercase tracking-widest mb-3">Common Patterns</p>
+          <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 mb-4">
+            <p className="text-[11px] font-bold text-[var(--txt-2)] uppercase tracking-widest mb-3">Common Patterns</p>
             <div className="flex flex-wrap gap-2">
               {COMMON_PATTERNS.map(p => (
                 <button key={p.name} onClick={() => { setPattern(p.pattern); setFlags(p.flags); }}
-                  className={`px-3 py-1.5 rounded-full text-[12px] font-medium border transition-all ${pattern === p.pattern ? "bg-accent text-white border-accent" : "bg-[#f4f3f0] text-[#4a4845] border-[#e5e3de] hover:border-accent hover:text-accent"}`}>
+                  className={`px-3 py-1.5 rounded-full text-[12px] font-medium border transition-all ${pattern === p.pattern ? "bg-accent text-white border-accent" : "bg-[var(--hover-soft)] text-[var(--txt-2)] border-[var(--line)] hover:border-accent hover:text-accent"}`}>
                   {p.name}
                 </button>
               ))}
@@ -138,37 +138,37 @@ export default function RegexTesterClient() {
             {/* Test string */}
             <div>
               <div className="flex justify-between mb-2">
-                <span className="text-[12px] font-bold text-[#1a1917] uppercase tracking-widest">Test String</span>
+                <span className="text-[12px] font-bold text-[var(--txt)] uppercase tracking-widest">Test String</span>
                 <button onClick={() => setTestStr("")} className="text-[11px] text-red-500 flex items-center gap-1"><Trash2 size={11} />Clear</button>
               </div>
               <textarea value={testStr} onChange={e => setTestStr(e.target.value)} spellCheck={false}
-                className="w-full min-h-[400px] bg-[#1a1917] text-[#f4f3f0] font-mono text-[13px] rounded-2xl p-4 border border-[#1a1917]/20 focus:outline-none focus:ring-2 focus:ring-accent resize-none leading-relaxed" />
+                className="w-full min-h-[400px] bg-[var(--inv-bg)] text-[var(--inv-txt)] font-mono text-[13px] rounded-2xl p-4 border border-[var(--line-mid)] focus:outline-none focus:ring-2 focus:ring-accent resize-none leading-relaxed" />
             </div>
 
             {/* Results */}
             <div>
               <div className="flex justify-between mb-2">
-                <span className="text-[12px] font-bold text-[#1a1917] uppercase tracking-widest">Highlighted Matches</span>
+                <span className="text-[12px] font-bold text-[var(--txt)] uppercase tracking-widest">Highlighted Matches</span>
                 <span className="text-[11px] text-accent font-bold">{result.count} matches</span>
               </div>
-              <div className="min-h-[200px] bg-white border border-[#1a1917]/10 rounded-2xl p-4 font-mono text-[13px] leading-relaxed whitespace-pre-wrap break-words"
-                dangerouslySetInnerHTML={{ __html: result.highlighted || '<span class="text-[#7a7875]">Enter a pattern above to see matches highlighted here...</span>' }} />
+              <div className="min-h-[200px] bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 font-mono text-[13px] leading-relaxed whitespace-pre-wrap break-words"
+                dangerouslySetInnerHTML={{ __html: result.highlighted || '<span class="text-[var(--txt-2)]">Enter a pattern above to see matches highlighted here...</span>' }} />
 
               {result.matches.length > 0 && (
-                <div className="mt-4 bg-white border border-[#1a1917]/10 rounded-2xl overflow-hidden">
-                  <div className="px-4 py-2.5 border-b border-[#e5e3de] bg-[#f4f3f0]">
-                    <span className="text-[11px] font-bold text-[#7a7875] uppercase tracking-widest">Match Details</span>
+                <div className="mt-4 bg-[var(--surface)] border border-[var(--line)] rounded-2xl overflow-hidden">
+                  <div className="px-4 py-2.5 border-b border-[var(--line)] bg-[var(--hover-soft)]">
+                    <span className="text-[11px] font-bold text-[var(--txt-2)] uppercase tracking-widest">Match Details</span>
                   </div>
-                  <div className="max-h-[200px] overflow-y-auto divide-y divide-[#f4f3f0]">
+                  <div className="max-h-[200px] overflow-y-auto divide-y divide-[var(--line)]">
                     {result.matches.slice(0, 50).map((m, i) => (
-                      <div key={i} className="flex items-center gap-3 px-4 py-2 hover:bg-[#f4f3f0] transition-colors">
-                        <span className="text-[10.5px] font-bold text-[#7a7875] w-6 shrink-0">#{i + 1}</span>
-                        <span className="flex-1 font-mono text-[12.5px] text-[#1a1917] truncate">{m.match}</span>
-                        <span className="text-[11px] text-[#7a7875] shrink-0">idx: {m.index}</span>
-                        <span className="text-[11px] text-[#7a7875] shrink-0">len: {m.match.length}</span>
+                      <div key={i} className="flex items-center gap-3 px-4 py-2 hover:bg-[var(--hover-soft)] transition-colors">
+                        <span className="text-[10.5px] font-bold text-[var(--txt-2)] w-6 shrink-0">#{i + 1}</span>
+                        <span className="flex-1 font-mono text-[12.5px] text-[var(--txt)] truncate">{m.match}</span>
+                        <span className="text-[11px] text-[var(--txt-2)] shrink-0">idx: {m.index}</span>
+                        <span className="text-[11px] text-[var(--txt-2)] shrink-0">len: {m.match.length}</span>
                       </div>
                     ))}
-                    {result.matches.length > 50 && <div className="px-4 py-2 text-[11px] text-[#7a7875]">...and {result.matches.length - 50} more</div>}
+                    {result.matches.length > 50 && <div className="px-4 py-2 text-[11px] text-[var(--txt-2)]">...and {result.matches.length - 50} more</div>}
                   </div>
                 </div>
               )}

@@ -117,26 +117,26 @@ function ImageRow({
   const savedPositive = saved?.startsWith("-");
 
   return (
-    <div className="bg-white border border-[#1a1917]/10 rounded-xl px-3 py-3 flex items-center gap-3 hover:border-[#1a1917]/20 transition-all">
+    <div className="bg-[var(--surface)] border border-[var(--line)] rounded-xl px-3 py-3 flex items-center gap-3 hover:border-[var(--line-mid)] transition-all">
       {/* Thumbnail */}
-      <div className="w-12 h-12 rounded-lg overflow-hidden bg-[#f4f3f0] border border-[#e5e3de] shrink-0 flex items-center justify-center">
+      <div className="w-12 h-12 rounded-lg overflow-hidden bg-[var(--hover-soft)] border border-[var(--line)] shrink-0 flex items-center justify-center">
         {item.previewUrl
           ? <img src={item.previewUrl} alt={item.name} className="w-full h-full object-cover" />
-          : <ImageIcon size={18} className="text-[#7a7875]" />}
+          : <ImageIcon size={18} className="text-[var(--txt-2)]" />}
       </div>
 
       {/* Info */}
       <div className="flex-1 min-w-0">
-        <p className="text-[13px] font-semibold text-[#1a1917] truncate">{item.name}</p>
+        <p className="text-[13px] font-semibold text-[var(--txt)] truncate">{item.name}</p>
         <div className="flex items-center gap-2 flex-wrap mt-0.5">
-          <span className="text-[10.5px] font-bold bg-[#f4f3f0] text-[#7a7875] px-1.5 py-0.5 rounded">
+          <span className="text-[10.5px] font-bold bg-[var(--hover-soft)] text-[var(--txt-2)] px-1.5 py-0.5 rounded">
             {item.format}
           </span>
-          <span className="text-[11.5px] text-[#7a7875]">{fmtBytes(item.originalSize)}</span>
+          <span className="text-[11.5px] text-[var(--txt-2)]">{fmtBytes(item.originalSize)}</span>
           {item.webpSize !== undefined && (
             <>
-              <span className="text-[11px] text-[#7a7875]">→</span>
-              <span className="text-[11.5px] text-[#1a1917] font-medium">{fmtBytes(item.webpSize)}</span>
+              <span className="text-[11px] text-[var(--txt-2)]">→</span>
+              <span className="text-[11.5px] text-[var(--txt)] font-medium">{fmtBytes(item.webpSize)}</span>
               <span className={`text-[10.5px] font-bold px-1.5 py-0.5 rounded ${savedPositive ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"}`}>
                 {saved}
               </span>
@@ -166,16 +166,16 @@ function ImageRow({
         )}
         {item.status === "error" && (
           <button onClick={onRetry}
-            className="p-1.5 rounded-lg text-[#7a7875] hover:text-accent hover:bg-accent-bg transition-colors"
+            className="p-1.5 rounded-lg text-[var(--txt-2)] hover:text-accent hover:bg-accent-bg transition-colors"
             title="Retry">
             <RefreshCw size={14} />
           </button>
         )}
         {item.status === "pending" && (
-          <AlertCircle size={14} className="text-[#d4d2cb]" />
+          <AlertCircle size={14} className="text-[var(--inv-txt)]" />
         )}
         <button onClick={onRemove}
-          className="p-1.5 rounded-lg text-[#7a7875] hover:text-red-500 hover:bg-red-50 transition-colors">
+          className="p-1.5 rounded-lg text-[var(--txt-2)] hover:text-red-500 hover:bg-red-50 transition-colors">
           <X size={14} />
         </button>
       </div>
@@ -322,8 +322,8 @@ export default function ImageToWebpClient() {
 
           {/* Header */}
           <div className="mb-4">
-            <h1 className="text-xl sm:text-2xl font-bold text-[#1a1917]">Image to WebP Converter</h1>
-            <p className="text-[13px] text-[#7a7875] mt-0.5">
+            <h1 className="text-xl sm:text-2xl font-bold text-[var(--txt)]">Image to WebP Converter</h1>
+            <p className="text-[13px] text-[var(--txt-2)] mt-0.5">
               Convert JPG, PNG, GIF, BMP, TIFF, AVIF, SVG and any image to WebP. Free, private, instant.
             </p>
           </div>
@@ -339,7 +339,7 @@ export default function ImageToWebpClient() {
                 onDragLeave={() => setDragging(false)}
                 onDrop={onDrop}
                 onClick={() => inputRef.current?.click()}
-                className={`border-2 border-dashed rounded-2xl p-7 text-center cursor-pointer transition-all shadow-sm flex flex-col items-center justify-center min-h-[200px] ${dragging ? "border-accent bg-accent-light scale-[1.01]" : "border-[#1a1917]/15 bg-white hover:border-accent hover:bg-accent-light"}`}
+                className={`border-2 border-dashed rounded-2xl p-7 text-center cursor-pointer transition-all shadow-sm flex flex-col items-center justify-center min-h-[200px] ${dragging ? "border-accent bg-accent-light scale-[1.01]" : "border-[var(--line-mid)] bg-[var(--surface)] hover:border-accent hover:bg-accent-light"}`}
               >
                 <input
                   ref={inputRef}
@@ -349,19 +349,19 @@ export default function ImageToWebpClient() {
                   className="hidden"
                   onChange={(e) => addFiles(Array.from(e.target.files ?? []))}
                 />
-                <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 transition-all ${dragging ? "bg-accent-bg" : "bg-[#f4f3f0]"}`}>
-                  <UploadCloud size={22} strokeWidth={1.8} className={dragging ? "text-accent" : "text-[#7a7875]"} />
+                <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 transition-all ${dragging ? "bg-accent-bg" : "bg-[var(--hover-soft)]"}`}>
+                  <UploadCloud size={22} strokeWidth={1.8} className={dragging ? "text-accent" : "text-[var(--txt-2)]"} />
                 </div>
-                <p className="text-[14px] font-semibold text-[#1a1917] mb-1">
+                <p className="text-[14px] font-semibold text-[var(--txt)] mb-1">
                   {dragging ? "Drop images here" : "Drag & drop images here"}
                 </p>
-                <p className="text-[12.5px] text-[#7a7875] mb-4">
+                <p className="text-[12.5px] text-[var(--txt-2)] mb-4">
                   or click to browse · paste from clipboard also works
                 </p>
                 {/* Format pills */}
                 <div className="flex flex-wrap gap-1.5 justify-center mb-4">
                   {["JPG","PNG","GIF","BMP","TIFF","AVIF","SVG","ICO","HEIC","WEBP"].map((f) => (
-                    <span key={f} className="text-[10.5px] font-medium text-[#7a7875] bg-[#f4f3f0] border border-[#e5e3de] rounded px-2 py-0.5">
+                    <span key={f} className="text-[10.5px] font-medium text-[var(--txt-2)] bg-[var(--hover-soft)] border border-[var(--line)] rounded px-2 py-0.5">
                       {f}
                     </span>
                   ))}
@@ -372,20 +372,20 @@ export default function ImageToWebpClient() {
                 >
                   <UploadCloud size={15} strokeWidth={2} /> Choose Images
                 </button>
-                <p className="mt-3 text-[11.5px] text-[#7a7875]">No file size limit · Multiple images · All formats</p>
+                <p className="mt-3 text-[11.5px] text-[var(--txt-2)]">No file size limit · Multiple images · All formats</p>
               </div>
 
               {/* Stats bar */}
               {items.length > 0 && (
-                <div className="bg-white border border-[#1a1917]/10 rounded-xl px-4 py-3 flex items-center gap-4 flex-wrap shadow-sm">
+                <div className="bg-[var(--surface)] border border-[var(--line)] rounded-xl px-4 py-3 flex items-center gap-4 flex-wrap shadow-sm">
                   <div className="flex items-center gap-1.5">
                     <div className="w-2 h-2 rounded-full bg-accent" />
-                    <span className="text-[12.5px] font-semibold text-[#1a1917]">{items.length} image{items.length !== 1 ? "s" : ""}</span>
+                    <span className="text-[12.5px] font-semibold text-[var(--txt)]">{items.length} image{items.length !== 1 ? "s" : ""}</span>
                   </div>
                   {doneCount > 0 && (
                     <div className="flex items-center gap-1.5">
                       <div className="w-2 h-2 rounded-full bg-green-500" />
-                      <span className="text-[12.5px] text-[#4a4845]">{doneCount} converted</span>
+                      <span className="text-[12.5px] text-[var(--txt-2)]">{doneCount} converted</span>
                     </div>
                   )}
                   {totalSaved > 0 && (
@@ -398,7 +398,7 @@ export default function ImageToWebpClient() {
                   <div className="flex-1" />
                   <button
                     onClick={clearAll}
-                    className="text-[12px] text-[#7a7875] hover:text-red-500 flex items-center gap-1 transition-colors"
+                    className="text-[12px] text-[var(--txt-2)] hover:text-red-500 flex items-center gap-1 transition-colors"
                   >
                     <Trash2 size={12} /> Clear all
                   </button>
@@ -428,33 +428,33 @@ export default function ImageToWebpClient() {
                   ["100% Private", "Converted in your browser — never uploaded"],
                   ["Bulk Convert", "Convert dozens of images at once"],
                 ].map(([t, d]) => (
-                  <div key={t} className="bg-white border border-[#1a1917]/10 rounded-xl p-3 shadow-sm">
-                    <p className="text-[12px] font-bold text-[#1a1917] mb-0.5">{t}</p>
-                    <p className="text-[11px] text-[#7a7875]">{d}</p>
+                  <div key={t} className="bg-[var(--surface)] border border-[var(--line)] rounded-xl p-3 shadow-sm">
+                    <p className="text-[12px] font-bold text-[var(--txt)] mb-0.5">{t}</p>
+                    <p className="text-[11px] text-[var(--txt-2)]">{d}</p>
                   </div>
                 ))}
               </div>
 
               {/* SEO content */}
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-5 shadow-sm mt-2">
-                <h2 className="text-[15px] font-bold text-[#1a1917] mb-2">Why Convert Images to WebP?</h2>
-                <p className="text-[13px] text-[#7a7875] leading-relaxed">
-                  WebP is a modern image format developed by Google that provides superior compression for images on the web. WebP images are typically <strong className="text-[#1a1917]">25–35% smaller than JPEG</strong> and <strong className="text-[#1a1917]">up to 80% smaller than PNG</strong> at equivalent visual quality. This makes your website load faster, reduces bandwidth costs, and improves your Google PageSpeed score. All major browsers support WebP — Chrome, Firefox, Safari, Edge and Opera.
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-5 shadow-sm mt-2">
+                <h2 className="text-[15px] font-bold text-[var(--txt)] mb-2">Why Convert Images to WebP?</h2>
+                <p className="text-[13px] text-[var(--txt-2)] leading-relaxed">
+                  WebP is a modern image format developed by Google that provides superior compression for images on the web. WebP images are typically <strong className="text-[var(--txt)]">25–35% smaller than JPEG</strong> and <strong className="text-[var(--txt)]">up to 80% smaller than PNG</strong> at equivalent visual quality. This makes your website load faster, reduces bandwidth costs, and improves your Google PageSpeed score. All major browsers support WebP — Chrome, Firefox, Safari, Edge and Opera.
                 </p>
               </div>
             </div>
 
             {/* Right — settings */}
             <div className="w-full xl:w-[280px] shrink-0 xl:sticky xl:top-14">
-              <div className="bg-white border border-[#1a1917]/10 rounded-2xl p-4 shadow-sm">
-                <div className="flex items-center gap-2 mb-4 pb-2.5 border-b border-[#e5e3de]">
-                  <ImageIcon size={14} className="text-[#7a7875]" />
-                  <h3 className="text-[13px] font-bold text-[#1a1917]">Conversion Settings</h3>
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-4 shadow-sm">
+                <div className="flex items-center gap-2 mb-4 pb-2.5 border-b border-[var(--line)]">
+                  <ImageIcon size={14} className="text-[var(--txt-2)]" />
+                  <h3 className="text-[13px] font-bold text-[var(--txt)]">Conversion Settings</h3>
                 </div>
 
                 {/* Quality */}
                 <div className="mb-4">
-                  <p className="text-[10.5px] font-bold text-[#1a1917] uppercase tracking-widest opacity-50 mb-2">
+                  <p className="text-[10.5px] font-bold text-[var(--txt)] uppercase tracking-widest opacity-50 mb-2">
                     Output Quality
                   </p>
                   <div className="space-y-1.5">
@@ -462,29 +462,29 @@ export default function ImageToWebpClient() {
                       <button
                         key={preset.label}
                         onClick={() => setQualityIdx(idx)}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl border text-left transition-all ${qualityIdx === idx ? "border-accent bg-gradient-to-r from-accent-light to-amber-50/60 shadow-sm" : "border-[#1a1917]/10 bg-white hover:border-[#1a1917]/20 hover:bg-[#f4f3f0]"}`}
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl border text-left transition-all ${qualityIdx === idx ? "border-accent bg-gradient-to-r from-accent-light to-amber-50/60 shadow-sm" : "border-[var(--line)] bg-[var(--surface)] hover:border-[var(--line-mid)] hover:bg-[var(--hover-soft)]"}`}
                       >
                         <div>
-                          <p className="text-[13px] font-bold text-[#1a1917]">{preset.label}</p>
-                          <p className="text-[11px] text-[#7a7875]">{preset.desc}</p>
+                          <p className="text-[13px] font-bold text-[var(--txt)]">{preset.label}</p>
+                          <p className="text-[11px] text-[var(--txt-2)]">{preset.desc}</p>
                         </div>
-                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ml-2 transition-all ${qualityIdx === idx ? "border-accent bg-accent" : "border-[#d4d2cb]"}`}>
-                          {qualityIdx === idx && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                        <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ml-2 transition-all ${qualityIdx === idx ? "border-accent bg-accent" : "border-[var(--line-mid)]"}`}>
+                          {qualityIdx === idx && <div className="w-1.5 h-1.5 rounded-full bg-[var(--surface)]" />}
                         </div>
                       </button>
                     ))}
                   </div>
-                  <p className="text-[11px] text-[#7a7875] mt-2 text-center">
-                    Quality: <strong className="text-[#1a1917]">{Math.round(quality * 100)}%</strong>
+                  <p className="text-[11px] text-[var(--txt-2)] mt-2 text-center">
+                    Quality: <strong className="text-[var(--txt)]">{Math.round(quality * 100)}%</strong>
                   </p>
                 </div>
 
                 {/* Convert button */}
-                <div className="space-y-2 border-t border-[#e5e3de] pt-3">
+                <div className="space-y-2 border-t border-[var(--line)] pt-3">
                   <button
                     onClick={handleConvertAll}
                     disabled={!items.length || converting}
-                    className={`w-full flex items-center justify-center gap-2 font-semibold text-[14px] py-3 rounded-full transition-all ${!items.length || converting ? "bg-[#f4f3f0] text-[#7a7875] cursor-not-allowed" : "bg-accent hover:bg-accent-dark text-white shadow-md hover:shadow-lg"}`}
+                    className={`w-full flex items-center justify-center gap-2 font-semibold text-[14px] py-3 rounded-full transition-all ${!items.length || converting ? "bg-[var(--hover-soft)] text-[var(--txt-2)] cursor-not-allowed" : "bg-accent hover:bg-accent-dark text-white shadow-md hover:shadow-lg"}`}
                   >
                     {converting
                       ? <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full spin" /> Converting…</>
@@ -501,7 +501,7 @@ export default function ImageToWebpClient() {
                     </button>
                   )}
 
-                  <p className="text-center text-[11px] text-[#7a7875]">
+                  <p className="text-center text-[11px] text-[var(--txt-2)]">
                     Converted in your browser — never uploaded
                   </p>
                 </div>
@@ -513,7 +513,7 @@ export default function ImageToWebpClient() {
 
       {/* Toast */}
       {toast && (
-        <div className={`fixed bottom-20 lg:bottom-5 right-4 flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-[13.5px] font-medium max-w-sm z-[200] toast-enter ${toast.type === "success" ? "bg-green-700 text-white" : toast.type === "error" ? "bg-red-600 text-white" : "bg-[#1a1917] text-white"}`}>
+        <div className={`fixed bottom-20 lg:bottom-5 right-4 flex items-center gap-2.5 px-4 py-3 rounded-xl shadow-lg text-[13.5px] font-medium max-w-sm z-[200] toast-enter ${toast.type === "success" ? "bg-green-700 text-white" : toast.type === "error" ? "bg-red-600 text-white" : "bg-[var(--inv-bg)] text-[var(--inv-txt)]"}`}>
           {toast.type === "success" ? <CheckCircle size={15} /> : <AlertCircle size={15} />}
           {toast.msg}
         </div>

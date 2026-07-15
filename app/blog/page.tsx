@@ -26,14 +26,14 @@ export default function BlogPage() {
     <div className="w-full flex gap-0 items-start">
       <Sidebar />
       <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-5 pb-24 lg:pb-8">
-        <h1 className="text-xl sm:text-2xl font-bold text-[#1a1917] mb-1">Tech Blog</h1>
-        <p className="text-[13.5px] text-[#7a7875] mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-[var(--txt)] mb-1">Tech Blog</h1>
+        <p className="text-[13.5px] text-[var(--txt-2)] mb-6">
           Practical guides on PDF conversion, compression, merging, and free tools for getting more done.
         </p>
 
         {/* ── Featured post ── */}
         <Link href={`/blog/${featured.slug}`}
-          className="block bg-white border border-[#e5e3de] rounded-2xl overflow-hidden hover:border-accent/40 hover:shadow-lg transition-all group mb-6">
+          className="block bg-[var(--surface)] border border-[var(--line)] rounded-2xl overflow-hidden hover:border-accent/40 hover:shadow-lg transition-all group mb-6">
 
           {/* Full image — no crop, letterbox if needed */}
           <div className="relative w-full bg-black overflow-hidden rounded-t-2xl" style={{ maxHeight: "320px" }}>
@@ -47,7 +47,7 @@ export default function BlogPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
             {/* Badges */}
             <div className="absolute top-4 left-4 flex items-center gap-2">
-              <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border backdrop-blur-sm ${tagStyles[featured.tag] ?? "bg-white/80 text-[#1a1917] border-white"}`}>
+              <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border backdrop-blur-sm ${tagStyles[featured.tag] ?? "bg-[var(--surface)]/80 text-[var(--txt)] border-white"}`}>
                 {featured.tag}
               </span>
               <span className="text-[11px] bg-accent text-white font-bold px-2.5 py-1 rounded-full">Featured</span>
@@ -73,7 +73,7 @@ export default function BlogPage() {
 
           {/* Excerpt below */}
           <div className="px-5 py-3">
-            <p className="text-[13px] text-[#7a7875] leading-relaxed">{featured.excerpt}</p>
+            <p className="text-[13px] text-[var(--txt-2)] leading-relaxed">{featured.excerpt}</p>
           </div>
         </Link>
 
@@ -81,7 +81,7 @@ export default function BlogPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {rest.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}
-              className="bg-white border border-[#e5e3de] rounded-2xl overflow-hidden hover:border-accent/40 hover:shadow-md transition-all group block">
+              className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl overflow-hidden hover:border-accent/40 hover:shadow-md transition-all group block">
 
               {/* Image — show full width, fixed height, top-aligned */}
               <div className="relative w-full overflow-hidden rounded-t-2xl bg-black" style={{ height: "200px" }}>
@@ -92,25 +92,25 @@ export default function BlogPage() {
                   style={{ objectFit: "cover", objectPosition: "center top" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent pointer-events-none" />
-                <span className={`absolute top-3 left-3 text-[10.5px] font-bold px-2 py-0.5 rounded-full border backdrop-blur-sm ${tagStyles[post.tag] ?? "bg-white/80 text-[#1a1917] border-white"}`}>
+                <span className={`absolute top-3 left-3 text-[10.5px] font-bold px-2 py-0.5 rounded-full border backdrop-blur-sm ${tagStyles[post.tag] ?? "bg-[var(--surface)]/80 text-[var(--txt)] border-white"}`}>
                   {post.tag}
                 </span>
               </div>
 
               {/* Content */}
               <div className="p-4 sm:p-5">
-                <h2 className="text-[13.5px] font-bold text-[#1a1917] leading-snug mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                <h2 className="text-[13.5px] font-bold text-[var(--txt)] leading-snug mb-2 group-hover:text-accent transition-colors line-clamp-2">
                   {post.title}
                 </h2>
-                <p className="text-[12px] text-[#7a7875] leading-relaxed mb-3 line-clamp-2">{post.excerpt}</p>
-                <div className="flex items-center justify-between text-[11.5px] text-[#7a7875]">
+                <p className="text-[12px] text-[var(--txt-2)] leading-relaxed mb-3 line-clamp-2">{post.excerpt}</p>
+                <div className="flex items-center justify-between text-[11.5px] text-[var(--txt-2)]">
                   <div className="flex items-center gap-1.5">
                     <Clock size={11} strokeWidth={1.8} />
                     <span>{post.read}</span>
                     <span>·</span>
                     <span>{post.date}</span>
                   </div>
-                  <ArrowRight size={13} className="text-[#7a7875] group-hover:text-accent group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight size={13} className="text-[var(--txt-2)] group-hover:text-accent group-hover:translate-x-0.5 transition-all" />
                 </div>
               </div>
             </Link>

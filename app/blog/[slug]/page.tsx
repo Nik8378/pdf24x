@@ -111,7 +111,7 @@ export default async function BlogPostPage({ params }: Props) {
               className="inline-flex items-center gap-1.5 text-[12.5px] text-white/90 hover:text-white bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full transition-colors">
               <ArrowLeft size={13} /> Back to Blog
             </Link>
-            <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border backdrop-blur-sm ${tagStyles[post.tag] ?? "bg-white/80 text-[#1a1917] border-white"}`}>
+            <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border backdrop-blur-sm ${tagStyles[post.tag] ?? "bg-[var(--surface)]/80 text-[var(--txt)] border-white"}`}>
               {post.tag}
             </span>
           </div>
@@ -140,8 +140,8 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* Excerpt strip */}
-        <div className="bg-[#f4f3f0] border-b border-[#e5e3de] px-4 sm:px-6 lg:px-8 py-4">
-          <p className="text-[14px] text-[#4a4845] leading-relaxed max-w-3xl italic">{post.excerpt}</p>
+        <div className="bg-[var(--hover-soft)] border-b border-[var(--line)] px-4 sm:px-6 lg:px-8 py-4">
+          <p className="text-[14px] text-[var(--txt-2)] leading-relaxed max-w-3xl italic">{post.excerpt}</p>
         </div>
 
         {/* Content */}
@@ -156,16 +156,16 @@ export default async function BlogPostPage({ params }: Props) {
 
               {/* FAQs */}
               {post.faqs && post.faqs.length > 0 && (
-                <div className="mt-8 pt-6 border-t border-[#e5e3de]">
-                  <h2 className="text-lg font-bold text-[#1a1917] mb-4">Frequently Asked Questions</h2>
+                <div className="mt-8 pt-6 border-t border-[var(--line)]">
+                  <h2 className="text-lg font-bold text-[var(--txt)] mb-4">Frequently Asked Questions</h2>
                   <div className="space-y-4">
                     {post.faqs.map((faq: FAQ, i: number) => (
-                      <details key={i} className="group rounded-xl border border-[#1a1917]/10 bg-white overflow-hidden">
-                        <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-[13.5px] font-semibold text-[#1a1917] list-none">
+                      <details key={i} className="group rounded-xl border border-[var(--line)] bg-[var(--surface)] overflow-hidden">
+                        <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-[13.5px] font-semibold text-[var(--txt)] list-none">
                           {faq.question}
-                          <span className="ml-2 shrink-0 text-[#7a7875] transition-transform group-open:rotate-90">›</span>
+                          <span className="ml-2 shrink-0 text-[var(--txt-2)] transition-transform group-open:rotate-90">›</span>
                         </summary>
-                        <div className="px-4 pb-4 text-[13px] text-[#4a4845] leading-relaxed">
+                        <div className="px-4 pb-4 text-[13px] text-[var(--txt-2)] leading-relaxed">
                           {faq.answer}
                         </div>
                       </details>
@@ -174,11 +174,11 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
               )}
               {/* Share */}
-              <div className="mt-8 pt-6 border-t border-[#e5e3de] flex items-center justify-between flex-wrap gap-3">
-                <p className="text-[13px] font-semibold text-[#1a1917]">Found this helpful?</p>
+              <div className="mt-8 pt-6 border-t border-[var(--line)] flex items-center justify-between flex-wrap gap-3">
+                <p className="text-[13px] font-semibold text-[var(--txt)]">Found this helpful?</p>
                 <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://pdf24x.com/blog/${post.slug}`)}`}
                   target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-[12.5px] font-medium text-[#4a4845] bg-white border border-[#e5e3de] hover:border-[#1a1917]/30 hover:text-[#1a1917] px-3 py-1.5 rounded-lg transition-all">
+                  className="flex items-center gap-1.5 text-[12.5px] font-medium text-[var(--txt-2)] bg-[var(--surface)] border border-[var(--line)] hover:border-[var(--line-mid)] hover:text-[var(--txt)] px-3 py-1.5 rounded-lg transition-all">
                   <Share2 size={13} /> Share on X
                 </a>
               </div>
@@ -187,7 +187,7 @@ export default async function BlogPostPage({ params }: Props) {
               <nav className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {prev && (
                   <Link href={`/blog/${prev.slug}`}
-                    className="bg-white border border-[#e5e3de] rounded-xl overflow-hidden hover:border-accent/40 hover:shadow-sm transition-all group">
+                    className="bg-[var(--surface)] border border-[var(--line)] rounded-xl overflow-hidden hover:border-accent/40 hover:shadow-sm transition-all group">
                     <div className="relative h-24 overflow-hidden bg-black">
                       <img src={prev.image} alt={prev.title}
                         className="w-full h-full"
@@ -197,14 +197,14 @@ export default async function BlogPostPage({ params }: Props) {
                         <ArrowLeft size={10} /> Previous
                       </p>
                     </div>
-                    <p className="text-[12.5px] font-semibold text-[#1a1917] group-hover:text-accent transition-colors line-clamp-2 p-3">
+                    <p className="text-[12.5px] font-semibold text-[var(--txt)] group-hover:text-accent transition-colors line-clamp-2 p-3">
                       {prev.title}
                     </p>
                   </Link>
                 )}
                 {next && (
                   <Link href={`/blog/${next.slug}`}
-                    className="bg-white border border-[#e5e3de] rounded-xl overflow-hidden hover:border-accent/40 hover:shadow-sm transition-all group">
+                    className="bg-[var(--surface)] border border-[var(--line)] rounded-xl overflow-hidden hover:border-accent/40 hover:shadow-sm transition-all group">
                     <div className="relative h-24 overflow-hidden bg-black">
                       <img src={next.image} alt={next.title}
                         className="w-full h-full"
@@ -214,7 +214,7 @@ export default async function BlogPostPage({ params }: Props) {
                         Next <ArrowRight size={10} />
                       </p>
                     </div>
-                    <p className="text-[12.5px] font-semibold text-[#1a1917] group-hover:text-accent transition-colors line-clamp-2 p-3">
+                    <p className="text-[12.5px] font-semibold text-[var(--txt)] group-hover:text-accent transition-colors line-clamp-2 p-3">
                       {next.title}
                     </p>
                   </Link>
@@ -226,8 +226,8 @@ export default async function BlogPostPage({ params }: Props) {
             <aside className="w-full lg:w-[260px] shrink-0 space-y-4">
               {/* CTA */}
               <div className="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-2xl p-5">
-                <p className="text-[13px] font-bold text-[#1a1917] mb-1">Free PDF Tools</p>
-                <p className="text-[12px] text-[#7a7875] mb-3 leading-relaxed">
+                <p className="text-[13px] font-bold text-[var(--txt)] mb-1">Free PDF Tools</p>
+                <p className="text-[12px] text-[var(--txt-2)] mb-3 leading-relaxed">
                   Convert, compress, merge and split PDFs — free, private, no sign-up.
                 </p>
                 <Link href="/"
@@ -237,24 +237,24 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
 
               {/* Related */}
-              <div className="bg-white border border-[#e5e3de] rounded-2xl overflow-hidden">
-                <p className="text-[11px] font-bold text-[#1a1917] uppercase tracking-widest opacity-50 px-4 pt-4 pb-3">
+              <div className="bg-[var(--surface)] border border-[var(--line)] rounded-2xl overflow-hidden">
+                <p className="text-[11px] font-bold text-[var(--txt)] uppercase tracking-widest opacity-50 px-4 pt-4 pb-3">
                   More Articles
                 </p>
                 <div className="divide-y divide-[#e5e3de]">
                   {related.map((r) => (
                     <Link key={r.slug} href={`/blog/${r.slug}`}
-                      className="flex gap-3 p-3 hover:bg-[#f4f3f0] transition-colors group">
+                      className="flex gap-3 p-3 hover:bg-[var(--hover-soft)] transition-colors group">
                       <div className="w-16 h-12 rounded-lg overflow-hidden shrink-0 bg-black">
                         <img src={r.image} alt={r.title}
                           className="w-full h-full"
                           style={{ objectFit: "cover", objectPosition: "center top" }} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${tagStyles[r.tag] ?? "bg-[#f4f3f0] text-[#7a7875] border-[#e5e3de]"}`}>
+                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${tagStyles[r.tag] ?? "bg-[var(--hover-soft)] text-[var(--txt-2)] border-[var(--line)]"}`}>
                           {r.tag}
                         </span>
-                        <p className="text-[12px] font-medium text-[#1a1917] group-hover:text-accent transition-colors mt-1 leading-snug line-clamp-2">
+                        <p className="text-[12px] font-medium text-[var(--txt)] group-hover:text-accent transition-colors mt-1 leading-snug line-clamp-2">
                           {r.title}
                         </p>
                       </div>

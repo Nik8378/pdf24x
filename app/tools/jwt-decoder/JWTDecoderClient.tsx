@@ -69,17 +69,17 @@ const PART_COLORS = ["#EE4B3C", "#7B61FF", "#2D9CDB"];
 function CopyBtn({ text, id, copied, onCopy }: { text: string; id: string; copied: string | null; onCopy: (t: string, id: string) => void }) {
   return (
     <button onClick={() => onCopy(text, id)} title="Copy"
-      className="rounded-md p-1.5 text-[#6b6b6b] hover:bg-[#f4f3f0] hover:text-[#1a1917]">
-      {copied === id ? <Check size={14} className="text-[#27AE60]" /> : <Copy size={14} />}
+      className="rounded-md p-1.5 text-[var(--txt-2)] hover:bg-[var(--hover-soft)] hover:text-[var(--txt)]">
+      {copied === id ? <Check size={14} className="text-[var(--ok)]" /> : <Copy size={14} />}
     </button>
   );
 }
 function ViewToggle({ view, setView }: { view: "json" | "claims"; setView: (v: "json" | "claims") => void }) {
   return (
-    <div className="flex rounded-lg border border-[#1a1917]/10 p-0.5 text-[11px] font-semibold">
+    <div className="flex rounded-lg border border-[var(--line)] p-0.5 text-[11px] font-semibold">
       {(["json", "claims"] as const).map((v) => (
         <button key={v} onClick={() => setView(v)}
-          className={`rounded-md px-2.5 py-1 ${view === v ? "bg-[#1a1917] text-white" : "text-[#6b6b6b] hover:text-[#1a1917]"}`}>
+          className={`rounded-md px-2.5 py-1 ${view === v ? "bg-[var(--inv-bg)] text-[var(--inv-txt)]" : "text-[var(--txt-2)] hover:text-[var(--txt)]"}`}>
           {v === "json" ? "JSON" : "Claims Breakdown"}
         </button>
       ))}
@@ -88,12 +88,12 @@ function ViewToggle({ view, setView }: { view: "json" | "claims"; setView: (v: "
 }
 function ClaimsTable({ data }: { data: Record<string, unknown> }) {
   return (
-    <div className="divide-y divide-[#f4f3f0]">
+    <div className="divide-y divide-[var(--line)]">
       {Object.entries(data).map(([k, v]) => (
         <div key={k} className="grid grid-cols-[90px_1fr] gap-3 py-2.5 sm:grid-cols-[90px_1fr_1fr]">
-          <span className="font-mono text-[12px] font-bold text-[#C0392B]">{k}</span>
-          <span className="break-all font-mono text-[12px] text-[#1a1917]">{fmtClaim(k, v)}</span>
-          <span className="hidden text-[12px] text-[#6b6b6b] sm:block">{CLAIM_INFO[k] ?? ""}</span>
+          <span className="font-mono text-[12px] font-bold text-[var(--err)]">{k}</span>
+          <span className="break-all font-mono text-[12px] text-[var(--txt)]">{fmtClaim(k, v)}</span>
+          <span className="hidden text-[12px] text-[var(--txt-2)] sm:block">{CLAIM_INFO[k] ?? ""}</span>
         </div>
       ))}
     </div>
@@ -101,7 +101,7 @@ function ClaimsTable({ data }: { data: Record<string, unknown> }) {
 }
 function JsonView({ data }: { data: Record<string, unknown> }) {
   return (
-    <pre className="overflow-x-auto whitespace-pre-wrap break-all font-mono text-[12.5px] leading-relaxed text-[#1a1917]">
+    <pre className="overflow-x-auto whitespace-pre-wrap break-all font-mono text-[12.5px] leading-relaxed text-[var(--txt)]">
       {JSON.stringify(data, null, 2)}
     </pre>
   );
@@ -201,8 +201,8 @@ export default function JWTDecoderClient() {
       <Sidebar />
       <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-5">
           <div className="mb-4">
-            <h1 className="text-xl sm:text-2xl font-bold text-[#1a1917]">JSON Web Token (JWT) Debugger</h1>
-            <p className="text-[13px] text-[#7a7875]">
+            <h1 className="text-xl sm:text-2xl font-bold text-[var(--txt)]">JSON Web Token (JWT) Debugger</h1>
+            <p className="text-[13px] text-[var(--txt-2)]">
               Decode, verify, and generate JSON Web Tokens — an open, industry-standard (RFC 7519) method for
               representing claims securely between two parties. Everything runs in your browser; tokens are never sent to any server.
             </p>
@@ -210,17 +210,17 @@ export default function JWTDecoderClient() {
 
           {/* Tabs */}
           <div className="mb-5 flex items-center justify-between gap-3">
-            <div className="flex rounded-xl border border-[#1a1917]/10 bg-white p-1">
+            <div className="flex rounded-xl border border-[var(--line)] bg-[var(--surface)] p-1">
               {(["decoder", "encoder"] as const).map((t) => (
                 <button key={t} onClick={() => setTab(t)}
-                  className={`rounded-lg px-4 py-1.5 text-[13px] font-semibold transition-all ${tab === t ? "bg-[#1a1917] text-white" : "text-[#6b6b6b] hover:text-[#1a1917]"}`}>
+                  className={`rounded-lg px-4 py-1.5 text-[13px] font-semibold transition-all ${tab === t ? "bg-[var(--inv-bg)] text-[var(--inv-txt)]" : "text-[var(--txt-2)] hover:text-[var(--txt)]"}`}>
                   {t === "decoder" ? "JWT Decoder" : "JWT Encoder"}
                 </button>
               ))}
             </div>
             {tab === "decoder" && (
               <button onClick={loadExample}
-                className="flex items-center gap-1.5 rounded-lg border border-[#1a1917]/15 bg-white px-3 py-1.5 text-[12px] font-semibold text-[#1a1917] hover:border-[#EE4B3C]/40">
+                className="flex items-center gap-1.5 rounded-lg border border-[var(--line-mid)] bg-[var(--surface)] px-3 py-1.5 text-[12px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">
                 <Wand2 size={14} /> Generate example
               </button>
             )}
@@ -230,28 +230,28 @@ export default function JWTDecoderClient() {
             <div className="grid gap-5 lg:grid-cols-2">
               {/* ── Left: encoded token ── */}
               <div>
-                <div className="rounded-2xl border border-[#1a1917]/10 bg-white">
-                  <div className="flex items-center justify-between border-b border-[#f4f3f0] px-4 py-2.5">
-                    <p className="text-[12px] font-bold uppercase tracking-wide text-[#6b6b6b]">Encoded Token</p>
+                <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+                  <div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-2.5">
+                    <p className="text-[12px] font-bold uppercase tracking-wide text-[var(--txt-2)]">Encoded Token</p>
                     <div className="flex items-center gap-1">
                       <CopyBtn text={token} id="tok" copied={copied} onCopy={handleCopy} />
                       <button onClick={() => { setToken(""); setSecret(""); }} title="Clear"
-                        className="rounded-md p-1.5 text-[#6b6b6b] hover:bg-[#f4f3f0] hover:text-[#EE4B3C]"><Trash2 size={14} /></button>
+                        className="rounded-md p-1.5 text-[var(--txt-2)] hover:bg-[var(--hover-soft)] hover:text-[#EE4B3C]"><Trash2 size={14} /></button>
                     </div>
                   </div>
                   <textarea value={token} onChange={(e) => setToken(e.target.value)}
                     placeholder="Paste a JWT here that you'd like to decode, validate, and verify…"
                     spellCheck={false}
-                    className="h-44 w-full resize-y rounded-b-2xl bg-transparent p-4 font-mono text-[12.5px] leading-relaxed text-[#1a1917] outline-none placeholder:text-[#b5b3af]" />
+                    className="h-44 w-full resize-y rounded-b-2xl bg-transparent p-4 font-mono text-[12.5px] leading-relaxed text-[var(--txt)] outline-none placeholder:text-[var(--txt-3)]" />
                 </div>
 
                 {/* colored preview */}
                 {decoded && !decoded.error && (
-                  <div className="mt-3 break-all rounded-2xl border border-[#1a1917]/10 bg-white p-4 font-mono text-[12px] leading-relaxed">
+                  <div className="mt-3 break-all rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4 font-mono text-[12px] leading-relaxed">
                     {parts.map((p, i) => (
                       <span key={i}>
                         <span style={{ color: PART_COLORS[i] }}>{p}</span>
-                        {i < 2 && <span className="text-[#1a1917]">.</span>}
+                        {i < 2 && <span className="text-[var(--txt)]">.</span>}
                       </span>
                     ))}
                   </div>
@@ -261,15 +261,15 @@ export default function JWTDecoderClient() {
                 {decoded && (
                   <div className="mt-3 space-y-1.5">
                     {decoded.error ? (
-                      <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[#C0392B]"><AlertCircle size={15} /> {decoded.error}</p>
+                      <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[var(--err)]"><AlertCircle size={15} /> {decoded.error}</p>
                     ) : (
                       <>
-                        <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[#27AE60]"><CheckCircle size={15} /> Valid JWT</p>
-                        {decoded.expired === true && <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[#C0392B]"><AlertCircle size={15} /> Token has expired</p>}
-                        {decoded.expired === false && <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[#27AE60]"><CheckCircle size={15} /> Not expired</p>}
-                        {sigStatus === "valid" && <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[#27AE60]"><ShieldCheck size={15} /> Signature Verified</p>}
-                        {sigStatus === "invalid" && <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[#C0392B]"><ShieldAlert size={15} /> Invalid Signature</p>}
-                        {sigStatus === "unsupported" && <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[#B7791F]"><Shield size={15} /> Only HS256 / HS384 / HS512 verification is supported in-browser</p>}
+                        <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[var(--ok)]"><CheckCircle size={15} /> Valid JWT</p>
+                        {decoded.expired === true && <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[var(--err)]"><AlertCircle size={15} /> Token has expired</p>}
+                        {decoded.expired === false && <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[var(--ok)]"><CheckCircle size={15} /> Not expired</p>}
+                        {sigStatus === "valid" && <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[var(--ok)]"><ShieldCheck size={15} /> Signature Verified</p>}
+                        {sigStatus === "invalid" && <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[var(--err)]"><ShieldAlert size={15} /> Invalid Signature</p>}
+                        {sigStatus === "unsupported" && <p className="flex items-center gap-1.5 text-[13px] font-semibold text-[var(--warn)]"><Shield size={15} /> Only HS256 / HS384 / HS512 verification is supported in-browser</p>}
                       </>
                     )}
                   </div>
@@ -278,8 +278,8 @@ export default function JWTDecoderClient() {
 
               {/* ── Right: decoded ── */}
               <div className="space-y-4">
-                <div className="rounded-2xl border border-[#1a1917]/10 bg-white">
-                  <div className="flex items-center justify-between border-b border-[#f4f3f0] px-4 py-2.5">
+                <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+                  <div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-2.5">
                     <p className="text-[12px] font-bold uppercase tracking-wide" style={{ color: PART_COLORS[0] }}>Decoded Header</p>
                     <div className="flex items-center gap-2">
                       <ViewToggle view={headerView} setView={setHeaderView} />
@@ -289,12 +289,12 @@ export default function JWTDecoderClient() {
                   <div className="p-4">
                     {decoded && !decoded.error
                       ? (headerView === "json" ? <JsonView data={decoded.header} /> : <ClaimsTable data={decoded.header} />)
-                      : <p className="text-[13px] text-[#b5b3af]">Header will appear here</p>}
+                      : <p className="text-[13px] text-[var(--txt-3)]">Header will appear here</p>}
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-[#1a1917]/10 bg-white">
-                  <div className="flex items-center justify-between border-b border-[#f4f3f0] px-4 py-2.5">
+                <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+                  <div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-2.5">
                     <p className="text-[12px] font-bold uppercase tracking-wide" style={{ color: PART_COLORS[1] }}>Decoded Payload</p>
                     <div className="flex items-center gap-2">
                       <ViewToggle view={payloadView} setView={setPayloadView} />
@@ -304,26 +304,26 @@ export default function JWTDecoderClient() {
                   <div className="p-4">
                     {decoded && !decoded.error
                       ? (payloadView === "json" ? <JsonView data={decoded.payload} /> : <ClaimsTable data={decoded.payload} />)
-                      : <p className="text-[13px] text-[#b5b3af]">Payload will appear here</p>}
+                      : <p className="text-[13px] text-[var(--txt-3)]">Payload will appear here</p>}
                   </div>
                 </div>
 
                 {/* signature verification */}
-                <div className="rounded-2xl border border-[#1a1917]/10 bg-white">
-                  <div className="flex items-center justify-between border-b border-[#f4f3f0] px-4 py-2.5">
+                <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+                  <div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-2.5">
                     <p className="text-[12px] font-bold uppercase tracking-wide" style={{ color: PART_COLORS[2] }}>
-                      JWT Signature Verification <span className="font-medium normal-case text-[#b5b3af]">(Optional)</span>
+                      JWT Signature Verification <span className="font-medium normal-case text-[var(--txt-3)]">(Optional)</span>
                     </p>
-                    <label className="flex cursor-pointer items-center gap-1.5 text-[11px] font-semibold text-[#6b6b6b]">
+                    <label className="flex cursor-pointer items-center gap-1.5 text-[11px] font-semibold text-[var(--txt-2)]">
                       <input type="checkbox" checked={secretIsB64} onChange={(e) => setSecretIsB64(e.target.checked)} className="accent-[#EE4B3C]" />
                       base64url encoded
                     </label>
                   </div>
                   <div className="p-4">
-                    <p className="mb-2 text-[12px] text-[#6b6b6b]">Enter the secret used to sign the JWT:</p>
+                    <p className="mb-2 text-[12px] text-[var(--txt-2)]">Enter the secret used to sign the JWT:</p>
                     <input value={secret} onChange={(e) => setSecret(e.target.value)} spellCheck={false}
                       placeholder="your-256-bit-secret"
-                      className="w-full rounded-lg border border-[#1a1917]/15 bg-[#faf9f7] px-3 py-2 font-mono text-[12.5px] text-[#1a1917] outline-none focus:border-[#EE4B3C]/50" />
+                      className="w-full rounded-lg border border-[var(--line-mid)] bg-[var(--surface-2)] px-3 py-2 font-mono text-[12.5px] text-[var(--txt)] outline-none focus:border-[#EE4B3C]/50" />
                   </div>
                 </div>
               </div>
@@ -332,69 +332,69 @@ export default function JWTDecoderClient() {
             /* ── Encoder ── */
             <div className="grid gap-5 lg:grid-cols-2">
               <div className="space-y-4">
-                <div className="rounded-2xl border border-[#1a1917]/10 bg-white">
-                  <div className="border-b border-[#f4f3f0] px-4 py-2.5">
+                <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+                  <div className="border-b border-[var(--line)] px-4 py-2.5">
                     <p className="text-[12px] font-bold uppercase tracking-wide" style={{ color: PART_COLORS[0] }}>Header</p>
                   </div>
                   <textarea value={encHeader} onChange={(e) => setEncHeader(e.target.value)} spellCheck={false}
-                    className="h-32 w-full resize-y rounded-b-2xl bg-transparent p-4 font-mono text-[12.5px] text-[#1a1917] outline-none" />
+                    className="h-32 w-full resize-y rounded-b-2xl bg-transparent p-4 font-mono text-[12.5px] text-[var(--txt)] outline-none" />
                 </div>
-                <div className="rounded-2xl border border-[#1a1917]/10 bg-white">
-                  <div className="border-b border-[#f4f3f0] px-4 py-2.5">
+                <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+                  <div className="border-b border-[var(--line)] px-4 py-2.5">
                     <p className="text-[12px] font-bold uppercase tracking-wide" style={{ color: PART_COLORS[1] }}>Payload</p>
                   </div>
                   <textarea value={encPayload} onChange={(e) => setEncPayload(e.target.value)} spellCheck={false}
-                    className="h-44 w-full resize-y rounded-b-2xl bg-transparent p-4 font-mono text-[12.5px] text-[#1a1917] outline-none" />
+                    className="h-44 w-full resize-y rounded-b-2xl bg-transparent p-4 font-mono text-[12.5px] text-[var(--txt)] outline-none" />
                 </div>
-                <div className="rounded-2xl border border-[#1a1917]/10 bg-white p-4">
+                <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
                   <div className="mb-3 flex items-center justify-between">
                     <p className="text-[12px] font-bold uppercase tracking-wide" style={{ color: PART_COLORS[2] }}>Sign</p>
-                    <label className="flex cursor-pointer items-center gap-1.5 text-[11px] font-semibold text-[#6b6b6b]">
+                    <label className="flex cursor-pointer items-center gap-1.5 text-[11px] font-semibold text-[var(--txt-2)]">
                       <input type="checkbox" checked={encSecretIsB64} onChange={(e) => setEncSecretIsB64(e.target.checked)} className="accent-[#EE4B3C]" />
                       base64url encoded secret
                     </label>
                   </div>
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <select value={encAlg} onChange={(e) => setEncAlg(e.target.value)}
-                      className="rounded-lg border border-[#1a1917]/15 bg-[#faf9f7] px-3 py-2 text-[12.5px] font-semibold text-[#1a1917] outline-none">
+                      className="rounded-lg border border-[var(--line-mid)] bg-[var(--surface-2)] px-3 py-2 text-[12.5px] font-semibold text-[var(--txt)] outline-none">
                       {Object.keys(HMAC_HASH).map((a) => <option key={a}>{a}</option>)}
                     </select>
                     <input value={encSecret} onChange={(e) => setEncSecret(e.target.value)} spellCheck={false}
                       placeholder="Secret"
-                      className="flex-1 rounded-lg border border-[#1a1917]/15 bg-[#faf9f7] px-3 py-2 font-mono text-[12.5px] text-[#1a1917] outline-none focus:border-[#EE4B3C]/50" />
+                      className="flex-1 rounded-lg border border-[var(--line-mid)] bg-[var(--surface-2)] px-3 py-2 font-mono text-[12.5px] text-[var(--txt)] outline-none focus:border-[#EE4B3C]/50" />
                   </div>
                 </div>
               </div>
 
               <div>
-                <div className="rounded-2xl border border-[#1a1917]/10 bg-white">
-                  <div className="flex items-center justify-between border-b border-[#f4f3f0] px-4 py-2.5">
-                    <p className="text-[12px] font-bold uppercase tracking-wide text-[#6b6b6b]">Generated Token</p>
+                <div className="rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
+                  <div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-2.5">
+                    <p className="text-[12px] font-bold uppercase tracking-wide text-[var(--txt-2)]">Generated Token</p>
                     {encToken && <CopyBtn text={encToken} id="enc" copied={copied} onCopy={handleCopy} />}
                   </div>
                   <div className="min-h-44 break-all p-4 font-mono text-[12.5px] leading-relaxed">
                     {encError ? (
-                      <p className="flex items-center gap-1.5 font-sans text-[13px] font-semibold text-[#C0392B]"><AlertCircle size={15} /> {encError}</p>
+                      <p className="flex items-center gap-1.5 font-sans text-[13px] font-semibold text-[var(--err)]"><AlertCircle size={15} /> {encError}</p>
                     ) : encToken ? (
                       encToken.split(".").map((p, i) => (
                         <span key={i}>
                           <span style={{ color: PART_COLORS[i] }}>{p}</span>
-                          {i < 2 && <span className="text-[#1a1917]">.</span>}
+                          {i < 2 && <span className="text-[var(--txt)]">.</span>}
                         </span>
                       ))
                     ) : (
-                      <p className="font-sans text-[13px] text-[#b5b3af]">Token will appear here</p>
+                      <p className="font-sans text-[13px] text-[var(--txt-3)]">Token will appear here</p>
                     )}
                   </div>
                 </div>
                 {encToken && (
-                  <p className="mt-3 flex items-center gap-1.5 text-[13px] font-semibold text-[#27AE60]"><CheckCircle size={15} /> Token signed with {encAlg}</p>
+                  <p className="mt-3 flex items-center gap-1.5 text-[13px] font-semibold text-[var(--ok)]"><CheckCircle size={15} /> Token signed with {encAlg}</p>
                 )}
               </div>
             </div>
           )}
 
-          <p className="mt-6 text-xs text-[#6b6b6b]">
+          <p className="mt-6 text-xs text-[var(--txt-2)]">
             🔒 100% private — decoding, verification and signing all happen locally in your browser using the Web Crypto API.
             Never paste production secrets into any website you don&apos;t trust.
           </p>

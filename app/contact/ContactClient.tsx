@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { Mail, Send, CheckCircle, AlertCircle } from "lucide-react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea", redsoft: "#ffe7e3" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)", redsoft: "#ffe7e3" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 
 export default function ContactClient() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "", website: "" });
@@ -39,8 +39,8 @@ export default function ContactClient() {
   if (status === "success") {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center sm:px-6 lg:px-8">
-        <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
-          <CheckCircle size={32} style={{ color: "#27AE60" }} />
+        <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--surface)]" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+          <CheckCircle size={32} style={{ color: "var(--ok)" }} />
         </span>
         <h1 className="text-2xl font-extrabold" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Message received!</h1>
         <p className="mt-3 text-sm" style={{ color: C.sub }}>Thank you for reaching out. We will get back to you shortly.</p>
@@ -56,7 +56,7 @@ export default function ContactClient() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-8 flex items-start gap-4">
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[var(--surface)]" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
           <Mail size={26} style={{ color: C.brand }} />
         </span>
         <div>

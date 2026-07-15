@@ -5,7 +5,7 @@ import { useState } from "react";
 import {
   Image, Minimize2, Link2, Scissors, Layers, ImagePlay, ImageIcon,
   FileText, BookOpen, Code2, ChevronDown, ChevronRight, FileSpreadsheet,
-  Braces, Link as LinkIcon, Code, Paintbrush, Regex, KeyRound,
+  Braces, Link as LinkIcon, Code, Paintbrush, Regex, KeyRound, GitCompareArrows,
 } from "lucide-react";
 
 const pdfLinks = [
@@ -27,6 +27,9 @@ const bookLinks = [
   { name: "ISBN Converter", href: "/tools/isbn-converter", icon: BookOpen },
 ];
 
+const diffLinks = [
+  { name: "Text Diff Checker", href: "/diff-checker/text", icon: GitCompareArrows },
+];
 const devLinks = [
   { name: "JSON Formatter", href: "/tools/json-formatter", icon: Braces },
   { name: "Base64 Encoder", href: "/tools/base64-encoder", icon: Code2 },
@@ -49,6 +52,8 @@ export function Sidebar() {
   const [imageOpen, setImageOpen] = useState(isImagePage);
   const [bookOpen,  setBookOpen]  = useState(isBookPage);
   const [devOpen,   setDevOpen]   = useState(isDevPage);
+  const isDiffPage = pathname.startsWith("/diff-checker");
+  const [diffOpen,  setDiffOpen]  = useState(isDiffPage);
 
   const NavItem = ({ href, icon: Icon, name }: { href: string; icon: React.ElementType; name: string }) => {
     const active = pathname === href;
@@ -56,7 +61,7 @@ export function Sidebar() {
       <Link href={href}
         aria-current={active ? "page" : undefined}
         className={`flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-[12.5px] transition-all group ${
-          active ? "bg-[#1a1917] text-white font-semibold" : "text-[#4a4845] hover:bg-[#f4f3f0] hover:text-[#1a1917]"
+          active ? "bg-[var(--inv-bg)] text-[var(--inv-txt)] font-semibold" : "text-[var(--txt-2)] hover:bg-[var(--hover-soft)] hover:text-[var(--txt)]"
         }`}>
         <Icon size={13} strokeWidth={active ? 2 : 1.8}
           className={active ? "text-accent" : "opacity-60 group-hover:opacity-80"} />
@@ -71,14 +76,14 @@ export function Sidebar() {
     open: boolean;
     onToggle: () => void;
   }) => (
-    <div className="mt-3 pt-3 border-t border-[#e5e3de] first:mt-0 first:pt-0 first:border-0">
-      <button onClick={onToggle} className="w-full flex items-center justify-between px-2 py-1 rounded-lg hover:bg-[#f4f3f0] transition-colors group mb-1">
-        <span className={`text-[10.5px] font-bold uppercase tracking-widest transition-colors ${open ? "text-accent" : "text-[#7a7875] group-hover:text-[#1a1917]"}`}>
+    <div className="mt-3 pt-3 border-t border-[var(--line)] first:mt-0 first:pt-0 first:border-0">
+      <button onClick={onToggle} className="w-full flex items-center justify-between px-2 py-1 rounded-lg hover:bg-[var(--hover-soft)] transition-colors group mb-1">
+        <span className={`text-[10.5px] font-bold uppercase tracking-widest transition-colors ${open ? "text-accent" : "text-[var(--txt-2)] group-hover:text-[var(--txt)]"}`}>
           {title}
         </span>
         {open
-          ? <ChevronDown size={11} className="text-[#7a7875]" />
-          : <ChevronRight size={11} className="text-[#7a7875]" />}
+          ? <ChevronDown size={11} className="text-[var(--txt-2)]" />
+          : <ChevronRight size={11} className="text-[var(--txt-2)]" />}
       </button>
       {open && (
         <nav className="space-y-0.5 pl-1">
@@ -90,18 +95,19 @@ export function Sidebar() {
 
   return (
     <aside className="w-[210px] shrink-0 hidden lg:block sticky top-14" style={{ height: "calc(100vh - 56px)" }}>
-      <div className="bg-white border-r border-[#1a1917]/10 h-full flex flex-col overflow-y-auto pt-4 px-2 pb-4">
+      <div className="bg-[var(--surface)] border-r border-[var(--line)] h-full flex flex-col overflow-y-auto pt-4 px-2 pb-4">
         <Section title="PDF Tools"       links={pdfLinks}   open={pdfOpen}   onToggle={() => setPdfOpen(!pdfOpen)} />
         <Section title="Image Tools"     links={imageLinks} open={imageOpen} onToggle={() => setImageOpen(!imageOpen)} />
         <Section title="Book & ISBN"     links={bookLinks}  open={bookOpen}  onToggle={() => setBookOpen(!bookOpen)} />
         <Section title="Developer Tools" links={devLinks}   open={devOpen}   onToggle={() => setDevOpen(!devOpen)} />
+        <Section title="Diff Checker"    links={diffLinks}  open={diffOpen}  onToggle={() => setDiffOpen(!diffOpen)} />
 
-        <div className="mt-auto pt-3 mx-1 bg-txt/5 border border-[#1a1917]/8 rounded-xl p-3">
+        <div className="mt-auto pt-3 mx-1 bg-txt/5 border border-[var(--line)] rounded-xl p-3">
           <div className="flex items-center gap-1.5 mb-1">
             <FileText size={12} className="text-accent" />
-            <span className="text-[11px] font-bold text-[#1a1917]">100% Private</span>
+            <span className="text-[11px] font-bold text-[var(--txt)]">100% Private</span>
           </div>
-          <p className="text-[11px] text-[#7a7875] leading-snug">
+          <p className="text-[11px] text-[var(--txt-2)] leading-snug">
             All processing happens in your browser. Nothing is ever uploaded.
           </p>
         </div>

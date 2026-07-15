@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   description: "Read PDF24X Terms of Use.",
   alternates: { canonical: "https://pdf24x.com/terms-of-use" },
 };
-const C = { ink: "#1a1a1a", sub: "#6b6760" };
+const C = { ink: "var(--txt)", sub: "var(--txt-2)" };
 const sections = [
   ["1. Acceptance of terms", "By accessing or using PDF24X, you agree to be bound by these Terms of Use. If you do not agree, please do not use the Service."],
   ["2. Description of service", "PDF24X provides free, browser-based tools for working with PDF files. The Service is provided as-is and may be updated or discontinued at any time without notice."],

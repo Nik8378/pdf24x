@@ -29,14 +29,14 @@ export function TrustBadges() {
       {badges.map((b) => (
         <div
           key={b.title}
-          className="bg-white border border-[#1a1917]/10 rounded-xl p-3 flex gap-2.5 items-start shadow-sm hover:shadow-md hover:border-[#1a1917]/20 transition-all"
+          className="bg-[var(--surface)] border border-[var(--line)] rounded-xl p-3 flex gap-2.5 items-start shadow-sm hover:shadow-md hover:border-[var(--line-mid)] transition-all"
         >
           <div className="mt-0.5 shrink-0">
             <b.icon size={15} strokeWidth={1.8} className="text-accent" />
           </div>
           <div>
-            <p className="text-[12px] font-bold text-[#1a1917]">{b.title}</p>
-            <p className="text-[11px] text-[#7a7875] leading-snug">{b.desc}</p>
+            <p className="text-[12px] font-bold text-[var(--txt)]">{b.title}</p>
+            <p className="text-[11px] text-[var(--txt-2)] leading-snug">{b.desc}</p>
           </div>
         </div>
       ))}

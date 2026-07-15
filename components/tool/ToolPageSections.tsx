@@ -3,15 +3,15 @@ import Link from "next/link";
 import { ChevronRight, FileText, Minimize2, GitMerge, Split, FileImage, Image as ImageIcon, RotateCw, Unlock, Droplets } from "lucide-react";
 import { useState } from "react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 
 const TOOL_META: Record<string, { icon: any; color: string; tint: string; label: string; href: string }> = {
   compress: { icon: Minimize2, color: "#3B82F6", tint: "#E5EEFC", label: "Compress PDF", href: "/tools/compress" },
   merge: { icon: GitMerge, color: "#F2994A", tint: "#FCEEDD", label: "Merge PDF", href: "/tools/merge" },
   split: { icon: Split, color: "#7B61FF", tint: "#ECE7FF", label: "Split PDF", href: "/tools/split" },
   "pdf-to-jpg": { icon: FileImage, color: "#EC4899", tint: "#FCE4EF", label: "PDF to JPG", href: "/tools/pdf-to-jpg" },
-  "image-to-pdf": { icon: ImageIcon, color: "#27AE60", tint: "#E4F5EC", label: "Image to PDF", href: "/tools/image-to-pdf" },
+  "image-to-pdf": { icon: ImageIcon, color: "var(--ok)", tint: "#E4F5EC", label: "Image to PDF", href: "/tools/image-to-pdf" },
   "rotate-pdf": { icon: RotateCw, color: "#EE4B3C", tint: "#ffe7e3", label: "Rotate PDF", href: "/tools/rotate-pdf" },
   "watermark-pdf": { icon: Droplets, color: "#EC4899", tint: "#FCE4EF", label: "Watermark PDF", href: "/tools/watermark-pdf" },
   "unlock-pdf": { icon: Unlock, color: "#3B82F6", tint: "#E5EEFC", label: "Unlock PDF", href: "/tools/unlock-pdf" },
@@ -64,7 +64,7 @@ function ProcessingBadge({ mode }: { mode: "browser" | "server" }) {
 
 function HowToSection({ steps }: { steps: HowToStep[] }) {
   return (
-    <section className="mt-8 rounded-2xl bg-white p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+    <section className="mt-8 rounded-2xl bg-[var(--surface)] p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
       <h2 className="text-lg font-extrabold mb-4" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>How to Use</h2>
       <ol className="space-y-3">
         {steps.map((step, i) => (
@@ -83,7 +83,7 @@ function HowToSection({ steps }: { steps: HowToStep[] }) {
 
 function UseCasesSection({ cases }: { cases: string[] }) {
   return (
-    <section className="mt-4 rounded-2xl bg-white p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+    <section className="mt-4 rounded-2xl bg-[var(--surface)] p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
       <h2 className="text-lg font-extrabold mb-4" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Common Use Cases</h2>
       <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {cases.map((c, i) => (
@@ -98,7 +98,7 @@ function UseCasesSection({ cases }: { cases: string[] }) {
 
 function RelatedToolsSection({ tools }: { tools: string[] }) {
   return (
-    <section className="mt-4 rounded-2xl bg-white p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+    <section className="mt-4 rounded-2xl bg-[var(--surface)] p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
       <h2 className="text-lg font-extrabold mb-4" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Related Tools</h2>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         {tools.map(key => {
@@ -122,7 +122,7 @@ function RelatedToolsSection({ tools }: { tools: string[] }) {
 function FAQSection({ faqs }: { faqs: FAQItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section className="mt-4 rounded-2xl bg-white p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+    <section className="mt-4 rounded-2xl bg-[var(--surface)] p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
       <h2 className="text-lg font-extrabold mb-4" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Frequently Asked Questions</h2>
       <div className="space-y-2">
         {faqs.map((faq, i) => (
@@ -147,7 +147,7 @@ function FAQSection({ faqs }: { faqs: FAQItem[] }) {
 
 function RelatedBlogsSection({ blogs }: { blogs: RelatedBlog[] }) {
   return (
-    <section className="mt-4 rounded-2xl bg-white p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+    <section className="mt-4 rounded-2xl bg-[var(--surface)] p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
       <h2 className="text-lg font-extrabold mb-4" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Related Guides</h2>
       <ul className="space-y-2">
         {blogs.map((b, i) => (

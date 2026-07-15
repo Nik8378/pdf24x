@@ -5,8 +5,8 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { ArrowLeft, RefreshCw } from "lucide-react";
 
-const C = { ink: "#1a1a1a", sub: "#6b6760", brand: "#FF6B5E", line: "#1c1c1c", surface: "#ffffff", cream: "#f4f1ea" };
-const shadow = "3px 3px 0 0 #1c1c1c";
+const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)" };
+const shadow = "3px 3px 0 0 var(--line-strong)";
 const STATUS_COLORS: Record<string, string> = { new: "#FF6B5E", read: "#3B82F6", resolved: "#27AE60" };
 
 export default function AdminContacts() {
@@ -62,7 +62,7 @@ export default function AdminContacts() {
         ) : (
           <div className="space-y-4">
             {submissions.map(s => (
-              <div key={s.id} className="rounded-xl bg-white p-5 overflow-hidden" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
+              <div key={s.id} className="rounded-xl bg-[var(--surface)] p-5 overflow-hidden" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
                 <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                   <div>
                     <p className="font-semibold text-sm" style={{ color: C.ink }}>{s.name} — <span style={{ color: C.sub }}>{s.email}</span></p>
