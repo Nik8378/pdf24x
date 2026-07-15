@@ -152,7 +152,7 @@ export default function HomeClient() {
             </div>
           </div>
           <div className="rounded-2xl bg-white p-6 sm:p-8" style={{ border: `1px solid ${C.line}`, boxShadow: C.shadow }}>
-            <Image src="/hero.png" alt="PDF24X tools illustration" width={600} height={400} className="w-full rounded-xl object-contain" priority />
+            <Image src="/hero.webp" alt="PDF24X tools illustration" width={600} height={400} className="w-full rounded-xl object-contain" priority />
             <h3 className="mt-6 text-lg font-bold" style={{ color: C.ink, ...font() }}>Powerful Tools. Simple Interface.</h3>
             <p className="mt-1 text-sm" style={{ color: C.sub }}>All tools you need in one place. 100% free forever.</p>
           </div>
