@@ -13,10 +13,16 @@ export default function AdminDashboard() {
   const router = useRouter();
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (!data.session) router.push("/admin/login");
-      else setChecking(false);
-    });
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        // Try refreshing the session
+        const { data: { session: refreshed } } = await supabase.auth.refreshSession();
+        if (!refreshed) { router.push("/admin/login"); return; }
+      }
+      setChecking(false);
+    };
+    checkSession();
   }, [router]);
 
   const handleLogout = async () => {
