@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
@@ -169,6 +170,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="afterInteractive"
           data-overlays-management="allow_all"
         />
+              <GoogleAnalytics gaId="G-0FB86D5DSY" />
       </body>
     </html>
   );

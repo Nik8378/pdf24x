@@ -17,7 +17,6 @@ const FORMAT_MIN_HEIGHT: Record<string, string> = {
 export function AdUnit({ slot, format = "auto", className = "" }: AdUnitProps) {
   useEffect(() => {
     try {
-      // @ts-expect-error -- adsbygoogle global
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {}
   }, []);

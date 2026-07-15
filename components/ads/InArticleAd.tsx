@@ -4,7 +4,6 @@ import { useEffect } from "react";
 export function InArticleAd() {
   useEffect(() => {
     try {
-      // @ts-expect-error -- adsbygoogle global
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {}
   }, []);
