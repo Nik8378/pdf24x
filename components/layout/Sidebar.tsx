@@ -28,7 +28,7 @@ const bookLinks = [
 ];
 
 const diffLinks = [
-  { name: "Text Diff Checker", href: "/diff-checker/text", icon: GitCompareArrows },
+  { name: "Text & Code Diff", href: "/diff-checker/text", icon: GitCompareArrows },
 ];
 const devLinks = [
   { name: "JSON Formatter", href: "/tools/json-formatter", icon: Braces },

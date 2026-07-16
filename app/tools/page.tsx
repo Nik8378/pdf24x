@@ -56,7 +56,7 @@ const TOOL_CATEGORIES = [
       { icon: Paintbrush, color: "#7B61FF", tint: "#ECE7FF", name: "CSS Minifier", desc: "Minify CSS for production", href: "/tools/css-minifier" },
       { icon: Search, color: "#EC4899", tint: "#FCE4EF", name: "Regex Tester", desc: "Test regular expressions", href: "/tools/regex-tester" },
       { icon: KeyRound, color: "#F2994A", tint: "#FCEEDD", name: "JWT Decoder", desc: "Decode and inspect JWT tokens", href: "/tools/jwt-decoder" },
-      { icon: GitCompareArrows, color: "#7B61FF", tint: "#ECE7FF", name: "Text Diff Checker", desc: "Compare two texts and find differences", href: "/diff-checker/text" },
+      { icon: GitCompareArrows, color: "#7B61FF", tint: "#ECE7FF", name: "Text & Code Diff", desc: "Compare text, code, or JSON — precision, syntax highlighting, tree diff", href: "/diff-checker/text" },
     ],
   },
   {

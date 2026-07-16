@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 const tools = [
   {
     icon: FileText, color: "#EE4B3C", tint: "#ffe7e3",
-    name: "Text Diff Checker",
-    desc: "Compare two texts line by line with word-level highlighting, ignore options and exportable reports.",
+    name: "Text & Code Diff",
+    desc: "Compare text, code, or JSON with side-by-side / inline views, precision modes, ignore options, syntax highlighting, hide unchanged lines, and JSON tree diff.",
     href: "/diff-checker/text",
   },
 ];
