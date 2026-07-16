@@ -77,7 +77,10 @@ export default function TextDiffClient() {
   const [ignoreEmpty, setIgnoreEmpty] = useState(false);
 
   /* ── view ── */
-  const [view, setView] = useState<"split" | "inline">("split");
+  const [view, setView] = useState<"split" | "inline">(() => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) return "inline";
+    return "split";
+  });
   const [wrap, setWrap] = useState(true);
   const [lineNums, setLineNums] = useState(true);
   const [hideUnchanged, setHideUnchanged] = useState(false);
@@ -341,9 +344,9 @@ export default function TextDiffClient() {
   };
 
   return (
-    <div className="w-full flex gap-0 items-start relative">
+    <div className="w-full flex gap-0 items-start relative min-w-0 overflow-x-hidden">
       <Sidebar />
-      <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-5 relative">
+      <main className="flex-1 min-w-0 max-w-full px-3 sm:px-4 lg:px-6 py-5 pb-24 lg:pb-5 relative overflow-x-hidden">
         {dragOver && (
           <div className="pointer-events-none fixed inset-0 z-40 flex">
             <div className={`flex-1 border-2 border-dashed transition-all ${dragOver === "L" ? "border-[#EE4B3C] bg-[#EE4B3C]/5" : "border-transparent"}`} />
@@ -394,9 +397,9 @@ export default function TextDiffClient() {
         ); return !showResultsFirst ? InputsBlock : null; })()}
 
         {/* Toolbar */}
-        <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-3 py-2.5">
+        <div className="mt-4 flex flex-wrap items-center gap-2 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-3 py-2.5 w-full min-w-0">
           {/* View */}
-          <div className="flex rounded-lg border border-[var(--line)] p-0.5 text-[12px] font-semibold">
+          <div className="hidden md:flex rounded-lg border border-[var(--line)] p-0.5 text-[12px] font-semibold">
             {(["split", "inline"] as const).map((v) => (
               <button key={v} onClick={() => setView(v)}
                 className={`rounded-md px-3 py-1 ${view === v ? "bg-[var(--inv-bg)] text-[var(--inv-txt)]" : "text-[var(--txt-2)] hover:text-[var(--txt)]"}`}>
@@ -443,7 +446,7 @@ export default function TextDiffClient() {
           )}
 
           {/* Right side */}
-          <div className="ml-auto flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto sm:ml-auto">
             <button onClick={gotoFirst} disabled={!result.stats.blocks} title="Go to first change"
               className="flex items-center gap-1 rounded-lg border border-[var(--line-mid)] bg-[var(--surface)] px-2 py-1.5 text-[11.5px] font-semibold text-[var(--txt-2)] hover:border-[#EE4B3C]/40 hover:text-[#EE4B3C] disabled:opacity-40">
               <ChevronsRight size={13} /> First
@@ -480,7 +483,7 @@ export default function TextDiffClient() {
 
         {/* Options row */}
         {showSettings && (
-          <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3">
+          <div className="mt-2 grid grid-cols-1 gap-2 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-4 py-3 w-full min-w-0 sm:grid-cols-2 lg:flex lg:flex-wrap lg:items-center lg:gap-x-5 lg:gap-y-2">
             <Toggle label="Real-time editor" checked={realtime} onChange={setRealtime} tip="Compare as you type. Turn off to use the Find difference button instead." />
             <Toggle label="Hide unchanged lines" checked={hideUnchanged} onChange={setHideUnchanged} tip="Collapse long identical sections; show only changes with a small amount of context." icon={hideUnchanged ? EyeOff : Eye} />
             <Toggle label="Ignore case" checked={ignoreCase} onChange={setIgnoreCase} tip="Treat 'Hello' and 'hello' as identical." />
@@ -769,8 +772,8 @@ function ShareModal({ name, setName, url, onClose, copyKind, copiedKind, diffCon
 }) {
   const tooLong = url.length > 8000;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={onClose}>
-      <div className="w-full max-w-lg overflow-hidden rounded-2xl bg-[var(--surface)] shadow-2xl" onClick={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-2 sm:p-4 overflow-y-auto" onClick={onClose}>
+      <div className="w-full max-w-lg overflow-hidden rounded-2xl bg-[var(--surface)] shadow-2xl my-auto" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center justify-between border-b border-[var(--line)] px-5 py-3">
           <p className="text-[15px] font-bold text-[var(--txt)]">Share this diff</p>
           <button onClick={onClose} className="rounded-md p-1.5 text-[var(--txt-2)] hover:bg-[var(--hover-soft)]">✕</button>
@@ -811,8 +814,8 @@ function ShareModal({ name, setName, url, onClose, copyKind, copiedKind, diffCon
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-end border-t border-[var(--line)] px-5 py-3">
-          <button onClick={onClose} className="rounded-lg bg-[var(--inv-bg)] px-4 py-1.5 text-[12.5px] font-semibold text-[var(--inv-txt)] hover:opacity-90">Done</button>
+        <div className="flex items-center justify-end border-t border-[var(--line)] px-4 sm:px-5 py-3 pb-[max(env(safe-area-inset-bottom,0px),12px)]">
+          <button onClick={onClose} className="w-full sm:w-auto rounded-lg bg-[var(--inv-bg)] px-4 py-2 text-[12.5px] font-semibold text-[var(--inv-txt)] hover:opacity-90">Done</button>
         </div>
       </div>
     </div>
@@ -885,24 +888,24 @@ function MergeModal({ rows, totalBlocks, choices, setChoices, merged, rebuild, n
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={onClose}>
-      <div className="flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-[var(--surface)] shadow-2xl" onClick={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-2 sm:p-4 overflow-y-auto" onClick={onClose}>
+      <div className="flex h-[calc(100dvh-5rem)] sm:h-auto sm:max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-[var(--surface)] shadow-2xl my-auto mb-16 sm:mb-0" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-[var(--line)] px-5 py-3">
-          <div>
+        <div className="flex items-start justify-between border-b border-[var(--line)] px-4 sm:px-5 py-3 gap-3">
+          <div className="min-w-0">
             <p className="text-[15px] font-bold text-[var(--txt)]">Merge helper</p>
-            <p className="text-[11.5px] text-[var(--txt-2)]">Pick which version of each change to keep. Shortcuts: <kbd className="rounded bg-[var(--hover-soft)] px-1 font-mono">L</kbd> keep left · <kbd className="rounded bg-[var(--hover-soft)] px-1 font-mono">R</kbd> keep right · <kbd className="rounded bg-[var(--hover-soft)] px-1 font-mono">B</kbd> both · <kbd className="rounded bg-[var(--hover-soft)] px-1 font-mono">D</kbd> drop · <kbd className="rounded bg-[var(--hover-soft)] px-1 font-mono">↑↓</kbd> move</p>
+            <p className="text-[11.5px] text-[var(--txt-2)]">Pick which version of each change to keep. <span className="hidden sm:inline">Shortcuts: <kbd className="rounded bg-[var(--hover-soft)] px-1 font-mono">L</kbd> keep left · <kbd className="rounded bg-[var(--hover-soft)] px-1 font-mono">R</kbd> keep right · <kbd className="rounded bg-[var(--hover-soft)] px-1 font-mono">B</kbd> both · <kbd className="rounded bg-[var(--hover-soft)] px-1 font-mono">D</kbd> drop · <kbd className="rounded bg-[var(--hover-soft)] px-1 font-mono">↑↓</kbd> move</span></p>
           </div>
           <button onClick={onClose} className="rounded-md p-1.5 text-[var(--txt-2)] hover:bg-[var(--hover-soft)]">✕</button>
         </div>
 
         {/* Bulk actions + progress */}
-        <div className="flex flex-wrap items-center gap-2 border-b border-[var(--line)] bg-[var(--surface-2)] px-5 py-2.5">
+        <div className="flex flex-wrap items-center gap-2 border-b border-[var(--line)] bg-[var(--surface-2)] px-4 sm:px-5 py-2.5">
           <span className="text-[11.5px] font-bold uppercase tracking-wide text-[var(--txt-2)]">Bulk:</span>
-          <button onClick={() => bulk("L")} className="rounded-md border border-[var(--line-mid)] px-2 py-1 text-[11.5px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">All original</button>
-          <button onClick={() => bulk("R")} className="rounded-md border border-[var(--line-mid)] px-2 py-1 text-[11.5px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">All changed</button>
-          <button onClick={() => bulk("both")} className="rounded-md border border-[var(--line-mid)] px-2 py-1 text-[11.5px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">All both</button>
-          <button onClick={() => bulk("none")} className="rounded-md border border-[var(--line-mid)] px-2 py-1 text-[11.5px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">All drop</button>
+          <button onClick={() => bulk("L")} className="flex-1 sm:flex-initial rounded-md border border-[var(--line-mid)] px-2 py-1.5 text-[11.5px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">All original</button>
+          <button onClick={() => bulk("R")} className="flex-1 sm:flex-initial rounded-md border border-[var(--line-mid)] px-2 py-1.5 text-[11.5px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">All changed</button>
+          <button onClick={() => bulk("both")} className="flex-1 sm:flex-initial rounded-md border border-[var(--line-mid)] px-2 py-1.5 text-[11.5px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">All both</button>
+          <button onClick={() => bulk("none")} className="flex-1 sm:flex-initial rounded-md border border-[var(--line-mid)] px-2 py-1.5 text-[11.5px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">All drop</button>
           <div className="ml-auto flex items-center gap-2">
             <div className="h-1.5 w-32 overflow-hidden rounded-full bg-[var(--line)]">
               <div className="h-full bg-[#27AE60] transition-all" style={{ width: `${pct}%` }} />
@@ -912,8 +915,8 @@ function MergeModal({ rows, totalBlocks, choices, setChoices, merged, rebuild, n
         </div>
 
         {/* Body: left = per-change picker, right = merged preview */}
-        <div className="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[1fr_1fr]">
-          <div className="min-h-0 overflow-y-auto border-b border-[var(--line)] px-5 py-4 lg:border-b-0 lg:border-r">
+        <div className="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[1fr_1fr] overflow-hidden">
+          <div className="min-h-0 overflow-y-auto border-b border-[var(--line)] px-4 sm:px-5 py-3 sm:py-4 lg:border-b-0 lg:border-r">
             <div className="space-y-2">
               {blocks.map(([blockId, brs], idx) => {
                 const { left, right } = renderBlock(brs);
@@ -923,19 +926,19 @@ function MergeModal({ rows, totalBlocks, choices, setChoices, merged, rebuild, n
                   <div key={blockId}
                     onClick={() => setFocus(idx)}
                     className={`cursor-pointer rounded-lg border px-3 py-2 transition-all ${focused ? "border-[#EE4B3C] bg-[#EE4B3C]/5" : "border-[var(--line)] hover:border-[var(--line-mid)]"}`}>
-                    <div className="mb-2 flex items-center justify-between">
+                    <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <span className="text-[12px] font-semibold text-[var(--txt)]">Change {idx + 1}</span>
-                      <div className="flex gap-1">
+                      <div className="flex flex-wrap gap-1">
                         {(["L", "R", "both", "none"] as const).map((k) => (
                           <button key={k}
                             onClick={(e) => { e.stopPropagation(); setChoices({ ...choices, [blockId]: k }); }}
-                            className={`rounded-md px-1.5 py-0.5 text-[10.5px] font-semibold ${choice === k ? "bg-[var(--inv-bg)] text-[var(--inv-txt)]" : "border border-[var(--line-mid)] text-[var(--txt-2)] hover:border-[#EE4B3C]/40"}`}>
+                            className={`flex-1 sm:flex-initial rounded-md px-2 py-1 text-[11px] font-semibold ${choice === k ? "bg-[var(--inv-bg)] text-[var(--inv-txt)]" : "border border-[var(--line-mid)] text-[var(--txt-2)] hover:border-[#EE4B3C]/40"}`}>
                             {k === "L" ? "Original" : k === "R" ? "Changed" : k === "both" ? "Both" : "Drop"}
                           </button>
                         ))}
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-2 text-[11.5px]">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11.5px]">
                       <div className="min-w-0">
                         <p className="mb-0.5 font-bold uppercase tracking-wide text-[#7F1D1D]">Original</p>
                         <pre className="max-h-24 overflow-auto whitespace-pre-wrap break-all rounded bg-[#FDECEA] px-2 py-1 font-mono text-[11px] text-[var(--txt)]">{left || <em className="not-italic text-[var(--txt-3)]">(empty)</em>}</pre>
@@ -951,13 +954,13 @@ function MergeModal({ rows, totalBlocks, choices, setChoices, merged, rebuild, n
             </div>
           </div>
 
-          <div className="flex min-h-0 flex-col px-5 py-4">
+          <div className="flex min-h-0 flex-col px-4 sm:px-5 py-3 sm:py-4 pb-4">
             <div className="mb-2 flex items-center justify-between">
               <p className="text-[11.5px] font-bold uppercase tracking-wide text-[var(--txt-2)]">Merged output — live preview</p>
               <span className="text-[11px] text-[var(--txt-3)]">{merged.split("\n").length} lines · {merged.length} chars</span>
             </div>
             <textarea readOnly value={merged}
-              className="block min-h-0 flex-1 w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-2)] p-3 font-mono text-[12.5px] leading-relaxed text-[var(--txt)] outline-none" />
+              className="block min-h-[140px] sm:min-h-0 flex-1 w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-2)] p-3 font-mono text-[12.5px] leading-relaxed text-[var(--txt)] outline-none" />
             <div className="mt-3">
               <label className="mb-1 block text-[11.5px] font-bold uppercase tracking-wide text-[var(--txt-2)]">Filename</label>
               <input value={name} onChange={(e) => setName(e.target.value.replace(/[^\w\- .]/g, "").slice(0, 60))} spellCheck={false}
@@ -968,18 +971,18 @@ function MergeModal({ rows, totalBlocks, choices, setChoices, merged, rebuild, n
         </div>
 
         {/* Footer */}
-        <div className="flex flex-wrap items-center justify-end gap-2 border-t border-[var(--line)] px-5 py-3">
+        <div className="flex flex-wrap items-center justify-end gap-2 border-t border-[var(--line)] px-4 sm:px-5 py-3 pb-[max(env(safe-area-inset-bottom,0px),12px)]">
           <button onClick={() => navigator.clipboard.writeText(merged)}
-            className="flex items-center gap-1.5 rounded-lg border border-[var(--line-mid)] px-3 py-1.5 text-[12px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">
-            <Copy size={13} /> Copy merged
+            className="flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-lg border border-[var(--line-mid)] px-3 py-2 text-[12px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">
+            <Copy size={13} /> Copy
           </button>
           <button onClick={() => download(`${name || "merged"}.txt`, merged, "text/plain")}
-            className="flex items-center gap-1.5 rounded-lg border border-[var(--line-mid)] px-3 py-1.5 text-[12px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">
+            className="flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-lg border border-[var(--line-mid)] px-3 py-2 text-[12px] font-semibold text-[var(--txt)] hover:border-[#EE4B3C]/40">
             <Download size={13} /> Download
           </button>
           <button onClick={onApply}
-            className="rounded-lg bg-[#EE4B3C] px-3 py-1.5 text-[12px] font-semibold text-white hover:opacity-90">
-            Apply as new baseline
+            className="flex flex-1 sm:flex-initial items-center justify-center rounded-lg bg-[#EE4B3C] px-3 py-2 text-[12px] font-semibold text-white hover:opacity-90">
+            Apply
           </button>
         </div>
       </div>

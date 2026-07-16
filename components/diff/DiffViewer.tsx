@@ -106,7 +106,7 @@ export function DiffViewer({
     }
     return (
       <div className="flex gap-2">
-        <div className={`w-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] ${wrap ? "" : "overflow-x-auto"}`}>
+        <div className={`w-full max-w-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] ${wrap ? "" : "overflow-x-auto"}`}>
         {lines.map((l, i) => {
           const isFirstOfBlock = l.row.blockId !== null && (i === 0 || lines[i - 1].row.blockId !== l.row.blockId);
           return (
@@ -129,15 +129,15 @@ export function DiffViewer({
   const minimap = showMinimap ? <Minimap rows={rows} /> : null;
   return (
     <div className="flex gap-2">
-      <div className={`w-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] ${wrap ? "" : "overflow-x-auto"}`}>
+      <div className={`w-full max-w-full rounded-2xl border border-[var(--line)] bg-[var(--surface)] ${wrap ? "" : "overflow-x-auto"}`}>
       {rows.map((r, i) => {
         const isFirstOfBlock = r.blockId !== null && (i === 0 || rows[i - 1].blockId !== r.blockId);
         const leftBg = r.type === "same" ? ROW_BG.same : r.left === null ? "bg-[var(--surface-2)]" : r.type === "added" ? ROW_BG.same : ROW_BG.removed;
         const rightBg = r.type === "same" ? ROW_BG.same : r.right === null ? "bg-[var(--surface-2)]" : r.type === "removed" ? ROW_BG.same : ROW_BG.added;
         return (
           <div key={i} ref={isFirstOfBlock ? refCb(r.blockId) : undefined}
-            className={`grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] divide-x divide-[var(--line)] ${ring(r)}`}>
-            <div className={`flex min-w-0 ${leftBg}`}>
+            className={`grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:divide-x divide-[var(--line)] ${ring(r)}`}>
+            <div className={`flex min-w-0 ${leftBg} border-b md:border-b-0 border-[var(--line)]`}>
               {showLineNumbers && <span className={numCls}>{r.leftNum ?? ""}</span>}
               <span className={`min-w-0 flex-1 ${cellCls}`}><Segs segs={r.left} side="left" showWs={showWhitespace} /></span>
             </div>
