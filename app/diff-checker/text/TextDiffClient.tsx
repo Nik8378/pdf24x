@@ -607,17 +607,6 @@ export default function TextDiffClient() {
           </div>
         )}
 
-        {has && !result.tooLarge && !identical && result.stats.blocks > 0 && resultsOffscreen && (
-          <button
-            onClick={() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-[#EE4B3C] px-4 py-2.5 text-[12.5px] font-semibold text-white shadow-lg hover:opacity-90"
-            title="Jump to results"
-          >
-            <ChevronDown size={15} />
-            Jump to {result.stats.blocks} difference{result.stats.blocks === 1 ? "" : "s"}
-          </button>
-        )}
-
         {/* ── Share modal ── */}
         {shareOpen && (
           <ShareModal
