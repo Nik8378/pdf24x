@@ -34,13 +34,13 @@ export function AnnouncementStrip() {
       </div>
       <style>{`
         .marquee-track {
-          animation: pdf24x-marquee 22s linear infinite;
+          animation: pdf24x-marquee 16s linear infinite;
         }
         @media (min-width: 640px) {
-          .marquee-track { animation-duration: 55s; }
+          .marquee-track { animation-duration: 38s; }
         }
         @media (min-width: 1024px) {
-          .marquee-track { animation-duration: 55s; }
+          .marquee-track { animation-duration: 38s; }
         }
         .group:hover .marquee-track { animation-play-state: paused; }
         @keyframes pdf24x-marquee {
