@@ -130,9 +130,10 @@ export default function ImageToJpgClient() {
   const doneCount = items.filter((i) => i.status === "done").length;
 
   return (
-    <div className="w-full flex gap-0 items-start min-w-0 overflow-x-hidden">
-      <Sidebar />
-      <main className="flex-1 min-w-0 max-w-full px-3 sm:px-4 lg:px-6 py-5 pb-24 lg:pb-5 relative overflow-x-hidden">
+    <>
+      <div className="w-full flex gap-0 items-start">
+        <Sidebar />
+        <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-5">
         <div className="mb-4">
           <h1 className="text-xl sm:text-2xl font-bold text-[var(--txt)]">Image to JPG Converter</h1>
           <p className="text-[13px] text-[var(--txt-2)]">
@@ -258,6 +259,7 @@ export default function ImageToJpgClient() {
 
       </main>
     </div>
+    </>
   );
 }
 
