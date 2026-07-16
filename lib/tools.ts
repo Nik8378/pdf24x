@@ -7,7 +7,7 @@ export interface Tool {
   name: string;
   href: string;
   description: string;
-  category: "PDF Tools" | "Image Tools" | "Developer Tools" | "Publisher Tools";
+  category: "PDF Tools" | "Image Tools" | "Developer Tools" | "Publisher Tools" | "Diff Checker";
   keywords: string;
 }
 
@@ -34,6 +34,8 @@ export const LIVE_TOOLS: Tool[] = [
   { id: "css_minifier", name: "CSS Minifier", href: "/tools/css-minifier", description: "Minify CSS for production", category: "Developer Tools", keywords: "css minify compress optimize production stylesheet" },
   { id: "regex_tester", name: "Regex Tester", href: "/tools/regex-tester", description: "Test regular expressions", category: "Developer Tools", keywords: "regex regexp regular expression test match pattern" },
   { id: "jwt_decoder", name: "JWT Decoder", href: "/tools/jwt-decoder", description: "Decode and inspect JWT tokens", category: "Developer Tools", keywords: "jwt token decode inspect auth authentication bearer" },
+  // Diff Checker
+  { id: "text_diff", name: "Text & Code Diff", href: "/diff-checker/text", description: "Compare text, code or JSON — side-by-side, inline, JSON tree diff, merge helper", category: "Diff Checker", keywords: "diff compare difference text code json compare files patch merge changes side by side unified" },
   // Publisher Tools
   { id: "isbn_converter", name: "ISBN Converter", href: "/tools/isbn-converter", description: "Convert between ISBN-10 and ISBN-13", category: "Publisher Tools", keywords: "isbn book convert 10 13 publisher barcode" },
 ];

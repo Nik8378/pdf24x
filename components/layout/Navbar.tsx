@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { AnnouncementStrip } from "./AnnouncementStrip";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -26,6 +27,8 @@ export function Navbar() {
   const [megaOpen, setMegaOpen] = useState(false);
 
   return (
+    <>
+    <AnnouncementStrip />
     <header
       className="sticky top-0 z-50 border-b border-[var(--line-strong)] bg-[var(--surface)] backdrop-blur"
       onMouseLeave={() => setMegaOpen(false)}
@@ -135,5 +138,6 @@ export function Navbar() {
         </div>
       )}
     </header>
+    </>
   );
 }
