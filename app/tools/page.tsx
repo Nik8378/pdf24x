@@ -43,6 +43,9 @@ const TOOL_CATEGORIES = [
     tools: [
       { icon: ImagePlay, color: "#EC4899", tint: "#FCE4EF", name: "Image to WebP", desc: "Convert any image format to WebP", href: "/tools/image-to-webp" },
       { icon: Palette, color: "#7B61FF", tint: "#ECE7FF", name: "Image to Favicon", desc: "Convert any image to favicon.ico", href: "/tools/image-to-favicon" },
+      { icon: ImagePlay, color: "#EE4B3C", tint: "#ffe7e3", name: "Image to JPG", desc: "Convert PNG, WebP, HEIC to JPG", href: "/tools/image-to-jpg" },
+      { icon: ImagePlay, color: "#3B82F6", tint: "#E5EEFC", name: "Image to PNG", desc: "Convert any image to PNG", href: "/tools/image-to-png" },
+      { icon: ImagePlay, color: "#27AE60", tint: "#E4F5EC", name: "Image Compressor", desc: "Reduce image file size", href: "/tools/image-compressor" },
     ],
   },
   {

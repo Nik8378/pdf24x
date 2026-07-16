@@ -21,6 +21,9 @@ const pdfLinks = [
 const imageLinks = [
   { name: "Image to WebP",    href: "/tools/image-to-webp",    icon: ImagePlay },
   { name: "Image to Favicon", href: "/tools/image-to-favicon",  icon: ImageIcon },
+  { name: "Image to JPG",     href: "/tools/image-to-jpg",     icon: ImageIcon },
+  { name: "Image to PNG",     href: "/tools/image-to-png",     icon: ImageIcon },
+  { name: "Image Compressor", href: "/tools/image-compressor", icon: ImageIcon },
 ];
 
 const bookLinks = [

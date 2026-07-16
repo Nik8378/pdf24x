@@ -26,6 +26,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Image Tools
     { url: `${base}/tools/image-to-webp`,           lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/tools/image-to-favicon`,        lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/image-to-jpg`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/image-to-png`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/image-compressor`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
 
     // Book & ISBN
     { url: `${base}/tools/isbn-converter`,          lastModified: stable, changeFrequency: "weekly", priority: 0.85 },

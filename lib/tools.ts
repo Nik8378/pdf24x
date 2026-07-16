@@ -26,6 +26,9 @@ export const LIVE_TOOLS: Tool[] = [
   // Image Tools
   { id: "image_to_webp", name: "Image to WebP", href: "/tools/image-to-webp", description: "Convert any image format to WebP", category: "Image Tools", keywords: "image webp convert optimize compress jpg png format" },
   { id: "image_to_favicon", name: "Image to Favicon", href: "/tools/image-to-favicon", description: "Convert image to favicon.ico", category: "Image Tools", keywords: "favicon ico image convert icon browser tab" },
+  { id: "image_to_jpg", name: "Image to JPG", href: "/tools/image-to-jpg", description: "Convert PNG, WebP, HEIC to JPG with quality control", category: "Image Tools", keywords: "image jpg jpeg convert png webp heic quality" },
+  { id: "image_to_png", name: "Image to PNG", href: "/tools/image-to-png", description: "Convert any image to PNG with transparency", category: "Image Tools", keywords: "image png convert jpg webp transparent lossless" },
+  { id: "image_compressor", name: "Image Compressor", href: "/tools/image-compressor", description: "Reduce image file size with quality control", category: "Image Tools", keywords: "image compress reduce size optimize smaller jpg png webp" },
   // Developer Tools
   { id: "json_formatter", name: "JSON Formatter", href: "/tools/json-formatter", description: "Format and validate JSON data", category: "Developer Tools", keywords: "json format validate beautify pretty print parse" },
   { id: "base64_encoder", name: "Base64 Encoder", href: "/tools/base64-encoder", description: "Encode and decode Base64 strings", category: "Developer Tools", keywords: "base64 encode decode string binary data" },
