@@ -25,7 +25,7 @@ export function AnnouncementStrip() {
       </div>
       <style>{`
         .marquee-track {
-          animation: pdf24x-marquee 20s linear infinite;
+          animation: pdf24x-marquee 14s linear infinite;
         }
         @media (min-width: 640px) {
           .marquee-track { animation-duration: 30s; }
