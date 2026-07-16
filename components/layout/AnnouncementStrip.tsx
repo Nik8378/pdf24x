@@ -2,16 +2,25 @@
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 
-const MSG = "New: Text, Code & JSON Diff Checker is live — compare instantly, 100% private";
+const MESSAGES = [
+  { text: "New: Text, Code & JSON Diff Checker is live — compare instantly, 100% private", cta: "Try it" },
+  { text: "New: Image to JPG converter — batch, quality slider, HEIC & AVIF supported", cta: "Convert" },
+  { text: "New: Image to PNG converter — lossless output, transparency preserved", cta: "Convert" },
+  { text: "New: Image Compressor — target size mode, WebP output, batch processing", cta: "Compress" },
+];
 
 export function AnnouncementStrip() {
   // Duplicate content so the marquee loops seamlessly
   const item = (
-    <span className="mx-8 inline-flex items-center gap-2 text-[13px] font-semibold">
-      <Sparkles size={14} className="text-white/90" />
-      {MSG}
-      <span className="ml-1 rounded-md bg-white/20 px-2 py-0.5 text-[11.5px] font-bold uppercase tracking-wide">Try it →</span>
-    </span>
+    <>
+      {MESSAGES.map((m, i) => (
+        <span key={i} className="mx-8 inline-flex items-center gap-2 text-[13px] font-semibold">
+          <Sparkles size={14} className="text-white/90" />
+          {m.text}
+          <span className="ml-1 rounded-md bg-white/20 px-2 py-0.5 text-[11.5px] font-bold uppercase tracking-wide">{m.cta} →</span>
+        </span>
+      ))}
+    </>
   );
   return (
     <Link
@@ -25,13 +34,13 @@ export function AnnouncementStrip() {
       </div>
       <style>{`
         .marquee-track {
-          animation: pdf24x-marquee 14s linear infinite;
+          animation: pdf24x-marquee 22s linear infinite;
         }
         @media (min-width: 640px) {
-          .marquee-track { animation-duration: 30s; }
+          .marquee-track { animation-duration: 55s; }
         }
         @media (min-width: 1024px) {
-          .marquee-track { animation-duration: 40s; }
+          .marquee-track { animation-duration: 55s; }
         }
         .group:hover .marquee-track { animation-play-state: paused; }
         @keyframes pdf24x-marquee {
