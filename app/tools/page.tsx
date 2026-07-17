@@ -46,6 +46,7 @@ const TOOL_CATEGORIES = [
       { icon: ImagePlay, color: "#EE4B3C", tint: "#ffe7e3", name: "Image to JPG", desc: "Convert PNG, WebP, HEIC to JPG", href: "/tools/image-to-jpg" },
       { icon: ImagePlay, color: "#3B82F6", tint: "#E5EEFC", name: "Image to PNG", desc: "Convert any image to PNG", href: "/tools/image-to-png" },
       { icon: ImagePlay, color: "#27AE60", tint: "#E4F5EC", name: "Image Compressor", desc: "Reduce image file size", href: "/tools/image-compressor" },
+      { icon: ImagePlay, color: "#EC4899", tint: "#FCE4EF", name: "Image Resizer", desc: "Resize by pixels or %", href: "/tools/image-resizer" },
     ],
   },
   {

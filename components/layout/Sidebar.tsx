@@ -24,6 +24,7 @@ const imageLinks = [
   { name: "Image to JPG",     href: "/tools/image-to-jpg",     icon: ImageIcon },
   { name: "Image to PNG",     href: "/tools/image-to-png",     icon: ImageIcon },
   { name: "Image Compressor", href: "/tools/image-compressor", icon: ImageIcon },
+  { name: "Image Resizer",    href: "/tools/image-resizer",    icon: ImageIcon },
 ];
 
 const bookLinks = [

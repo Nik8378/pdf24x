@@ -29,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tools/image-to-jpg`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/tools/image-to-png`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/tools/image-compressor`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/image-resizer`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
 
     // Book & ISBN
     { url: `${base}/tools/isbn-converter`,          lastModified: stable, changeFrequency: "weekly", priority: 0.85 },

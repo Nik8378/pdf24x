@@ -29,6 +29,7 @@ export const LIVE_TOOLS: Tool[] = [
   { id: "image_to_jpg", name: "Image to JPG", href: "/tools/image-to-jpg", description: "Convert PNG, WebP, HEIC to JPG with quality control", category: "Image Tools", keywords: "image jpg jpeg convert png webp heic quality" },
   { id: "image_to_png", name: "Image to PNG", href: "/tools/image-to-png", description: "Convert any image to PNG with transparency", category: "Image Tools", keywords: "image png convert jpg webp transparent lossless" },
   { id: "image_compressor", name: "Image Compressor", href: "/tools/image-compressor", description: "Reduce image file size with quality control", category: "Image Tools", keywords: "image compress reduce size optimize smaller jpg png webp" },
+  { id: "image_resizer", name: "Image Resizer", href: "/tools/image-resizer", description: "Resize images by pixels or percentage", category: "Image Tools", keywords: "image resize dimensions pixels percentage scale" },
   // Developer Tools
   { id: "json_formatter", name: "JSON Formatter", href: "/tools/json-formatter", description: "Format and validate JSON data", category: "Developer Tools", keywords: "json format validate beautify pretty print parse" },
   { id: "base64_encoder", name: "Base64 Encoder", href: "/tools/base64-encoder", description: "Encode and decode Base64 strings", category: "Developer Tools", keywords: "base64 encode decode string binary data" },
