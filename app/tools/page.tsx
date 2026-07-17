@@ -47,6 +47,7 @@ const TOOL_CATEGORIES = [
       { icon: ImagePlay, color: "#3B82F6", tint: "#E5EEFC", name: "Image to PNG", desc: "Convert any image to PNG", href: "/tools/image-to-png" },
       { icon: ImagePlay, color: "#27AE60", tint: "#E4F5EC", name: "Image Compressor", desc: "Reduce image file size", href: "/tools/image-compressor" },
       { icon: ImagePlay, color: "#EC4899", tint: "#FCE4EF", name: "Image Resizer", desc: "Resize by pixels or %", href: "/tools/image-resizer" },
+      { icon: ImagePlay, color: "#7B61FF", tint: "#ECE7FF", name: "Image Cropper", desc: "Crop with aspect ratios", href: "/tools/image-cropper" },
     ],
   },
   {
