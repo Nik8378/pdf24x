@@ -160,7 +160,7 @@ export default function ISBNBatchGeneratorClient() {
               "Placeholder identifiers before purchasing real ISBNs",
               "Numbering schemes for zines or self-published prints",
             ]}
-            relatedTools={["isbn-validator","isbn-barcode-generator","isbn-country-identifier"]}
+            relatedTools={["isbn-validator","duplicate-isbn-finder","isbn-country-identifier"]}
             faqs={[
               { q: "Are these real ISBNs I can use commercially?", a: "No. Real ISBNs must be purchased from your country's official ISBN agency (Bowker in the US, Nielsen in the UK, etc.). These generated codes are for internal use, testing, or mock data only." },
               { q: "Will these codes clash with real ISBNs?", a: "Possibly. If you pick a prefix that overlaps with an assigned range, some codes will coincidentally match real ISBNs. For internal use only — never publish books with these codes." },

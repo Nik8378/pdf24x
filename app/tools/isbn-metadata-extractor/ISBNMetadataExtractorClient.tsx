@@ -219,7 +219,7 @@ export default function ISBNMetadataExtractorClient() {
               "Build a spreadsheet of book metadata from ISBNs",
               "Cross-check publisher info across multiple sources",
             ]}
-            relatedTools={["isbn-validator","isbn-barcode-reader","isbn-country-identifier"]}
+            relatedTools={["isbn-validator","isbn-range-checker","isbn-country-identifier"]}
             faqs={[
               { q: "Where does the data come from?", a: "Google Books API (primary) and Open Library API (fallback). Both are free and public. Google Books tends to have richer metadata; Open Library sometimes has records Google Books doesn't." },
               { q: "Do queries go through pdf24x's server?", a: "No. Your browser talks to Google Books and Open Library directly. Note that Google and Open Library will log the request per their own privacy policies." },

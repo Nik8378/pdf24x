@@ -71,8 +71,6 @@ const TOOL_CATEGORIES = [
       { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Converter", desc: "Convert between ISBN-10 and ISBN-13", href: "/tools/isbn-converter" },
       { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Validator", desc: "Validate a single ISBN-10 or ISBN-13", href: "/tools/isbn-validator" },
       { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "Duplicate ISBN Finder", desc: "Find duplicate ISBNs in a list", href: "/tools/duplicate-isbn-finder" },
-      { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Barcode Generator", desc: "Generate EAN-13 barcode from ISBN", href: "/tools/isbn-barcode-generator" },
-      { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Barcode Reader", desc: "Scan ISBN barcode from image or camera", href: "/tools/isbn-barcode-reader" },
       { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Country Identifier", desc: "Identify country/language from ISBN", href: "/tools/isbn-country-identifier" },
       { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Metadata Extractor", desc: "Get book title, author, publisher from ISBN", href: "/tools/isbn-metadata-extractor" },
       { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Range Checker", desc: "Check ISBN against publisher ranges", href: "/tools/isbn-range-checker" },

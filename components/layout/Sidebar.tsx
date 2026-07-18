@@ -32,8 +32,6 @@ const bookLinks = [
   { name: "ISBN Converter", href: "/tools/isbn-converter", icon: BookOpen },
   { name: "ISBN Validator", href: "/tools/isbn-validator", icon: BookOpen },
   { name: "Duplicate ISBN Finder", href: "/tools/duplicate-isbn-finder", icon: BookOpen },
-  { name: "ISBN Barcode Generator", href: "/tools/isbn-barcode-generator", icon: BookOpen },
-  { name: "ISBN Barcode Reader", href: "/tools/isbn-barcode-reader", icon: BookOpen },
   { name: "ISBN Country Identifier", href: "/tools/isbn-country-identifier", icon: BookOpen },
   { name: "ISBN Metadata Extractor", href: "/tools/isbn-metadata-extractor", icon: BookOpen },
   { name: "ISBN Range Checker", href: "/tools/isbn-range-checker", icon: BookOpen },
