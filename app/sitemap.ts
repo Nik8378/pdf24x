@@ -39,7 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tools/isbn-country-identifier`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/tools/isbn-metadata-extractor`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/tools/isbn-range-checker`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
-    { url: `${base}/tools/code-summarizer`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/tools/isbn-batch-generator`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
 
     // Developer Tools
