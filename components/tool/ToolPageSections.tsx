@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { ChevronRight, FileText, Minimize2, GitMerge, Split, FileImage, Image as ImageIcon, RotateCw, Unlock, Droplets } from "lucide-react";
 import { useState } from "react";
+import { LIVE_TOOLS } from "@/lib/tools";
 
 const C = { ink: "var(--txt)", sub: "var(--txt-2)", brand: "#FF6B5E", line: "var(--line-strong)", surface: "var(--surface)", cream: "var(--cream)" };
 const shadow = "3px 3px 0 0 var(--line-strong)";
@@ -97,23 +98,31 @@ function UseCasesSection({ cases }: { cases: string[] }) {
 }
 
 function RelatedToolsSection({ tools }: { tools: string[] }) {
+  const items = tools.map(key => {
+    // Try TOOL_META first, then fall back to LIVE_TOOLS registry
+    const meta = TOOL_META[key];
+    if (meta) return { href: meta.href, label: meta.label, color: meta.color, tint: meta.tint, icon: meta.icon, fromMeta: true };
+    const live = LIVE_TOOLS.find(t => t.href.endsWith(key) || t.id === key.replace(/-/g,"_"));
+    if (live) return { href: live.href, label: live.name, color: "#FF6B5E", tint: "#FFE5E2", icon: null, fromMeta: false };
+    return null;
+  }).filter(Boolean);
+
+  if (!items.length) return null;
+
   return (
     <section className="mt-4 rounded-2xl bg-[var(--surface)] p-6" style={{ border: `1px solid ${C.line}`, boxShadow: shadow }}>
       <h2 className="text-lg font-extrabold mb-4" style={{ color: C.ink, fontFamily: "Archivo, Inter, sans-serif" }}>Related Tools</h2>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-        {tools.map(key => {
-          const t = TOOL_META[key];
-          if (!t) return null;
-          return (
-            <Link key={key} href={t.href} className="flex items-center gap-3 rounded-xl p-3 transition-all hover:-translate-y-0.5"
-              style={{ border: `1px solid ${C.line}`, background: C.cream, boxShadow: shadow }}>
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style={{ background: t.tint }}>
-                <t.icon size={16} style={{ color: t.color }} />
-              </span>
-              <span className="text-sm font-semibold" style={{ color: C.ink }}>{t.label}</span>
-            </Link>
-          );
-        })}
+        {items.map((t, i) => t && (
+          <Link key={i} href={t.href} className="flex items-center gap-3 rounded-xl p-3 transition-all hover:-translate-y-0.5"
+            style={{ border: `1px solid ${C.line}`, background: C.cream, boxShadow: shadow }}>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold text-white"
+              style={{ background: t.color }}>
+              {t.icon ? <t.icon size={16} style={{ color: t.color }} /> : t.label[0]}
+            </span>
+            <span className="text-sm font-semibold" style={{ color: C.ink }}>{t.label}</span>
+          </Link>
+        ))}
       </div>
     </section>
   );

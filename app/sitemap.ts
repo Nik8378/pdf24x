@@ -33,6 +33,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tools/image-cropper`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
 
     // Book & ISBN
+        { url: `${base}/tools/age-calculator`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/emi-calculator`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/password-generator`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/qr-code-generator`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/tools/isbn-converter`,          lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/tools/isbn-validator`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/tools/duplicate-isbn-finder`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },

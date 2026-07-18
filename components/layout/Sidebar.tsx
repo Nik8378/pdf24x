@@ -6,7 +6,7 @@ import {
   Image, Minimize2, Link2, Scissors, Layers, ImagePlay, ImageIcon,
   FileText, BookOpen, Code2, ChevronDown, ChevronRight, FileSpreadsheet,
   Braces, Link as LinkIcon, Code, Paintbrush, Regex, KeyRound, GitCompareArrows,
-} from "lucide-react";
+  Calendar, IndianRupee, QrCode, Zap } from "lucide-react";
 
 const pdfLinks = [
   { name: "Image to PDF",   href: "/tools/image-to-pdf",    icon: Image },
@@ -51,6 +51,12 @@ const devLinks = [
   { name: "JWT Decoder",    href: "/tools/jwt-decoder",    icon: KeyRound },
 ];
 
+const utilityLinks = [
+  { name: "Age Calculator",     href: "/tools/age-calculator",     icon: Calendar },
+  { name: "EMI Calculator",     href: "/tools/emi-calculator",     icon: IndianRupee },
+  { name: "Password Generator", href: "/tools/password-generator", icon: KeyRound },
+  { name: "QR Code Generator",  href: "/tools/qr-code-generator",  icon: QrCode },
+];
 export function Sidebar() {
   const pathname = usePathname();
 
@@ -65,6 +71,7 @@ export function Sidebar() {
   const [devOpen,   setDevOpen]   = useState(isDevPage);
   const isDiffPage = pathname.startsWith("/diff-checker");
   const [diffOpen,  setDiffOpen]  = useState(isDiffPage);
+  const [utilOpen,  setUtilOpen]  = useState(true);
 
   const NavItem = ({ href, icon: Icon, name }: { href: string; icon: React.ElementType; name: string }) => {
     const active = pathname === href;
@@ -109,6 +116,7 @@ export function Sidebar() {
       <div className="bg-[var(--surface)] border-r border-[var(--line)] h-full flex flex-col overflow-y-auto pt-4 px-2 pb-4">
         <Section title="PDF Tools"       links={pdfLinks}   open={pdfOpen}   onToggle={() => setPdfOpen(!pdfOpen)} />
         <Section title="Image Tools"     links={imageLinks} open={imageOpen} onToggle={() => setImageOpen(!imageOpen)} />
+        <Section title="Utility Tools"   links={utilityLinks} open={utilOpen}  onToggle={() => setUtilOpen(!utilOpen)} />
         <Section title="Book & ISBN"     links={bookLinks}  open={bookOpen}  onToggle={() => setBookOpen(!bookOpen)} />
         <Section title="Developer Tools" links={devLinks}   open={devOpen}   onToggle={() => setDevOpen(!devOpen)} />
         <Section title="Diff Checker"    links={diffLinks}  open={diffOpen}  onToggle={() => setDiffOpen(!diffOpen)} />

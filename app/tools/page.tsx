@@ -6,7 +6,7 @@ import {
   FileText, Image as ImageIcon, Minimize2, GitMerge, Split, FileImage,
   RotateCw, Unlock, ShieldCheck, Droplets, Crop, Grid3x3, FileSpreadsheet,
   Code, ImagePlay, Palette, BookOpen, Code2, Braces, Link as LinkIcon,
-  Paintbrush, Binary, KeyRound, Search, Mic, Globe, GitCompareArrows } from "lucide-react";
+  Paintbrush, Binary, KeyRound, Search, Mic, Globe, GitCompareArrows, Calendar, IndianRupee, QrCode } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "All Tools | PDF24X — Free Online PDF & Developer Tools",
@@ -19,6 +19,16 @@ const shadow = "3px 3px 0 0 var(--line-strong)";
 const font = { fontFamily: "Archivo, Inter, sans-serif" };
 
 const TOOL_CATEGORIES = [
+  {
+    title: "Utility Tools",
+    emoji: "🛠️",
+    tools: [
+      { icon: Calendar, color: "#6366F1", tint: "#EEF2FF", name: "Age Calculator", desc: "Find your exact age in years, months and days", href: "/tools/age-calculator" },
+      { icon: IndianRupee, color: "#10B981", tint: "#D1FAE5", name: "EMI Calculator", desc: "Calculate monthly loan EMI instantly", href: "/tools/emi-calculator" },
+      { icon: KeyRound, color: "#F59E0B", tint: "#FEF3C7", name: "Password Generator", desc: "Generate strong secure passwords", href: "/tools/password-generator" },
+      { icon: QrCode, color: "#8B5CF6", tint: "#EDE9FE", name: "QR Code Generator", desc: "Generate QR codes for URL, WiFi, text and more", href: "/tools/qr-code-generator" },
+    ],
+  },
   {
     title: "PDF Tools",
     emoji: "📄",

@@ -3,7 +3,7 @@ export interface Tool {
   name: string;
   href: string;
   description: string;
-  category: "PDF Tools" | "Image Tools" | "Developer Tools" | "Publisher Tools" | "Diff Checker";
+  category: "PDF Tools" | "Image Tools" | "Developer Tools" | "Publisher Tools" | "Diff Checker" | "Utility Tools";
   keywords: string;
 }
 
@@ -35,6 +35,10 @@ export const LIVE_TOOLS: Tool[] = [
   { id: "css_minifier", name: "CSS Minifier", href: "/tools/css-minifier", description: "Minify CSS for production", category: "Developer Tools", keywords: "css minify compress optimize production stylesheet" },
   { id: "regex_tester", name: "Regex Tester", href: "/tools/regex-tester", description: "Test regular expressions with live matching", category: "Developer Tools", keywords: "regex regexp regular expression test match pattern flags" },
   { id: "jwt_decoder", name: "JWT Decoder", href: "/tools/jwt-decoder", description: "Decode and inspect JWT tokens", category: "Developer Tools", keywords: "jwt token decode inspect auth authentication bearer claims" },
+    { id: "age_calculator", name: "Age Calculator", href: "/tools/age-calculator", description: "Calculate exact age in years, months, days, hours and minutes", category: "Utility Tools", keywords: "age calculator birthday years months days born dob date" },
+  { id: "emi_calculator", name: "EMI Calculator", href: "/tools/emi-calculator", description: "Calculate monthly EMI for home, car or personal loan", category: "Utility Tools", keywords: "emi loan calculator monthly instalment home car personal interest principal tenure" },
+  { id: "password_generator", name: "Password Generator", href: "/tools/password-generator", description: "Generate strong random passwords with custom settings", category: "Utility Tools", keywords: "password generator strong secure random symbols numbers uppercase" },
+  { id: "qr_code_generator", name: "QR Code Generator", href: "/tools/qr-code-generator", description: "Generate QR codes for URL, WiFi, text, email, phone", category: "Utility Tools", keywords: "qr code generator url wifi text email phone sms barcode scan" },
   // Diff Checker
   { id: "text_diff", name: "Text & Code Diff", href: "/diff-checker/text", description: "Compare text, code or JSON side-by-side", category: "Diff Checker", keywords: "diff compare difference text code json files patch merge changes side by side" },
   // Publisher Tools
