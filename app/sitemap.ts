@@ -30,10 +30,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/tools/image-cropper`,     lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
 
     // Utility Tools
-    { url: `${base}/tools/age-calculator`,    lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/tools/emi-calculator`,    lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/tools/password-generator`,lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/tools/qr-code-generator`, lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/age-calculator`,        lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/emi-calculator`,        lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/password-generator`,    lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/qr-code-generator`,     lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/word-counter`,          lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/unit-converter`,        lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/percentage-calculator`, lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/bmi-calculator`,        lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/gst-calculator`,        lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/tools/stopwatch`,             lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/color-converter`,       lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
 
     // Publisher & ISBN Tools
     { url: `${base}/tools/isbn-converter`,          lastModified: stable, changeFrequency: "weekly", priority: 0.85 },

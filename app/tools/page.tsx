@@ -6,7 +6,7 @@ import {
   FileText, Image as ImageIcon, Minimize2, GitMerge, Split, FileImage,
   RotateCw, Unlock, ShieldCheck, Droplets, Crop, Grid3x3, FileSpreadsheet,
   Code, ImagePlay, Palette, BookOpen, Code2, Braces, Link as LinkIcon,
-  Paintbrush, Binary, KeyRound, Search, Mic, Globe, GitCompareArrows, Calendar, IndianRupee, QrCode } from "lucide-react";
+  Paintbrush, Binary, KeyRound, Search, Mic, Globe, GitCompareArrows, Calendar, IndianRupee, QrCode, Type, Ruler, Percent, Activity, Timer } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "All Tools | PDF24X — Free Online PDF & Developer Tools",
@@ -27,6 +27,13 @@ const TOOL_CATEGORIES = [
       { icon: IndianRupee, color: "#10B981", tint: "#D1FAE5", name: "EMI Calculator", desc: "Calculate monthly loan EMI instantly", href: "/tools/emi-calculator" },
       { icon: KeyRound, color: "#F59E0B", tint: "#FEF3C7", name: "Password Generator", desc: "Generate strong secure passwords", href: "/tools/password-generator" },
       { icon: QrCode, color: "#8B5CF6", tint: "#EDE9FE", name: "QR Code Generator", desc: "Generate QR codes for URL, WiFi, text and more", href: "/tools/qr-code-generator" },
+            { icon: Type, color: "#3B82F6", tint: "#EEF2FF", name: "Word Counter", desc: "Count words, characters, sentences instantly", href: "/tools/word-counter" },
+      { icon: Ruler, color: "#10B981", tint: "#D1FAE5", name: "Unit Converter", desc: "Convert length, weight, temperature, speed and area", href: "/tools/unit-converter" },
+      { icon: Percent, color: "#F59E0B", tint: "#FEF3C7", name: "Percentage Calculator", desc: "Calculate percentages and percentage change", href: "/tools/percentage-calculator" },
+      { icon: Activity, color: "#EF4444", tint: "#FEE2E2", name: "BMI Calculator", desc: "Calculate your Body Mass Index instantly", href: "/tools/bmi-calculator" },
+      { icon: IndianRupee, color: "#8B5CF6", tint: "#EDE9FE", name: "GST Calculator", desc: "Add or remove GST from any amount", href: "/tools/gst-calculator" },
+      { icon: Timer, color: "#EC4899", tint: "#FCE4EF", name: "Stopwatch & Timer", desc: "Online stopwatch with lap support and countdown timer", href: "/tools/stopwatch" },
+      { icon: Palette, color: "#06B6D4", tint: "#CFFAFE", name: "Color Converter", desc: "Convert HEX, RGB and HSL colors instantly", href: "/tools/color-converter" },
     ],
   },
   {

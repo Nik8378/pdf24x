@@ -6,7 +6,7 @@ import {
   Image, Minimize2, Link2, Scissors, Layers, ImagePlay, ImageIcon,
   FileText, BookOpen, Code2, ChevronDown, ChevronRight, FileSpreadsheet,
   Braces, Link as LinkIcon, Code, Paintbrush, Regex, KeyRound, GitCompareArrows,
-  Calendar, IndianRupee, QrCode, Zap } from "lucide-react";
+  Calendar, IndianRupee, QrCode, Zap, Type, Ruler, Percent, Activity, Timer, Palette } from "lucide-react";
 
 const pdfLinks = [
   { name: "Image to PDF",   href: "/tools/image-to-pdf",    icon: Image },
@@ -56,6 +56,13 @@ const utilityLinks = [
   { name: "EMI Calculator",     href: "/tools/emi-calculator",     icon: IndianRupee },
   { name: "Password Generator", href: "/tools/password-generator", icon: KeyRound },
   { name: "QR Code Generator",  href: "/tools/qr-code-generator",  icon: QrCode },
+  { name: "Word Counter",        href: "/tools/word-counter",        icon: Type },
+  { name: "Unit Converter",      href: "/tools/unit-converter",      icon: Ruler },
+  { name: "Percentage Calc",     href: "/tools/percentage-calculator", icon: Percent },
+  { name: "BMI Calculator",      href: "/tools/bmi-calculator",      icon: Activity },
+  { name: "GST Calculator",      href: "/tools/gst-calculator",      icon: IndianRupee },
+  { name: "Stopwatch & Timer",   href: "/tools/stopwatch",           icon: Timer },
+  { name: "Color Converter",     href: "/tools/color-converter",     icon: Palette },
 ];
 export function Sidebar() {
   const pathname = usePathname();
