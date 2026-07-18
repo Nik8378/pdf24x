@@ -9,7 +9,7 @@ import {
   Heart, ShieldCheck, Sparkles, Shield, ChevronRight, Search, X,
   Zap, Globe, Download, LayoutGrid, Code2, BookOpen, Music, Video,
   RotateCw, Unlock, Droplets, Crop, Grid3x3, FileSpreadsheet, Code,
-  CheckCircle2, ArrowRight, Mail,
+  CheckCircle2, ArrowRight, Mail, GitCompareArrows,
 } from "lucide-react";
 
 const C = {
@@ -33,6 +33,8 @@ const CATEGORIES = [
   { icon: ImageIcon, color: "var(--ok)", tint: "#E4F5EC", title: "Image Converter", desc: "Convert images to and from different formats.", path: "/tools#image-tools" },
   { icon: Code2, color: "#7B61FF", tint: "#ECE7FF", title: "Developer Tools", desc: "Format, encode, decode and minify code.", path: "/tools#developer-tools" },
   { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", title: "Publisher Tools", desc: "ISBN converter and book-related utilities.", path: "/tools#publisher-tools" },
+  { icon: GitCompareArrows, color: "#0EA5E9", tint: "#E0F2FE", title: "Diff Checker", desc: "Compare text, code and JSON side by side.", path: "/tools#diff-checker" },
+  { icon: Zap, color: "#8B5CF6", tint: "#EDE9FE", title: "Utility Tools", desc: "Age calc, EMI, QR codes, password generator.", path: "/tools#utility-tools" },
   { icon: LayoutGrid, color: "#F2C94C", tint: "#FCF4DA", title: "All Tools", desc: "Browse all free PDF and developer tools.", path: "/tools" },
 ];
 
