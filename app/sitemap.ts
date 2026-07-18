@@ -34,6 +34,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Book & ISBN
     { url: `${base}/tools/isbn-converter`,          lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/isbn-validator`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/duplicate-isbn-finder`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/isbn-barcode-generator`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/isbn-barcode-reader`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/isbn-country-identifier`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/isbn-metadata-extractor`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/isbn-range-checker`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/tools/isbn-batch-generator`, lastModified: stable, changeFrequency: "weekly", priority: 0.85 },
 
     // Developer Tools
     { url: `${base}/tools/json-formatter`,          lastModified: stable, changeFrequency: "weekly", priority: 0.9 },
