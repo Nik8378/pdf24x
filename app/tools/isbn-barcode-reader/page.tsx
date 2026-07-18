@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "ISBN Tool – Free Online",
-  description: "ISBN tool by pdf24x. 100% private.",
+  title: "ISBN Barcode Reader – Scan ISBN Barcodes Free",
+  description: "Scan ISBN barcodes from your camera or from photos online. Detects EAN-13 / ISBN. 100% private — nothing leaves your device.",
   alternates: { canonical: "https://pdf24x.com/tools/isbn-barcode-reader" },
 };
-export default function Page() { return <div className="p-8 text-center text-[var(--txt-2)]">Coming next — building this tool</div>; }
+import ISBNBarcodeReaderClient from "./ISBNBarcodeReaderClient";
+export default function Page() { return <ISBNBarcodeReaderClient />; }
