@@ -75,6 +75,7 @@ const TOOL_CATEGORIES = [
       { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Metadata Extractor", desc: "Get book title, author, publisher from ISBN", href: "/tools/isbn-metadata-extractor" },
       { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Range Checker", desc: "Check ISBN against publisher ranges", href: "/tools/isbn-range-checker" },
       { icon: BookOpen, color: "#F2994A", tint: "#FCEEDD", name: "ISBN Batch Generator", desc: "Generate internal IDs with ISBN check digit", href: "/tools/isbn-batch-generator" },
+      { icon: Code2, color: "#6366F1", tint: "#EEF2FF", name: "Code Summarizer", desc: "Compress code to fewer lines — same logic, zero bugs", href: "/tools/code-summarizer" },
     ],
   },
 ];

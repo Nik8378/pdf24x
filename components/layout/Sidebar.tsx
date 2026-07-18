@@ -35,6 +35,7 @@ const bookLinks = [
   { name: "ISBN Country Identifier", href: "/tools/isbn-country-identifier", icon: BookOpen },
   { name: "ISBN Metadata Extractor", href: "/tools/isbn-metadata-extractor", icon: BookOpen },
   { name: "ISBN Range Checker", href: "/tools/isbn-range-checker", icon: BookOpen },
+  { name: "Code Summarizer",      href: "/tools/code-summarizer",      icon: Code2 },
   { name: "ISBN Batch Generator", href: "/tools/isbn-batch-generator", icon: BookOpen },
 ];
 
