@@ -6,7 +6,17 @@ import { MobileNav } from "@/components/layout/MobileNav";
 
 export function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const hide = pathname === "/_not-found" || pathname === "/not-found";
+  // Next.js renders not-found for ANY unknown route
+  // So we check if the page is a known route — if not, hide nav/footer
+  const knownPrefixes = [
+    "/tools", "/diff-checker", "/blog", "/about",
+    "/contact", "/privacy-policy", "/terms-of-use",
+    "/disclaimer", "/api",
+  ];
+  const isHome = pathname === "/";
+  const isKnown = isHome || knownPrefixes.some(p => pathname.startsWith(p));
+  const hide = !isKnown;
+
   return (
     <>
       {!hide && <Navbar />}
