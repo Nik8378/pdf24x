@@ -133,6 +133,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${archivo.variable}`}>
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#FF6B5E" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="PDF24X" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
@@ -175,6 +180,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
               <GoogleAnalytics gaId="G-0FB86D5DSY" />
               </ThemeProvider>
+      <script dangerouslySetInnerHTML={{__html:`
+          if('serviceWorker' in navigator){
+            window.addEventListener('load',()=>{
+              navigator.serviceWorker.register('/sw.js').catch(()=>{});
+            });
+          }
+        `}} />
       </body>
     </html>
   );
