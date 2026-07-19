@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import Client from "./Client";
 const meta: Record<string,{t:string;d:string}> = {
   "word-counter":            { t: "Word Counter – Count Words & Characters Free", d: "Count words, characters, sentences and paragraphs instantly. Free online word counter." },
@@ -10,4 +11,11 @@ const meta: Record<string,{t:string;d:string}> = {
   "color-converter":         { t: "Color Converter – HEX RGB HSL Free", d: "Convert colors between HEX, RGB, HSL and HSB instantly. Free color picker and converter." },
 };
 export const metadata: Metadata = { title: meta["color-converter"].t, description: meta["color-converter"].d, alternates: { canonical: `https://pdf24x.com/tools/color-converter` } };
-export default function Page() { return <Client />; }
+export default function Page() {
+  return (
+    <>
+      <ToolJsonLd name="Color Converter" description="Convert colors between HEX, RGB and HSL formats instantly." url="https://pdf24x.com/tools/color-converter" category="Design" />
+      <Client />
+    </>
+  );
+}

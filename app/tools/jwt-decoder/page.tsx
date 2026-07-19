@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 export const metadata: Metadata = {
   title: "JWT Decoder & Encoder – Debug JSON Web Tokens",
   description:

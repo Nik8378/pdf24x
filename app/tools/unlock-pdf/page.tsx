@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import UnlockPdfClient from "./UnlockPdfClient";
 export const metadata: Metadata = {
   title: "Unlock PDF | PDF24X",

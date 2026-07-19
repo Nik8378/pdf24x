@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import Client from "./Client";
 const meta: Record<string,{t:string;d:string}> = {
   "word-counter":            { t: "Word Counter – Count Words & Characters Free", d: "Count words, characters, sentences and paragraphs instantly. Free online word counter." },
@@ -10,4 +11,11 @@ const meta: Record<string,{t:string;d:string}> = {
   "color-converter":         { t: "Color Converter – HEX RGB HSL Free", d: "Convert colors between HEX, RGB, HSL and HSB instantly. Free color picker and converter." },
 };
 export const metadata: Metadata = { title: meta["bmi-calculator"].t, description: meta["bmi-calculator"].d, alternates: { canonical: `https://pdf24x.com/tools/bmi-calculator` } };
-export default function Page() { return <Client />; }
+export default function Page() {
+  return (
+    <>
+      <ToolJsonLd name="BMI Calculator" description="Calculate your Body Mass Index and health category instantly." url="https://pdf24x.com/tools/bmi-calculator" category="Health" />
+      <Client />
+    </>
+  );
+}

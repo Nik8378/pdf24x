@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import WatermarkPdfClient from "./WatermarkPdfClient";
 export const metadata: Metadata = {
   title: "Watermark PDF | PDF24X",

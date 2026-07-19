@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import JSONFormatterClient from "./JSONFormatterClient";
 
 export const metadata: Metadata = {

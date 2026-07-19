@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import CSSMinifierClient from "./CSSMinifierClient";
 export const metadata: Metadata = {
   title: "CSS Minifier & Formatter – Free Online CSS Compressor",

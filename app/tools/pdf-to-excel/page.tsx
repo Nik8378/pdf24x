@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import PDFToExcelClient from "./PDFToExcelClient";
 export const metadata: Metadata = {
   title: "PDF to Excel Converter – Extract Tables from PDF Free",

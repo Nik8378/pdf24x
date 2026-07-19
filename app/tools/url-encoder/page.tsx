@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import URLEncoderClient from "./URLEncoderClient";
 export const metadata: Metadata = {
   title: "URL Encoder Decoder – Free Online URL Encoding Tool",

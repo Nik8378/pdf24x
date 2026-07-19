@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import Client from "./Client";
 const meta: Record<string,{t:string;d:string}> = {
   "word-counter":            { t: "Word Counter – Count Words & Characters Free", d: "Count words, characters, sentences and paragraphs instantly. Free online word counter." },
@@ -10,4 +11,11 @@ const meta: Record<string,{t:string;d:string}> = {
   "color-converter":         { t: "Color Converter – HEX RGB HSL Free", d: "Convert colors between HEX, RGB, HSL and HSB instantly. Free color picker and converter." },
 };
 export const metadata: Metadata = { title: meta["word-counter"].t, description: meta["word-counter"].d, alternates: { canonical: `https://pdf24x.com/tools/word-counter` } };
-export default function Page() { return <Client />; }
+export default function Page() {
+  return (
+    <>
+      <ToolJsonLd name="Word Counter" description="Count words, characters, sentences, paragraphs and read time instantly." url="https://pdf24x.com/tools/word-counter" category="Utility" />
+      <Client />
+    </>
+  );
+}

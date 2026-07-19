@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 const meta: Record<string,{t:string;d:string}> = {
   "age-calculator":      { t: "Age Calculator – Find Exact Age Free", d: "Calculate your exact age in years, months, days, hours and minutes instantly." },
   "qr-code-generator":  { t: "QR Code Generator – Free & Instant", d: "Generate QR codes for URLs, text, email, phone instantly. Download PNG free." },
@@ -7,4 +8,11 @@ const meta: Record<string,{t:string;d:string}> = {
 };
 export const metadata: Metadata = { title: meta["password-generator"].t, description: meta["password-generator"].d, alternates: { canonical: `https://pdf24x.com/tools/password-generator` } };
 import Client from "./Client";
-export default function Page() { return <Client />; }
+export default function Page() {
+  return (
+    <>
+      <ToolJsonLd name="Password Generator" description="Generate strong random passwords with custom length and character types." url="https://pdf24x.com/tools/password-generator" category="Security" />
+      <Client />
+    </>
+  );
+}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import ImageToPdfClient from "./ImageToPdfClient";
 
 export const metadata: Metadata = {

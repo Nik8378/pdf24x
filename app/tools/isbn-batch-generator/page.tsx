@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 export const metadata: Metadata = {
   title: "ISBN Batch Generator – Internal IDs Free Online",
   description: "Generate batches of internal 13-digit codes with valid ISBN check digits. For testing, mock data, or private numbering. 100% private.",

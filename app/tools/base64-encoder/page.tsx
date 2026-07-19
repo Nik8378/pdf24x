@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import Base64Client from "./Base64Client";
 export const metadata: Metadata = {
   title: "Base64 Encoder Decoder – Free Online Tool",

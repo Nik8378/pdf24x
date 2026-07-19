@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import RegexTesterClient from "./RegexTesterClient";
 export const metadata: Metadata = {
   title: "Regex Tester – Free Online Regular Expression Tester",

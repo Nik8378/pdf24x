@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import ExcelToPdfClient from "./ExcelToPdfClient";
 export const metadata: Metadata = {
   title: "Excel to PDF Converter – Free Online XLSX to PDF Tool",

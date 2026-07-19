@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import HTMLFormatterClient from "./HTMLFormatterClient";
 export const metadata: Metadata = {
   title: "HTML Formatter & Minifier – Free Online HTML Beautifier",

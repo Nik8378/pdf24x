@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolJsonLd } from "@/components/seo/ToolJsonLd";
 import RotatePdfClient from "./RotatePdfClient";
 export const metadata: Metadata = {
   title: "Rotate PDF | PDF24X",
