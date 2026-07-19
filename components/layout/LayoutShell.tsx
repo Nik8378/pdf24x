@@ -6,19 +6,14 @@ import { MobileNav } from "@/components/layout/MobileNav";
 
 export function LayoutShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const is404 = pathname === "/not-found" || pathname === "/_not-found";
-  // Next.js renders not-found at /_not-found internally
-  // We detect it by checking if children contain the 404 content
-  // The cleanest way: check if no known route matches — but we use a simpler trick:
-  // wrap children and conditionally render nav/footer
-  if (is404) return <>{children}</>;
+  const hide = pathname === "/_not-found" || pathname === "/not-found";
   return (
     <>
-      <Navbar />
+      {!hide && <Navbar />}
       {children}
-      <MobileNav />
-      <div className="pb-16 lg:pb-0" />
-      <Footer />
+      {!hide && <MobileNav />}
+      {!hide && <div className="pb-16 lg:pb-0" />}
+      {!hide && <Footer />}
     </>
   );
 }

@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"], 
 const archivo = Archivo({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-archivo", display: "swap" });
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
+import { LayoutShell } from "@/components/layout/LayoutShell";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { Footer } from "@/components/layout/Footer";
 
@@ -157,11 +158,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider>
-        <Navbar />
-        {children}
-        <MobileNav />
-        <div className="pb-16 lg:pb-0" />
-        <Footer />
+        <LayoutShell>{children}</LayoutShell>
 
         {/*
           Google AdSense — auto ads enabled.

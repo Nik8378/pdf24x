@@ -9,11 +9,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      {/* Hide navbar/footer via CSS on this page */}
-      <style>{`
-        nav, footer, [data-mobile-nav], .pb-16 { display: none !important; }
-      `}</style>
-      <div className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden" style={{background:"#F5F3EE"}}>
+<div className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden" style={{background:"#F5F3EE"}}>
         {/* Giant background 404 */}
         <p className="absolute inset-0 flex items-center justify-center font-black leading-none select-none pointer-events-none tracking-tighter"
           style={{fontSize:"28vw", color:"#E8E5DF"}}>
