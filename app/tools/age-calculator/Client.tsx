@@ -26,7 +26,7 @@ export default function Client() {
   return (
     <div className="flex min-h-screen bg-[var(--bg)]">
       <Sidebar />
-      <main className="flex-1 px-6 py-6 w-full">
+      <main role="main" className="flex-1 px-6 py-6 w-full">
         <div className="flex items-center gap-2 mb-6">
           <Calendar size={22} className="text-accent" />
           <h1 className="text-xl font-bold text-[var(--txt)]">Age Calculator</h1>

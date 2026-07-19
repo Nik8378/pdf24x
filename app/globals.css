@@ -8,7 +8,7 @@
   --card: #ffffff;
   --line: #1c1c1c;
   --ink: #1a1a1a;
-  --sub: #6b6760;
+  --sub: #595550;
   --ad: #ece7dd;
   --red-soft: #ffe7e3;
   --shadow: #1c1c1c;
@@ -124,7 +124,7 @@ input:focus, textarea:focus, select:focus { outline: none; box-shadow: none; }
   --surface: #ffffff;
   --surface-2: #faf9f7;
   --txt: #1a1917;
-  --txt-2: #6b6b6b;
+  --txt-2: #595959;
   --txt-3: #b5b3af;
   --line: rgba(26, 25, 23, 0.10);
   --line-mid: rgba(26, 25, 23, 0.15);
@@ -153,7 +153,7 @@ input:focus, textarea:focus, select:focus { outline: none; box-shadow: none; }
   --surface: #232528;
   --surface-2: #131416;
   --txt: #ecebe8;
-  --txt-2: #a8a6a1;
+  --txt-2: #b8b6b1;
   --txt-3: #6f6e6a;
   --line: rgba(236, 235, 232, 0.10);
   --line-mid: rgba(236, 235, 232, 0.18);
