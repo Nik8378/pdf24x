@@ -49,13 +49,14 @@ async function getPost(slug: string) {
 }
 
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPost(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
   if (!post) return { title: "Post Not Found" };
   return {
     title: post.seo_title || post.title,
     description: post.seo_description || post.excerpt,
-    alternates: { canonical: `https://pdf24x.com/blog/${params.slug}` },
+    alternates: { canonical: `https://pdf24x.com/blog/${slug}` },
     openGraph: {
       title: post.seo_title || post.title,
       description: post.seo_description || post.excerpt,
@@ -66,10 +67,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   let post = null;
   try {
-    post = await getPost(params.slug);
+    post = await getPost(slug);
   } catch(e) {
     console.error("Blog post error:", e);
   }
@@ -83,7 +85,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     "author": { "@type": "Person", "name": post.author || "PDF24x Team" },
     "publisher": { "@type": "Organization", "name": "PDF24X", "url": "https://pdf24x.com" },
     "datePublished": post.published_at || post.dateISO,
-    "url": `https://pdf24x.com/blog/${params.slug}`,
+    "url": `https://pdf24x.com/blog/${slug}`,
     "image": post.hero_image || post.image || "https://pdf24x.com/og-image.png",
   };
 
