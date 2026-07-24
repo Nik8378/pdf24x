@@ -17,22 +17,25 @@ function getSupabase() {
 }
 
 async function getPost(slug: string) {
-  // Try Supabase first
+  // Always check static first for static slugs
+  const staticPost = getPostBySlug(slug);
+
+  // Try Supabase
   try {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     if (url && key) {
-      const { data } = await createClient(url, key)
+      const { data, error } = await createClient(url, key)
         .from("blog_posts")
         .select("*")
         .eq("slug", slug)
         .eq("published", true)
         .single();
-      if (data) return { ...data, fromSupabase: true };
+      if (data && !error) return { ...data, fromSupabase: true };
     }
   } catch {}
+
   // Fall back to static
-  const staticPost = getPostBySlug(slug);
   if (staticPost) return {
     ...staticPost,
     fromSupabase: false,
