@@ -8,6 +8,7 @@ import { blogPosts, getPostBySlug } from "@/lib/blogPosts";
 import ReactMarkdown from "react-markdown";
 
 export const revalidate = 60;
+export const dynamicParams = true;
 
 function getSupabase() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://placeholder.supabase.co";
@@ -16,17 +17,31 @@ function getSupabase() {
 }
 
 async function getPost(slug: string) {
+  // Try Supabase first
   try {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     if (url && key) {
       const { data } = await createClient(url, key)
-        .from("blog_posts").select("*").eq("slug", slug).eq("published", true).single();
+        .from("blog_posts")
+        .select("*")
+        .eq("slug", slug)
+        .eq("published", true)
+        .single();
       if (data) return { ...data, fromSupabase: true };
     }
   } catch {}
+  // Fall back to static
   const staticPost = getPostBySlug(slug);
-  if (staticPost) return { ...staticPost, fromSupabase: false, hero_image: staticPost.image, hero_alt: staticPost.title, published_at: staticPost.dateISO };
+  if (staticPost) return {
+    ...staticPost,
+    fromSupabase: false,
+    hero_image: staticPost.image,
+    hero_alt: staticPost.title,
+    published_at: staticPost.dateISO,
+    seo_title: staticPost.title,
+    seo_description: staticPost.excerpt,
+  };
   return null;
 }
 
@@ -52,8 +67,10 @@ export async function generateStaticParams() {
     const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     if (url && key) {
       const { data } = await createClient(url, key)
-        .from("blog_posts").select("slug").eq("published", true);
-      const dbSlugs = (data ?? []).map((p: {slug: string}) => ({ slug: p.slug }));
+        .from("blog_posts")
+        .select("slug")
+        .eq("published", true);
+      const dbSlugs = (data ?? []).map((p: { slug: string }) => ({ slug: p.slug }));
       return [...staticSlugs, ...dbSlugs];
     }
   } catch {}
@@ -89,7 +106,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         </Link>
         {(post.hero_image || post.image) && (
           <div className="rounded-2xl overflow-hidden mb-6">
-            <img src={post.hero_image || post.image} alt={post.hero_alt || post.title} className="w-full h-auto max-h-80 object-cover" />
+            <img
+              src={post.hero_image || post.image}
+              alt={post.hero_alt || post.title}
+              className="w-full h-auto max-h-80 object-cover"
+            />
           </div>
         )}
         <h1 className="text-2xl sm:text-3xl font-bold text-[var(--txt)] mb-3 leading-tight">{post.title}</h1>
