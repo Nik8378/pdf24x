@@ -101,11 +101,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Hero Image */}
         {post.image && (
           <div className="w-full bg-[var(--surface)] border-b border-[var(--border)]" style={{maxHeight:"420px",overflow:"hidden"}}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={post.image}
               alt={post.imageAlt}
               className="w-full object-cover"
-              style={{maxHeight:"420px",width:"100%"}}
+              style={{maxHeight:"420px",width:"100%",display:"block"}}
+              referrerPolicy="no-referrer"
             />
           </div>
         )}
