@@ -133,15 +133,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <span className="flex items-center gap-1.5"><Clock size={13} />{readTime} min read</span>
           </div>
 
-          {/* Ad slot — top */}
-          <div className="w-full rounded-2xl bg-[var(--surface)] border border-[var(--border)] mb-6 min-h-[90px] flex items-center justify-center text-[11px] text-[var(--txt-2)] overflow-hidden">
-            <ins className="adsbygoogle w-full"
+          {/* Ad slot — top, hidden until filled */}
+          <div id="ad-top" style={{display:"none"}} className="w-full mb-6">
+            <ins className="adsbygoogle"
               style={{display:"block"}}
               data-ad-client="ca-pub-3512613566035809"
               data-ad-slot="auto"
               data-ad-format="horizontal"
               data-full-width-responsive="true" />
           </div>
+          <script dangerouslySetInnerHTML={{__html:`
+            (window.adsbygoogle=window.adsbygoogle||[]).push({});
+            setTimeout(function(){
+              var ins=document.querySelector('#ad-top ins');
+              if(ins&&ins.getAttribute('data-ad-status')==='filled'){
+                document.getElementById('ad-top').style.display='block';
+              }
+            },2000);
+          `}} />
 
           {/* Content */}
           <article className="prose prose-sm sm:prose lg:prose-lg max-w-none
@@ -161,15 +170,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             }
           </article>
 
-          {/* Ad slot — bottom */}
-          <div className="w-full rounded-2xl bg-[var(--surface)] border border-[var(--border)] mt-8 mb-6 min-h-[90px] flex items-center justify-center overflow-hidden">
-            <ins className="adsbygoogle w-full"
+          {/* Ad slot — bottom, hidden until filled */}
+          <div id="ad-bottom" style={{display:"none"}} className="w-full mt-8 mb-6">
+            <ins className="adsbygoogle"
               style={{display:"block"}}
               data-ad-client="ca-pub-3512613566035809"
               data-ad-slot="auto"
               data-ad-format="horizontal"
               data-full-width-responsive="true" />
           </div>
+          <script dangerouslySetInnerHTML={{__html:`
+            (window.adsbygoogle=window.adsbygoogle||[]).push({});
+            setTimeout(function(){
+              var ins=document.querySelector('#ad-bottom ins');
+              if(ins&&ins.getAttribute('data-ad-status')==='filled'){
+                document.getElementById('ad-bottom').style.display='block';
+              }
+            },2000);
+          `}} />
 
           {/* Back to blog */}
           <div className="mt-8 pt-6 border-t border-[var(--border)]">
