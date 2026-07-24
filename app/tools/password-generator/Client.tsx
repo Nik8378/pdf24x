@@ -1,5 +1,6 @@
 "use client";
 import { useState, useCallback } from "react";
+import { ToolContent } from "@/components/tool/ToolContent";
 import { Sidebar } from "@/components/layout/Sidebar";
 import ToolPageSections from "@/components/tool/ToolPageSections";
 import AdSlot from "@/components/ads/AdSlot";
@@ -103,7 +104,35 @@ export default function Client() {
         </div>
         
         <AdSlot slot="1234567892" format="auto" />
-        <ToolPageSections
+        <ToolContent
+        title="Password Generator"
+        intro="Our free password generator creates strong, random passwords that are virtually impossible to guess or crack. You can customize the password length from 4 to 64 characters and choose which character types to include — uppercase letters, lowercase letters, numbers, and special symbols. Generate a single password or up to 20 at once. Each password is generated locally in your browser, so it is never sent to any server."
+        useCases={[
+          "Creating strong passwords for new online accounts",
+          "Generating secure passwords for banking and financial apps",
+          "IT professionals creating temporary passwords for employees",
+          "Generating API keys and access tokens for development",
+          "Creating strong WiFi passwords for home and office networks",
+          "Replacing weak or reused passwords with unique strong ones",
+        ]}
+        features={[
+          "Password length from 4 to 64 characters",
+          "Toggle uppercase, lowercase, numbers, and symbols independently",
+          "Generate 1, 5, 10, or 20 passwords at once",
+          "Real-time password strength indicator for each password",
+          "One-click copy for any generated password",
+          "Generated entirely in your browser — never sent to a server",
+        ]}
+        tips={[
+          "Use at least 12 characters for a strong password — 16 or more is recommended",
+          "Include all character types for maximum security",
+          "Save generated passwords in a password manager like Bitwarden or 1Password",
+          "Generate a new password for every account — never reuse passwords",
+          "For WiFi passwords, 16-20 characters with all character types is ideal",
+        ]}
+        conclusion="Password security starts with using strong, unique passwords for every account. Our generator makes this easy and completely free. Since passwords are generated locally in your browser, there is zero risk of them being intercepted or stored. Use it as often as you need."
+      />
+      <ToolPageSections
           howToSteps={[
             {title: "Set Your Options", desc: "Choose password length and character types to include."},
             {title: "Pick Quantity", desc: "Generate 1, 5, 10 or 20 passwords at once."},

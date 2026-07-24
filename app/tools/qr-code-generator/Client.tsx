@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { ToolContent } from "@/components/tool/ToolContent";
 import { Sidebar } from "@/components/layout/Sidebar";
 import ToolPageSections from "@/components/tool/ToolPageSections";
 import AdSlot from "@/components/ads/AdSlot";
@@ -140,7 +141,35 @@ export default function Client() {
         </div>
         
         <AdSlot slot="1234567893" format="auto" />
-        <ToolPageSections
+        <ToolContent
+        title="QR Code Generator"
+        intro="Our free QR code generator lets you create scannable QR codes for URLs, WiFi passwords, email addresses, phone numbers, SMS messages, and plain text — all in seconds. You can customize the foreground and background colors, choose the output size, and download a high-resolution PNG file instantly. No account needed, no watermark, and completely free."
+        useCases={[
+          "Restaurant owners creating contactless menus with URL QR codes",
+          "Businesses printing WiFi QR codes for customer convenience",
+          "Marketers adding QR codes to flyers, posters, and packaging",
+          "Event organizers linking to registration or event pages",
+          "Teachers sharing assignment links via scannable codes",
+          "Freelancers adding contact QR codes to business cards",
+        ]}
+        features={[
+          "Supports URL, Text, Email, Phone, SMS, and WiFi QR types",
+          "Custom foreground and background color picker",
+          "Output sizes from 128px to 1024px for web and print",
+          "High error correction level for reliable scanning",
+          "Instant PNG download with no watermark",
+          "Works on all browsers and devices",
+        ]}
+        tips={[
+          "Use 512px or 1024px resolution for print materials like posters and packaging",
+          "Always test your QR code by scanning it before printing",
+          "High contrast colors — dark on light — scan most reliably",
+          "For WiFi QR codes, select the correct encryption type (WPA/WEP/None)",
+          "Add https:// to URLs to ensure they open correctly on all devices",
+        ]}
+        conclusion="Our QR code generator is entirely free with no expiry on generated codes. Unlike many tools that charge for custom colors or high-resolution downloads, we provide everything at no cost. Your QR code data is not stored on our servers."
+      />
+      <ToolPageSections
           howToSteps={[
             {title: "Choose QR Type", desc: "Select URL, text, email, phone, SMS or WiFi."},
             {title: "Enter Content", desc: "Type the URL, message or WiFi credentials to encode."},

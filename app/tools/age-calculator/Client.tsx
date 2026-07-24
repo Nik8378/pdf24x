@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { ToolContent } from "@/components/tool/ToolContent";
 import { Sidebar } from "@/components/layout/Sidebar";
 import ToolPageSections from "@/components/tool/ToolPageSections";
 import AdSlot from "@/components/ads/AdSlot";
@@ -71,7 +72,35 @@ export default function Client() {
         </div>
         
         <AdSlot slot="1234567890" format="auto" />
-        <ToolPageSections
+        <ToolContent
+        title="Age Calculator"
+        intro="Our free age calculator tells you your exact age in years, months, days, hours, and even minutes. Simply enter your date of birth and the reference date, and the calculator instantly shows you a complete age breakdown. It also tells you how many days until your next birthday. Whether you need your age for a visa application, a job form, or just out of curiosity, this tool gives you the most accurate result."
+        useCases={[
+          "Calculating exact age for visa and passport applications",
+          "Finding age for medical forms and health checkups",
+          "Checking eligibility for age-restricted programs and schemes",
+          "Calculating age for insurance and financial planning",
+          "Parents tracking their child's exact age in months",
+          "HR teams verifying employee age for retirement planning",
+        ]}
+        features={[
+          "Shows age in years, months, days, hours, and minutes",
+          "Calculates total days and hours lived",
+          "Shows days until next birthday",
+          "Supports any reference date — past, present, or future",
+          "Accounts for leap years automatically",
+          "Works on all devices with no app download needed",
+        ]}
+        tips={[
+          "Use the Age At Date field to calculate your age on a specific future date",
+          "For visa applications, use the application submission date as the reference date",
+          "The total days count is useful for calculating age-based eligibility thresholds",
+          "Use the birthday countdown to plan birthday surprises in advance",
+          "For children under 1 year, the months and days breakdown is most useful",
+        ]}
+        conclusion="Our age calculator is completely free and works instantly without any sign-up. It is accurate to the day and accounts for leap years. Use it for any purpose — personal, professional, or official — with complete privacy. Nothing you enter is stored or shared."
+      />
+      <ToolPageSections
           howToSteps={[
             {title: "Enter Date of Birth", desc: "Pick your birth date using the date picker."},
             {title: "Set Reference Date", desc: "Leave it as today or pick any custom date."},

@@ -1,5 +1,6 @@
 "use client";
 import ToolPageSections from "@/components/tool/ToolPageSections";
+import { ToolContent } from "@/components/tool/ToolContent";
 
 import { useState, useRef, useCallback } from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
@@ -239,6 +240,34 @@ export default function MergeClient() {
         </div>
       </div>
 
+      <ToolContent
+        title="PDF Merger"
+        intro="Merging multiple PDF files into one is simple with our free online PDF merger. Whether you are combining chapters of a book, joining invoices, or assembling a multi-section report, our tool lets you arrange files in any order and merge them instantly. No software needed — everything runs directly in your browser."
+        useCases={[
+          "Combining multiple invoices into a single PDF for accounting",
+          "Joining chapters or sections of a book or report",
+          "Assembling a portfolio from separate PDF documents",
+          "Merging scanned documents into one file for submission",
+          "Combining multiple forms into a single application package",
+          "Publishers consolidating multiple documents for print",
+        ]}
+        features={[
+          "Merge unlimited PDF files in one go",
+          "Drag and drop to reorder files before merging",
+          "No file size limit per document",
+          "Preserves original formatting, fonts, and images",
+          "Works on all devices — desktop, tablet, and mobile",
+          "100% free with no watermark on the output",
+        ]}
+        tips={[
+          "Drag files to reorder them before clicking Merge — the order matters",
+          "Compress individual PDFs before merging to keep the final file smaller",
+          "Use descriptive file names so you can easily identify each section",
+          "Merge related documents together to create a single organized archive",
+          "Split the merged PDF later if you need to extract specific pages",
+        ]}
+        conclusion="Our PDF merger is the fastest way to combine multiple documents into one professional PDF. It is completely free, requires no account, and works on any device. Your files are processed securely and never stored permanently."
+      />
       <div className="mx-4 sm:mx-6 lg:mx-8 mt-4">
         <ToolPageSections
           relatedTools={["split", "compress", "rotate-pdf"]}

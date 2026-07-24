@@ -1,5 +1,6 @@
 "use client";
 import ToolPageSections from "@/components/tool/ToolPageSections";
+import { ToolContent } from "@/components/tool/ToolContent";
 import { useState, useRef, useCallback } from "react";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Minimize2, UploadCloud, Trash2, FileText, Info } from "lucide-react";
@@ -315,6 +316,34 @@ export default function CompressClient() {
             </div>
           </div>
         
+      <ToolContent
+        title="PDF Compressor"
+        intro="Our free PDF compressor reduces the file size of your PDF documents without requiring any software installation. Whether you need to email a large PDF, upload it to a website with file size limits, or simply save storage space, our tool handles it all instantly in your browser. We support three compression levels — Medium, Strong, and Extreme — so you can choose the right balance between file size and quality."
+        useCases={[
+          "Students submitting assignments with file size limits",
+          "Professionals emailing large reports and presentations",
+          "Freelancers uploading portfolios to job platforms",
+          "Businesses archiving documents to save storage space",
+          "Publishers preparing print-ready PDFs for distribution",
+          "Anyone sharing PDFs on WhatsApp or messaging apps",
+        ]}
+        features={[
+          "Three compression levels: Medium, Strong, and Extreme",
+          "Supports PDF files up to 100MB",
+          "No software installation required — works in any browser",
+          "Files processed securely and deleted within 15 minutes",
+          "Shows exact file size reduction after compression",
+          "Works on Windows, Mac, iPhone, and Android",
+        ]}
+        tips={[
+          "Use Medium compression for documents with important images — it preserves quality better",
+          "Use Extreme compression for text-heavy PDFs where image quality is less important",
+          "If your PDF is already compressed, the file size may not reduce further",
+          "Compress before merging multiple PDFs to keep the final file size manageable",
+          "For scanned PDFs, Extreme compression gives the biggest size reduction",
+        ]}
+        conclusion="PDF24X's PDF compressor is completely free to use with no registration required. Your privacy is protected — files are processed securely and never shared with third parties. Compress as many PDFs as you need, whenever you need."
+      />
       <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 mb-6 space-y-4">
         <div className="rounded-2xl border border-[var(--line-strong)] bg-[var(--surface)] p-6" style={{ boxShadow: "3px 3px 0 0 var(--line-strong)" }}>
           <h2 className="text-lg font-extrabold mb-4" style={{ color: "var(--txt)", fontFamily: "Archivo, Inter, sans-serif" }}>How It Works</h2>
