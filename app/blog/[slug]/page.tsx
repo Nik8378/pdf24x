@@ -77,6 +77,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   };
 
   const content = post.content || "";
+  const isHtml = content.trim().startsWith("<");
 
   return (
     <div className="w-full flex gap-0 items-start">
@@ -107,7 +108,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           prose-pre:bg-[var(--surface)] prose-pre:border prose-pre:border-[var(--border)]
           prose-li:text-[var(--txt)]
           prose-table:text-[var(--txt)] prose-th:text-[var(--txt)] prose-td:text-[var(--txt)]">
-          <ReactMarkdown>{content}</ReactMarkdown>
+          {isHtml
+            ? <div dangerouslySetInnerHTML={{ __html: content }} />
+            : <ReactMarkdown>{content}</ReactMarkdown>
+          }
         </article>
       </main>
     </div>
