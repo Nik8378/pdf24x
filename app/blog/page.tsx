@@ -33,7 +33,7 @@ async function getSupabasePosts() {
     const supabase = createClient(url, key);
     const { data, error } = await supabase
       .from("blog_posts")
-      .select("slug,title,excerpt,author,hero_image,hero_alt,published_at,tag")
+      .select("slug,title,excerpt,author,hero_image,hero_alt,published_at")
       .eq("published", true)
       .order("published_at", { ascending: false });
     console.log("Supabase posts fetched:", data?.length ?? 0, error?.message ?? "no error");
@@ -45,7 +45,7 @@ async function getSupabasePosts() {
       image: p.hero_image || "",
       imageAlt: p.hero_alt || p.title,
       date: p.published_at ? new Date(p.published_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "",
-      tag: p.tag || "Tools",
+      tag: "Tools",
       read: "5 min read",
     }));
   } catch(e) {
