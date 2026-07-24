@@ -7,8 +7,8 @@ import { createClient } from "@supabase/supabase-js";
 import { blogPosts, getPostBySlug } from "@/lib/blogPosts";
 import ReactMarkdown from "react-markdown";
 
-export const revalidate = 60;
-export const dynamicParams = true;
+export const dynamic = 'force-dynamic';
+
 
 function getSupabase() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://placeholder.supabase.co";

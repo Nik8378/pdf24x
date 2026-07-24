@@ -6,7 +6,7 @@ import { blogPosts } from "@/lib/blogPosts";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { createClient } from "@supabase/supabase-js";
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "PDF Tools Blog – Guides, Tips & Free Tool Reviews",
