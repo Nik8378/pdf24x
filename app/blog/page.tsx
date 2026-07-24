@@ -84,7 +84,7 @@ export default async function BlogPage() {
             {featured.image && (
               <div className="relative w-full bg-black overflow-hidden rounded-t-2xl" style={{ maxHeight: "320px" }}>
                 <img src={featured.image} alt={featured.imageAlt}
-                  className="w-full h-auto block" style={{ maxHeight: "320px", objectFit: "cover" }} />
+                  className="w-full h-auto block" style={{ maxHeight: "360px", objectFit: "contain", background: "var(--surface)" }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
                 <div className="absolute top-4 left-4">
                   <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full border backdrop-blur-sm ${tagStyles[featured.tag] ?? "bg-white/80 text-gray-700 border-gray-200"}`}>
@@ -110,7 +110,7 @@ export default async function BlogPage() {
             <Link key={post.slug} href={`/blog/${post.slug}`}
               className="block bg-[var(--surface)] border border-[var(--line)] rounded-2xl overflow-hidden hover:border-accent/40 hover:shadow-md transition-all group">
               {post.image && (
-                <img src={post.image} alt={post.imageAlt} className="w-full h-40 object-cover" />
+                <img src={post.image} alt={post.imageAlt} className="w-full" style={{height:"180px",objectFit:"contain",background:"var(--surface)"}} />
               )}
               <div className="p-4">
                 <div className="flex items-center gap-2 mb-2">
