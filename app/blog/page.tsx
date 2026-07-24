@@ -26,14 +26,17 @@ const tagStyles: Record<string, string> = {
 async function getSupabasePosts() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  console.log("Supabase URL:", url ? "SET" : "MISSING");
+  console.log("Supabase KEY:", key ? "SET" : "MISSING");
   if (!url || !key) return [];
   try {
     const supabase = createClient(url, key);
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("blog_posts")
       .select("slug,title,excerpt,author,hero_image,hero_alt,published_at,tag")
       .eq("published", true)
       .order("published_at", { ascending: false });
+    console.log("Supabase posts fetched:", data?.length ?? 0, error?.message ?? "no error");
     return (data ?? []).map(p => ({
       slug: p.slug,
       title: p.title,
@@ -45,7 +48,10 @@ async function getSupabasePosts() {
       tag: p.tag || "Tools",
       read: "5 min read",
     }));
-  } catch { return []; }
+  } catch(e) {
+    console.error("Supabase fetch error:", e);
+    return [];
+  }
 }
 
 export default async function BlogPage() {
@@ -124,4 +130,3 @@ export default async function BlogPage() {
   );
 }
 // Fri Jul 24 22:40:50 IST 2026
-// force Fri Jul 24 23:09:06 IST 2026
