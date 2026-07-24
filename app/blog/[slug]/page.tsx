@@ -67,7 +67,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await getPost(params.slug);
+  let post = null;
+  try {
+    post = await getPost(params.slug);
+  } catch(e) {
+    console.error("Blog post error:", e);
+  }
   if (!post) notFound();
 
   const articleSchema = {
