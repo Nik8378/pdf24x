@@ -7,7 +7,8 @@ import { createClient } from "@supabase/supabase-js";
 import { blogPosts, getPostBySlug } from "@/lib/blogPosts";
 import ReactMarkdown from "react-markdown";
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
+export const dynamicParams = true;
 
 
 function getSupabase() {
@@ -48,6 +49,23 @@ async function getPost(slug: string) {
   return null;
 }
 
+
+export async function generateStaticParams() {
+  const staticSlugs = blogPosts.map(p => ({ slug: p.slug }));
+  try {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (url && key) {
+      const { data } = await createClient(url, key)
+        .from("blog_posts")
+        .select("slug")
+        .eq("published", true);
+      const dbSlugs = (data ?? []).map((p: { slug: string }) => ({ slug: p.slug }));
+      return [...staticSlugs, ...dbSlugs];
+    }
+  } catch {}
+  return staticSlugs;
+}
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = await getPost(params.slug);
   if (!post) return { title: "Post Not Found" };
